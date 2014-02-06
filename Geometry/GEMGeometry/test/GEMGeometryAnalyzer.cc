@@ -7,7 +7,7 @@
 #include <memory>
 #include <fstream>
 #include <FWCore/Framework/interface/Frameworkfwd.h>
-
+#include "FWCore/MessageLogger/interface/MessageLogger.h"
 #include <FWCore/Framework/interface/EDAnalyzer.h>
 #include <FWCore/Framework/interface/Event.h>
 #include <FWCore/Framework/interface/EventSetup.h>
@@ -65,7 +65,13 @@ void
 GEMGeometryAnalyzer::analyze( const edm::Event& /*iEvent*/, const edm::EventSetup& iSetup )
 {
   edm::ESHandle<GEMGeometry> pDD;
-  iSetup.get<MuonGeometryRecord>().get(pDD);     
+  try {
+    iSetup.get<MuonGeometryRecord>().get(pDD);     
+  } catch (edm::eventsetup::NoProxyException<GEMGeometry>& e) {
+    edm::LogWarning("GEMGeometryAnalyzer") 
+      << "+++ Info: GEM geometry is not available for this scenario! +++\n";
+    return;
+  }
   
   ofos << myName() << ": Analyzer..." << endl;
   ofos << "start " << dashedLine_ << endl;
