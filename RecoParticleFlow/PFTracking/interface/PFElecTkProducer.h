@@ -41,7 +41,7 @@ class ConvBremPFTrackFinder;
  and transform them in PFGsfRecTracks.
 */
 
-class PFElecTkProducer final : public edm::stream::EDProducer<> {
+class PFElecTkProducer : public edm::stream::EDProducer<> {
  public:
   
      ///Constructor

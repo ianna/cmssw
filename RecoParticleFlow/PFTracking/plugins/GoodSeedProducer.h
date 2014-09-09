@@ -49,7 +49,7 @@ class TrackerGeometry;
 class TrajectoryStateOnSurface;
 
 
-class GoodSeedProducer final : public edm::stream::EDProducer<> {
+class GoodSeedProducer : public edm::stream::EDProducer<> {
   typedef TrajectoryStateOnSurface TSOS;
    public:
       explicit GoodSeedProducer(const edm::ParameterSet&);

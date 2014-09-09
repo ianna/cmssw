@@ -27,7 +27,7 @@
 #include <boost/shared_ptr.hpp>
 
 
-class dso_hidden VirtualJetProducer : public edm::stream::EDProducer<>
+class VirtualJetProducer : public edm::stream::EDProducer<>
 {
 protected:
   //
@@ -88,7 +88,7 @@ public:
   // member functions
   //
 public:
-  virtual void  produce(edm::Event& iEvent, const edm::EventSetup& iSetup);
+  virtual void  produce(edm::Event& iEvent, const edm::EventSetup& iSetup) override;
   std::string   jetType() const { return jetType_; }
   
 protected:
