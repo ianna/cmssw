@@ -36,6 +36,6 @@ XMLIdealGeometryESSource = cms.ESSource("XMLIdealGeometryESSource",
     'Geometry/TrackerCommonData/data/MaPSA/trackerRecoMaterial_2DS_5SS6_5SS4.xml',
     'Geometry/TrackerCommonData/data/MaPSA/trackerProdCuts_2DS_5SS6_5SS4.xml'
   ),
-  rootNodeName = cms.string('cms:OCMS')
+  rootNodeName = cms.string('tracker:Tracker')
 )
 

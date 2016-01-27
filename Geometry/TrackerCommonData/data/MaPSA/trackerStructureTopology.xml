@@ -18,7 +18,7 @@
       <PartSelector path="//LAYER6"/>
       <PartSelector path="//LAYER7"/>
       <PartSelector path="//LAYER8"/>
-      <Parameter name="TkDDDStructure" value="MAPSALayer"/>
+      <Parameter name="TkDDDStructure" value="TOBLayer"/>
     </SpecPar>
     <SpecPar name="MAPSASubDetRodPar">
       <PartSelector path="//MAPSARod1L"/>
@@ -27,7 +27,7 @@
       <PartSelector path="//MAPSARod2H"/>
       <PartSelector path="//MAPSARod4L"/>
       <PartSelector path="//MAPSARod4H"/>
-      <Parameter name="TkDDDStructure" value="MAPSARod"/>
+      <Parameter name="TkDDDStructure" value="TOBRod"/>
     </SpecPar>
     <SpecPar name="MAPSASubDetGluedDetPar">
       <PartSelector path="//MAPSAModule0"/>
