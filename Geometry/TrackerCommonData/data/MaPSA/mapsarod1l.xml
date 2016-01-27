@@ -1,0 +1,144 @@
+<?xml version="1.0"?>
+<DDDefinition xmlns="http://www.cern.ch/cms/DDL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.cern.ch/cms/DDL ../../../DetectorDescription/Schema/DDLSchema.xsd">
+	<ConstantsSection label="mapsarod1l.xml" eval="true">
+		<Constant name="zero" value="0.0*fm"/>
+	</ConstantsSection>
+	<LogicalPartSection label="mapsarod1l.xml">
+		<LogicalPart name="MAPSARod1L" category="unspecified">
+			<rSolid name="mapsarodpar:MAPSARodL"/>
+			<rMaterial name="materials:Air"/>
+		</LogicalPart>
+		<LogicalPart name="MAPSARodCentral1L" category="unspecified">
+			<rSolid name="mapsarodpar:MAPSARodCentralL"/>
+			<rMaterial name="materials:Air"/>
+		</LogicalPart>
+	</LogicalPartSection>
+	<PosPartSection label="mapsarod1l.xml">
+		<PosPart copyNumber="1">
+			<rParent name="mapsarod1l:MAPSARod1L"/>
+			<rChild name="mapsarod1l:MAPSARodCentral1L"/>
+		</PosPart>
+	</PosPartSection>
+	<Algorithm name="track:DDTOBRodAlgo">
+		<rParent name="mapsarod1l:MAPSARod1L"/>
+		<Numeric name="Shift" value="([mapsarodpar:RodL]-[mapsarodpar:RodDL])/2"/>
+		<String name="CentralName" value="mapsarod1l:MAPSARodCentral1L"/>
+		<Vector name="SideRodName" type="string" nEntries="2">
+			mapsarodpar:MAPSASideRod1, mapsarodpar:MAPSASideRod2
+		</Vector>
+		<Vector name="SideRodX" type="numeric" nEntries="2">
+			-[mapsarodpar:SideRodX],  [mapsarodpar:SideRodX]
+		</Vector>
+		<Vector name="SideRodY" type="numeric" nEntries="2">
+			-[mapsarodpar:RodY],      [mapsarodpar:RodY]
+		</Vector>
+		<Vector name="SideRodZ" type="numeric" nEntries="2">
+			[zero],               -[mapsarodpar:RodDL]
+		</Vector>
+		<String name="EndRod1Name" value="mapsarodpar:MAPSAEndRod1"/>
+		<Vector name="EndRod1Y" type="numeric" nEntries="2">
+			-[mapsarodpar:RodY],      [mapsarodpar:RodY]
+		</Vector>
+		<Vector name="EndRod1Z" type="numeric" nEntries="2">
+			-[mapsarodpar:EndRod1Z], -[mapsarodpar:EndRod1Z]
+		</Vector>
+		<String name="EndRod2Name" value="mapsarodpar:MAPSAEndRod2"/>
+		<Numeric name="EndRod2Y" value="[mapsarodpar:EndRod2Y]"/>
+		<Numeric name="EndRod2Z" value="-[mapsarodpar:EndRod2Z]"/>
+		<String name="CableName" value="mapsarodpar:MAPSACable"/>
+		<Numeric name="CableZ" value="-[mapsarodpar:CableZ]"/>
+		<String name="ClampName" value="mapsarodpar:MAPSAClamp"/>
+		<Vector name="ClampX" type="numeric" nEntries="4">
+			-[mapsarodpar:ClampX],  -[mapsarodpar:ClampX],   [mapsarodpar:ClampX],
+			[mapsarodpar:ClampX]
+		</Vector>
+		<Vector name="ClampZ" type="numeric" nEntries="4">
+			-[mapsarodpar:ClampZ1], -[mapsarodpar:ClampZ2], -[mapsarodpar:ClampZ1],
+			-[mapsarodpar:ClampZ2]
+		</Vector>
+		<String name="SideCoolName" value="mapsarod0c:MAPSASideCoolTube0"/>
+		<Vector name="SideCoolX" type="numeric" nEntries="2">
+			-[mapsarodpar:SideCoolX],  [mapsarodpar:SideCoolX]
+		</Vector>
+		<Vector name="SideCoolY" type="numeric" nEntries="2">
+			[mapsarodpar:SideCoolY],  [mapsarodpar:SideCoolY]
+		</Vector>
+		<Vector name="SideCoolZ" type="numeric" nEntries="2">
+			-[mapsarodpar:SideCoolZ], -[mapsarodpar:SideCoolZ]
+		</Vector>
+		<String name="EndCoolName" value="mapsarod0c:MAPSAEndCoolTube0"/>
+		<String name="EndCoolRot" value="mapsarodpar:90XD"/>
+		<Numeric name="EndCoolY" value="[mapsarodpar:EndCoolY]"/>
+		<Numeric name="EndCoolZ" value="-[mapsarodpar:EndCoolZ]"/>
+		<String name="OptFibreName" value="mapsarod0c:MAPSAOptFibre0"/>
+		<Vector name="optFibreX" type="numeric" nEntries="2">
+			-[mapsarodpar:OptFibreX],  [mapsarodpar:OptFibreX]
+		</Vector>
+		<Vector name="optFibreZ" type="numeric" nEntries="2">
+			-[mapsarodpar:OptFibreZ], -[mapsarodpar:OptFibreZ]
+		</Vector>
+		<String name="SideClamp1Name" value="mapsarod0c:MAPSAPlate01"/>
+		<Vector name="SideClampX" type="numeric" nEntries="12">
+			-[mapsarodpar:SideClampX],  [mapsarodpar:SideClampX], -[mapsarodpar:SideClampX],
+			[mapsarodpar:SideClampX], -[mapsarodpar:SideClampX],  [mapsarodpar:SideClampX],
+			-[mapsarodpar:SideClampX],  [mapsarodpar:SideClampX], -[mapsarodpar:SideClampX],
+			[mapsarodpar:SideClampX], -[mapsarodpar:SideClampX],  [mapsarodpar:SideClampX]
+		</Vector>
+		<Vector name="SideClamp1DZ" type="numeric" nEntries="12">
+			-[mapsarodpar:SideClamp1Z],-[mapsarodpar:SideClamp1Z],-[mapsarodpar:SideClamp1Z],
+			-[mapsarodpar:SideClamp1Z], [mapsarodpar:SideClamp1Z], [mapsarodpar:SideClamp1Z],
+			[mapsarodpar:SideClamp1Z], [mapsarodpar:SideClamp1Z], [mapsarodpar:SideClamp1Z],
+			[mapsarodpar:SideClamp1Z], [mapsarodpar:SideClamp1Z], [mapsarodpar:SideClamp1Z]
+		</Vector>
+		<String name="SideClamp2Name" value="mapsarod0c:MAPSAPlate02"/>
+		<Vector name="SideClamp2DZ" type="numeric" nEntries="12">
+			[mapsarodpar:SideClamp2Z], [mapsarodpar:SideClamp2Z], [mapsarodpar:SideClamp2Z],
+			[mapsarodpar:SideClamp2Z],-[mapsarodpar:SideClamp2Z],-[mapsarodpar:SideClamp2Z],
+			-[mapsarodpar:SideClamp2Z],-[mapsarodpar:SideClamp2Z],-[mapsarodpar:SideClamp2Z],
+			-[mapsarodpar:SideClamp2Z],-[mapsarodpar:SideClamp2Z],-[mapsarodpar:SideClamp2Z]
+		</Vector>
+		<String name="ModuleName" value="mapsamodule0:MAPSAModule0"/>
+		<Vector name="ModuleRot" type="string" nEntries="6">
+			mapsarodpar:R180, mapsarodpar:R180, mapsarodpar:180X, 
+			mapsarodpar:180X, mapsarodpar:180X, mapsarodpar:180X</Vector>
+		<Vector name="ModuleY" type="numeric" nEntries="6">
+			[mapsarodpar:ModuleY], -[mapsarodpar:ModuleY],  [mapsarodpar:ModuleY],
+			-[mapsarodpar:ModuleY],  [mapsarodpar:ModuleY], -[mapsarodpar:ModuleY]
+		</Vector>
+		<Vector name="ModuleZ" type="numeric" nEntries="6">
+			[mapsarodpar:ModuleZ01], [mapsarodpar:ModuleZ02], [mapsarodpar:ModuleZ03],
+			[mapsarodpar:ModuleZ04], [mapsarodpar:ModuleZ05], [mapsarodpar:ModuleZ06]
+		</Vector>
+		<Vector name="ICCName" type="string" nEntries="6">
+			mapsarod0c:MAPSARodConn0, mapsarod0c:MAPSACCUM0, mapsarod0c:MAPSAICC02, 
+			mapsarod0c:MAPSAICC02, mapsarod0c:MAPSAICC01, mapsarod0c:MAPSAICC01
+		</Vector>
+		<Vector name="ICCY" type="numeric" nEntries="6">
+			-[mapsarodpar:ICCY1], -[mapsarodpar:ICCY2],  [mapsarodpar:ICCY1],
+			-[mapsarodpar:ICCY1],  [mapsarodpar:ICCY1], -[mapsarodpar:ICCY1]
+		</Vector>
+		<Vector name="ICCZ" type="numeric" nEntries="6">
+			[mapsarodpar:ICCZ01], [mapsarodpar:ICCZ02], [mapsarodpar:ICCZ03],
+			[mapsarodpar:ICCZ04], [mapsarodpar:ICCZ05], [mapsarodpar:ICCZ06]
+		</Vector>
+		<String name="AOHName" value="mapsarodpar:MAPSAAOH"/>
+		<Vector name="AOHCopies" type="numeric" nEntries="6">
+			0 , 0 , 4 , 4 , 2 , 2
+		</Vector>
+		<Vector name="AOHx" type="numeric" nEntries="6">
+			[zero] , [zero] ,
+			[mapsarodpar:AOHx] , [mapsarodpar:AOHx] ,
+			[mapsarodpar:AOHx] , -[mapsarodpar:AOHx]
+		</Vector>
+		<Vector name="AOHy" type="numeric" nEntries="6">
+			[zero] , [zero] ,
+			[mapsarodpar:AOHy] , -[mapsarodpar:AOHy] ,
+			[mapsarodpar:AOHy] , -[mapsarodpar:AOHy]
+		</Vector>
+		<Vector name="AOHz" type="numeric" nEntries="6">
+			[zero] , [zero] ,
+			[mapsarodpar:AOHz] , -[mapsarodpar:AOHz] ,
+			[zero] , [zero]
+		</Vector>
+	</Algorithm>
+</DDDefinition>

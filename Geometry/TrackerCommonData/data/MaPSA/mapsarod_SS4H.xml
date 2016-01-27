@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<DDDefinition xmlns="http://www.cern.ch/cms/DDL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.cern.ch/cms/DDL ../../../../DetectorDescription/Schema/DDLSchema.xsd">
+	<ConstantsSection label="mapsarod_SS4H.xml" eval="true">
+		<Constant name="zero" value="0.0*fm"/>
+	</ConstantsSection>
+	<LogicalPartSection label="mapsarod_SS4H.xml">
+		<LogicalPart name="MAPSARod_SS4H" category="unspecified">
+			<rSolid name="mapsa:MAPSARod"/>
+			<rMaterial name="materials:Air"/>
+		</LogicalPart>
+	</LogicalPartSection>
+	<PosPartSection label="mapsarod_SS4H.xml">
+		<PosPart copyNumber="1">
+			<rParent name="mapsarod_SS4H:MAPSARod_SS4H"/>
+			<rChild name="mapsarod2h:MAPSARod2H"/>
+		</PosPart>
+	</PosPartSection>
+</DDDefinition>
