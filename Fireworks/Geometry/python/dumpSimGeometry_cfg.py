@@ -3,7 +3,7 @@ import sys
 import FWCore.ParameterSet.VarParsing as VarParsing
 from FWCore.Utilities.Enumerate import Enumerate
 
-varType = Enumerate ("Run1 Ideal2015 Ideal2015dev 2015 2015dev 2019 PhaseIPixel Phase1_R34F16 Phase2Tk  2023Muon SLHC DB SLHCDB")
+varType = Enumerate ("Run1 Ideal2015 Ideal2015dev 2015 2015dev 2019 PhaseIPixel Phase1_R34F16 Phase2Tk  2023Muon MaPSA CRack SLHC DB SLHCDB")
 
 def help():
    print "Usage: cmsRun dumpSimGeometry_cfg.py  tag=TAG "
@@ -51,6 +51,12 @@ def simGeoLoad(score):
 
     elif score == "2023":
        process.load('Configuration.Geometry.GeometryExtended2023Reco_cff')
+
+    elif score == "MaPSA":
+       process.load('Geometry.TrackerCommonData.mapsaGeometryXML_cfi')
+
+    elif score == "CRack":
+       process.load('Geometry.TrackerCommonData.crackGeometryXML_cfi')
                 
     elif score == "DB":
         process.load("Configuration.StandardSequences.GeometryDB_cff")

@@ -618,6 +618,7 @@ TGeoMgrFromDdd::createVolume(const std::string& iName,
 		       const DDSolid& iSolid,
 		       const DDMaterial& iMaterial)
 {
+  std::cout << "createVolume " << iName.c_str() << "\n";
    TGeoVolume* v=nameToVolume_[iName];
    if (v == 0)
    {
@@ -646,6 +647,8 @@ TGeoMaterial*
 TGeoMgrFromDdd::createMaterial(const DDMaterial& iMaterial)
 {
    std::string   mat_name = iMaterial.name().fullname();
+   std::cout << "TGeoMgrFromDdd::createMaterial" << " " <<  mat_name << "\n";
+    
    TGeoMaterial *mat      = nameToMaterial_[mat_name];
 
    if (mat == 0)

@@ -1,0 +1,130 @@
+<?xml version="1.0"?>
+<DDDefinition xmlns="http://www.cern.ch/cms/DDL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.cern.ch/cms/DDL ../../../DetectorDescription/Schema/DDLSchema.xsd">
+	<ConstantsSection label="mapsamodule2.xml" eval="true">
+		<Constant name="zero" value="0.0*fm"/>
+	</ConstantsSection>
+	<LogicalPartSection label="mapsamodule2.xml">
+		<LogicalPart name="MAPSAModule2" category="unspecified">
+			<rSolid name="mapsamodpar:MAPSAModule"/>
+			<rMaterial name="materials:Air"/>
+		</LogicalPart>
+		<LogicalPart name="MAPSAHybrid2" category="unspecified">
+			<rSolid name="mapsamodpar:MAPSAHybrid"/>
+			<rMaterial name="mapsamaterial:MAPSA_ele34"/>
+		</LogicalPart>
+		<LogicalPart name="MAPSAWaferRphi2" category="unspecified">
+			<rSolid name="mapsamodpar:MAPSAWaferRphi"/>
+			<rMaterial name="materials:Silicon"/>
+		</LogicalPart>
+		<LogicalPart name="MAPSAActiveRphi2" category="unspecified">
+			<rSolid name="mapsamodpar:MAPSAActiveRphi"/>
+			<rMaterial name="materials:Silicon"/>
+		</LogicalPart>
+	</LogicalPartSection>
+	<PosPartSection label="mapsamodule2.xml">
+		<PosPart copyNumber="1">
+			<rParent name="mapsamodule2:MAPSAWaferRphi2"/>
+			<rChild name="mapsamodule2:MAPSAActiveRphi2"/>
+			<Translation x="[zero]" y="[zero]" z="[tracker:BackPlaneDz]"/>
+			<rRotation name="mapsamodpar:Activ"/>
+		</PosPart>
+		<PosPart copyNumber="1">
+			<rParent name="mapsamodule2:MAPSAActiveRphi2"/>
+			<rChild name="mapsamodpar:MAPSAInactive"/>
+		</PosPart>
+		<PosPart copyNumber="1">
+			<rParent name="mapsamodule2:MAPSAModule2"/>
+			<rChild name="mapsamodule2:MAPSAWaferRphi2"/>
+			<rRotation name="mapsamodpar:Rphi"/>
+			<Translation x="[zero]" y="-[mapsamodpar:WaferY]" z="-[mapsamodpar:WaferZ]"/>
+		</PosPart>
+		<PosPart copyNumber="1">
+			<rParent name="mapsamodule2:MAPSAModule2"/>
+			<rChild name="mapsamodpar:MAPSASiEncaps"/>
+			<rRotation name="mapsamodpar:Rphi"/>
+			<Translation x="[zero]" y="-[mapsamodpar:GlueSi1Y]" z="-[mapsamodpar:WaferZ]"/>
+		</PosPart>
+		<PosPart copyNumber="1">
+			<rParent name="mapsamodule2:MAPSAModule2"/>
+			<rChild name="mapsamodpar:MAPSASiBackEncaps"/>
+			<rRotation name="mapsamodpar:Rphi"/>
+			<Translation x="[zero]" y="-[mapsamodpar:GlueSi2Y]" z="-[mapsamodpar:WaferZ]"/>
+		</PosPart>
+		<PosPart copyNumber="1">
+			<rParent name="mapsamodule2:MAPSAModule2"/>
+			<rChild name="mapsamodule2:MAPSAHybrid2"/>
+			<Translation x="[zero]" y="-[mapsamodpar:HybridY]" z="[mapsamodpar:HybridZ]"/>
+		</PosPart>
+		<PosPart copyNumber="1">
+			<rParent name="mapsamodule2:MAPSAModule2"/>
+			<rChild name="mapsamodpar:MAPSAPA1"/>
+			<Translation x="[zero]" y="-[mapsamodpar:PAY]" z="[mapsamodpar:PAZ]"/>
+		</PosPart>
+		<PosPart copyNumber="1">
+			<rParent name="mapsamodule2:MAPSAModule2"/>
+			<rChild name="mapsamodpar:MAPSAPAEncaps"/>
+			<rRotation name="mapsamodpar:Rphi"/>
+			<Translation x="[zero]" y="-[mapsamodpar:GluePAY]" z="[mapsamodpar:GluePAZ]"/>
+		</PosPart>
+		<PosPart copyNumber="1">
+			<rParent name="mapsamodule2:MAPSAModule2"/>
+			<rChild name="mapsamodpar:MAPSASideRailL"/>
+			<Translation x="-[mapsamodpar:SideRailX]" y="-[mapsamodpar:SideRailY]" z="-[mapsamodpar:SideRailZ]"/>
+		</PosPart>
+		<PosPart copyNumber="1">
+			<rParent name="mapsamodule2:MAPSAModule2"/>
+			<rChild name="mapsamodpar:MAPSASideRailR"/>
+			<Translation x="[mapsamodpar:SideRailX]" y="-[mapsamodpar:SideRailY]" z="-[mapsamodpar:SideRailZ]"/>
+		</PosPart>
+		<PosPart copyNumber="1">
+			<rParent name="mapsamodule2:MAPSAModule2"/>
+			<rChild name="mapsamodpar:MAPSAFrame"/>
+			<Translation x="[zero]" y="-[mapsamodpar:FrameY]" z="[mapsamodpar:FrameZ]"/>
+		</PosPart>
+		<PosPart copyNumber="1">
+			<rParent name="mapsamodule2:MAPSAModule2"/>
+			<rChild name="mapsamodpar:MAPSAHybSup"/>
+			<Translation x="[zero]" y="-[mapsamodpar:HybSupY]" z="[mapsamodpar:HybSupZ]"/>
+		</PosPart>
+		<PosPart copyNumber="1">
+			<rParent name="mapsamodule2:MAPSAModule2"/>
+			<rChild name="mapsamodpar:MAPSAModCool1"/>
+			<Translation x="-[mapsamodpar:ModCool1X]" y="-[mapsamodpar:ModCool1Y]" z="-[mapsamodpar:ModCool1Z]"/>
+		</PosPart>
+		<PosPart copyNumber="2">
+			<rParent name="mapsamodule2:MAPSAModule2"/>
+			<rChild name="mapsamodpar:MAPSAModCool1"/>
+			<Translation x="[mapsamodpar:ModCool1X]" y="-[mapsamodpar:ModCool1Y]" z="-[mapsamodpar:ModCool1Z]"/>
+		</PosPart>
+		<PosPart copyNumber="1">
+			<rParent name="mapsamodule2:MAPSAModule2"/>
+			<rChild name="mapsamodpar:MAPSAModCoolComp1"/>
+			<Translation x="-[mapsamodpar:ModCoolComp1X]" y="-[mapsamodpar:ModCoolComp1Y]" z="-[mapsamodpar:ModCoolComp1Z]"/>
+		</PosPart>
+		<PosPart copyNumber="2">
+			<rParent name="mapsamodule2:MAPSAModule2"/>
+			<rChild name="mapsamodpar:MAPSAModCoolComp1"/>
+			<Translation x="[mapsamodpar:ModCoolComp1X]" y="-[mapsamodpar:ModCoolComp1Y]" z="-[mapsamodpar:ModCoolComp1Z]"/>
+		</PosPart>
+		<PosPart copyNumber="1">
+			<rParent name="mapsamodule2:MAPSAModule2"/>
+			<rChild name="mapsamodpar:MAPSAModCool2"/>
+			<Translation x="-[mapsamodpar:ModCool2X]" y="-[mapsamodpar:ModCool2Y]" z="[mapsamodpar:ModCool2Z]"/>
+		</PosPart>
+		<PosPart copyNumber="2">
+			<rParent name="mapsamodule2:MAPSAModule2"/>
+			<rChild name="mapsamodpar:MAPSAModCool2"/>
+			<Translation x="[mapsamodpar:ModCool2X]" y="-[mapsamodpar:ModCool2Y]" z="[mapsamodpar:ModCool2Z]"/>
+		</PosPart>
+		<PosPart copyNumber="1">
+			<rParent name="mapsamodule2:MAPSAModule2"/>
+			<rChild name="mapsamodpar:MAPSAModCoolComp2"/>
+			<Translation x="-[mapsamodpar:ModCoolComp2X]" y="-[mapsamodpar:ModCoolComp2Y]" z="[mapsamodpar:ModCoolComp2Z]"/>
+		</PosPart>
+		<PosPart copyNumber="2">
+			<rParent name="mapsamodule2:MAPSAModule2"/>
+			<rChild name="mapsamodpar:MAPSAModCoolComp2"/>
+			<Translation x="[mapsamodpar:ModCoolComp2X]" y="-[mapsamodpar:ModCoolComp2Y]" z="[mapsamodpar:ModCoolComp2Z]"/>
+		</PosPart>
+	</PosPartSection>
+</DDDefinition>
