@@ -207,7 +207,253 @@
 		<Constant name="DOHM_R3_phi16" value="350.055*deg"/>
 		<Constant name="Tol" value="0.0*mm"/>
 	</ConstantsSection>
-	<SolidSection label="mapsa.xml">
+	<MaterialSection label="mapsa.xml">
+<ElementaryMaterial name="Li" symbol="Li" atomicNumber="3" atomicWeight="8.45404*g/mole" density="0.534*g/cm3"/>
+<ElementaryMaterial name="Be" symbol="Be" atomicNumber="5" atomicWeight="10.9833*g/mole" density="1.85*g/cm3"/>
+<ElementaryMaterial name="B" symbol="B" atomicNumber="6" atomicWeight="13.4813*g/mole" density="2.37*g/cm3"/>
+<ElementaryMaterial name="C" symbol="C" atomicNumber="7" atomicWeight="14.7319*g/mole" density="2*g/cm3"/>
+<ElementaryMaterial name="Na" symbol="Na" atomicNumber="12" atomicWeight="25.1906*g/mole" density="0.971*g/cm3"/>
+<ElementaryMaterial name="Mg" symbol="Mg" atomicNumber="13" atomicWeight="26.3116*g/mole" density="1.74*g/cm3"/>
+<ElementaryMaterial name="Al" symbol="Al" atomicNumber="14" atomicWeight="28.733*g/mole" density="2.7*g/cm3"/>
+<ElementaryMaterial name="Al_twp" symbol="Al_twp" atomicNumber="14" atomicWeight="28.733*g/mole" density="2.7*g/cm3"/>
+<ElementaryMaterial name="SenSi" symbol="SenSi" atomicNumber="15" atomicWeight="29.7087*g/mole" density="2.33*g/cm3"/>
+<ElementaryMaterial name="Si" symbol="Si" atomicNumber="15" atomicWeight="29.7087*g/mole" density="2.33*g/cm3"/>
+<ElementaryMaterial name="P" symbol="P" atomicNumber="16" atomicWeight="32.2442*g/mole" density="2.2*g/cm3"/>
+<ElementaryMaterial name="S" symbol="S" atomicNumber="17" atomicWeight="33.1203*g/mole" density="2*g/cm3"/>
+<ElementaryMaterial name="K" symbol="K" atomicNumber="19" atomicWeight="39.304*g/mole" density="0.862*g/cm3"/>
+<ElementaryMaterial name="Ca" symbol="Ca" atomicNumber="20" atomicWeight="40.102*g/mole" density="1.55*g/cm3"/>
+<ElementaryMaterial name="Sc" symbol="Sc" atomicNumber="21" atomicWeight="44.3619*g/mole" density="2.99*g/cm3"/>
+<ElementaryMaterial name="Ti" symbol="Ti" atomicNumber="22" atomicWeight="46.8785*g/mole" density="4.54*g/cm3"/>
+<ElementaryMaterial name="V" symbol="V" atomicNumber="23" atomicWeight="49.4886*g/mole" density="6.11*g/cm3"/>
+<ElementaryMaterial name="Cr" symbol="Cr" atomicNumber="24" atomicWeight="50.4187*g/mole" density="7.18*g/cm3"/>
+<ElementaryMaterial name="Mn" symbol="Mn" atomicNumber="25" atomicWeight="52.9154*g/mole" density="7.44*g/cm3"/>
+<ElementaryMaterial name="Fe" symbol="Fe" atomicNumber="26" atomicWeight="53.7656*g/mole" density="7.87*g/cm3"/>
+<ElementaryMaterial name="Co" symbol="Co" atomicNumber="26" atomicWeight="56.3707*g/mole" density="8.9*g/cm3"/>
+<ElementaryMaterial name="Ni" symbol="Ni" atomicNumber="27" atomicWeight="56.2448*g/mole" density="8.9*g/cm3"/>
+<ElementaryMaterial name="Cu" symbol="Cu" atomicNumber="28" atomicWeight="60.3681*g/mole" density="8.96*g/cm3"/>
+<ElementaryMaterial name="Cu_R1" symbol="Cu_R1" atomicNumber="28" atomicWeight="60.3681*g/mole" density="8.96*g/cm3"/>
+<ElementaryMaterial name="Cu_R2" symbol="Cu_R2" atomicNumber="28" atomicWeight="60.3681*g/mole" density="8.96*g/cm3"/>
+<ElementaryMaterial name="Cu_R3" symbol="Cu_R3" atomicNumber="28" atomicWeight="60.3681*g/mole" density="8.96*g/cm3"/>
+<ElementaryMaterial name="Cu_HV" symbol="Cu_HV" atomicNumber="28" atomicWeight="60.3681*g/mole" density="8.96*g/cm3"/>
+<ElementaryMaterial name="Cu_MV" symbol="Cu_MV" atomicNumber="28" atomicWeight="60.3681*g/mole" density="8.96*g/cm3"/>
+<ElementaryMaterial name="Cu_twp" symbol="Cu_twp" atomicNumber="28" atomicWeight="60.3681*g/mole" density="8.96*g/cm3"/>
+<ElementaryMaterial name="Zn" symbol="Zn" atomicNumber="29" atomicWeight="61.9648*g/mole" density="7.13*g/cm3"/>
+<ElementaryMaterial name="Ga" symbol="Ga" atomicNumber="30" atomicWeight="65.6599*g/mole" density="5.9*g/cm3"/>
+<ElementaryMaterial name="Ge" symbol="Ge" atomicNumber="31" atomicWeight="68.2031*g/mole" density="5.32*g/cm3"/>
+<ElementaryMaterial name="As" symbol="As" atomicNumber="32" atomicWeight="70.2259*g/mole" density="5.73*g/cm3"/>
+<ElementaryMaterial name="Se" symbol="Se" atomicNumber="32" atomicWeight="73.6353*g/mole" density="4.5*g/cm3"/>
+<ElementaryMaterial name="Rb" symbol="Rb" atomicNumber="35" atomicWeight="79.1904*g/mole" density="1.53*g/cm3"/>
+<ElementaryMaterial name="Sr" symbol="Sr" atomicNumber="36" atomicWeight="81.1024*g/mole" density="2.54*g/cm3"/>
+<ElementaryMaterial name="Y" symbol="Y" atomicNumber="37" atomicWeight="82.2318*g/mole" density="4.47*g/cm3"/>
+<ElementaryMaterial name="Zr" symbol="Zr" atomicNumber="38" atomicWeight="84.1922*g/mole" density="6.51*g/cm3"/>
+<ElementaryMaterial name="Nb" symbol="Nb" atomicNumber="39" atomicWeight="85.6828*g/mole" density="8.57*g/cm3"/>
+<ElementaryMaterial name="Mo" symbol="Mo" atomicNumber="39" atomicWeight="88.206*g/mole" density="10.2*g/cm3"/>
+<ElementaryMaterial name="Tc" symbol="Tc" atomicNumber="40" atomicWeight="89.9154*g/mole" density="11.5*g/cm3"/>
+<ElementaryMaterial name="Ru" symbol="Ru" atomicNumber="41" atomicWeight="92.6961*g/mole" density="12.4*g/cm3"/>
+<ElementaryMaterial name="Rh" symbol="Rh" atomicNumber="42" atomicWeight="94.2851*g/mole" density="12.4*g/cm3"/>
+<ElementaryMaterial name="Pd" symbol="Pd" atomicNumber="43" atomicWeight="97.336*g/mole" density="12*g/cm3"/>
+<ElementaryMaterial name="Ag" symbol="Ag" atomicNumber="44" atomicWeight="98.6111*g/mole" density="10.5*g/cm3"/>
+<ElementaryMaterial name="Cd" symbol="Cd" atomicNumber="44" atomicWeight="102.503*g/mole" density="8.65*g/cm3"/>
+<ElementaryMaterial name="In" symbol="In" atomicNumber="45" atomicWeight="104.582*g/mole" density="7.31*g/cm3"/>
+<ElementaryMaterial name="Sn" symbol="Sn" atomicNumber="46" atomicWeight="108.045*g/mole" density="7.31*g/cm3"/>
+<ElementaryMaterial name="Sb" symbol="Sb" atomicNumber="47" atomicWeight="110.592*g/mole" density="6.69*g/cm3"/>
+<ElementaryMaterial name="I" symbol="I" atomicNumber="49" atomicWeight="115.197*g/mole" density="4.93*g/cm3"/>
+<ElementaryMaterial name="Te" symbol="Te" atomicNumber="48" atomicWeight="115.807*g/mole" density="6.24*g/cm3"/>
+<ElementaryMaterial name="Cs" symbol="Cs" atomicNumber="50" atomicWeight="120.345*g/mole" density="1.87*g/cm3"/>
+<ElementaryMaterial name="Ba" symbol="Ba" atomicNumber="51" atomicWeight="124.145*g/mole" density="3.5*g/cm3"/>
+<ElementaryMaterial name="La" symbol="La" atomicNumber="52" atomicWeight="125.644*g/mole" density="6.15*g/cm3"/>
+<ElementaryMaterial name="Ce" symbol="Ce" atomicNumber="53" atomicWeight="126.506*g/mole" density="6.66*g/cm3"/>
+<ElementaryMaterial name="Pr" symbol="Pr" atomicNumber="54" atomicWeight="127.372*g/mole" density="6.71*g/cm3"/>
+<ElementaryMaterial name="Nd" symbol="Nd" atomicNumber="54" atomicWeight="130.214*g/mole" density="6.9*g/cm3"/>
+<ElementaryMaterial name="Pm" symbol="Pm" atomicNumber="55" atomicWeight="130.875*g/mole" density="7.22*g/cm3"/>
+<ElementaryMaterial name="Sm" symbol="Sm" atomicNumber="56" atomicWeight="135.57*g/mole" density="7.46*g/cm3"/>
+<ElementaryMaterial name="Eu" symbol="Eu" atomicNumber="57" atomicWeight="136.932*g/mole" density="5.24*g/cm3"/>
+<ElementaryMaterial name="Gd" symbol="Gd" atomicNumber="58" atomicWeight="141.537*g/mole" density="7.9*g/cm3"/>
+<ElementaryMaterial name="Tb" symbol="Tb" atomicNumber="58" atomicWeight="142.938*g/mole" density="8.23*g/cm3"/>
+<ElementaryMaterial name="Dy" symbol="Dy" atomicNumber="59" atomicWeight="146.244*g/mole" density="8.55*g/cm3"/>
+<ElementaryMaterial name="Ho" symbol="Ho" atomicNumber="60" atomicWeight="148.396*g/mole" density="8.8*g/cm3"/>
+<ElementaryMaterial name="Er" symbol="Er" atomicNumber="61" atomicWeight="150.326*g/mole" density="9.07*g/cm3"/>
+<ElementaryMaterial name="Tm" symbol="Tm" atomicNumber="62" atomicWeight="151.785*g/mole" density="9.32*g/cm3"/>
+<ElementaryMaterial name="Yb" symbol="Yb" atomicNumber="62" atomicWeight="155.473*g/mole" density="6.73*g/cm3"/>
+<ElementaryMaterial name="Lu" symbol="Lu" atomicNumber="63" atomicWeight="157.214*g/mole" density="9.84*g/cm3"/>
+<ElementaryMaterial name="Hf" symbol="Hf" atomicNumber="64" atomicWeight="160.229*g/mole" density="13.3*g/cm3"/>
+<ElementaryMaterial name="Ta" symbol="Ta" atomicNumber="65" atomicWeight="162.516*g/mole" density="16.7*g/cm3"/>
+<ElementaryMaterial name="W" symbol="W" atomicNumber="65" atomicWeight="164.824*g/mole" density="19.3*g/cm3"/>
+<ElementaryMaterial name="Re" symbol="Re" atomicNumber="66" atomicWeight="167.154*g/mole" density="21*g/cm3"/>
+<ElementaryMaterial name="Os" symbol="Os" atomicNumber="67" atomicWeight="170.558*g/mole" density="22.6*g/cm3"/>
+<ElementaryMaterial name="Ir" symbol="Ir" atomicNumber="68" atomicWeight="172.41*g/mole" density="22.4*g/cm3"/>
+<ElementaryMaterial name="Pt" symbol="Pt" atomicNumber="69" atomicWeight="174.811*g/mole" density="21.5*g/cm3"/>
+<ElementaryMaterial name="Au" symbol="Au" atomicNumber="69" atomicWeight="176.424*g/mole" density="19.3*g/cm3"/>
+<ElementaryMaterial name="Hg" symbol="Hg" atomicNumber="70" atomicWeight="179.679*g/mole" density="13.5*g/cm3"/>
+<ElementaryMaterial name="Tl" symbol="Tl" atomicNumber="71" atomicWeight="182.974*g/mole" density="11.7*g/cm3"/>
+<ElementaryMaterial name="Pb" symbol="Pb" atomicNumber="72" atomicWeight="185.472*g/mole" density="11.4*g/cm3"/>
+<ElementaryMaterial name="Bi" symbol="Bi" atomicNumber="72" atomicWeight="187.149*g/mole" density="9.75*g/cm3"/>
+<ElementaryMaterial name="Po" symbol="Po" atomicNumber="73" atomicWeight="187.149*g/mole" density="9.32*g/cm3"/>
+<ElementaryMaterial name="C6F14" symbol="C6F14" atomicNumber="8" atomicWeight="17.1507*g/mole" density="1.88*g/cm3"/>
+<ElementaryMaterial name="CF" symbol="CF" atomicNumber="6" atomicWeight="10.5446*g/mole" density="1.69*g/cm3"/>
+<ElementaryMaterial name="Pyroid" symbol="Pyroid" atomicNumber="6" atomicWeight="10.5446*g/mole" density="2.22*g/cm3"/>
+<ElementaryMaterial name="PGS" symbol="PGS" atomicNumber="6" atomicWeight="10.5446*g/mole" density="0.85*g/cm3"/>
+<ElementaryMaterial name="CO2" symbol="CO2" atomicNumber="8" atomicWeight="16.8335*g/mole" density="1*g/cm3"/>
+<ElementaryMaterial name="G10" symbol="G10" atomicNumber="8" atomicWeight="17.634*g/mole" density="1.9*g/cm3"/>
+<ElementaryMaterial name="Gten" symbol="Gten" atomicNumber="8" atomicWeight="17.634*g/mole" density="1.9*g/cm3"/>
+<ElementaryMaterial name="PE" symbol="PE" atomicNumber="4" atomicWeight="7.23705*g/mole" density="0.95*g/cm3"/>
+<ElementaryMaterial name="PE_twp" symbol="PE_twp" atomicNumber="4" atomicWeight="7.23705*g/mole" density="0.95*g/cm3"/>
+<ElementaryMaterial name="Steel" symbol="Steel" atomicNumber="27" atomicWeight="55.618*g/mole" density="7.8*g/cm3"/>
+<ElementaryMaterial name="Silicone" symbol="Silicone" atomicNumber="9" atomicWeight="16.4702*g/mole" density="74.15*g/cm3"/>
+<ElementaryMaterial name="Al2O3" symbol="Al2O3" atomicNumber="11" atomicWeight="22.2626*g/mole" density="3.965*g/cm3"/>
+<ElementaryMaterial name="BGA" symbol="BGA" atomicNumber="57" atomicWeight="143.056*g/mole" density="8.82*g/cm3"/>
+<ElementaryMaterial name="ConCon" symbol="ConCon" atomicNumber="18" atomicWeight="33.7878*g/mole" density="5.89*g/cm3"/>
+<ElementaryMaterial name="Kapton" symbol="Kapton" atomicNumber="7" atomicWeight="14.7319*g/mole" density="1.42*g/cm3"/>
+<ElementaryMaterial name="2S-FEH-mix" symbol="2S-FEH-mix" atomicNumber="13" atomicWeight="22.8165*g/mole" density="1.83*g/cm3"/>
+<ElementaryMaterial name="WB-enc" symbol="WB-enc" atomicNumber="7" atomicWeight="14.7473*g/mole" density="1.5*g/cm3"/>
+<ElementaryMaterial name="Epoxy" symbol="Epoxy" atomicNumber="7" atomicWeight="14.7834*g/mole" density="1.16*g/cm3"/>
+<ElementaryMaterial name="Siliconeglue" symbol="Siliconeglue" atomicNumber="7" atomicWeight="14.7473*g/mole" density="1.5*g/cm3"/>
+<ElementaryMaterial name="CFRP" symbol="CFRP" atomicNumber="7" atomicWeight="14.7473*g/mole" density="1.84*g/cm3"/>
+<ElementaryMaterial name="Parylene" symbol="Parylene" atomicNumber="6" atomicWeight="12.7099*g/mole" density="1.3*g/cm3"/>
+<ElementaryMaterial name="2S-SEH-mix" symbol="2S-SEH-mix" atomicNumber="8" atomicWeight="15.2003*g/mole" density="1.22*g/cm3"/>
+<ElementaryMaterial name="Al-CF" symbol="Al-CF" atomicNumber="10" atomicWeight="19.5396*g/mole" density="2.4*g/cm3"/>
+<ElementaryMaterial name="PS-FEH-mix" symbol="PS-FEH-mix" atomicNumber="10" atomicWeight="17.9436*g/mole" density="1.61*g/cm3"/>
+<ElementaryMaterial name="PS-ROH-mix" symbol="PS-ROH-mix" atomicNumber="9" atomicWeight="17.6805*g/mole" density="1.54*g/cm3"/>
+<ElementaryMaterial name="PS-POH-mix" symbol="PS-POH-mix" atomicNumber="7" atomicWeight="12.9306*g/mole" density="0.99*g/cm3"/>
+<ElementaryMaterial name="Sn95Ag5" symbol="Sn95Ag5" atomicNumber="46" atomicWeight="107.54*g/mole" density="7.5*g/cm3"/>
+<ElementaryMaterial name="TEDD_Steel" symbol="TEDD_Steel" atomicNumber="27" atomicWeight="55.618*g/mole" density="7.8*g/cm3"/>
+<ElementaryMaterial name="TEDD_Al" symbol="TEDD_Al" atomicNumber="14" atomicWeight="28.733*g/mole" density="2.7*g/cm3"/>
+<ElementaryMaterial name="TEDD_CO2" symbol="TEDD_CO2" atomicNumber="8" atomicWeight="16.8335*g/mole" density="1*g/cm3"/>
+<ElementaryMaterial name="TEDD_Cu" symbol="TEDD_Cu" atomicNumber="28" atomicWeight="60.3681*g/mole" density="8.96*g/cm3"/>
+<ElementaryMaterial name="TEDD_PE" symbol="TEDD_PE" atomicNumber="4" atomicWeight="7.23705*g/mole" density="0.95*g/cm3"/>
+<ElementaryMaterial name="FPX_Steel" symbol="FPX_Steel" atomicNumber="27" atomicWeight="55.618*g/mole" density="7.8*g/cm3"/>
+<ElementaryMaterial name="FPX_CO2" symbol="FPX_CO2" atomicNumber="8" atomicWeight="16.8335*g/mole" density="1*g/cm3"/>
+<ElementaryMaterial name="FPX_Al" symbol="FPX_Al" atomicNumber="14" atomicWeight="28.733*g/mole" density="2.7*g/cm3"/>
+<ElementaryMaterial name="FPX_PE" symbol="FPX_PE" atomicNumber="4" atomicWeight="7.23705*g/mole" density="0.95*g/cm3"/>
+<ElementaryMaterial name="Brass" symbol="Brass" atomicNumber="29" atomicWeight="61.0035*g/mole" density="8.7*g/cm3"/>
+<ElementaryMaterial name="Acrylate" symbol="Acrylate" atomicNumber="7" atomicWeight="13.216*g/mole" density="1.16*g/cm3"/>
+<ElementaryMaterial name="Glass" symbol="Glass" atomicNumber="15" atomicWeight="29.7087*g/mole" density="2.33*g/cm3"/>
+<ElementaryMaterial name="Airex" symbol="Airex" atomicNumber="7" atomicWeight="14.0224*g/mole" density="0.06*g/cm3"/>
+<ElementaryMaterial name="Pix_Bumps" symbol="Pix_Bumps" atomicNumber="58" atomicWeight="140.307*g/mole" density="8.92*g/cm3"/>
+<ElementaryMaterial name="Pix_Caps" symbol="Pix_Caps" atomicNumber="13" atomicWeight="25.6351*g/mole" density="6.02*g/cm3"/>
+<ElementaryMaterial name="Kevlar" symbol="Kevlar" atomicNumber="7" atomicWeight="14.7319*g/mole" density="1.42*g/cm3"/>
+
+	<CompositeMaterial name="hybridcompositeBModule1Layer1FSide" density="8.19651*g/cm3" method="mixture by weight">
+<MaterialFraction fraction="0.0712251">
+<rMaterial name="mapsa:Al-CF"/>
+</MaterialFraction>
+<MaterialFraction fraction="0.244065">
+<rMaterial name="mapsa:CFRP"/>
+</MaterialFraction>
+<MaterialFraction fraction="0.0750237">
+<rMaterial name="mapsa:Cu"/>
+</MaterialFraction>
+<MaterialFraction fraction="0.0335549">
+<rMaterial name="mapsa:Epoxy"/>
+</MaterialFraction>
+<MaterialFraction fraction="0.478632">
+<rMaterial name="mapsa:PS-ROH-mix"/>
+</MaterialFraction>
+<MaterialFraction fraction="0.0974992">
+<rMaterial name="mapsa:Si"/>
+</MaterialFraction>
+</CompositeMaterial>
+<CompositeMaterial name="hybridcompositeBModule1Layer1BSide" density="11.1058*g/cm3" method="mixture by weight">
+<MaterialFraction fraction="0.194378">
+<rMaterial name="mapsa:CFRP"/>
+</MaterialFraction>
+<MaterialFraction fraction="0.304929">
+<rMaterial name="mapsa:Cu"/>
+</MaterialFraction>
+<MaterialFraction fraction="0.0312618">
+<rMaterial name="mapsa:Epoxy"/>
+</MaterialFraction>
+<MaterialFraction fraction="0.391781">
+<rMaterial name="mapsa:PS-ROH-mix"/>
+</MaterialFraction>
+<MaterialFraction fraction="0.0776503">
+<rMaterial name="mapsa:Si"/>
+</MaterialFraction>
+</CompositeMaterial>
+<CompositeMaterial name="hybridcompositeBModule1Layer1LSide" density="3.9746*g/cm3" method="mixture by weight">
+<MaterialFraction fraction="0.00216226">
+<rMaterial name="mapsa:Al"/>
+</MaterialFraction>
+<MaterialFraction fraction="0.148763">
+<rMaterial name="mapsa:Al-CF"/>
+</MaterialFraction>
+<MaterialFraction fraction="0.426743">
+<rMaterial name="mapsa:CFRP"/>
+</MaterialFraction>
+<MaterialFraction fraction="0.120221">
+<rMaterial name="mapsa:Cu"/>
+</MaterialFraction>
+<MaterialFraction fraction="0.0318284">
+<rMaterial name="mapsa:Epoxy"/>
+</MaterialFraction>
+<MaterialFraction fraction="0.113994">
+<rMaterial name="mapsa:PS-FEH-mix"/>
+</MaterialFraction>
+<MaterialFraction fraction="0.0754195">
+<rMaterial name="mapsa:Si"/>
+</MaterialFraction>
+<MaterialFraction fraction="0.0808684">
+<rMaterial name="mapsa:WB-enc"/>
+</MaterialFraction>
+</CompositeMaterial>
+<CompositeMaterial name="hybridcompositeBModule1Layer1RSide" density="3.9746*g/cm3" method="mixture by weight">
+<MaterialFraction fraction="0.00216226">
+<rMaterial name="mapsa:Al"/>
+</MaterialFraction>
+<MaterialFraction fraction="0.148763">
+<rMaterial name="mapsa:Al-CF"/>
+</MaterialFraction>
+<MaterialFraction fraction="0.426743">
+<rMaterial name="mapsa:CFRP"/>
+</MaterialFraction>
+<MaterialFraction fraction="0.120221">
+<rMaterial name="mapsa:Cu"/>
+</MaterialFraction>
+<MaterialFraction fraction="0.0318284">
+<rMaterial name="mapsa:Epoxy"/>
+</MaterialFraction>
+<MaterialFraction fraction="0.113994">
+<rMaterial name="mapsa:PS-FEH-mix"/>
+</MaterialFraction>
+<MaterialFraction fraction="0.0754195">
+<rMaterial name="mapsa:Si"/>
+</MaterialFraction>
+<MaterialFraction fraction="0.0808684">
+<rMaterial name="mapsa:WB-enc"/>
+</MaterialFraction>
+</CompositeMaterial>
+<CompositeMaterial name="hybridcompositeBModule1Layer1Between" density="1.50981*g/cm3" method="mixture by weight">
+<MaterialFraction fraction="0.277405">
+<rMaterial name="mapsa:Al-CF"/>
+</MaterialFraction>
+<MaterialFraction fraction="0.168084">
+<rMaterial name="mapsa:Epoxy"/>
+</MaterialFraction>
+<MaterialFraction fraction="0.493811">
+<rMaterial name="mapsa:Si"/>
+</MaterialFraction>
+<MaterialFraction fraction="0.060701">
+<rMaterial name="mapsa:Sn95Ag5"/>
+</MaterialFraction>
+</CompositeMaterial>
+<CompositeMaterial name="hybridcompositeBModule1Layer1SupportPlate" density="0.310184*g/cm3" method="mixture by weight">
+<MaterialFraction fraction="0.463538">
+<rMaterial name="mapsa:CFRP"/>
+</MaterialFraction>
+<MaterialFraction fraction="0.0546936">
+<rMaterial name="mapsa:Epoxy"/>
+</MaterialFraction>
+<MaterialFraction fraction="0.481769">
+<rMaterial name="mapsa:Si"/>
+</MaterialFraction>
+</CompositeMaterial>
+</MaterialSection>
+<RotationSection label="mapsa.xml">
+<Rotation name="FLIP" thetaX="90*deg" phiX="180*deg" thetaY="90*deg" phiY="90*deg" thetaZ="180*deg" phiZ="0*deg"/>
+<Rotation name="FlippedHCZ2YX" thetaX="90*deg" phiX="270*deg" thetaY="0*deg" phiY="0*deg" thetaZ="90*deg" phiZ="180*deg"/>
+<Rotation name="HCZ2YX" thetaX="90*deg" phiX="90*deg" thetaY="0*deg" phiY="0*deg" thetaZ="90*deg" phiZ="0*deg"/>
+</RotationSection>
+<SolidSection label="mapsa.xml">
 		<Tubs name="MAPSARailIn" rMin="[zero]" rMax="[RailInR]" dz="[RailL]" startPhi="0*deg" deltaPhi="360*deg"/>
 		<Tubs name="MAPSAAlPiece1" rMin="[AlPieceR0]" rMax="[AlPieceR1]" dz="[AlPieceDz1]" startPhi="[AlPiecePhi1]" deltaPhi="[AlPieceDPhi1]"/>
 		<Tubs name="MAPSAAlPiece2" rMin="[AlPieceR0]" rMax="[AlPieceR1]" dz="[AlPieceDz1]" startPhi="[AlPiecePhi2]" deltaPhi="[AlPieceDPhi2]"/>
@@ -266,17 +512,81 @@
 		<Tubs name="MAPSADOHMs" rMin="[Rin2]" rMax="[Rin3]" dz="[DOHMsDz]" startPhi="0*deg" deltaPhi="360*deg"/>
 		<Box name="MAPSADOHM" dx="[DOHMW]" dy="[DOHML]" dz="[DOHMT]-[Tol]"/>
 		<Box name="TOB" dx="98.9*cm" dy="198.9*cm" dz="198.9*cm"/>
-		<Box name="LAYER8" dx="30*cm" dy="5.0*cm" dz="1.2*m"/>
-		<Box name="LAYER7" dx="30*cm" dy="5.0*cm" dz="1.2*m"/>
-		<Box name="LAYER6" dx="30*cm" dy="5.0*cm" dz="1.2*m"/>
-		<Box name="LAYER5" dx="30*cm" dy="5.0*cm" dz="1.2*m"/>
-		<Box name="LAYER4" dx="30*cm" dy="5.0*cm" dz="1.2*m"/>
-		<Box name="LAYER3" dx="30*cm" dy="5.0*cm" dz="1.2*m"/>
-		<Box name="LAYER2" dx="30*cm" dy="5.0*cm" dz="1.2*m"/>
-		<Box name="LAYER1" dx="30*cm" dy="5.0*cm" dz="1.2*m"/>
+		<Box name="Rod1" dx="6.16*mm" dy="60.01*mm" dz="1161.59*mm"/>
+		<Tubs name="Layer1" rMin="211.83*mm" rMax="255.321*mm" dz="1161.6*mm" startPhi="0*deg" deltaPhi="360*deg"/>
 		<Box name="MAPSARod" dx="[RodW]" dy="[RodT]" dz="[RodL]"/>
+		<Box name="BModule1Layer1LowerPSMacroPixelactive" dx="48*mm" dy="23.13*mm" dz="0.1*mm"/>
+		<Box name="BModule1Layer1" dx="60*mm" dy="34.63*mm" dz="2.5*mm"/>
+		<Box name="BModule1Layer1Lowerwafer" dx="48*mm" dy="23.13*mm" dz="0.1*mm"/>
+		<Box name="BModule1Layer1Upperwafer" dx="48*mm" dy="23.13*mm" dz="0.1*mm"/>
+		<Box name="BModule1Layer1LowerPSMacroPixelactive" dx="48*mm" dy="23.13*mm" dz="0.1*mm"/>
+		<Box name="BModule1Layer1UpperPSStripactive" dx="48*mm" dy="23.13*mm" dz="0.1*mm"/>
+		<Box name="BModule1Layer1FSide" dx="6*mm" dy="23.13*mm" dz="0.5*mm"/>
+		<Box name="BModule1Layer1BSide" dx="6*mm" dy="23.13*mm" dz="0.5*mm"/>
+		<Box name="BModule1Layer1LSide" dx="60*mm" dy="5.75*mm" dz="0.5*mm"/>
+		<Box name="BModule1Layer1RSide" dx="60*mm" dy="5.75*mm" dz="0.5*mm"/>
+		<Box name="BModule1Layer1Between" dx="48*mm" dy="23.13*mm" dz="0.5*mm"/>
+		<Box name="BModule1Layer1SupportPlate" dx="60*mm" dy="34.63*mm" dz="0.5*mm"/>
+
 	</SolidSection>
 	<LogicalPartSection label="mapsa.xml">
+	  <LogicalPart name="BModule1Layer1LowerPSMacroPixelactive" category="unspecified">
+	    <rSolid name="mapsa:BModule1Layer1LowerPSMacroPixelactive"/>
+	    <rMaterial name="mapsa:SenSi"/>
+	  </LogicalPart>
+	  <LogicalPart name="BModule1Layer1" category="unspecified">
+	    <rSolid name="mapsa:BModule1Layer1"/>
+	    <rMaterial name="materials:Air"/>
+	  </LogicalPart>
+	  <LogicalPart name="BModule1Layer1Lowerwafer" category="unspecified">
+	    <rSolid name="mapsa:BModule1Layer1Lowerwafer"/>
+	    <rMaterial name="materials:Air"/>
+	  </LogicalPart>
+	  <LogicalPart name="BModule1Layer1Upperwafer" category="unspecified">
+	    <rSolid name="mapsa:BModule1Layer1Upperwafer"/>
+	    <rMaterial name="materials:Air"/>
+	  </LogicalPart>
+	  <LogicalPart name="BModule1Layer1LowerPSMacroPixelactive" category="unspecified">
+	    <rSolid name="mapsa:BModule1Layer1LowerPSMacroPixelactive"/>
+	    <rMaterial name="mapsa:SenSi"/>
+	  </LogicalPart>
+	  <LogicalPart name="BModule1Layer1UpperPSStripactive" category="unspecified">
+	    <rSolid name="mapsa:BModule1Layer1UpperPSStripactive"/>
+	    <rMaterial name="mapsa:SenSi"/>
+	  </LogicalPart>
+	  <LogicalPart name="BModule1Layer1FSide" category="unspecified">
+	    <rSolid name="mapsa:BModule1Layer1FSide"/>
+	    <rMaterial name="mapsa:hybridcompositeBModule1Layer1FSide"/>
+	  </LogicalPart>
+	  <LogicalPart name="BModule1Layer1BSide" category="unspecified">
+	    <rSolid name="mapsa:BModule1Layer1BSide"/>
+	    <rMaterial name="mapsa:hybridcompositeBModule1Layer1BSide"/>
+	  </LogicalPart>
+	  <LogicalPart name="BModule1Layer1LSide" category="unspecified">
+	    <rSolid name="mapsa:BModule1Layer1LSide"/>
+	    <rMaterial name="mapsa:hybridcompositeBModule1Layer1LSide"/>
+	  </LogicalPart>
+	  <LogicalPart name="BModule1Layer1RSide" category="unspecified">
+	    <rSolid name="mapsa:BModule1Layer1RSide"/>
+	    <rMaterial name="mapsa:hybridcompositeBModule1Layer1RSide"/>
+	  </LogicalPart>
+	  <LogicalPart name="BModule1Layer1Between" category="unspecified">
+	    <rSolid name="mapsa:BModule1Layer1Between"/>
+	    <rMaterial name="mapsa:hybridcompositeBModule1Layer1Between"/>
+	  </LogicalPart>
+	  <LogicalPart name="BModule1Layer1SupportPlate" category="unspecified">
+	    <rSolid name="mapsa:BModule1Layer1SupportPlate"/>
+	    <rMaterial name="mapsa:hybridcompositeBModule1Layer1SupportPlate"/>
+	  </LogicalPart>
+	  <LogicalPart name="Rod1" category="unspecified">
+	    <rSolid name="mapsa:Rod1"/>
+	    <rMaterial name="materials:Air"/>
+	  </LogicalPart>
+	  <LogicalPart name="Layer1" category="unspecified">
+	    <rSolid name="mapsa:Layer1"/>
+	    <rMaterial name="materials:Air"/>
+	  </LogicalPart>
+	  
 		<LogicalPart name="MAPSARailIn" category="unspecified">
 			<rSolid name="MAPSARailIn"/>
 			<rMaterial name="mapsamaterial:TIB_rail"/>
@@ -510,36 +820,8 @@
 			<rSolid name="TOB"/>
 			<rMaterial name="materials:Air"/>
 		</LogicalPart>
-		<LogicalPart name="LAYER8" category="unspecified">
-			<rSolid name="LAYER8"/>
-			<rMaterial name="materials:Air"/>
-		</LogicalPart>
-		<LogicalPart name="LAYER7" category="unspecified">
-			<rSolid name="LAYER7"/>
-			<rMaterial name="materials:Air"/>
-		</LogicalPart>
-		<LogicalPart name="LAYER6" category="unspecified">
-			<rSolid name="LAYER6"/>
-			<rMaterial name="materials:Air"/>
-		</LogicalPart>
-		<LogicalPart name="LAYER5" category="unspecified">
-			<rSolid name="LAYER5"/>
-			<rMaterial name="materials:Air"/>
-		</LogicalPart>
-		<LogicalPart name="LAYER4" category="unspecified">
-			<rSolid name="LAYER4"/>
-			<rMaterial name="materials:Air"/>
-		</LogicalPart>
-		<LogicalPart name="LAYER3" category="unspecified">
-			<rSolid name="LAYER3"/>
-			<rMaterial name="materials:Air"/>
-		</LogicalPart>
-		<LogicalPart name="LAYER2" category="unspecified">
-			<rSolid name="LAYER2"/>
-			<rMaterial name="materials:Air"/>
-		</LogicalPart>
-		<LogicalPart name="LAYER1" category="unspecified">
-			<rSolid name="LAYER1"/>
+		<LogicalPart name="Layer199" category="unspecified">
+			<rSolid name="Layer19"/>
 			<rMaterial name="materials:Air"/>
 		</LogicalPart>
 	</LogicalPartSection>
@@ -549,118 +831,81 @@
 		<Rotation name="SKEW" thetaX="90*deg" phiX="-8.5*deg" thetaY="90*deg" phiY="81.5*deg" thetaZ="0*deg" phiZ="0*deg"/>
 	</RotationSection>
 	<PosPartSection label="mapsa.xml">
-		<!-- NOW START TO BUILD THE COSMIC RACK ITSELF -->
-		<PosPart copyNumber="8">
-			<rParent name="mapsa:TOB"/>
-			<rChild name="mapsa:LAYER8"/>
-			<Translation x="0.0*mm" y="172.0*mm" z="0*mm"/>
-		</PosPart>
-		<PosPart copyNumber="7">
-			<rParent name="mapsa:TOB"/>
-			<rChild name="mapsa:LAYER7"/>
-			<Translation x="0.0*mm" y="258.0*mm" z="0*mm"/>
-		</PosPart>
-		<PosPart copyNumber="6">
-			<rParent name="mapsa:TOB"/>
-			<rChild name="mapsa:LAYER6"/>
-			<Translation x="0.0*mm" y="344.0*mm" z="0*mm"/>
-		</PosPart>
-		<PosPart copyNumber="5">
-			<rParent name="mapsa:TOB"/>
-			<rChild name="mapsa:LAYER5"/>
-			<Translation x="0*mm" y="430.0*mm" z="0*mm"/>
-		</PosPart>
-		<PosPart copyNumber="4">
-			<rParent name="mapsa:TOB"/>
-			<rChild name="mapsa:LAYER4"/>
-			<Translation x="0*mm" y="516.0*mm" z="0*mm"/>
-		</PosPart>
-		<PosPart copyNumber="3">
-			<rParent name="mapsa:TOB"/>
-			<rChild name="mapsa:LAYER3"/>
-			<Translation x="0*mm" y="602.0*mm" z="0*mm"/>
-		</PosPart>
-		<PosPart copyNumber="2">
-			<rParent name="mapsa:TOB"/>
-			<rChild name="mapsa:LAYER2"/>
-			<Translation x="0.0*mm" y="688.0*mm" z="0*mm"/>
-		</PosPart>
-		<PosPart copyNumber="1">
-			<rParent name="mapsa:TOB"/>
-			<rChild name="mapsa:LAYER1"/>
-			<Translation x="0.0*mm" y="774.0*mm" z="0*mm"/>
-		</PosPart>
-		<!-- Layer 8 -->
-		<PosPart copyNumber="2">
-			<rParent name="mapsa:LAYER8"/>
-			<rChild name="mapsarod_SS4H:MAPSARod_SS4H"/>
-			<Translation x="-44.875*mm" y="-15*mm" z="0*mm"/>
-		</PosPart>
-		<PosPart copyNumber="1">
-			<rParent name="mapsa:LAYER8"/>
-			<rChild name="mapsarod_SS4L:MAPSARod_SS4L"/>
-			<Translation x="44.875*mm" y="10.125*mm" z="0*mm"/>
-			<rRotation name="mapsa:SKEW"/>
-		</PosPart>
-		<!-- Layer 7 -->
-		<PosPart copyNumber="2">
-			<rParent name="mapsa:LAYER7"/>
-			<rChild name="mapsarod_SS4L:MAPSARod_SS4L"/>
-			<Translation x="-44.875*mm" y="-15*mm" z="0*mm"/>
-		</PosPart>
-		<PosPart copyNumber="1">
-			<rParent name="mapsa:LAYER7"/>
-			<rChild name="mapsarod_SS4L:MAPSARod_SS4L"/>
-			<rRotation name="mapsa:SKEW"/>
-			<Translation x="44.875*mm" y="10.125*mm" z="0*mm"/>
-		</PosPart>
-		<!-- Layer 6 -->
-		<PosPart copyNumber="2">
-			<rParent name="mapsa:LAYER6"/>
-			<rChild name="mapsarod_DSH_L2:MAPSARod_DSH_L2"/>
-			<Translation x="-44.875*mm" y="-15*mm" z="0*mm"/>
-		</PosPart>
-		<!-- Layer 5 change to SS6-->
-		<PosPart copyNumber="2">
-			<rParent name="mapsa:LAYER5"/>
-			<rChild name="mapsarod_SS6L:MAPSARod_SS6L"/>
-			<Translation x="-44.875*mm" y="-15*mm" z="0*mm"/>
-		</PosPart>
-		<!-- Layer 4 -->
-		<PosPart copyNumber="2">
-			<rParent name="mapsa:LAYER4"/>
-			<rChild name="mapsarod_SS4H:MAPSARod_SS4H"/>
-			<Translation x="-44.875*mm" y="-15*mm" z="0*mm"/>
-		</PosPart>
-		<!-- Layer 3 change to ss6-->
-		<PosPart copyNumber="2">
-			<rParent name="mapsa:LAYER3"/>
-			<rChild name="mapsarod_SS6L:MAPSARod_SS6L"/>
-			<Translation x="-44.875*mm" y="-15*mm" z="0*mm"/>
-		</PosPart>
-		<PosPart copyNumber="1">
-			<rParent name="mapsa:LAYER3"/>
-			<rChild name="mapsarod_SS6H:MAPSARod_SS6H"/>
-			<rRotation name="mapsa:SKEW"/>
-			<Translation x="44.875*mm" y="10.125*mm" z="0*mm"/>
-		</PosPart>
-		<!-- Layer 2 -->
-		<PosPart copyNumber="2">
-			<rParent name="mapsa:LAYER2"/>
-			<rChild name="mapsarod_DSL_L2:MAPSARod_DSL_L2"/>
-			<Translation x="-44.875*mm" y="-15*mm" z="0*mm"/>
-		</PosPart>
-		<!-- Layer 1 change to ss6-->
-		<PosPart copyNumber="2">
-			<rParent name="mapsa:LAYER1"/>
-			<rChild name="mapsarod_SS6H:MAPSARod_SS6H"/>
-			<Translation x="-44.875*mm" y="-15*mm" z="0*mm"/>
-		</PosPart>
-		<PosPart copyNumber="1">
-			<rParent name="mapsa:LAYER1"/>
-			<rChild name="mapsarod_SS6H:MAPSARod_SS6H"/>
-			<rRotation name="mapsa:SKEW"/>
-			<Translation x="44.875*mm" y="10.125*mm" z="0*mm"/>
-		</PosPart>
+	  <PosPart copyNumber="1">
+	    <rParent name="mapsa:Rod1"/>
+	    <rChild name="mapsa:BModule1Layer1"/>
+	    <rRotation name="mapsa:HCZ2YX"/>
+	    <Translation x="3.65*mm" y="0*mm" z="1.42109e-14*mm"/>
+	  </PosPart>
+	  <PosPart copyNumber="2">
+	    <rParent name="mapsa:Rod1"/>
+	    <rChild name="mapsa:BModule1Layer1"/>
+	    <rRotation name="mapsa:FlippedHCZ2YX"/>
+	    <Translation x="-3.65*mm" y="0*mm" z="-39.6588*mm"/>
+	  </PosPart>
+	  <PosPart copyNumber="1">
+	    <rParent name="mapsa:BModule1Layer1"/>
+	    <rChild name="mapsa:BModule1Layer1Lowerwafer"/>
+	    <Translation x="0*mm" y="0*mm" z="-1.3*mm"/>
+	  </PosPart>
+	  <PosPart copyNumber="1">
+	    <rParent name="mapsa:BModule1Layer1"/>
+	    <rChild name="mapsa:BModule1Layer1Upperwafer"/>
+	    <Translation x="0*mm" y="0*mm" z="1.3*mm"/>
+	  </PosPart>
+	  <PosPart copyNumber="1">
+	    <rParent name="mapsa:BModule1Layer1Lowerwafer"/>
+	    <rChild name="mapsa:BModule1Layer1LowerPSMacroPixelactive"/>
+	  </PosPart>
+	  <PosPart copyNumber="1">
+	    <rParent name="mapsa:BModule1Layer1Upperwafer"/>
+	    <rChild name="mapsa:BModule1Layer1UpperPSStripactive"/>
+	  </PosPart>
+	  <PosPart copyNumber="1">
+	    <rParent name="mapsa:BModule1Layer1"/>
+	    <rChild name="mapsa:BModule1Layer1FSide"/>
+	    <Translation x="54*mm" y="0*mm" z="0*mm"/>
+	  </PosPart>
+	  <PosPart copyNumber="1">
+	    <rParent name="mapsa:BModule1Layer1"/>
+	    <rChild name="mapsa:BModule1Layer1BSide"/>
+	    <Translation x="-54*mm" y="0*mm" z="0*mm"/>
+	  </PosPart>
+	  <PosPart copyNumber="1">
+	    <rParent name="mapsa:BModule1Layer1"/>
+	    <rChild name="mapsa:BModule1Layer1LSide"/>
+	    <Translation x="0*mm" y="28.88*mm" z="0*mm"/>
+	  </PosPart>
+	  <PosPart copyNumber="1">
+	    <rParent name="mapsa:BModule1Layer1"/>
+	    <rChild name="mapsa:BModule1Layer1RSide"/>
+	    <Translation x="0*mm" y="-28.88*mm" z="0*mm"/>
+	  </PosPart>
+	  <PosPart copyNumber="1">
+	    <rParent name="mapsa:BModule1Layer1"/>
+	    <rChild name="mapsa:BModule1Layer1Between"/>
+	  </PosPart>
+	  <PosPart copyNumber="1">
+	    <rParent name="mapsa:BModule1Layer1"/>
+	    <rChild name="mapsa:BModule1Layer1SupportPlate"/>
+	    <Translation x="0*mm" y="0*mm" z="-2*mm"/>
+	  </PosPart>
+	  <PosPart copyNumber="1">
+	    <rParent name="mapsa:TOB"/>
+	    <rChild name="mapsa:Layer1"/>
+	  </PosPart>
+	  <Algorithm name="track:DDTrackerPhiAltAlgo">
+	    <rParent name="mapsa:Layer1"/>
+	    <String name="ChildName" value="mapsa:Rod1"/>
+	    <Numeric name="Tilt" value="90*deg"/>
+	    <Numeric name="StartAngle" value="90*deg"/>
+	    <Numeric name="RangeAngle" value="360*deg"/>
+	    <Numeric name="RadiusIn" value="218*mm"/>
+	    <Numeric name="RadiusOut" value="242*mm"/>
+	    <Numeric name="ZPosition" value="0.0*mm"/>
+	    <Numeric name="Number" value="16"/>
+	    <Numeric name="StartCopyNo" value="1"/>
+	    <Numeric name="IncrCopyNo" value="1"/>
+	  </Algorithm>
 	</PosPartSection>
 </DDDefinition>
