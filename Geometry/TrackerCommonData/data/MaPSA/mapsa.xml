@@ -253,7 +253,7 @@
   <SolidSection label="mapsa.xml">
     <Box name="OTPhase2Barrel" dx="98.9*cm" dy="198.9*cm" dz="198.9*cm"/>
     <Box name="Rod1" dx="6.16*mm" dy="60.01*mm" dz="116.159*mm"/>
-    <Tubs name="Layer1" rMin="211.83*mm" rMax="255.321*mm" dz="116.16*mm" startPhi="0*deg" deltaPhi="360*deg"/>
+    <Tubs name="Layer1" rMin="311.83*mm" rMax="355.321*mm" dz="116.16*mm" startPhi="0*deg" deltaPhi="360*deg"/>
     <Box name="MAPSARod" dx="[RodW]" dy="[RodT]" dz="[RodL]"/>
     <Box name="BModule1Layer1" dx="60*mm" dy="34.63*mm" dz="2.5*mm"/>
     <Box name="BModule1Layer1Lowerwafer" dx="48*mm" dy="23.13*mm" dz="0.1*mm"/>
@@ -329,14 +329,8 @@
     <PosPart copyNumber="1">
       <rParent name="mapsa:Rod1"/>
       <rChild name="mapsa:BModule1Layer1"/>
-      <rRotation name="mapsa:HCZ2YX"/>
-      <Translation x="3.65*mm" y="0*mm" z="1.42109e-14*mm"/>
-    </PosPart>
-    <PosPart copyNumber="2">
-      <rParent name="mapsa:Rod1"/>
-      <rChild name="mapsa:BModule1Layer1"/>
       <rRotation name="mapsa:FlippedHCZ2YX"/>
-      <Translation x="-3.65*mm" y="0*mm" z="-39.6588*mm"/>
+      <Translation x="3.65*mm" y="0*mm" z="1.42109e-14*mm"/>
     </PosPart>
     <PosPart copyNumber="1">
       <rParent name="mapsa:BModule1Layer1"/>
@@ -344,41 +338,8 @@
       <Translation x="0*mm" y="0*mm" z="-1.3*mm"/>
     </PosPart>
     <PosPart copyNumber="1">
-      <rParent name="mapsa:BModule1Layer1"/>
-      <rChild name="mapsa:BModule1Layer1Upperwafer"/>
-      <Translation x="0*mm" y="0*mm" z="1.3*mm"/>
-    </PosPart>
-    <PosPart copyNumber="1">
       <rParent name="mapsa:BModule1Layer1Lowerwafer"/>
       <rChild name="mapsa:BModule1Layer1LowerPSMacroPixelactive"/>
-    </PosPart>
-    <PosPart copyNumber="1">
-      <rParent name="mapsa:BModule1Layer1Upperwafer"/>
-      <rChild name="mapsa:BModule1Layer1UpperPSStripactive"/>
-    </PosPart>
-    <PosPart copyNumber="1">
-      <rParent name="mapsa:BModule1Layer1"/>
-      <rChild name="mapsa:BModule1Layer1FSide"/>
-      <Translation x="54*mm" y="0*mm" z="0*mm"/>
-    </PosPart>
-    <PosPart copyNumber="1">
-      <rParent name="mapsa:BModule1Layer1"/>
-      <rChild name="mapsa:BModule1Layer1BSide"/>
-      <Translation x="-54*mm" y="0*mm" z="0*mm"/>
-    </PosPart>
-    <PosPart copyNumber="1">
-      <rParent name="mapsa:BModule1Layer1"/>
-      <rChild name="mapsa:BModule1Layer1LSide"/>
-      <Translation x="0*mm" y="28.88*mm" z="0*mm"/>
-    </PosPart>
-    <PosPart copyNumber="1">
-      <rParent name="mapsa:BModule1Layer1"/>
-      <rChild name="mapsa:BModule1Layer1RSide"/>
-      <Translation x="0*mm" y="-28.88*mm" z="0*mm"/>
-    </PosPart>
-    <PosPart copyNumber="1">
-      <rParent name="mapsa:BModule1Layer1"/>
-      <rChild name="mapsa:BModule1Layer1Between"/>
     </PosPart>
     <PosPart copyNumber="1">
       <rParent name="mapsa:BModule1Layer1"/>
@@ -395,8 +356,8 @@
       <Numeric name="Tilt" value="90*deg"/>
       <Numeric name="StartAngle" value="90*deg"/>
       <Numeric name="RangeAngle" value="360*deg"/>
-      <Numeric name="RadiusIn" value="218*mm"/>
-      <Numeric name="RadiusOut" value="242*mm"/>
+      <Numeric name="RadiusIn" value="342*mm"/>
+      <Numeric name="RadiusOut" value="342*mm"/>
       <Numeric name="ZPosition" value="0.0*mm"/>
       <Numeric name="Number" value="16"/>
       <Numeric name="StartCopyNo" value="1"/>
