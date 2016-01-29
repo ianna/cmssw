@@ -8,13 +8,13 @@ process.load('Geometry.TrackerNumberingBuilder.trackerNumberingGeometry_cfi')
 process.load('Geometry.TrackerNumberingBuilder.trackerTopology_cfi')
 process.load('Geometry.TrackerGeometryBuilder.trackerParameters_cfi')
 
-process.MessageLogger.destinations = cms.untracked.vstring("MatBudget.txt")
+process.MessageLogger.destinations = cms.untracked.vstring("MaPSATestBeam.txt")
 
 process.maxEvents = cms.untracked.PSet(
     input = cms.untracked.int32(1)
 )
 
-process.load("SimGeneral.HepPDTESSource.pdt_cfi")
+process.load('SimGeneral.HepPDTESSource.pdt_cfi')
 
 process.source = cms.Source("EmptySource")
 
@@ -55,6 +55,6 @@ process.g4SimHits.UseMagneticField        = False
 process.g4SimHits.Physics.DummyEMPhysics  = True
 process.g4SimHits.Physics.DefaultCutValue = 10. 
 process.g4SimHits.Watchers = cms.VPSet(cms.PSet(
-	Name           = cms.untracked.string('TIDF'),
+	Name           = cms.untracked.string('OTPhase2Barrel'),
 	type           = cms.string('PrintMaterialBudgetInfo')
 ))
