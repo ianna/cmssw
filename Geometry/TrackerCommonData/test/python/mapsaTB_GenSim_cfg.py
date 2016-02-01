@@ -11,10 +11,11 @@ process.load('Geometry.TrackerGeometryBuilder.trackerParameters_cfi')
 process.MessageLogger.destinations = cms.untracked.vstring("MaPSATestBeam.txt")
 
 process.maxEvents = cms.untracked.PSet(
-    input = cms.untracked.int32(1)
+    input = cms.untracked.int32(10)
 )
-
 process.load('SimGeneral.HepPDTESSource.pdt_cfi')
+process.load('IOMC.EventVertexGenerators.VtxSmearedFlat_cfi')
+process.load('GeneratorInterface.Core.generatorSmeared_cfi')
 
 process.source = cms.Source("EmptySource")
 
@@ -40,6 +41,10 @@ process.RandomNumberGeneratorService = cms.Service("RandomNumberGeneratorService
          initialSeed = cms.untracked.uint32(123456789),
          engineName = cms.untracked.string('HepJamesRandom')
     ),
+    VtxSmeared = cms.PSet(
+        engineName = cms.untracked.string('HepJamesRandom'),
+        initialSeed = cms.untracked.uint32(98765432)
+    ),
     g4SimHits = cms.PSet(
          initialSeed = cms.untracked.uint32(11),
          engineName = cms.untracked.string('HepJamesRandom')
@@ -48,13 +53,12 @@ process.RandomNumberGeneratorService = cms.Service("RandomNumberGeneratorService
 
 process.load("SimG4Core.Application.g4SimHits_cfi")
 
-process.p1 = cms.Path(process.generator*process.g4SimHits)
-
 process.g4SimHits.Physics.type            = 'SimG4Core/Physics/DummyPhysics'
 process.g4SimHits.UseMagneticField        = False
 process.g4SimHits.Physics.DummyEMPhysics  = True
 process.g4SimHits.Physics.DefaultCutValue = 10. 
 process.g4SimHits.Watchers = cms.VPSet(cms.PSet(
 	Name           = cms.untracked.string('OTPhase2Barrel'),
-	type           = cms.string('PrintMaterialBudgetInfo')
-))
+	type           = cms.string('PrintMaterialBudgetInfo')))
+
+process.p1 = cms.Path(process.generator*process.VtxSmeared*process.generatorSmeared*process.g4SimHits)
