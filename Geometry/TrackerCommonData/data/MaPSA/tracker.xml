@@ -8,7 +8,7 @@
   </SolidSection>
   <LogicalPartSection label="tracker.xml">
     <LogicalPart name="Tracker" category="unspecified">
-      <rSolid name="Tracker"/>
+      <rSolid name="tracker:Tracker"/>
       <rMaterial name="materials:Air"/>
     </LogicalPart>
   </LogicalPartSection>
@@ -19,7 +19,7 @@
     </PosPart>
     <PosPart copyNumber="1">
       <rParent name="tracker:Tracker"/>
-      <rChild name="mapsa:OTPhase2Barrel"/>
+      <rChild name="mapsa:Phase2OTBarrel"/>
     </PosPart>
   </PosPartSection>
 </DDDefinition>

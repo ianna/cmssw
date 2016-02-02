@@ -22,8 +22,8 @@ process.source = cms.Source("EmptySource")
 process.generator = cms.EDProducer("FlatRandomPtGunProducer",
     PGunParameters = cms.PSet(
         PartID = cms.vint32(13),
-        MinEta = cms.double(-2.5),
-        MaxEta = cms.double(2.5),
+        MinEta = cms.double(-0.1),
+        MaxEta = cms.double(0.1),
         MinPhi = cms.double(-3.14159265359),
         MaxPhi = cms.double(3.14159265359),
         MinPt  = cms.double(9.99),
@@ -60,5 +60,13 @@ process.g4SimHits.Physics.DefaultCutValue = 10.
 process.g4SimHits.Watchers = cms.VPSet(cms.PSet(
 	Name           = cms.untracked.string('OTPhase2Barrel'),
 	type           = cms.string('PrintMaterialBudgetInfo')))
+
+# Output definition
+
+process.RAWSIMoutput = cms.OutputModule("PoolOutputModule",
+    fileName = cms.untracked.string('file:step1.root')
+)
+
+process.RAWSIMoutput_step = cms.EndPath(process.RAWSIMoutput)
 
 process.p1 = cms.Path(process.generator*process.VtxSmeared*process.generatorSmeared*process.g4SimHits)

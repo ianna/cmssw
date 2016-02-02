@@ -2,7 +2,7 @@
 <DDDefinition xmlns="http://www.cern.ch/cms/DDL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.cern.ch/cms/DDL ../../../../DetectorDescription/Schema/DDLSchema.xsd">
   <SpecParSection label="spec-pars2.xml">
     <SpecPar name="TrackerRecMaterialMAPSALayer1" eval="true">
-      <PartSelector path="//OTPhase2Barrel/Layer1/Rod1/BModule1Layer1/BModule1Layer1Lowerwafer/BModule1Layer1LowerPSMacroPixelactive"/>
+      <PartSelector path="//Phase2OTBarrel/Layer1/Rod1/BModule1Layer1/BModule1Layer1Lowerwafer/BModule1Layer1LowerPSMacroPixelactive"/>
       <Parameter name="TrackerRadLength" value="0.053"/>
       <Parameter name="TrackerXi" value="1.17e-04"/>
     </SpecPar>

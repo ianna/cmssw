@@ -6,8 +6,8 @@
       <Parameter name="TkDDDStructure" value="FullTracker"/>
     </SpecPar>
     <SpecPar name="MAPSASubDetPar">
-      <PartSelector path="//OTPhase2Barrel"/>
-      <Parameter name="TkDDDStructure" value="OTPhase2Barrel"/>
+      <PartSelector path="//Phase2OTBarrel"/>
+      <Parameter name="TkDDDStructure" value="Phase2OTBarrel"/>
     </SpecPar>
     <SpecPar name="OuterTrackerPixelBarrelLayerPar">
       <PartSelector path="//Layer1"/>
@@ -17,10 +17,10 @@
       <PartSelector path="//Rod1"/>
       <Parameter name="TkDDDStructure" value="PixelBarrelLadder"/>
     </SpecPar>
-    <SpecPar name="OuterTrackerBarrelStackPar">
+    <!-- SpecPar name="OuterTrackerBarrelStackPar">
       <PartSelector path="//BModule1Layer1"/>
       <Parameter name="TkDDDStructure" value="Phase2OTBarrelStack"/>
-    </SpecPar>
+    </SpecPar -->
     <SpecPar name="OuterTrackerLowerDetectorsPar">
       <PartSelector path="//BModule1Layer1LowerPSMacroPixelactive"/>
       <Parameter name="TrackerLowerDetectors" value="true"/>

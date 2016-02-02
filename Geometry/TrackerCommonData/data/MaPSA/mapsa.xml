@@ -251,7 +251,7 @@
     <Rotation name="HCZ2YX" thetaX="90*deg" phiX="90*deg" thetaY="0*deg" phiY="0*deg" thetaZ="90*deg" phiZ="0*deg"/>
   </RotationSection>
   <SolidSection label="mapsa.xml">
-    <Box name="OTPhase2Barrel" dx="98.9*cm" dy="198.9*cm" dz="198.9*cm"/>
+    <Box name="Phase2OTBarrel" dx="98.9*cm" dy="198.9*cm" dz="198.9*cm"/>
     <Box name="Rod1" dx="6.16*mm" dy="60.01*mm" dz="116.159*mm"/>
     <Tubs name="Layer1" rMin="311.83*mm" rMax="355.321*mm" dz="116.16*mm" startPhi="0*deg" deltaPhi="360*deg"/>
     <Box name="MAPSARod" dx="[RodW]" dy="[RodT]" dz="[RodL]"/>
@@ -320,8 +320,8 @@
       <rSolid name="mapsa:Layer1"/>
       <rMaterial name="materials:Air"/>
     </LogicalPart>	  
-    <LogicalPart name="OTPhase2Barrel" category="unspecified">
-      <rSolid name="OTPhase2Barrel"/>
+    <LogicalPart name="Phase2OTBarrel" category="unspecified">
+      <rSolid name="Phase2OTBarrel"/>
       <rMaterial name="materials:Air"/>
     </LogicalPart>
   </LogicalPartSection>
@@ -347,7 +347,7 @@
       <Translation x="0*mm" y="0*mm" z="-2*mm"/>
     </PosPart>
     <PosPart copyNumber="1">
-      <rParent name="mapsa:OTPhase2Barrel"/>
+      <rParent name="mapsa:Phase2OTBarrel"/>
       <rChild name="mapsa:Layer1"/>
     </PosPart>
     <Algorithm name="track:DDTrackerPhiAltAlgo">
