@@ -177,7 +177,7 @@ namespace cms
   }
   
   SiPSMacroDigitizer::~SiPSMacroDigitizer(){  
-    edm::LogInfo ("PixelDigitizer ") <<"Destruct the Pixel Digitizer";
+    edm::LogInfo ("SiPSMacroDigitizer ") <<"Destruct the PSMacro Digitizer";
   }
 
   void
@@ -187,6 +187,7 @@ namespace cms
 					CLHEP::HepRandomEngine* engine,
 					edm::EventSetup const& iSetup) {
     if(hSimHits.isValid()) {
+      std::cout << "Handle to hSimHits is valid\n";
        std::set<unsigned int> detIds;
        std::vector<PSimHit> const& simHits = *hSimHits.product();
        edm::ESHandle<TrackerTopology> tTopoHand;
@@ -194,6 +195,7 @@ namespace cms
        const TrackerTopology *tTopo=tTopoHand.product();
        for(std::vector<PSimHit>::const_iterator it = simHits.begin(), itEnd = simHits.end(); it != itEnd; ++it, ++globalSimHitIndex) {
          unsigned int detId = (*it).detUnitId();
+	 std::cout << "Hit with " << detId << std::endl;
          if(detIds.insert(detId).second) {
            // The insert succeeded, so this detector element has not yet been processed.
 	   assert(detectorUnits[detId]);
@@ -255,12 +257,15 @@ namespace cms
 
   void
   SiPSMacroDigitizer::accumulate(edm::Event const& iEvent, edm::EventSetup const& iSetup) {
+    std::cout << "SiPSMacroDigitizer::accumulate hitsProducer " << hitsProducer << std::endl;
     // Step A: Get Inputs
     for(vstring::const_iterator i = trackerContainers.begin(), iEnd = trackerContainers.end(); i != iEnd; ++i) {
       edm::Handle<std::vector<PSimHit> > simHits;
       edm::InputTag tag(hitsProducer, *i);
-
+      std::cout << "InputTag " << tag << std::endl;
       iEvent.getByLabel(tag, simHits);
+      if(simHits.isValid())
+	std::cout << " found " << simHits->size() << "simHits\n";
       unsigned int tofBin = PixelDigiSimLink::LowTof;
       if ((*i).find(std::string("HighTof")) != std::string::npos) tofBin = PixelDigiSimLink::HighTof;
       accumulatePixelHits(simHits, crossingSimHitIndexOffset_[tag.encode()], tofBin, randomEngine(iEvent.streamID()), iSetup);
