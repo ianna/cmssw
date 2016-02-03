@@ -4,7 +4,7 @@
   <SpecPar name="ROUHitsTrackerTOB">
    <PartSelector path="//BModule1Layer1LowerPSMacroPixelactive"/>
    <Parameter name="SensitiveDetector" value="TkAccumulatingSensitiveDetector"/>
-   <Parameter name="ReadOutName" value="TrackerHitsTOB"/>
+   <Parameter name="ReadOutName" value="TrackerHitsPixelBarrel"/>
   </SpecPar>
  </SpecParSection>
 </DDDefinition>

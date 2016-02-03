@@ -331,7 +331,7 @@ process.apd_sim_parameters = cms.PSet(
 )
 
 process.maxEvents = cms.untracked.PSet(
-    input = cms.untracked.int32(2)
+    input = cms.untracked.int32(10)
 )
 
 process.pixelDigitizer = cms.PSet(
