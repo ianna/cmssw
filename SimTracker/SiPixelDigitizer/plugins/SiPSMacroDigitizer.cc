@@ -229,8 +229,8 @@ namespace cms
     crossingSimHitIndexOffset_.clear();
 
     _pixeldigialgo->initializeEvent();
-    /////    iSetup.get<TrackerDigiGeometryRecord>().get(geometryType, pDD);
-    iSetup.get<TrackerDigiGeometryRecord>().get(pDD);
+    iSetup.get<TrackerDigiGeometryRecord>().get(geometryType, pDD);
+
     //// No MagneticField iSetup.get<IdealMagneticFieldRecord>().get(pSetup);
     edm::ESHandle<TrackerTopology> tTopoHand;
     iSetup.get<TrackerTopologyRcd>().get(tTopoHand);

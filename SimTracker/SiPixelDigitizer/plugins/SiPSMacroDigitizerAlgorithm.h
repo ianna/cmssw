@@ -2,7 +2,6 @@
 #define SiPSMacroDigitizerAlgorithm_h
 
 #include <map>
-#include <memory>
 #include <vector>
 #include <iostream>
 #include "DataFormats/GeometrySurface/interface/GloballyPositioned.h"
@@ -13,9 +12,6 @@
 #include "SimTracker/Common/interface/SimHitInfoForLinks.h"
 #include "DataFormats/Math/interface/approx_exp.h"
 #include "SimDataFormats/PileupSummaryInfo/interface/PileupMixingContent.h"
-
-// forward declarations
-
 
 // For the random numbers
 namespace CLHEP {
