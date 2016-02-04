@@ -253,7 +253,7 @@
   <SolidSection label="mapsa.xml">
     <Box name="Phase2OTBarrel" dx="98.9*cm" dy="198.9*cm" dz="198.9*cm"/>
     <Box name="Rod1" dx="6.16*mm" dy="60.01*mm" dz="116.159*mm"/>
-    <Tubs name="Layer1" rMin="311.83*mm" rMax="355.321*mm" dz="116.16*mm" startPhi="0*deg" deltaPhi="360*deg"/>
+    <Tubs name="Layer1" rMin="280.00*mm" rMax="400.00*mm" dz="116.16*mm" startPhi="0*deg" deltaPhi="360*deg"/>
     <Box name="MAPSARod" dx="[RodW]" dy="[RodT]" dz="[RodL]"/>
     <Box name="BModule1Layer1" dx="60*mm" dy="34.63*mm" dz="2.5*mm"/>
     <Box name="BModule1Layer1Lowerwafer" dx="48*mm" dy="23.13*mm" dz="0.1*mm"/>
@@ -353,6 +353,7 @@
     <Algorithm name="track:DDTrackerPhiAltAlgo">
       <rParent name="mapsa:Layer1"/>
       <String name="ChildName" value="mapsa:Rod1"/>
+      <!-- Numeric name="Tilt" value="30*deg"/ -->
       <Numeric name="Tilt" value="90*deg"/>
       <Numeric name="StartAngle" value="90*deg"/>
       <Numeric name="RangeAngle" value="360*deg"/>
