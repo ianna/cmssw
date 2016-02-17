@@ -105,8 +105,10 @@ process.mix = cms.EDProducer("MixingModule",
 
 process.out = cms.OutputModule("PoolOutputModule",
     fileName = cms.untracked.string('file:step2.root'),
-    outputCommands = cms.untracked.vstring('drop *_*_*_*', 
-        'keep *_*_*_PRODMIXNEW')
+    outputCommands = cms.untracked.vstring('drop *_*_*_*',
+                                           'keep *_*_TrackerHitsPixel*_PRODSIMNEW',
+                                           'keep SimTracks_*_*_PRODSIMNEW',
+                                           'keep *_*_*_PRODMIXNEW')
 )
 
 process.p = cms.Path(process.mix)

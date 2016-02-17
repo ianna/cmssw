@@ -1,6 +1,6 @@
 import FWCore.ParameterSet.Config as cms
 
-process = cms.Process("PrintMaterialBudget")
+process = cms.Process("PRODSIMNEW")
 
 process.load('FWCore.MessageService.MessageLogger_cfi')
 process.load('Geometry.TrackerCommonData.mapsaGeometryXML_cfi')
@@ -64,7 +64,10 @@ process.g4SimHits.Watchers = cms.VPSet(cms.PSet(
 # Output definition
 
 process.RAWSIMoutput = cms.OutputModule("PoolOutputModule",
-    fileName = cms.untracked.string('file:step1.root')
+    fileName = cms.untracked.string('file:step1.root'),
+    outputCommands = cms.untracked.vstring('drop *_*_*_*', 
+                                           'keep *_*_TrackerHitsPixel*_PRODSIMNEW',
+                                           'keep SimTracks_*_*_PRODSIMNEW')
 )
 
 process.RAWSIMoutput_step = cms.EndPath(process.RAWSIMoutput)
