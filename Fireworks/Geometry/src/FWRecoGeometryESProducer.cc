@@ -4,6 +4,7 @@
 
 #include "DataFormats/GeometrySurface/interface/RectangularPlaneBounds.h"
 #include "DataFormats/GeometrySurface/interface/TrapezoidalPlaneBounds.h"
+#include "FWCore/ParameterSet/interface/ParameterSet.h"
 #include "Geometry/CommonDetUnit/interface/GlobalTrackingGeometry.h"
 #include "Geometry/CaloGeometry/interface/CaloGeometry.h"
 #include "Geometry/CaloGeometry/interface/CaloCellGeometry.h"
@@ -64,9 +65,13 @@
     }									\
   }                                                                     \
 									  
-FWRecoGeometryESProducer::FWRecoGeometryESProducer( const edm::ParameterSet& )
+FWRecoGeometryESProducer::FWRecoGeometryESProducer( const edm::ParameterSet& pset )
   : m_current( -1 )
 {
+  m_tracker = pset.getUntrackedParameter<bool>( "Tracker", true );
+  m_muon = pset.getUntrackedParameter<bool>( "Muon", true );
+  m_calo = pset.getUntrackedParameter<bool>( "Calo", true );
+
   setWhatProduced( this );
 }
 
@@ -85,20 +90,31 @@ FWRecoGeometryESProducer::produce( const FWRecoGeometryRecord& record )
   DetId detId( DetId::Tracker, 0 );
   m_trackerGeom = (const TrackerGeometry*) m_geomRecord->slaveGeometry( detId );
   
-  record.getRecord<CaloGeometryRecord>().get( m_caloGeom );
-  
-  addPixelBarrelGeometry( );
-  addPixelForwardGeometry();
-  addTIBGeometry();
-  addTIDGeometry();
-  addTOBGeometry();
-  addTECGeometry();
-  addDTGeometry();
-  addCSCGeometry();
-  addRPCGeometry();
-  addGEMGeometry();
-  addME0Geometry();
-  addCaloGeometry();
+  if( m_tracker )
+  {
+    edm::LogInfo("FWRecoGeometryESProducer") << "Producing Tracker subdetectors";
+    addPixelBarrelGeometry();
+    addPixelForwardGeometry();
+    addTIBGeometry();
+    addTIDGeometry();
+    addTOBGeometry();
+    addTECGeometry();
+  }
+  if( m_muon )
+  {
+    edm::LogInfo("FWRecoGeometryESProducer") << "Producing Muon subdetectors";
+    addDTGeometry();
+    addCSCGeometry();
+    addRPCGeometry();
+    addGEMGeometry();
+    addME0Geometry();
+  }
+  if( m_calo )
+  {
+    edm::LogInfo("FWRecoGeometryESProducer") << "Producing Calo subdetectors";
+    record.getRecord<CaloGeometryRecord>().get( m_caloGeom );
+    addCaloGeometry();
+  }
 
   m_fwGeometry->idToName.resize( m_current + 1 );
   std::vector<FWRecoGeom::Info>( m_fwGeometry->idToName ).swap( m_fwGeometry->idToName );

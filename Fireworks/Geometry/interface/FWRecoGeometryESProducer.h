@@ -54,6 +54,10 @@ private:
   boost::shared_ptr<FWRecoGeometry>     m_fwGeometry;
   
   unsigned int m_current;
+
+  bool m_tracker;
+  bool m_muon;
+  bool m_calo;
 };
 
 #endif // GEOMETRY_FWRECO_GEOMETRY_ES_PRODUCER_H
