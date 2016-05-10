@@ -9,12 +9,14 @@
  *  \edited by D. Nash
  */
 
-#include "DataFormats/DetId/interface/DetId.h"
-#include "Geometry/CommonDetUnit/interface/TrackingGeometry.h"
-#include "Geometry/GEMGeometry/interface/ME0EtaPartition.h"
-#include "Geometry/GEMGeometry/interface/ME0Chamber.h"
 #include <vector>
-#include <map>
+#include "DataFormats/DetId/interface/DetId.h"
+#include "DataFormats/MuonDetId/interface/ME0DetId.h"
+#include "Geometry/CommonDetUnit/interface/GeomDet.h"
+#include "Geometry/CommonDetUnit/interface/TrackingGeometry.h"
+
+class ME0Chamber;
+class ME0EtaPartition;
 
 class ME0Geometry : public TrackingGeometry {
 

@@ -16,12 +16,16 @@
 //
 
 #include "Geometry/CaloEventSetup/plugins/EcalTrigTowerConstituentsMapBuilder.h"
-#include "DataFormats/EcalDetId/interface/EcalTrigTowerDetId.h"
-#include "DataFormats/EcalDetId/interface/EEDetId.h"
-
+#include <stdio.h>
 #include <fstream>
+#include "DataFormats/DetId/interface/DetId.h"
+#include "DataFormats/EcalDetId/interface/EEDetId.h"
+#include "DataFormats/EcalDetId/interface/EcalSubdetector.h"
+#include "DataFormats/EcalDetId/interface/EcalTrigTowerDetId.h"
+#include "FWCore/ParameterSet/interface/FileInPath.h"
+#include "FWCore/ParameterSet/interface/ParameterSet.h"
 
-#include "FWCore/MessageLogger/interface/MessageLogger.h"
+class IdealGeometryRecord;
 
 EcalTrigTowerConstituentsMapBuilder::EcalTrigTowerConstituentsMapBuilder(const edm::ParameterSet& iConfig) :
   mapFile_(iConfig.getUntrackedParameter<std::string>("MapFile",""))

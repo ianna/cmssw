@@ -12,34 +12,38 @@
 */
 //
 
-
-
-// system include files
-#include <memory>
 #include <cmath>
-
-// user include files
-#include "FWCore/Framework/interface/one/EDAnalyzer.h"
-
-#include "FWCore/Framework/interface/EventSetup.h"
+#include <iostream>
+#include <memory>
+#include <string>
+#include <vector>
+#include "CLHEP/Units/GlobalSystemOfUnits.h"
+#include "CLHEP/Units/SystemOfUnits.h"
+#include "CLHEP/Vector/Rotation.h"
+#include "CLHEP/Vector/Rotation.icc"
+#include "CLHEP/Vector/RotationX.h"
+#include "CLHEP/Vector/RotationZ.h"
+#include "CLHEP/Vector/ThreeVector.h"
+#include "CLHEP/Vector/ThreeVector.icc"
+#include "DataFormats/DetId/interface/DetId.h"
+#include "DataFormats/EcalDetId/interface/EcalSubdetector.h"
+#include "DataFormats/GeometryVector/interface/GlobalPoint.h"
 #include "FWCore/Framework/interface/ESHandle.h"
+#include "FWCore/Framework/interface/EventSetup.h"
 #include "FWCore/Framework/interface/MakerMacros.h"
+#include "FWCore/Framework/interface/one/EDAnalyzer.h"
+#include "FWCore/Framework/src/WorkerMaker.h"
+#include "FWCore/MessageLogger/interface/ErrorObj.icc"
 #include "FWCore/MessageLogger/interface/MessageLogger.h"
-
 #include "FWCore/ParameterSet/interface/ParameterSet.h"
-#include "Geometry/CaloGeometry/interface/CaloSubdetectorGeometry.h"
-#include "Geometry/CaloGeometry/interface/CaloGeometry.h"
+#include "FWCore/ParameterSet/interface/ParameterSetDescriptionFiller.h"
 #include "Geometry/CaloGeometry/interface/CaloCellGeometry.h"
+#include "Geometry/CaloGeometry/interface/CaloGeometry.h"
+#include "Geometry/CaloGeometry/interface/CaloSubdetectorGeometry.h"
 #include "Geometry/Records/interface/CaloGeometryRecord.h"
 #include "SimDataFormats/EcalTestBeam/interface/HodoscopeDetId.h"
 
-#include "CLHEP/Vector/ThreeVector.h"
-#include "CLHEP/Vector/Rotation.h"
-#include "CLHEP/Units/GlobalSystemOfUnits.h"
-
-//
-// class decleration
-//
+namespace edm { class Event; }
 
 class EcalTBHodoscopeGeometryAnalyzer : public edm::one::EDAnalyzer<>
 {

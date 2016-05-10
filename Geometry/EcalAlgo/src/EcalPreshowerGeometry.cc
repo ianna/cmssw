@@ -1,9 +1,15 @@
-#include "Geometry/CaloGeometry/interface/PreshowerStrip.h"
-#include "Geometry/CaloGeometry/interface/CaloGenericDetId.h"
-#include "Geometry/EcalAlgo/interface/EcalPreshowerGeometry.h"
+#include <assert.h>
+#include <ext/alloc_traits.h>
+#include <stdint.h>
+#include <vector>
+#include "CLHEP/Geometry/Plane3D.h"
+#include "DataFormats/DetId/interface/DetId.h" 
 #include "DataFormats/EcalDetId/interface/ESDetId.h"
-#include "FWCore/Utilities/interface/Exception.h"
-#include <iostream>
+#include "DataFormats/GeometryVector/interface/GlobalPoint.h"
+#include "Geometry/CaloGeometry/interface/CaloCellGeometry.h"
+#include "Geometry/CaloGeometry/interface/CaloGenericDetId.h"
+#include "Geometry/CaloGeometry/interface/PreshowerStrip.h"
+#include "Geometry/EcalAlgo/interface/EcalPreshowerGeometry.h"
 
 typedef CaloCellGeometry::CCGFloat CCGFloat ;
 typedef CaloCellGeometry::Pt3D     Pt3D     ;

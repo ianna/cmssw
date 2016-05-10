@@ -1,7 +1,9 @@
 #include "Geometry/GEMGeometry/interface/GEMEtaPartitionSpecs.h"
-#include "Geometry/CommonTopologies/interface/RectangularStripTopology.h"
+#include "Geometry/CommonDetUnit/interface/GeomDetEnumerators.h"
+#include "Geometry/CommonTopologies/interface/StripTopology.h"
 #include "Geometry/CommonTopologies/interface/TrapezoidalStripTopology.h"
 
+class Topology;
 
 using namespace GeomDetEnumerators;
 

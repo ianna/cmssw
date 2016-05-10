@@ -7,7 +7,6 @@
 
 #include "Geometry/GEMGeometry/interface/ME0Chamber.h"
 #include "Geometry/GEMGeometry/interface/ME0EtaPartition.h"
-#include <iostream>
 
 ME0Chamber::ME0Chamber(ME0DetId id, const ReferenceCountingPointer<BoundPlane> & plane) :
   GeomDet(plane), detId_(id)

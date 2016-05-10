@@ -1,20 +1,14 @@
 #ifndef Geometry_ForwardGeometry_CastorHardcodeGeometryEP_H
 #define Geometry_ForwardGeometry_CastorHardcodeGeometryEP_H 1
 
-// system include files
 #include <memory>
-
-// user include files
-#include "FWCore/Framework/interface/ModuleFactory.h"
 #include "FWCore/Framework/interface/ESProducer.h"
-#include "FWCore/Framework/interface/ESHandle.h"
-#include "Geometry/Records/interface/CastorGeometryRecord.h"
 #include "Geometry/CaloGeometry/interface/CaloSubdetectorGeometry.h"
-#include "Geometry/ForwardGeometry/interface/CastorHardcodeGeometryLoader.h"
 
-//
-// class declaration
-//
+class CastorGeometryRecord;
+class CastorHardcodeGeometryLoader;
+
+namespace edm { class ParameterSet; }
 
 class CastorHardcodeGeometryEP : public edm::ESProducer {
    public:

@@ -1,13 +1,15 @@
 #ifndef Geometry_TrackerGeometryBuilder_TrackerDigiGeometryESModule_H
 #define Geometry_TrackerGeometryBuilder_TrackerDigiGeometryESModule_H
 
-#include "FWCore/Framework/interface/ESProducer.h"
-#include "FWCore/ParameterSet/interface/ParameterSet.h"
-#include "Geometry/Records/interface/TrackerDigiGeometryRecord.h"
-#include "Geometry/TrackerGeometryBuilder/interface/TrackerGeometry.h"
 #include <memory>
-
 #include <string>
+#include "FWCore/Framework/interface/ESProducer.h"
+
+class TrackerDigiGeometryRecord;
+class TrackerGeometry;
+
+namespace edm { class ConfigurationDescriptions; }
+namespace edm { class ParameterSet; }
 
 namespace edm {
   class ConfigurationDescriptions;

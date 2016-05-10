@@ -1,16 +1,16 @@
 #ifndef EcalTestBeam_DDTBH4Algo_h
 #define EcalTestBeam_DDTBH4Algo_h
 
-#include <map>
 #include <string>
 #include <vector>
-#include "DetectorDescription/Base/interface/DDTypes.h"
+#include "CLHEP/Vector/Rotation.h"
 #include "DetectorDescription/Algorithm/interface/DDAlgorithm.h"
+#include "DetectorDescription/Base/interface/DDTypes.h"
 #include "DetectorDescription/Core/interface/DDMaterial.h"
+#include "DetectorDescription/Core/interface/DDName.h"
 #include "DetectorDescription/Core/interface/DDTransform.h"
 
-//CLHEP 
-#include <CLHEP/Geometry/Transform3D.h>
+class DDCompactView;
 
 class DDTBH4Algo : public DDAlgorithm {
  public:

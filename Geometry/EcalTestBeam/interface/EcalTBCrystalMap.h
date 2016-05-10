@@ -7,13 +7,8 @@
  */
 
 #include <map>
-#include <iostream>
-#include <fstream>
 #include <string>
-
-#include "FWCore/Utilities/interface/Exception.h"
-#include "FWCore/MessageLogger/interface/MessageLogger.h"
-
+#include <utility>
 
 class EcalTBCrystalMap {
 

@@ -4,9 +4,10 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 #include "Geometry/EcalTestBeam/interface/EcalHodoscopeNumberingScheme.h"
+#include <string>
+#include "FWCore/MessageLogger/interface/MessageLogger.h"
+#include "Geometry/EcalCommonData/interface/EcalBaseNumber.h"
 #include "SimDataFormats/EcalTestBeam/interface/HodoscopeDetId.h"
-
-#include <iostream>
 
 EcalHodoscopeNumberingScheme::EcalHodoscopeNumberingScheme() : 
   EcalNumberingScheme() {

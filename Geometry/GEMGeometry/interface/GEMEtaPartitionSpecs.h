@@ -8,13 +8,13 @@
  * \author M. Maggi - INFN Bari
  *
  */
-#include <vector>
+
 #include <string>
-
-class StripTopology;
-
+#include <vector>
 #include "Geometry/CommonDetUnit/interface/GeomDetType.h"
 
+class StripTopology;
+class Topology;
 
 class GEMEtaPartitionSpecs : public GeomDetType
 {

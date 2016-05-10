@@ -2,8 +2,8 @@
 #define TrackerGeometryBuilder_GeomDetLess_H
 
 #include "DataFormats/TrajectorySeed/interface/PropagationDirection.h"
-#include "Geometry/CommonDetUnit/interface/GeomDet.h"
-#include <functional>
+
+class GeomDet;
 
 /** Defines order of layers in the Tracker as seen by straight tracks
  *  coming from the interaction region.

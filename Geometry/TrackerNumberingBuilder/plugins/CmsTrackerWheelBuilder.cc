@@ -1,15 +1,22 @@
 #include "Geometry/TrackerNumberingBuilder/plugins/CmsTrackerWheelBuilder.h"
-#include "DetectorDescription/Core/interface/DDFilteredView.h"
-#include "Geometry/TrackerNumberingBuilder/interface/GeometricDet.h"
-#include "Geometry/TrackerNumberingBuilder/plugins/ExtractStringFromDDD.h"
+#include <math.h>
+#include <stdint.h>
+#include <algorithm>
+#include <vector>
 #include "DataFormats/DetId/interface/DetId.h"
-#include "Geometry/TrackerNumberingBuilder/plugins/CmsTrackerRingBuilder.h"
-#include "Geometry/TrackerNumberingBuilder/plugins/CmsTrackerPetalBuilder.h"
-#include "Geometry/TrackerNumberingBuilder/plugins/TrackerStablePhiSort.h"
+#include "DetectorDescription/Base/interface/DDTranslation.h"
+#include "FWCore/MessageLogger/interface/ErrorObj.icc"
 #include "FWCore/MessageLogger/interface/MessageLogger.h"
-#include<vector>
+#include "Geometry/TrackerNumberingBuilder/interface/CmsTrackerStringToEnum.h"
+#include "Geometry/TrackerNumberingBuilder/interface/GeometricDet.h"
+#include "Geometry/TrackerNumberingBuilder/plugins/CmsTrackerPetalBuilder.h"
+#include "Geometry/TrackerNumberingBuilder/plugins/CmsTrackerRingBuilder.h"
+#include "Geometry/TrackerNumberingBuilder/plugins/ExtractStringFromDDD.h"
+#include "Geometry/TrackerNumberingBuilder/plugins/TrackerStablePhiSort.h"
+#include "boost/bind/bind.hpp"
+#include "boost/bind/bind_template.hpp"
 
-#include <bitset>
+class DDFilteredView;
 
 void CmsTrackerWheelBuilder::buildComponent(DDFilteredView& fv, GeometricDet* g, std::string s){
   CmsTrackerRingBuilder theCmsTrackerRingBuilder ;

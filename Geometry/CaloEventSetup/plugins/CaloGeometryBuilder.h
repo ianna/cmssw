@@ -16,22 +16,17 @@
 //
 //
 
-
-// system include files
 #include <memory>
-
-// user include files
+#include <string>
+#include <vector>
+#include "FWCore/Framework/interface/ESHandle.h"
 #include "FWCore/Framework/interface/ESProducer.h"
 
-#include "FWCore/Framework/interface/ESHandle.h"
-#include "FWCore/ParameterSet/interface/ParameterSet.h"
-#include "Geometry/Records/interface/IdealGeometryRecord.h"
-#include "Geometry/Records/interface/CaloGeometryRecord.h"
-#include "Geometry/CaloGeometry/interface/CaloGeometry.h"
+class CaloGeometry;
+class CaloGeometryRecord;
+class CaloSubdetectorGeometry;
 
-//
-// class decleration
-//
+namespace edm { class ParameterSet; }
 
 class CaloGeometryBuilder : public edm::ESProducer 
 {

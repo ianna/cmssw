@@ -15,47 +15,49 @@ The alignment objects are filled with fixed alignments.
 //
 //
 
-
-// System
 #include <memory>
-
-// Framework
-#include "FWCore/Framework/interface/ModuleFactory.h"
-#include "FWCore/Framework/interface/ESProducer.h"
-#include "FWCore/MessageLogger/interface/MessageLogger.h"
-
-
-
-// Alignment
-#include "CondFormats/Alignment/interface/Alignments.h"
+#include <string>
+#include <vector>
+#include "CLHEP/Vector/Rotation.icc"
+#include "CLHEP/Vector/ThreeVector.icc"
+#include "CondFormats/Alignment/interface/AlignTransform.h"
 #include "CondFormats/Alignment/interface/AlignmentErrors.h"
+#include "CondFormats/Alignment/interface/Alignments.h"
+#include "CondFormats/AlignmentRecord/interface/CastorAlignmentErrorExtendedRcd.h"
+#include "CondFormats/AlignmentRecord/interface/CastorAlignmentRcd.h"
+#include "CondFormats/AlignmentRecord/interface/EBAlignmentErrorExtendedRcd.h"
+#include "CondFormats/AlignmentRecord/interface/EBAlignmentRcd.h"
+#include "CondFormats/AlignmentRecord/interface/EEAlignmentErrorExtendedRcd.h"
+#include "CondFormats/AlignmentRecord/interface/EEAlignmentRcd.h"
+#include "CondFormats/AlignmentRecord/interface/ESAlignmentErrorExtendedRcd.h"
+#include "CondFormats/AlignmentRecord/interface/ESAlignmentRcd.h"
+#include "CondFormats/AlignmentRecord/interface/HBAlignmentErrorExtendedRcd.h"
+#include "CondFormats/AlignmentRecord/interface/HBAlignmentRcd.h"
+#include "CondFormats/AlignmentRecord/interface/HEAlignmentErrorExtendedRcd.h"
+#include "CondFormats/AlignmentRecord/interface/HEAlignmentRcd.h"
+#include "CondFormats/AlignmentRecord/interface/HFAlignmentErrorExtendedRcd.h"
+#include "CondFormats/AlignmentRecord/interface/HFAlignmentRcd.h"
+#include "CondFormats/AlignmentRecord/interface/HOAlignmentErrorExtendedRcd.h"
+#include "CondFormats/AlignmentRecord/interface/HOAlignmentRcd.h"
+#include "CondFormats/AlignmentRecord/interface/ZDCAlignmentErrorExtendedRcd.h"
+#include "CondFormats/AlignmentRecord/interface/ZDCAlignmentRcd.h"
+#include "DataFormats/EcalDetId/interface/EBDetId.h"
+#include "DataFormats/EcalDetId/interface/EEDetId.h"
+#include "DataFormats/EcalDetId/interface/ESDetId.h"
+#include "DataFormats/HcalDetId/interface/HcalCastorDetId.h"
+#include "DataFormats/HcalDetId/interface/HcalDetId.h"
+#include "DataFormats/HcalDetId/interface/HcalZDCDetId.h"
+#include "FWCore/Framework/interface/ESProducer.h"
+#include "FWCore/Framework/interface/ModuleFactory.h"
+#include "FWCore/ParameterSet/interface/ParameterSetDescriptionFiller.h"
 #include "Geometry/EcalAlgo/interface/EcalBarrelGeometry.h"
 #include "Geometry/EcalAlgo/interface/EcalEndcapGeometry.h"
 #include "Geometry/EcalAlgo/interface/EcalPreshowerGeometry.h"
-#include "Geometry/HcalTowerAlgo/interface/HcalGeometry.h"
-#include "Geometry/ForwardGeometry/interface/ZdcGeometry.h"
 #include "Geometry/ForwardGeometry/interface/CastorGeometry.h"
-#include "DataFormats/EcalDetId/interface/ESDetId.h"
-#include "DataFormats/HcalDetId/interface/HcalDetId.h"
-#include "DataFormats/HcalDetId/interface/HcalZDCDetId.h"
-#include "CondFormats/AlignmentRecord/interface/EBAlignmentRcd.h"
-#include "CondFormats/AlignmentRecord/interface/EBAlignmentErrorExtendedRcd.h"
-#include "CondFormats/AlignmentRecord/interface/EEAlignmentRcd.h"
-#include "CondFormats/AlignmentRecord/interface/EEAlignmentErrorExtendedRcd.h"
-#include "CondFormats/AlignmentRecord/interface/ESAlignmentRcd.h"
-#include "CondFormats/AlignmentRecord/interface/ESAlignmentErrorExtendedRcd.h"
-#include "CondFormats/AlignmentRecord/interface/HBAlignmentRcd.h"
-#include "CondFormats/AlignmentRecord/interface/HBAlignmentErrorExtendedRcd.h"
-#include "CondFormats/AlignmentRecord/interface/HEAlignmentRcd.h"
-#include "CondFormats/AlignmentRecord/interface/HEAlignmentErrorExtendedRcd.h"
-#include "CondFormats/AlignmentRecord/interface/HOAlignmentRcd.h"
-#include "CondFormats/AlignmentRecord/interface/HOAlignmentErrorExtendedRcd.h"
-#include "CondFormats/AlignmentRecord/interface/HFAlignmentRcd.h"
-#include "CondFormats/AlignmentRecord/interface/HFAlignmentErrorExtendedRcd.h"
-#include "CondFormats/AlignmentRecord/interface/ZDCAlignmentRcd.h"
-#include "CondFormats/AlignmentRecord/interface/ZDCAlignmentErrorExtendedRcd.h"
-#include "CondFormats/AlignmentRecord/interface/CastorAlignmentRcd.h"
-#include "CondFormats/AlignmentRecord/interface/CastorAlignmentErrorExtendedRcd.h"
+#include "Geometry/ForwardGeometry/interface/ZdcGeometry.h"
+#include "Geometry/HcalTowerAlgo/interface/HcalGeometry.h"
+
+namespace edm { class ParameterSet; }
 
 class TestCaloAlignmentEP : public edm::ESProducer 
 {

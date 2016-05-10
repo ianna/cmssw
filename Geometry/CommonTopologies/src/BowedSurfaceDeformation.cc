@@ -2,12 +2,10 @@
 ///  date       : October 2010
 
 #include "Geometry/CommonTopologies/interface/BowedSurfaceDeformation.h"
-#include "Geometry/CommonTopologies/interface/SurfaceDeformationFactory.h"
-
+#include "DataFormats/GeometryVector/interface/sseBasic2DVector.h"
+#include "FWCore/MessageLogger/interface/ErrorObj.icc"
 #include "FWCore/MessageLogger/interface/MessageLogger.h"
-
-// already included via header:
-// #include <vector>
+#include "Geometry/CommonTopologies/interface/SurfaceDeformationFactory.h"
 
 //------------------------------------------------------------------------------
 BowedSurfaceDeformation::BowedSurfaceDeformation(const std::vector<double> &pars)

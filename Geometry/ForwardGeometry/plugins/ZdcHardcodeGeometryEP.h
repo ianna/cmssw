@@ -1,21 +1,16 @@
 #ifndef Geometry_ForwardGeometry_ZdcHardcodeGeometryEP_H
 #define Geometry_ForwardGeometry_ZdcHardcodeGeometryEP_H 1
 
-
-// system include files
 #include <memory>
-
-// user include files
-#include "FWCore/Framework/interface/ModuleFactory.h"
 #include "FWCore/Framework/interface/ESProducer.h"
-#include "FWCore/Framework/interface/ESHandle.h"
-#include "Geometry/Records/interface/ZDCGeometryRecord.h"
-#include "Geometry/CaloGeometry/interface/CaloSubdetectorGeometry.h"
-#include "Geometry/ForwardGeometry/interface/ZdcHardcodeGeometryLoader.h"
+#include "Geometry/ForwardGeometry/interface/ZdcTopology.h"
 
-//
-// class decleration
-//
+class CaloSubdetectorGeometry;
+class ZDCGeometryRecord;
+class ZdcHardcodeGeometryLoader;
+
+namespace edm { class ParameterSet; }
+
 
 class ZdcHardcodeGeometryEP : public edm::ESProducer 
 {

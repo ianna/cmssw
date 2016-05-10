@@ -1,11 +1,14 @@
 #ifndef GeometryHGCalGeometryHGCalGeometryLoader_h
 #define GeometryHGCalGeometryHGCalGeometryLoader_h
-#include "Geometry/HGCalGeometry/interface/HGCalGeometry.h"
-#include "Geometry/CaloGeometry/interface/CaloCellGeometry.h"
-#include "Geometry/CaloGeometry/interface/FlatTrd.h"
 
-class HGCalTopology;
+#include <vector>
+#include "DataFormats/DetId/interface/DetId.h"
+#include "Geometry/CaloGeometry/interface/CaloCellGeometry.h"
+
 class HGCalGeometry;
+class HGCalTopology;
+
+namespace HepGeom { class Transform3D; }
 
 class HGCalGeometryLoader {
 

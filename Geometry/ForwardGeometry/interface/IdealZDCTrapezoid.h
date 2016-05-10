@@ -1,6 +1,8 @@
 #ifndef Geometry_ForwardGeometry_IdealZDCTrapezoid_H
 #define Geometry_ForwardGeometry_IdealZDCTrapezoid_H 1
 
+#include <iosfwd>
+#include "DataFormats/GeometryVector/interface/GlobalPoint.h"
 #include "Geometry/CaloGeometry/interface/CaloCellGeometry.h"
 
   /** \class IdealZDCTrapezoid

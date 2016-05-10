@@ -11,8 +11,13 @@
  *  \author R. Trentadue
  */
 
-#include "Geometry/CommonDetUnit/interface/GeomDet.h"
+#include <vector>
+#include "DataFormats/DetId/interface/DetId.h"
+#include "DataFormats/GeometrySurface/interface/Plane.h"
+#include "DataFormats/GeometrySurface/interface/ReferenceCounted.h"
 #include "DataFormats/MuonDetId/interface/RPCDetId.h"
+#include "Geometry/CommonDetUnit/interface/GeomDet.h"
+#include "Geometry/CommonDetUnit/interface/GeomDetEnumerators.h"
 
 class RPCRoll;
 

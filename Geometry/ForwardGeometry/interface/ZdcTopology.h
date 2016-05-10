@@ -2,6 +2,7 @@
 #define Geometry_ForwardGeometry_ZdcTopology_H 1
 
 #include <vector>
+#include "DataFormats/DetId/interface/DetId.h"
 #include "DataFormats/HcalDetId/interface/HcalZDCDetId.h"
 #include "Geometry/CaloTopology/interface/CaloSubdetectorTopology.h"
 

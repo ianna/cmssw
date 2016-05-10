@@ -1,7 +1,4 @@
 #include "Geometry/TrackerGeometryBuilder/interface/PixelGeomDetUnit.h"
-#include "Geometry/TrackerGeometryBuilder/interface/PixelGeomDetType.h"
-
-#include "Geometry/CommonTopologies/interface/SurfaceDeformation.h"
 
 PixelGeomDetUnit::PixelGeomDetUnit( BoundPlane* sp, PixelGeomDetType const * type, DetId id) : 
   TrackerGeomDet(sp), theTopology(new ProxyPixelTopology(type, sp))

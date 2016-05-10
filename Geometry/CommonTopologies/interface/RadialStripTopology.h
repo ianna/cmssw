@@ -1,6 +1,11 @@
 #ifndef _RADIAL_STRIP_TOPOLOGY_H_
 #define _RADIAL_STRIP_TOPOLOGY_H_
 
+#include <iosfwd>
+#include "DataFormats/GeometryCommonDetAlgo/interface/MeasurementError.h"
+#include "DataFormats/GeometryCommonDetAlgo/interface/MeasurementPoint.h"
+#include "DataFormats/GeometrySurface/interface/LocalError.h"
+#include "DataFormats/GeometryVector/interface/LocalPoint.h"
 #include "Geometry/CommonTopologies/interface/StripTopology.h"
 
 /**

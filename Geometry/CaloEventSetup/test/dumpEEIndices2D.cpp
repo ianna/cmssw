@@ -1,15 +1,15 @@
-#include "TStyle.h"
-#include "TH2F.h"
-#include "TText.h"
-#include "TCanvas.h"
-#include "TString.h"
-#include "TPRegexp.h"
-#include "TObjArray.h"
-#include "TObjString.h"
-
-#include <fstream>
-#include <iostream>
-#include <cstdlib>
+#include <stdio.h>       // for sprintf
+#include <cstdlib>       // for exit
+#include <iostream>      // for operator<<, ifstream, basic_ostream, basic_o...
+#include "TAxis.h"       // for TAxis
+#include "TCanvas.h"     // for TCanvas
+#include "TH2.h"         // for TH2F
+#include "TObjArray.h"   // for TObjArray
+#include "TObjString.h"  // for TObjString
+#include "TPRegexp.h"    // for TPRegexp
+#include "TString.h"     // for TString
+#include "TStyle.h"      // for TStyle, gStyle
+#include "TText.h"       // for TText
 
 int main(int /*argc*/,char** /*argv*/) 
 {  

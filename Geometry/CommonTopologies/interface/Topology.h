@@ -1,13 +1,16 @@
 #ifndef Geometry_CommonTopologies_Topology_H
 #define Geometry_CommonTopologies_Topology_H
 
-#include "DataFormats/GeometryVector/interface/LocalPoint.h"
-#include "DataFormats/GeometryCommonDetAlgo/interface/LocalError.h"
-#include "DataFormats/GeometryCommonDetAlgo/interface/MeasurementPoint.h"
 #include "DataFormats/GeometryCommonDetAlgo/interface/MeasurementError.h"
+#include "DataFormats/GeometryCommonDetAlgo/interface/MeasurementPoint.h"
+#include "DataFormats/GeometrySurface/interface/LocalError.h"
+#include "DataFormats/GeometryVector/interface/LocalPoint.h"
+#include "DataFormats/GeometryVector/interface/Point2DBase.h"
+#include "DataFormats/GeometryVector/interface/sseBasic2DVector.h"
 #include "DataFormats/Math/interface/AlgebraicROOTObjects.h"
+#include "Math/SVector.icc"
 
-class GeomDetType;
+class LocalTag;
 
 /** Abstract component defining the conversion between the local frame of
  *  a detector and the frame defined by the readout channels ,
@@ -35,9 +38,6 @@ class GeomDetType;
  *  call the simple method, ignoring the track state.
  *  Concrete implementations should overwrite this where appropiate.
  */
-
-#include "FWCore/Utilities/interface/GCC11Compatibility.h"
-
 
 class Topology {
 public:

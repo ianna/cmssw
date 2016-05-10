@@ -1,11 +1,16 @@
 #ifndef Geometry_TrackerNumberingBuilder_TrackerGeometricDetExtraESModule_H
 #define Geometry_TrackerNumberingBuilder_TrackerGeometricDetExtraESModule_H
 
+#include <memory>
+#include <vector>
+#include "DetectorDescription/Core/interface/DDExpandedView.h"
 #include "FWCore/Framework/interface/ESProducer.h"
-#include "FWCore/ParameterSet/interface/ParameterSet.h"
-#include "Geometry/Records/interface/IdealGeometryRecord.h"
-#include "Geometry/TrackerNumberingBuilder/interface/GeometricDet.h"
-#include "Geometry/TrackerNumberingBuilder/interface/GeometricDetExtra.h"
+
+class GeometricDet;
+class GeometricDetExtra;
+class IdealGeometryRecord;
+
+namespace edm { class ParameterSet; }
 
 class  TrackerGeometricDetExtraESModule: public edm::ESProducer {
 

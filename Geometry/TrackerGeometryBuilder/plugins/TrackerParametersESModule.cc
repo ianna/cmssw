@@ -1,14 +1,21 @@
 #include "TrackerParametersESModule.h"
+#include <iostream>
+#include <string>
+#include "CondFormats/GeometryObjects/interface/PTrackerParameters.h"
+#include "FWCore/Framework/interface/ESTransientHandle.h"
+#include "FWCore/Framework/interface/ModuleFactory.h"
+#include "FWCore/MessageLogger/interface/MessageLogger.h"
 #include "FWCore/ParameterSet/interface/ConfigurationDescriptions.h"
 #include "FWCore/ParameterSet/interface/ParameterSetDescription.h"
-#include "FWCore/Framework/interface/ModuleFactory.h"
-#include "FWCore/Framework/interface/ESHandle.h"
-#include "FWCore/Framework/interface/ESTransientHandle.h"
-#include "DetectorDescription/Core/interface/DDCompactView.h"
+#include "FWCore/ParameterSet/interface/ParameterSetDescriptionFiller.h"
+#include "FWCore/Utilities/interface/Exception.h"
 #include "Geometry/Records/interface/IdealGeometryRecord.h"
 #include "Geometry/Records/interface/PTrackerParametersRcd.h"
 #include "Geometry/TrackerGeometryBuilder/interface/TrackerParametersFromDD.h"
-#include "CondFormats/GeometryObjects/interface/PTrackerParameters.h"
+
+class DDCompactView;
+
+namespace edm { class ParameterSet; }
 
 TrackerParametersESModule::TrackerParametersESModule( const edm::ParameterSet& )
 {

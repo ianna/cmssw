@@ -1,13 +1,13 @@
 #ifndef SOMEPACKAGE_WRITEESALIGNMENTS_H
 #define SOMEPACKAGE_WRITEESALIGNMENTS_H 1
 
-namespace edm
-{
-   class EventSetup ;
-}
+#include <vector>
+#include "CLHEP/Vector/ThreeVector.icc"
+#include "CondFormats/Alignment/interface/AlignTransform.h"
 
-#include "CondFormats/Alignment/interface/Alignments.h"
+class Alignments;
 
+namespace edm { class EventSetup; }
 
 class WriteESAlignments
 {

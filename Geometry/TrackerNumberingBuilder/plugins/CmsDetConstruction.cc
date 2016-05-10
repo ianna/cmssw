@@ -1,6 +1,11 @@
 #include "Geometry/TrackerNumberingBuilder/plugins/CmsDetConstruction.h"
-#include "Geometry/TrackerNumberingBuilder/plugins/ExtractStringFromDDD.h"
+#include <stdint.h>
 #include "DataFormats/DetId/interface/DetId.h"
+#include "DetectorDescription/Core/interface/DDFilteredView.h"
+#include "FWCore/MessageLogger/interface/MessageLogger.h"
+#include "Geometry/TrackerNumberingBuilder/interface/CmsTrackerStringToEnum.h"
+#include "Geometry/TrackerNumberingBuilder/interface/GeometricDet.h"
+#include "Geometry/TrackerNumberingBuilder/plugins/ExtractStringFromDDD.h"
 
 void CmsDetConstruction::buildComponent(DDFilteredView& fv, 
 					GeometricDet *mother, 

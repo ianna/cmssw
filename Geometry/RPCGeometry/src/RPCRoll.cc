@@ -1,7 +1,10 @@
 #include "Geometry/RPCGeometry/interface/RPCRoll.h"
+#include <math.h>
+#include "Geometry/CommonTopologies/interface/StripTopology.h"
 #include "Geometry/RPCGeometry/interface/RPCRollSpecs.h"
-#include "Geometry/CommonTopologies/interface/TrapezoidalStripTopology.h"
 
+class GeomDetType;
+class Topology;
 
 RPCRoll::RPCRoll(RPCDetId id, BoundPlane::BoundPlanePointer bp, RPCRollSpecs* rrs) :
   GeomDetUnit(bp), _id(id),_rrs(rrs)

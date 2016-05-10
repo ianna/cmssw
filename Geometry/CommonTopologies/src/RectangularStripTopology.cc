@@ -1,9 +1,5 @@
 #include "Geometry/CommonTopologies/interface/RectangularStripTopology.h"
 
-#include <iostream>
-#include <cmath>
-#include <algorithm>
-
 RectangularStripTopology::RectangularStripTopology(int ns, float p, float l) : 
   thePitch(p), theNumberOfStrips(ns), theStripLength(l) { 
   theOffset = -0.5f*theNumberOfStrips * thePitch;

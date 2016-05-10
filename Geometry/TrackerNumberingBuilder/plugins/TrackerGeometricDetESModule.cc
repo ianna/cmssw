@@ -1,18 +1,22 @@
 #include "Geometry/TrackerNumberingBuilder/plugins/TrackerGeometricDetESModule.h"
-#include "Geometry/TrackerNumberingBuilder/plugins/DDDCmsTrackerContruction.h"
-#include "Geometry/TrackerNumberingBuilder/plugins/CondDBCmsTrackerConstruction.h"
-#include "Geometry/Records/interface/IdealGeometryRecord.h"
-#include "DetectorDescription/Core/interface/DDCompactView.h"
-#include "DetectorDescription/Core/interface/DDVectorGetter.h"
+#include <memory>
+#include <string>
 #include "DetectorDescription/Base/interface/DDutils.h"
-#include "FWCore/Framework/interface/EventSetup.h"
+#include "DetectorDescription/Core/interface/DDVectorGetter.h"
 #include "FWCore/Framework/interface/ESHandle.h"
 #include "FWCore/Framework/interface/ESTransientHandle.h"
 #include "FWCore/Framework/interface/ModuleFactory.h"
 #include "FWCore/ParameterSet/interface/ConfigurationDescriptions.h"
+#include "FWCore/ParameterSet/interface/ParameterSet.h"
 #include "FWCore/ParameterSet/interface/ParameterSetDescription.h"
+#include "FWCore/ParameterSet/interface/ParameterSetDescriptionFiller.h"
+#include "Geometry/Records/interface/IdealGeometryRecord.h"
+#include "Geometry/TrackerNumberingBuilder/interface/GeometricDet.h"
+#include "Geometry/TrackerNumberingBuilder/plugins/CondDBCmsTrackerConstruction.h"
+#include "Geometry/TrackerNumberingBuilder/plugins/DDDCmsTrackerContruction.h"
 
-#include <memory>
+class DDCompactView;
+class PGeometricDet;
 
 using namespace edm;
 

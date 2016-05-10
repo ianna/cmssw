@@ -1,11 +1,18 @@
 #include "TrackerTopologyEP.h"
-#include "FWCore/Utilities/interface/Exception.h"
+#include <string>
+#include <vector>
+#include "CondFormats/GeometryObjects/interface/PTrackerParameters.h"
+#include "FWCore/Framework/interface/ESHandle.h"
+#include "FWCore/Framework/interface/ModuleFactory.h"
 #include "FWCore/MessageLogger/interface/MessageLogger.h"
 #include "FWCore/ParameterSet/interface/ConfigurationDescriptions.h"
 #include "FWCore/ParameterSet/interface/ParameterSetDescription.h"
-#include "FWCore/Framework/interface/ModuleFactory.h"
-#include "FWCore/Framework/interface/ESHandle.h"
+#include "FWCore/ParameterSet/interface/ParameterSetDescriptionFiller.h"
+#include "FWCore/Utilities/interface/Exception.h"
 #include "Geometry/Records/interface/PTrackerParametersRcd.h"
+#include "Geometry/Records/interface/TrackerTopologyRcd.h"
+
+namespace edm { class ParameterSet; }
 
 TrackerTopologyEP::TrackerTopologyEP( const edm::ParameterSet& conf )
 {

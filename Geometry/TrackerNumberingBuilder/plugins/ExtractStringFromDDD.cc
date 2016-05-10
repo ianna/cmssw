@@ -1,8 +1,10 @@
 #include "Geometry/TrackerNumberingBuilder/plugins/ExtractStringFromDDD.h"
-#include "DetectorDescription/Core/interface/DDFilteredView.h"
-#include "FWCore/MessageLogger/interface/MessageLogger.h"
-#include <vector>
 #include <string>
+#include <vector>
+#include "DetectorDescription/Core/interface/DDFilteredView.h"
+#include "DetectorDescription/Core/interface/DDValue.h"
+#include "DetectorDescription/Core/interface/DDsvalues.h"
+#include "FWCore/Utilities/interface/Exception.h"
 
 using namespace cms;
 

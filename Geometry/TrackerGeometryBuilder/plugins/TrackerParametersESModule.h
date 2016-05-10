@@ -1,16 +1,14 @@
 #ifndef Geometry_TrackerGeometryBuilder_TrackerParametersESModule_H
 #define Geometry_TrackerGeometryBuilder_TrackerParametersESModule_H
 
-#include "FWCore/Framework/interface/ESProducer.h"
-#include "FWCore/ParameterSet/interface/ParameterSet.h"
-#include "Geometry/Records/interface/IdealGeometryRecord.h"
 #include <memory>
+#include "FWCore/Framework/interface/ESProducer.h"
 
-namespace edm {
-  class ConfigurationDescriptions;
-}
 class PTrackerParameters;
 class PTrackerParametersRcd;
+
+namespace edm { class ConfigurationDescriptions; }
+namespace edm { class ParameterSet; }
 
 class  TrackerParametersESModule: public edm::ESProducer
 {

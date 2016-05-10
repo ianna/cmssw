@@ -2,14 +2,15 @@
 #define TrackerNumberingBuilder_GeometricDetLoader_h
 
 #include "FWCore/Framework/interface/one/EDAnalyzer.h"
-#include "FWCore/Framework/interface/Event.h"
-#include "FWCore/Framework/interface/EventSetup.h"
-#include "FWCore/ParameterSet/interface/ParameterSet.h"
-
-#include <string>
 
 class GeometricDet;
 class PGeometricDet;
+
+namespace edm { class Event; }
+namespace edm { class EventSetup; }
+namespace edm { class ParameterSet; }
+namespace edm { class Run; }
+namespace edm { namespace one { struct WatchRuns; } }
 
 class GeometricDetLoader : public edm::one::EDAnalyzer<edm::one::WatchRuns> {
 

@@ -1,15 +1,10 @@
 #ifndef TrackerMapDDDtoID_H
 #define TrackerMapDDDtoID_H
 
-#include "Geometry/TrackerNumberingBuilder/interface/GeometricDet.h"
-
+#include <stdint.h>
 #include <map>
 #include <vector>
-#include <string>
-
-
-class DDExpandedView;
-class DDFilteredView;
+#include "Geometry/TrackerNumberingBuilder/interface/GeometricDet.h"
 
 class TrackerMapDDDtoID {
  public:
@@ -20,12 +15,6 @@ class TrackerMapDDDtoID {
 
   TrackerMapDDDtoID(const GeometricDet* iDet);
   ~TrackerMapDDDtoID(){clear();}
-
-  /*
-  unsigned int id(const DDExpandedView &) const;
-  //! calculate the id of a given node
-  unsigned int id(const DDFilteredView &) const;
-  */
 
   //! calculate the id of a given node
   unsigned int id(const nav_type &) const;

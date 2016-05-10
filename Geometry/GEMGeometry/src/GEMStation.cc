@@ -1,6 +1,7 @@
 #include "Geometry/GEMGeometry/interface/GEMStation.h"
 #include "Geometry/GEMGeometry/interface/GEMRing.h"
-#include "Geometry/GEMGeometry/interface/GEMSuperChamber.h"
+
+class GeomDet;
 
 GEMStation::GEMStation(int region, int station) :
   region_(region),

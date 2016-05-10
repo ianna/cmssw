@@ -1,10 +1,15 @@
+#include <math.h>
+#include <memory>
+#include <vector>
+#include "DataFormats/DetId/interface/DetId.h"
+#include "DataFormats/GeometryVector/interface/GlobalPoint.h"
+#include "DataFormats/HcalDetId/interface/HcalCastorDetId.h"
 #include "Geometry/CaloGeometry/interface/CaloCellGeometry.h"
-#include "Geometry/ForwardGeometry/interface/CastorHardcodeGeometryLoader.h"
-#include "Geometry/ForwardGeometry/interface/IdealCastorTrapezoid.h"
+#include "Geometry/CaloGeometry/interface/CaloSubdetectorGeometry.h"
 #include "Geometry/ForwardGeometry/interface/CastorGeometry.h"
+#include "Geometry/ForwardGeometry/interface/CastorHardcodeGeometryLoader.h"
+#include "Geometry/ForwardGeometry/interface/CastorTopology.h"
 #include "Geometry/ForwardGeometry/src/CastorGeometryData.h"
-#include "FWCore/MessageLogger/interface/MessageLogger.h"
-#include <algorithm>
 
 typedef CaloCellGeometry::CCGFloat CCGFloat ;
 

@@ -15,19 +15,18 @@
 //
 //
 
-
-// system include files
 #include <memory>
-
-// user include files
-#include "FWCore/Framework/interface/ModuleFactory.h"
-#include "FWCore/Framework/interface/ESProducer.h"
+#include <string>
 #include "FWCore/Framework/interface/ESHandle.h"
+#include "FWCore/Framework/interface/ESProducer.h"
+#include "FWCore/Framework/interface/ModuleFactory.h"
 #include "FWCore/ParameterSet/interface/ParameterSet.h"
-#include "Geometry/CaloGeometry/interface/CaloSubdetectorGeometry.h"
-#include "Geometry/CaloTopology/interface/HGCalTopology.h"
+#include "FWCore/ParameterSet/interface/ParameterSetDescriptionFiller.h"
 #include "Geometry/HGCalGeometry/interface/HGCalGeometry.h"
 #include "Geometry/HGCalGeometry/interface/HGCalGeometryLoader.h"
+#include "Geometry/Records/interface/IdealGeometryRecord.h"
+
+class HGCalTopology;
 
 //#define DebugLog
 

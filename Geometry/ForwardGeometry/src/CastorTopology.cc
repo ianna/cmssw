@@ -1,7 +1,6 @@
 #include "Geometry/ForwardGeometry/interface/CastorTopology.h"
-#include <cmath>
-#include <iostream>
 #include <algorithm>
+#include <iostream>
 
 static const int MODULE_EM_MAX = 2;
 static const int MODULE_HAD_MAX = 12;

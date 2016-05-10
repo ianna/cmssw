@@ -1,8 +1,6 @@
-
 #include "Geometry/TrackerGeometryBuilder/interface/PlaneBuilderFromGeometricDet.h"
+#include <memory>
 #include "Geometry/TrackerNumberingBuilder/interface/GeometricDet.h"
-
-#include <algorithm>
 
 //#define DEBUG
 

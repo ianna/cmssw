@@ -1,13 +1,17 @@
 #ifndef Geometry_TrackerGeometryBuilder_StripGeomDetUnit_H
 #define Geometry_TrackerGeometryBuilder_StripGeomDetUnit_H
 
-#include "Geometry/CommonDetUnit/interface/TrackerGeomDet.h"
+#include <memory>
 #include "DataFormats/DetId/interface/DetId.h"
+#include "DataFormats/GeometrySurface/interface/Plane.h"
+#include "Geometry/CommonDetUnit/interface/TrackerGeomDet.h"
 #include "Geometry/TrackerGeometryBuilder/interface/ProxyStripTopology.h"
 
+class GeomDetType;
 class StripGeomDetType;
 class StripTopology;
 class SurfaceDeformation;
+class Topology;
 /**
  * StripGeomDetUnit is the abstract class for SiStripGeomDetUnit.
  */

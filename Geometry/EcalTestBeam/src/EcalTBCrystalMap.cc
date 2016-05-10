@@ -1,4 +1,8 @@
 #include "Geometry/EcalTestBeam/interface/EcalTBCrystalMap.h"
+#include <fstream>
+#include "FWCore/MessageLogger/interface/ErrorObj.icc"
+#include "FWCore/MessageLogger/interface/MessageLogger.h"
+#include "FWCore/Utilities/interface/Exception.h"
 
 EcalTBCrystalMap::EcalTBCrystalMap(std::string const & MapFileName) {
                                                                                                                                           

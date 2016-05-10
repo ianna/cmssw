@@ -1,7 +1,10 @@
 #include "Geometry/GEMGeometry/interface/ME0EtaPartition.h"
+#include <math.h>
+#include "Geometry/CommonTopologies/interface/StripTopology.h"
 #include "Geometry/GEMGeometry/interface/ME0EtaPartitionSpecs.h"
-#include "Geometry/CommonTopologies/interface/TrapezoidalStripTopology.h"
 
+class GeomDetType;
+class Topology;
 
 ME0EtaPartition::ME0EtaPartition(ME0DetId id, BoundPlane::BoundPlanePointer bp, ME0EtaPartitionSpecs* rrs) :
   GeomDetUnit(bp), id_(id),specs_(rrs)

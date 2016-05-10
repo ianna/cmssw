@@ -1,8 +1,8 @@
-#include "Geometry/EcalTestBeam/interface/EcalTBCrystalMap.h"
-#include "FWCore/ParameterSet/interface/FileInPath.h"
+#include <iostream>
 #include "CLHEP/Random/RandFlat.h"
-
-#include <string>
+#include "CLHEP/Random/RandFlat.icc"
+#include "FWCore/ParameterSet/interface/FileInPath.h"
+#include "Geometry/EcalTestBeam/interface/EcalTBCrystalMap.h"
 
 int main()
 {

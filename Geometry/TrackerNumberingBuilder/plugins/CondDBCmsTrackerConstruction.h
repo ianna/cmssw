@@ -1,12 +1,7 @@
 #ifndef Geometry_TrackerNumberingBuilder_CondDBCmsTrackerConstruction_H
 #define Geometry_TrackerNumberingBuilder_CondDBCmsTrackerConstruction_H
 
-#include "Geometry/TrackerNumberingBuilder/interface/CmsTrackerStringToEnum.h"
-#include "FWCore/ParameterSet/interface/types.h"
-#include <string>
-
 class GeometricDet;
-class DDCompactView;
 class PGeometricDet;
 
 /**

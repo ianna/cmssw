@@ -8,16 +8,14 @@
  *  \author M. Maggi - INFN Bari
  */
 
-#include "DataFormats/DetId/interface/DetId.h"
-#include "Geometry/CommonDetUnit/interface/TrackingGeometry.h"
-#include "Geometry/RPCGeometry/interface/RPCRoll.h"
-#include "Geometry/RPCGeometry/interface/RPCChamber.h"
 #include <vector>
-#include <map>
+#include "DataFormats/DetId/interface/DetId.h"
+#include "DataFormats/MuonDetId/interface/RPCDetId.h"
+#include "Geometry/CommonDetUnit/interface/GeomDet.h"
+#include "Geometry/CommonDetUnit/interface/TrackingGeometry.h"
 
-
-class GeomDetType;
-
+class RPCChamber;
+class RPCRoll;
 
 class RPCGeometry : public TrackingGeometry {
 

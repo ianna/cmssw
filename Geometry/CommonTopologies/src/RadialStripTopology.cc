@@ -1,4 +1,5 @@
 #include <Geometry/CommonTopologies/interface/RadialStripTopology.h>
+#include <ostream>
 #include "FWCore/Utilities/interface/Exception.h"
 
 float RadialStripTopology::pitch() const {  

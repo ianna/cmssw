@@ -32,10 +32,15 @@
 // ------------------------------------------------------------------
 // Add big pixel flags for cluster range 15/3/07 V.Chiochia
 
-# include "Geometry/CommonTopologies/interface/PixelTopology.h"
-# include "DataFormats/SiPixelDetId/interface/PixelChannelIdentifier.h"
-# include "FWCore/MessageLogger/interface/MessageLogger.h"
-
+#include <utility>
+#include "DataFormats/GeometryCommonDetAlgo/interface/MeasurementError.h"
+#include "DataFormats/GeometryCommonDetAlgo/interface/MeasurementPoint.h"
+#include "DataFormats/GeometrySurface/interface/LocalError.h"
+#include "DataFormats/GeometryVector/interface/LocalPoint.h"
+#include "DataFormats/SiPixelDetId/interface/PixelChannelIdentifier.h"
+#include "FWCore/MessageLogger/interface/MessageLogger.h"
+#include "FWCore/Utilities/interface/Likely.h"
+#include "Geometry/CommonTopologies/interface/PixelTopology.h"
 
 class RectangularPixelTopology final : public PixelTopology
 {

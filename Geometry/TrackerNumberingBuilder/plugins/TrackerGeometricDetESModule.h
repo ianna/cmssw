@@ -1,15 +1,14 @@
 #ifndef Geometry_TrackerNumberingBuilder_TrackerGeometricDetESModule_H
 #define Geometry_TrackerNumberingBuilder_TrackerGeometricDetESModule_H
 
+#include <memory>
 #include "FWCore/Framework/interface/ESProducer.h"
-
-namespace edm {
-  class ConfigurationDescriptions;
-  class ParameterSet;
-}
 
 class GeometricDet;
 class IdealGeometryRecord;
+
+namespace edm { class ConfigurationDescriptions; }
+namespace edm { class ParameterSet; }
 
 class TrackerGeometricDetESModule : public edm::ESProducer
 {

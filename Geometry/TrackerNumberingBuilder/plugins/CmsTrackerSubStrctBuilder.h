@@ -1,9 +1,11 @@
 #ifndef Geometry_TrackerNumberingBuilder_CmsTrackerSubStrctBuilder_H
 # define Geometry_TrackerNumberingBuilder_CmsTrackerSubStrctBuilder_H
 
-# include "Geometry/TrackerNumberingBuilder/plugins/CmsTrackerLevelBuilder.h"
-# include "FWCore/ParameterSet/interface/types.h"
-# include <string>
+#include <string>
+#include "Geometry/TrackerNumberingBuilder/plugins/CmsTrackerLevelBuilder.h"
+
+class DDFilteredView;
+class GeometricDet;
 
 /**
  * Classes which abuilds all the tracker substructures

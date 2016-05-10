@@ -1,14 +1,16 @@
 #ifndef Geometry_TrackerGeometryBuilder_PlaneBuilderForGluedDet_H
 #define Geometry_TrackerGeometryBuilder_PlaneBuilderForGluedDet_H
 
-#include "DataFormats/GeometrySurface/interface/Plane.h"
-#include "DataFormats/GeometrySurface/interface/ReferenceCounted.h"
-#include "DataFormats/GeometrySurface/interface/RectangularPlaneBounds.h"
-#include "DataFormats/GeometrySurface/interface/TrapezoidalPlaneBounds.h"
-#include "Geometry/CommonDetUnit/interface/GeomDetUnit.h"
 #include <utility>
 #include <vector>
+#include "DataFormats/GeometrySurface/interface/GloballyPositioned.h"
+#include "DataFormats/GeometrySurface/interface/Plane.h"
+#include "DataFormats/GeometrySurface/interface/ReferenceCounted.h"
+#include "DataFormats/GeometrySurface/interface/Surface.h"
+#include "DataFormats/GeometryVector/interface/GlobalVector.h"
+#include "Geometry/CommonDetUnit/interface/GeomDet.h"
 
+class RectangularPlaneBounds;
 
 /** Builds the minimal rectangular box that contains all input GeomDetUnits fully.
  */

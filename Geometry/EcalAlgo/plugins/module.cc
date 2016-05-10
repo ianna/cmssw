@@ -1,3 +1,10 @@
+#include <memory>
+#include <string>
+#include "FWCore/Framework/interface/ModuleFactory.h"
+#include "FWCore/ParameterSet/interface/ParameterSetDescriptionFiller.h"
+#include "FWCore/Utilities/interface/Exception.h"
+#include "Geometry/CaloEventSetup/interface/CaloGeometryDBEP.h"
+#include "Geometry/CaloEventSetup/interface/CaloGeometryDBReader.h"
 #include "Geometry/CaloEventSetup/interface/CaloGeometryEP.h"
 #include "Geometry/EcalAlgo/interface/EcalBarrelGeometry.h"
 #include "Geometry/EcalAlgo/interface/EcalEndcapGeometry.h"

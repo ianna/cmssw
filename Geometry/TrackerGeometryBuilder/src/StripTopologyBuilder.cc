@@ -1,8 +1,9 @@
 #include "Geometry/TrackerGeometryBuilder/interface/StripTopologyBuilder.h"
-#include "Geometry/CommonTopologies/interface/RectangularStripTopology.h"
-#include "Geometry/CommonTopologies/interface/TkRadialStripTopology.h"
+#include <math.h>
 #include "DataFormats/GeometrySurface/interface/Bounds.h"
 #include "DataFormats/GeometrySurface/interface/TrapezoidalPlaneBounds.h"
+#include "Geometry/CommonTopologies/interface/RectangularStripTopology.h"
+#include "Geometry/CommonTopologies/interface/TkRadialStripTopology.h"
 
 StripTopologyBuilder::StripTopologyBuilder( void )
   : theAPVNumb( 0.0 )

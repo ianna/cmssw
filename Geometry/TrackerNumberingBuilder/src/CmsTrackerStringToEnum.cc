@@ -1,4 +1,5 @@
 #include "Geometry/TrackerNumberingBuilder/interface/CmsTrackerStringToEnum.h"
+#include <utility>  // for pair
 
 const CmsTrackerStringToEnum::Impl CmsTrackerStringToEnum::m_impl;
 

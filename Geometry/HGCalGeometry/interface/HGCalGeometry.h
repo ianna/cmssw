@@ -9,19 +9,21 @@
  * by regular CaloGeometryLoader<T>
  */
 
-#include "DataFormats/Common/interface/AtomicPtrCache.h"
+#include <stdint.h>
+#include <set>
+#include <string>
+#include <vector>
+#include "DataFormats/DetId/interface/DetId.h"
+#include "DataFormats/ForwardDetId/interface/ForwardSubdetector.h"
 #include "DataFormats/GeometryVector/interface/GlobalPoint.h"
-#include "DataFormats/ForwardDetId/interface/HGCEEDetId.h"
-#include "DataFormats/ForwardDetId/interface/HGCHEDetId.h"
+#include "DetectorDescription/Core/interface/DDFilteredView.h"
+#include "Geometry/CaloGeometry/interface/CaloCellGeometry.h"
 #include "Geometry/CaloGeometry/interface/CaloSubdetectorGeometry.h"
 #include "Geometry/CaloGeometry/interface/FlatTrd.h"
-#include "Geometry/Records/interface/IdealGeometryRecord.h"
-#include "DetectorDescription/Core/interface/DDFilteredView.h"
-#include "Geometry/CaloTopology/interface/HGCalTopology.h"
 #include "Geometry/Records/interface/HGCalGeometryRecord.h"
-#include <vector>
+#include "Geometry/Records/interface/PHGCalRcd.h"
 
-class FlatTrd;
+class HGCalTopology;
 
 class HGCalGeometry final: public CaloSubdetectorGeometry {
 

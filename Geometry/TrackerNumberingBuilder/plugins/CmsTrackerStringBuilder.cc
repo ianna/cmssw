@@ -1,12 +1,13 @@
 #include "Geometry/TrackerNumberingBuilder/plugins/CmsTrackerStringBuilder.h"
-#include "DetectorDescription/Core/interface/DDFilteredView.h"
-#include "Geometry/TrackerNumberingBuilder/interface/GeometricDet.h"
-#include "Geometry/TrackerNumberingBuilder/plugins/ExtractStringFromDDD.h"
-#include "DataFormats/DetId/interface/DetId.h"
-#include "Geometry/TrackerNumberingBuilder/plugins/CmsDetConstruction.h"
-#include "FWCore/MessageLogger/interface/MessageLogger.h"
+#include <stdint.h>
+#include <algorithm>
 #include <vector>
+#include "DataFormats/DetId/interface/DetId.h"
+#include "FWCore/MessageLogger/interface/MessageLogger.h"
+#include "Geometry/TrackerNumberingBuilder/interface/GeometricDet.h"
+#include "Geometry/TrackerNumberingBuilder/plugins/CmsDetConstruction.h"
 
+class DDFilteredView;
 
 void CmsTrackerStringBuilder::buildComponent(DDFilteredView& fv, GeometricDet* g, std::string s){
   CmsDetConstruction theCmsDetConstruction;

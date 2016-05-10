@@ -1,13 +1,19 @@
 #include "Geometry/TrackerNumberingBuilder/plugins/CmsTrackerDiskBuilder.h"
-#include "DetectorDescription/Core/interface/DDFilteredView.h"
-#include "Geometry/TrackerNumberingBuilder/interface/GeometricDet.h"
-#include "Geometry/TrackerNumberingBuilder/plugins/ExtractStringFromDDD.h"
-#include "Geometry/TrackerNumberingBuilder/plugins/CmsTrackerPanelBuilder.h"
-#include "Geometry/TrackerNumberingBuilder/plugins/TrackerStablePhiSort.h"
-#include "DataFormats/DetId/interface/DetId.h"
-#include "FWCore/MessageLogger/interface/MessageLogger.h"
+#include <math.h>
+#include <stdint.h>
 #include <vector>
-#include <algorithm>
+#include "DetectorDescription/Base/interface/DDTranslation.h"
+#include "FWCore/MessageLogger/interface/ErrorObj.icc"
+#include "FWCore/MessageLogger/interface/MessageLogger.h"
+#include "Geometry/TrackerNumberingBuilder/interface/CmsTrackerStringToEnum.h"
+#include "Geometry/TrackerNumberingBuilder/interface/GeometricDet.h"
+#include "Geometry/TrackerNumberingBuilder/plugins/CmsTrackerPanelBuilder.h"
+#include "Geometry/TrackerNumberingBuilder/plugins/ExtractStringFromDDD.h"
+#include "Geometry/TrackerNumberingBuilder/plugins/TrackerStablePhiSort.h"
+#include "boost/bind/bind.hpp"
+#include "boost/bind/bind_template.hpp"
+
+class DDFilteredView;
 
 using namespace std;
 

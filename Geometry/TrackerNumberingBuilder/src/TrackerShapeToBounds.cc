@@ -1,10 +1,13 @@
 #include "Geometry/TrackerNumberingBuilder/interface/TrackerShapeToBounds.h"
+#include <iostream>
+#include "CLHEP/Units/GlobalSystemOfUnits.h"
+#include "CLHEP/Units/SystemOfUnits.h"
 #include "DataFormats/GeometrySurface/interface/OpenBounds.h"
 #include "DataFormats/GeometrySurface/interface/RectangularPlaneBounds.h"
 #include "DataFormats/GeometrySurface/interface/TrapezoidalPlaneBounds.h"
-#include "CLHEP/Units/GlobalSystemOfUnits.h"
-#include <algorithm>
-#include <iostream>
+
+class Bounds;
+
 //#define DEBUG
 
   /* find out about the rotations of the detectors:

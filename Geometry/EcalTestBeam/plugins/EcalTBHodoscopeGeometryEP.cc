@@ -10,26 +10,17 @@
  Implementation:
      <Notes on implementation>
 */
-//
-
-//
-//
 
 #include "Geometry/EcalTestBeam/plugins/EcalTBHodoscopeGeometryEP.h"
-#include "Geometry/EcalTestBeam/plugins/EcalTBHodoscopeGeometryLoaderFromDDD.h"
-
 #include <iostream>
-//
-// constants, enums and typedefs
-//
+#include "FWCore/Framework/interface/ESTransientHandle.h"
+#include "Geometry/EcalTestBeam/plugins/EcalTBHodoscopeGeometryLoaderFromDDD.h"
+#include "Geometry/Records/interface/IdealGeometryRecord.h"
 
-//
-// static data member definitions
-//
+class DDCompactView;
 
-//
-// constructors and destructor
-//
+namespace edm { class ParameterSet; }
+
 EcalTBHodoscopeGeometryEP::EcalTBHodoscopeGeometryEP(const edm::ParameterSet& iConfig)
 {
    //the following line is needed to tell the framework what

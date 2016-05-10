@@ -6,15 +6,31 @@
  * by regular CaloGeometryLoader<T>
  */
 #include "Geometry/HGCalGeometry/interface/HGCalGeometry.h"
-#include "Geometry/CaloGeometry/interface/CaloGenericDetId.h"
+#include <ext/alloc_traits.h>
+#include <algorithm>                                               // for sort
+#include <cmath>                                                   // for fabs
+#include <memory>
+#include <utility>                                                 // for pair
+#include "CLHEP/Geometry/Point3D.h"
+#include "CLHEP/Geometry/Transform3D.h"
+#include "CLHEP/Geometry/Transform3D.icc"
+#include "CLHEP/Vector/Rotation.h"
+#include "CLHEP/Vector/Rotation.icc"
+#include "CLHEP/Vector/ThreeVector.h"
+#include "CLHEP/Vector/ThreeVector.icc"
+#include "DataFormats/ForwardDetId/interface/HGCEEDetId.h"
+#include "DataFormats/ForwardDetId/interface/HGCHEDetId.h"
+#include "DataFormats/ForwardDetId/interface/HGCalDetId.h"
+#include "DataFormats/GeometryVector/interface/Phi.h"              // for Phi
+#include "FWCore/MessageLogger/interface/MessageLogger.h"
+#include "FWCore/Utilities/interface/typelookup.h"
 #include "Geometry/CaloGeometry/interface/CaloCellGeometry.h"
-#include "Geometry/CaloGeometry/interface/TruncatedPyramid.h"
-#include "FWCore/Utilities/interface/Exception.h"
-
-#include <cmath>
-
-#include <Math/Transform3D.h>
-#include <Math/EulerAngles.h>
+#include "Geometry/CaloTopology/interface/HGCalTopology.h"
+#include "Geometry/HGCalCommonData/interface/HGCalDDDConstants.h"
+#include "Geometry/HGCalCommonData/interface/HGCalGeometryMode.h"
+#include "Geometry/HGCalCommonData/interface/HGCalParameters.h"
+#include "Math/GenVector/EulerAngles.h"
+#include "Math/GenVector/Transform3D.h"
 
 typedef CaloCellGeometry::Tr3D Tr3D;
 typedef std::vector<float> ParmVec;

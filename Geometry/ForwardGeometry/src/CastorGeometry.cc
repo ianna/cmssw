@@ -1,9 +1,14 @@
-#include "Geometry/CaloGeometry/interface/CaloGenericDetId.h"
+#include <assert.h>
+#include <ext/alloc_traits.h>
+#include <stdint.h>
+#include <vector>
+#include "DataFormats/DetId/interface/DetId.h"
+#include "DataFormats/GeometryVector/interface/GlobalPoint.h"
 #include "Geometry/CaloGeometry/interface/CaloCellGeometry.h"
+#include "Geometry/CaloGeometry/interface/CaloGenericDetId.h"
 #include "Geometry/ForwardGeometry/interface/CastorGeometry.h"
+#include "Geometry/ForwardGeometry/interface/CastorTopology.h"
 #include "Geometry/ForwardGeometry/interface/IdealCastorTrapezoid.h"
-#include "CastorGeometryData.h"
-#include <algorithm>
 
 typedef CaloCellGeometry::CCGFloat CCGFloat ;
 typedef CaloCellGeometry::Pt3D     Pt3D     ;

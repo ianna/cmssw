@@ -14,11 +14,12 @@
 // Original Author:  Edmundo Garcia
 //         Created:  Mon Aug  6 12:33:33 CDT 2007
 //
-#include "Geometry/Records/interface/ZDCGeometryRecord.h"
 #include "Geometry/ForwardGeometry/plugins/ZdcHardcodeGeometryEP.h"
+#include "FWCore/ParameterSet/interface/ParameterSet.h"
 #include "Geometry/ForwardGeometry/interface/ZdcGeometry.h"
-#include "FWCore/MessageLogger/interface/MessageLogger.h"
+#include "Geometry/ForwardGeometry/interface/ZdcHardcodeGeometryLoader.h"
 
+class ZDCGeometryRecord;
 
 ZdcHardcodeGeometryEP::ZdcHardcodeGeometryEP( const edm::ParameterSet& ps ) :
    m_loader   (0),

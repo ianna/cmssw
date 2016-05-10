@@ -1,10 +1,12 @@
 #include "Geometry/TrackerNumberingBuilder/plugins/DDDCmsTrackerContruction.h"
+#include "DetectorDescription/Core/interface/DDFilter.h"
 #include "DetectorDescription/Core/interface/DDFilteredView.h"
-#include "DetectorDescription/Core/interface/DDCompactView.h"
+#include "DetectorDescription/Core/interface/DDValue.h"
+#include "FWCore/Utilities/interface/Exception.h"
 #include "Geometry/TrackerNumberingBuilder/interface/GeometricDet.h"
-#include "Geometry/TrackerNumberingBuilder/plugins/ExtractStringFromDDD.h"
 #include "Geometry/TrackerNumberingBuilder/plugins/CmsTrackerBuilder.h"
 #include "Geometry/TrackerNumberingBuilder/plugins/CmsTrackerDetIdBuilder.h"
+#include "Geometry/TrackerNumberingBuilder/plugins/ExtractStringFromDDD.h"
 
 using namespace cms;
 

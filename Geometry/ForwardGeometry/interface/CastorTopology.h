@@ -2,6 +2,7 @@
 #define GEOMETRY_CALOTOPOLOGY_CASTORTOPOLOGY_H 1
 
 #include <vector>
+#include "DataFormats/DetId/interface/DetId.h"
 #include "DataFormats/HcalDetId/interface/HcalCastorDetId.h"
 #include "Geometry/CaloTopology/interface/CaloSubdetectorTopology.h"
 

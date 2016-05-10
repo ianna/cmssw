@@ -1,6 +1,35 @@
-#include "Geometry/HGCalGeometry/interface/HGCalGeometry.h"
+#include <assert.h>
+#include <ext/alloc_traits.h>
+#include <algorithm>
+#include <iostream>
+#include <memory>
+#include <string>
+#include <vector>
+#include "CLHEP/Geometry/Transform3D.icc"
+#include "CLHEP/Vector/Rotation.icc"
+#include "CLHEP/Vector/RotationInterfaces.h"
+#include "CLHEP/Vector/RotationInterfaces.icc"
+#include "CLHEP/Vector/ThreeVector.h"
+#include "CLHEP/Vector/ThreeVector.icc"
+#include "CondFormats/GeometryObjects/interface/PCaloGeometry.h"
+#include "DataFormats/DetId/interface/DetId.h"
+#include "DataFormats/GeometryVector/interface/GlobalPoint.h"
+#include "FWCore/Framework/interface/ESHandle.h"
+#include "FWCore/Framework/interface/ModuleFactory.h"
+#include "FWCore/ParameterSet/interface/ParameterSetDescriptionFiller.h"
+#include "FWCore/Utilities/interface/Exception.h"
 #include "Geometry/CaloEventSetup/interface/CaloGeometryDBEP.h"
 #include "Geometry/CaloEventSetup/interface/CaloGeometryDBReader.h"
+#include "Geometry/CaloGeometry/interface/CaloCellGeometry.h"
+#include "Geometry/CaloGeometry/interface/CaloSubdetectorGeometry.h"
+#include "Geometry/CaloGeometry/interface/FlatTrd.h"
+#include "Geometry/CaloTopology/interface/HGCalTopology.h"
+#include "Geometry/HGCalGeometry/interface/HGCalGeometry.h"
+#include "Geometry/Records/interface/IdealGeometryRecord.h"
+#include "Geometry/Records/interface/PHGCalRcd.h"
+#include "Math/GenVector/EulerAngles.h"
+#include "Math/GenVector/Transform3D.h"
+#include "Math/GenVector/Translation3D.h"
 
 template<>
 CaloGeometryDBEP<HGCalGeometry, CaloGeometryDBReader>::PtrType

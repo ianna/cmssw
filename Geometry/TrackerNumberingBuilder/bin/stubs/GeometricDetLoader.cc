@@ -1,23 +1,29 @@
 #include "GeometricDetLoader.h"
-
-#include "FWCore/ServiceRegistry/interface/Service.h"
-#include "FWCore/ParameterSet/interface/ParameterSet.h"
-#include "FWCore/Framework/interface/Event.h"
-#include "CondCore/DBOutputService/interface/PoolDBOutputService.h"
-#include "FWCore/Framework/interface/EventSetup.h"
-#include "FWCore/Framework/interface/ESHandle.h"
-#include "CondFormats/GeometryObjects/interface/PGeometricDet.h"
-
-#include "Geometry/Records/interface/IdealGeometryRecord.h"
-#include "Geometry/TrackerNumberingBuilder/interface/GeometricDet.h"
-#include <DetectorDescription/Core/interface/DDCompactView.h>
-#include <DetectorDescription/Core/interface/DDExpandedView.h>
-
-#include "Geometry/Records/interface/TrackerDigiGeometryRecord.h"
-
+#include <exception>
 #include <iostream>
+#include <memory>
 #include <string>
 #include <vector>
+#include "CondCore/CondDB/interface/Exception.h"
+#include "CondCore/DBOutputService/interface/PoolDBOutputService.h"
+#include "CondFormats/GeometryObjects/interface/PGeometricDet.h"
+#include "DataFormats/DetId/interface/DetId.h"
+#include "DetectorDescription/Base/interface/DDRotationMatrix.h"
+#include "DetectorDescription/Base/interface/DDTranslation.h"
+#include "DetectorDescription/Core/interface/DDName.h"
+#include "FWCore/Framework/interface/ESHandle.h"
+#include "FWCore/Framework/interface/EventSetup.h"
+#include "FWCore/Framework/interface/MakerMacros.h"
+#include "FWCore/Framework/src/WorkerMaker.h"
+#include "FWCore/ParameterSet/interface/ParameterSetDescriptionFiller.h"
+#include "FWCore/ServiceRegistry/interface/Service.h"
+#include "Geometry/Records/interface/IdealGeometryRecord.h"
+#include "Geometry/TrackerNumberingBuilder/interface/GeometricDet.h"
+
+class DDCompactView;
+
+namespace edm { class ParameterSet; }
+namespace edm { class Run; }
 
 // just a reminder to self... beware errors caused by levels.  Look
 // at how tracker is built and how GeometricSearchTracker.h is built 

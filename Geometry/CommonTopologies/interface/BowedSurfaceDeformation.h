@@ -12,10 +12,8 @@
 ///  \author    : Gero Flucke
 ///  date       : October 2010
 
+#include <vector>
 #include "Geometry/CommonTopologies/interface/SurfaceDeformation.h"
-
-// already included in the above:
-// #include <vector>
 
 class BowedSurfaceDeformation : public SurfaceDeformation
 {

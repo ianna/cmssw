@@ -1,16 +1,28 @@
+#include <CLHEP/Geometry/Plane3D.h>
+#include <assert.h>
+#include <ext/alloc_traits.h>
+#include <math.h>
+#include <stdint.h>
+#include <algorithm>
+#include <atomic>
+#include <cstdlib>
+#include <memory>
+#include <vector>
+#include "CLHEP/Geometry/BasicVector3D.h"
+#include "DataFormats/DetId/interface/DetId.h"
+#include "DataFormats/EcalDetId/interface/EBDetId.h"
+#include "DataFormats/EcalDetId/interface/EEDetId.h"
+#include "DataFormats/GeometryVector/interface/GlobalPoint.h"
+#include "DataFormats/GeometryVector/interface/Phi.h"
+#include "DataFormats/Math/interface/deltaR.h"
+#include "FWCore/Utilities/interface/Exception.h"
+#include "Geometry/CaloGeometry/interface/CaloCellGeometry.h"
 #include "Geometry/CaloGeometry/interface/CaloGenericDetId.h"
+#include "Geometry/CaloGeometry/interface/CaloSubdetectorGeometry.h"
+#include "Geometry/CaloGeometry/interface/EZArrayFL.h"
+#include "Geometry/CaloGeometry/interface/EZMgrFL.h"
 #include "Geometry/CaloGeometry/interface/TruncatedPyramid.h"
 #include "Geometry/EcalAlgo/interface/EcalBarrelGeometry.h"
-#include "Geometry/CaloGeometry/interface/CaloCellGeometry.h"
-#include "FWCore/Utilities/interface/Exception.h"
-#include "DataFormats/EcalDetId/interface/EBDetId.h"
-
-#include <CLHEP/Geometry/Point3D.h>
-#include <CLHEP/Geometry/Plane3D.h>
-#include <CLHEP/Geometry/Vector3D.h>
-
-#include <iomanip>
-#include <iostream>
 
 typedef CaloCellGeometry::CCGFloat CCGFloat ;
 typedef CaloCellGeometry::Pt3D     Pt3D     ;

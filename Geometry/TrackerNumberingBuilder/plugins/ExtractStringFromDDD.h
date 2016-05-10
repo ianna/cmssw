@@ -1,8 +1,6 @@
 #ifndef Geometry_TrackerNumberingBuilder_ExtractStringFromDDD_H
 #define Geometry_TrackerNumberingBuilder_ExtractStringFromDDD_H
 
-#include "DetectorDescription/Core/interface/DDFilteredView.h"
-#include "FWCore/ParameterSet/interface/types.h"
 #include <string>
 
 class DDFilteredView;

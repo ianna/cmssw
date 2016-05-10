@@ -1,25 +1,21 @@
 #ifndef Geometry_TrackerNumberingBuilder_GeometricDet_H
 #define Geometry_TrackerNumberingBuilder_GeometricDet_H
 
+#include <stddef.h>
+#include <memory>
+#include <vector>
 #include "CondFormats/GeometryObjects/interface/PGeometricDet.h"
-#include "DetectorDescription/Core/interface/DDExpandedView.h"
+#include "DataFormats/DetId/interface/DetId.h"
+#include "DataFormats/GeometrySurface/interface/GloballyPositioned.h"
+#include "DataFormats/GeometrySurface/interface/Surface.h"
 #include "DetectorDescription/Base/interface/DDRotationMatrix.h"
 #include "DetectorDescription/Base/interface/DDTranslation.h"
+#include "DetectorDescription/Core/interface/DDExpandedNode.h"
+#include "DetectorDescription/Core/interface/DDExpandedView.h"
+#include "DetectorDescription/Core/interface/DDName.h"
 #include "DetectorDescription/Core/interface/DDSolidShapes.h"
-#include "DataFormats/GeometrySurface/interface/Surface.h"
-#include "DataFormats/GeometrySurface/interface/Bounds.h"
-#include "DataFormats/DetId/interface/DetId.h"
 
-#include <vector>
-#include <memory>
-#include "FWCore/ParameterSet/interface/types.h"
-
-#include <ext/pool_allocator.h>
-// waiting for template-alias
-//#define PoolAlloc  __gnu_cxx::__pool_alloc
-// MEC: testing whether we need all bits-and-pieces.  Setting this makes GeometricDet like it used to be.
-//#define GEOMETRICDETDEBUG
-//class DetId;
+class Bounds;
 class DDFilteredView;
 
 /**

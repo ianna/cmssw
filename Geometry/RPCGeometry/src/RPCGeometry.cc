@@ -4,8 +4,11 @@
  */
 
 #include <Geometry/RPCGeometry/interface/RPCGeometry.h>
-#include <Geometry/CommonDetUnit/interface/GeomDetUnit.h>
+#include <unordered_map>
+#include <utility>
 #include "FWCore/MessageLogger/interface/MessageLogger.h"
+#include "Geometry/RPCGeometry/interface/RPCChamber.h"
+#include "Geometry/RPCGeometry/interface/RPCRoll.h"
 
 RPCGeometry::RPCGeometry(){}
 

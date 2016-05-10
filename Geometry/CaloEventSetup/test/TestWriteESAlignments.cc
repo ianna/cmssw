@@ -1,12 +1,17 @@
-#include "FWCore/ParameterSet/interface/ParameterSet.h"
-#include "FWCore/ServiceRegistry/interface/Service.h"
-#include "FWCore/Framework/interface/EventSetup.h"
-#include "FWCore/Framework/interface/one/EDAnalyzer.h"
+#include <memory>
+#include <string>
+#include <vector>
 #include "FWCore/Framework/interface/MakerMacros.h"
+#include "FWCore/Framework/interface/one/EDAnalyzer.h"
+#include "FWCore/Framework/src/WorkerMaker.h"
 #include "FWCore/MessageLogger/interface/MessageLogger.h"
-
+#include "FWCore/ParameterSet/interface/ParameterSetDescriptionFiller.h"
 #include "Geometry/EcalAlgo/interface/EcalPreshowerGeometry.h"
 #include "Geometry/EcalAlgo/interface/WriteESAlignments.h"
+
+namespace edm { class Event; }
+namespace edm { class EventSetup; }
+namespace edm { class ParameterSet; }
 
 typedef WriteESAlignments WEA ;
 

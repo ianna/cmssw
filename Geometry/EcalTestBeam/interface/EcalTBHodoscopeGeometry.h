@@ -1,10 +1,13 @@
 #ifndef Geometry_EcalTestBeam_EcalTBHodoscopeGeometry_HH
 #define Geometry_EcalTestBeam_EcalTBHodoscopeGeometry_HH
 
+#include <stdint.h>
+#include <vector>
+#include "DataFormats/DetId/interface/DetId.h"
+#include "DataFormats/GeometryVector/interface/GlobalPoint.h"
+#include "Geometry/CaloGeometry/interface/CaloCellGeometry.h"
 #include "Geometry/CaloGeometry/interface/CaloSubdetectorGeometry.h"
 #include "Geometry/CaloGeometry/interface/PreshowerStrip.h"
-
-#include <vector>
 
 class EcalTBHodoscopeGeometry : public CaloSubdetectorGeometry
 {

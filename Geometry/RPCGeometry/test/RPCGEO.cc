@@ -16,31 +16,34 @@
 //
 //
 
-
-// system include files
-#include <memory>
-#include <fstream>
-#include <iomanip>
-
-// user include files
-#include "FWCore/Framework/interface/Frameworkfwd.h"
-#include "FWCore/Framework/interface/one/EDAnalyzer.h"
-#include "FWCore/Framework/interface/ESHandle.h"
-#include "FWCore/Framework/interface/Event.h"
-#include "FWCore/Framework/interface/MakerMacros.h"
-#include "FWCore/ParameterSet/interface/ParameterSet.h"
-
-#include "SimDataFormats/TrackingHit/interface/PSimHitContainer.h"
-#include "SimDataFormats/TrackingHit/interface/PSimHit.h"
-#include <DataFormats/RPCDigi/interface/RPCDigi.h>
-#include <DataFormats/RPCDigi/interface/RPCDigiCollection.h>
 #include <DataFormats/MuonDetId/interface/RPCDetId.h>
-
-#include <Geometry/Records/interface/MuonGeometryRecord.h>
-#include <Geometry/RPCGeometry/interface/RPCGeometry.h>
-#include <Geometry/RPCGeometry/interface/RPCGeomServ.h>
 #include <Geometry/CommonTopologies/interface/RectangularStripTopology.h>
 #include <Geometry/CommonTopologies/interface/TrapezoidalStripTopology.h>
+#include <Geometry/RPCGeometry/interface/RPCGeomServ.h>
+#include <Geometry/RPCGeometry/interface/RPCGeometry.h>
+#include <Geometry/Records/interface/MuonGeometryRecord.h>
+#include <math.h>
+#include <iomanip>
+#include <iostream>
+#include <memory>
+#include <string>
+#include <vector>
+#include "DataFormats/GeometrySurface/interface/Plane.h"
+#include "DataFormats/GeometryVector/interface/GlobalPoint.h"
+#include "FWCore/Framework/interface/ESHandle.h"
+#include "FWCore/Framework/interface/EventSetup.h"
+#include "FWCore/Framework/interface/MakerMacros.h"
+#include "FWCore/Framework/interface/one/EDAnalyzer.h"
+#include "FWCore/Framework/src/WorkerMaker.h"
+#include "FWCore/ParameterSet/interface/ParameterSetDescriptionFiller.h"
+#include "Geometry/CommonDetUnit/interface/GeomDet.h"
+#include "Geometry/CommonDetUnit/interface/TrackingGeometry.h"
+#include "Geometry/CommonTopologies/interface/Topology.h"
+#include "Geometry/RPCGeometry/interface/RPCChamber.h"
+#include "Geometry/RPCGeometry/interface/RPCRoll.h"
+
+namespace edm { class Event; }
+namespace edm { class ParameterSet; }
 
 class RPCGEO : public edm::one::EDAnalyzer<>
 {

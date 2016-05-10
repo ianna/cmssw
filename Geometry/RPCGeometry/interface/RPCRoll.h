@@ -1,14 +1,18 @@
 #ifndef Geometry_RPCSimAlgo_RPCRoll_H
 #define Geometry_RPCSimAlgo_RPCRoll_H
 
-#include "Geometry/CommonDetUnit/interface/GeomDetUnit.h"
-#include "Geometry/CommonDetUnit/interface/GeomDetType.h"
+#include "DataFormats/GeometrySurface/interface/LocalError.h"
+#include "DataFormats/GeometrySurface/interface/Plane.h"
+#include "DataFormats/GeometryVector/interface/LocalPoint.h"
 #include "DataFormats/MuonDetId/interface/RPCDetId.h"
-#include "DataFormats/GeometryVector/interface/GlobalPoint.h"
+#include "Geometry/CommonDetUnit/interface/GeomDet.h"
 
-class StripTopology;
-class RPCRollSpecs;
+class GeomDetType;
 class RPCChamber;
+class RPCRollSpecs;
+class StripTopology;
+class Topology;
+
 class RPCRoll : public GeomDetUnit{
 
  public:

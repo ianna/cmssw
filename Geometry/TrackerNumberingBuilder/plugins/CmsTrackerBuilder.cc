@@ -1,15 +1,17 @@
 #include "Geometry/TrackerNumberingBuilder/plugins/CmsTrackerBuilder.h"
-#include "DetectorDescription/Core/interface/DDFilteredView.h"
-#include "Geometry/TrackerNumberingBuilder/interface/GeometricDet.h"
-#include "Geometry/TrackerNumberingBuilder/plugins/ExtractStringFromDDD.h"
-#include "DataFormats/DetId/interface/DetId.h"
+#include <stdint.h>
+#include <algorithm>
+#include <vector>
+#include "FWCore/MessageLogger/interface/ErrorObj.icc"
 #include "FWCore/MessageLogger/interface/MessageLogger.h"
-
-#include "Geometry/TrackerNumberingBuilder/plugins/CmsTrackerSubStrctBuilder.h"
+#include "Geometry/TrackerNumberingBuilder/interface/CmsTrackerStringToEnum.h"
+#include "Geometry/TrackerNumberingBuilder/interface/GeometricDet.h"
 #include "Geometry/TrackerNumberingBuilder/plugins/CmsTrackerPixelPhase1EndcapBuilder.h"
 #include "Geometry/TrackerNumberingBuilder/plugins/CmsTrackerPixelPhase2EndcapBuilder.h"
+#include "Geometry/TrackerNumberingBuilder/plugins/CmsTrackerSubStrctBuilder.h"
+#include "Geometry/TrackerNumberingBuilder/plugins/ExtractStringFromDDD.h"
 
-#include <bitset>
+class DDFilteredView;
 
 CmsTrackerBuilder::CmsTrackerBuilder()
 {}

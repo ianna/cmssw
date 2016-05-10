@@ -16,21 +16,13 @@
 //
 //
 
-
-// system include files
 #include <memory>
-
-// user include files
 #include "FWCore/Framework/interface/ESProducer.h"
-
-#include "FWCore/Framework/interface/ESHandle.h"
-#include "FWCore/ParameterSet/interface/ParameterSet.h"
-#include "Geometry/Records/interface/IdealGeometryRecord.h"
 #include "Geometry/CaloGeometry/interface/CaloGeometry.h"
 
-//
-// class decleration
-//
+class IdealGeometryRecord;
+
+namespace edm { class ParameterSet; }
 
 class EcalTBGeometryBuilder : public edm::ESProducer {
    public:

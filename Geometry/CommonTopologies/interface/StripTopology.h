@@ -1,6 +1,11 @@
 #ifndef Geometry_CommonTopologies_StripTopology_H
 #define Geometry_CommonTopologies_StripTopology_H
 
+#include "DataFormats/GeometrySurface/interface/LocalError.h"
+#include "DataFormats/GeometryVector/interface/LocalPoint.h"
+#include "DataFormats/GeometryVector/interface/Point2DBase.h"
+#include "DataFormats/GeometryVector/interface/Vector2DBase.h"
+#include "DataFormats/GeometryVector/interface/sseBasic2DVector.h"
 #include "Geometry/CommonTopologies/interface/Topology.h"
 
 /** Interface for all strip topologies.

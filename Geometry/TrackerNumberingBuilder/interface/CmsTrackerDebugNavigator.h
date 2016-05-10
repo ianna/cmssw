@@ -1,12 +1,14 @@
 #ifndef Geometry_TrackerNumberingBuilder_CmsTrackerDebugNavigator_H
 #define Geometry_TrackerNumberingBuilder_CmsTrackerDebugNavigator_H
 
-#include "Geometry/TrackerNumberingBuilder/interface/CmsTrackerStringToEnum.h"
-#include "Geometry/TrackerNumberingBuilder/interface/GeometricDetExtra.h"
-
+#include <stdint.h>
+#include <map>
 #include <vector>
+#include "Geometry/TrackerNumberingBuilder/interface/CmsTrackerStringToEnum.h"
 
 class GeometricDet;
+class GeometricDetExtra;
+
 /**
  * This class travel recursively a GeometricDet and dumps the information about type
  */

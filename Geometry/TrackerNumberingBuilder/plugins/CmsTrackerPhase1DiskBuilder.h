@@ -1,9 +1,12 @@
 #ifndef Geometry_TrackerNumberingBuilder_CmsTrackerPhase1DiskBuilder_H
 # define Geometry_TrackerNumberingBuilder_CmsTrackerPhase1DiskBuilder_H
 
-# include "Geometry/TrackerNumberingBuilder/plugins/CmsTrackerLevelBuilder.h"
-# include "FWCore/ParameterSet/interface/types.h"
-# include <string>
+#include <string>
+#include <vector>
+#include "Geometry/TrackerNumberingBuilder/plugins/CmsTrackerLevelBuilder.h"
+
+class DDFilteredView;
+class GeometricDet;
 
 /**
  * Class which contructs PixelForward/Disk.

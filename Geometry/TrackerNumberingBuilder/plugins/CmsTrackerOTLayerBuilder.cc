@@ -1,15 +1,22 @@
 #include "Geometry/TrackerNumberingBuilder/plugins/CmsTrackerOTLayerBuilder.h"
-#include "DetectorDescription/Core/interface/DDFilteredView.h"
-#include "Geometry/TrackerNumberingBuilder/interface/GeometricDet.h"
-#include "Geometry/TrackerNumberingBuilder/plugins/ExtractStringFromDDD.h"
-#include "Geometry/TrackerNumberingBuilder/plugins/CmsTrackerOTRingBuilder.h"
-#include "Geometry/TrackerNumberingBuilder/plugins/CmsTrackerLadderBuilder.h"
-#include "Geometry/TrackerNumberingBuilder/plugins/TrackerStablePhiSort.h"
-#include "DataFormats/DetId/interface/DetId.h"
-#include "FWCore/MessageLogger/interface/MessageLogger.h"
+#include <math.h>
+#include <stdint.h>
+#include <algorithm>
 #include <vector>
+#include "DataFormats/DetId/interface/DetId.h"
+#include "DetectorDescription/Base/interface/DDTranslation.h"
+#include "FWCore/MessageLogger/interface/ErrorObj.icc"
+#include "FWCore/MessageLogger/interface/MessageLogger.h"
+#include "Geometry/TrackerNumberingBuilder/interface/CmsTrackerStringToEnum.h"
+#include "Geometry/TrackerNumberingBuilder/interface/GeometricDet.h"
+#include "Geometry/TrackerNumberingBuilder/plugins/CmsTrackerLadderBuilder.h"
+#include "Geometry/TrackerNumberingBuilder/plugins/CmsTrackerOTRingBuilder.h"
+#include "Geometry/TrackerNumberingBuilder/plugins/ExtractStringFromDDD.h"
+#include "Geometry/TrackerNumberingBuilder/plugins/TrackerStablePhiSort.h"
+#include "boost/bind/bind.hpp"
+#include "boost/bind/bind_template.hpp"
 
-#include <bitset>
+class DDFilteredView;
 
 void CmsTrackerOTLayerBuilder::buildComponent(DDFilteredView& fv, GeometricDet* g, std::string s){
 

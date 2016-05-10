@@ -1,15 +1,15 @@
 #ifndef GEOMETRY_TRACKERNUMBERINGBUILDER_TRACKERTOPOLOGYEP_H
 #define GEOMETRY_TRACKERNUMBERINGBUILDER_TRACKERTOPOLOGYEP_H 1
 
-#include "memory"
-#include "FWCore/Framework/interface/ESProducer.h"
+#include <memory>
 #include "DataFormats/TrackerCommon/interface/TrackerTopology.h"
-#include "Geometry/Records/interface/TrackerTopologyRcd.h"
-#include "CondFormats/GeometryObjects/interface/PTrackerParameters.h"
+#include "FWCore/Framework/interface/ESProducer.h"
 
-namespace edm {
-  class ConfigurationDescriptions;
-}
+class PTrackerParameters;
+class TrackerTopologyRcd;
+
+namespace edm { class ConfigurationDescriptions; }
+namespace edm { class ParameterSet; }
 
 class TrackerTopologyEP : public edm::ESProducer
 {

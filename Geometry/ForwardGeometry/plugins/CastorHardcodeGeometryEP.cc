@@ -1,7 +1,10 @@
-#include "Geometry/ForwardGeometry/interface/CastorGeometry.h"
 #include "Geometry/ForwardGeometry/plugins/CastorHardcodeGeometryEP.h"
-#include "FWCore/MessageLogger/interface/MessageLogger.h"
+#include "Geometry/ForwardGeometry/interface/CastorGeometry.h"
+#include "Geometry/ForwardGeometry/interface/CastorHardcodeGeometryLoader.h"
 
+class CastorGeometryRecord;
+
+namespace edm { class ParameterSet; }
 
 CastorHardcodeGeometryEP::CastorHardcodeGeometryEP(const edm::ParameterSet& iConfig)
 {

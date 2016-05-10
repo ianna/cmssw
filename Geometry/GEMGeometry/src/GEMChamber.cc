@@ -6,7 +6,6 @@
 
 #include "Geometry/GEMGeometry/interface/GEMChamber.h"
 #include "Geometry/GEMGeometry/interface/GEMEtaPartition.h"
-#include <iostream>
 
 GEMChamber::GEMChamber(GEMDetId id, const ReferenceCountingPointer<BoundPlane> & plane) :
   GeomDet(plane), detId_(id)

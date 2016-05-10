@@ -1,7 +1,13 @@
 #include "Geometry/TrackerGeometryBuilder/interface/GeomDetLess.h"
-#include "DataFormats/SiStripDetId/interface/StripSubdetector.h"
+#include <cmath>
+#include "DataFormats/DetId/interface/DetId.h"
+#include "DataFormats/GeometrySurface/interface/GloballyPositioned.h"
+#include "DataFormats/GeometrySurface/interface/Plane.h"
+#include "DataFormats/GeometryVector/interface/Point3DBase.h"
 #include "DataFormats/SiPixelDetId/interface/PixelSubdetector.h"
+#include "DataFormats/SiStripDetId/interface/StripSubdetector.h"
 #include "FWCore/Utilities/interface/Exception.h"
+#include "Geometry/CommonDetUnit/interface/GeomDet.h"
 
 bool GeomDetLess::insideOutLess( const GeomDet* a, const GeomDet* b) const
 {

@@ -1,9 +1,11 @@
 #ifndef Geometry_TrackerGeometryBuilder_StripGeomDetType_H
 #define Geometry_TrackerGeometryBuilder_StripGeomDetType_H
 
+#include <string>
 #include "Geometry/CommonDetUnit/interface/GeomDetType.h"
 #include "Geometry/CommonTopologies/interface/StripTopology.h"
-#include <vector>
+
+class Topology;
 
 /**
  * StripGeomDetType is the abstract class for SiStripGeomDetType.

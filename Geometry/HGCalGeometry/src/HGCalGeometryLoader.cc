@@ -1,11 +1,27 @@
 #include "Geometry/HGCalGeometry/interface/HGCalGeometryLoader.h"
-#include "Geometry/HGCalGeometry/interface/HGCalGeometry.h"
-#include "Geometry/CaloGeometry/interface/CaloCellGeometry.h"
-#include "Geometry/CaloGeometry/interface/FlatTrd.h"
-#include "Geometry/HGCalCommonData/interface/HGCalDDDConstants.h"
+#include <assert.h>
+#include <ext/alloc_traits.h>
+#include <math.h>                                                   // for fabs
+#include <algorithm>                                                // for swap
+#include <iostream>
+#include <memory>
+#include <utility>                                                  // for pair
+#include "CLHEP/Geometry/Transform3D.h"
+#include "CLHEP/Geometry/Transform3D.icc"
+#include "CLHEP/Vector/ThreeVector.h"
+#include "CLHEP/Vector/ThreeVector.icc"
+#include "DataFormats/ForwardDetId/interface/ForwardSubdetector.h"
 #include "DataFormats/ForwardDetId/interface/HGCEEDetId.h"
 #include "DataFormats/ForwardDetId/interface/HGCHEDetId.h"
-#include "DataFormats/ForwardDetId/interface/ForwardSubdetector.h"
+#include "DataFormats/ForwardDetId/interface/HGCalDetId.h"
+#include "DataFormats/GeometryVector/interface/GlobalPoint.h"
+#include "Geometry/CaloGeometry/interface/CaloCellGeometry.h"
+#include "Geometry/CaloGeometry/interface/FlatTrd.h"
+#include "Geometry/CaloTopology/interface/HGCalTopology.h"
+#include "Geometry/HGCalCommonData/interface/HGCalDDDConstants.h"
+#include "Geometry/HGCalCommonData/interface/HGCalGeometryMode.h"
+#include "Geometry/HGCalCommonData/interface/HGCalParameters.h"
+#include "Geometry/HGCalGeometry/interface/HGCalGeometry.h"
 
 //#define DebugLog 1
 

@@ -1,6 +1,19 @@
-#include "Geometry/EcalAlgo/interface/EcalPreshowerGeometry.h"
+#include <math.h>
+#include <vector>
+#include "CLHEP/Geometry/Point3D.h"
+#include "CLHEP/Geometry/Transform3D.h"
+#include "CLHEP/Geometry/Transform3D.icc"
+#include "CLHEP/Vector/Rotation.icc"
+#include "CLHEP/Vector/RotationInterfaces.icc"
+#include "CLHEP/Vector/ThreeVector.icc"
+#include "DataFormats/GeometryVector/interface/GlobalPoint.h"
 #include "Geometry/CaloEventSetup/interface/CaloGeometryLoader.h"
-#include "DetectorDescription/Core/interface/DDFilteredView.h"
+#include "Geometry/CaloEventSetup/interface/CaloGeometryLoader.icc"
+#include "Geometry/CaloGeometry/interface/CaloCellGeometry.h"
+#include "Geometry/EcalAlgo/interface/EcalPreshowerGeometry.h"
+
+class DDFilteredView;
+class DetId;
 
 typedef CaloGeometryLoader< EcalPreshowerGeometry > EcalPGL ;
 

@@ -1,14 +1,16 @@
 #ifndef Geometry_GEMGeometry_ME0EtaPartition_H
 #define Geometry_GEMGeometry_ME0EtaPartition_H
 
-#include "Geometry/CommonDetUnit/interface/GeomDetUnit.h"
-#include "Geometry/CommonDetUnit/interface/GeomDetType.h"
+#include "DataFormats/GeometrySurface/interface/LocalError.h"
+#include "DataFormats/GeometrySurface/interface/Plane.h"
+#include "DataFormats/GeometryVector/interface/LocalPoint.h"
 #include "DataFormats/MuonDetId/interface/ME0DetId.h"
-#include "DataFormats/GeometryVector/interface/GlobalPoint.h"
+#include "Geometry/CommonDetUnit/interface/GeomDet.h"
 
-class StripTopology;
+class GeomDetType;
 class ME0EtaPartitionSpecs;
-//class ME0Chamber;
+class StripTopology;
+class Topology;
 
 class ME0EtaPartition : public GeomDetUnit
 {

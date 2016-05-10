@@ -1,18 +1,18 @@
 #ifndef Geometry_TrackerGeometryBuilder_TrackerGeomBuilderFromGeometricDet_H
 #define Geometry_TrackerGeometryBuilder_TrackerGeomBuilderFromGeometricDet_H
 
+#include <map>
 #include <string>
 #include <vector>
-#include <map>
-#include "Geometry/TrackerGeometryBuilder/interface/PlaneBuilderFromGeometricDet.h"
-#include "Geometry/TrackerNumberingBuilder/interface/GeometricDet.h"
 #include "Geometry/CommonDetUnit/interface/GeomDetType.h"
+#include "Geometry/TrackerGeometryBuilder/interface/PlaneBuilderFromGeometricDet.h"
 
-class TrackerGeometry;
-class TrackerTopology;
+class GeometricDet;
+class PTrackerParameters;
 class PixelGeomDetType;
 class StripGeomDetType;
-class PTrackerParameters;
+class TrackerGeometry;
+class TrackerTopology;
 
 class TrackerGeomBuilderFromGeometricDet {
 public:

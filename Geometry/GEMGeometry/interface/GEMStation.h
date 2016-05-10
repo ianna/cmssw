@@ -10,11 +10,14 @@
  *  \author S. Dildick
  */
 
-#include "Geometry/CommonDetUnit/interface/GeomDet.h"
+#include <string>
+#include <vector>
+#include "DataFormats/DetId/interface/DetId.h"
 #include "DataFormats/MuonDetId/interface/GEMDetId.h"
-#include "Geometry/GEMGeometry/interface/GEMRing.h"
 
+class GEMRing;
 class GEMSuperChamber;
+class GeomDet;
 
 class GEMStation
 {

@@ -1,10 +1,14 @@
 #include "Geometry/TrackerGeometryBuilder/interface/PlaneBuilderForGluedDet.h"
-#include "DataFormats/GeometrySurface/interface/Surface.h"
 #include "DataFormats/GeometrySurface/interface/BoundingBox.h"
 #include "DataFormats/GeometrySurface/interface/MediumProperties.h"
-#include "DataFormats/GeometrySurface/interface/OpenBounds.h"
-
-#include <algorithm>
+#include "DataFormats/GeometrySurface/interface/RectangularPlaneBounds.h"
+#include "DataFormats/GeometrySurface/interface/Surface.h"
+#include "DataFormats/GeometryVector/interface/GlobalPoint.h"
+#include "DataFormats/GeometryVector/interface/LocalPoint.h"
+#include "DataFormats/GeometryVector/interface/LocalVector.h"
+#include "DataFormats/GeometryVector/interface/Point3DBase.h"
+#include "DataFormats/GeometryVector/interface/Vector3DBase.h"
+#include "DataFormats/GeometryVector/interface/sseBasic3DVector.h"
 
 // Warning, remember to assign this pointer to a ReferenceCountingPointer!
 PlaneBuilderForGluedDet::ResultType

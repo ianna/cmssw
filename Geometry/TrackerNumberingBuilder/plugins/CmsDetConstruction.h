@@ -1,8 +1,12 @@
 #ifndef Geometry_TrackerNumberingBuilder_CmsDetConstruction_H
 #define Geometry_TrackerNumberingBuilder_CmsDetConstruction_H
-#include<string>
-#include<vector>
+
+#include <string>
 #include "Geometry/TrackerNumberingBuilder/plugins/CmsTrackerLevelBuilder.h"
+
+class DDFilteredView;
+class GeometricDet;
+
 /**
  * Adds GeometricDets representing final modules to the previous level
  */

@@ -12,9 +12,8 @@
 /// two surfaces.
 ///
 
+#include <vector>
 #include "Geometry/CommonTopologies/interface/SurfaceDeformation.h"
-
-#include<array>
 
 class TwoBowedSurfacesDeformation : public SurfaceDeformation
 {

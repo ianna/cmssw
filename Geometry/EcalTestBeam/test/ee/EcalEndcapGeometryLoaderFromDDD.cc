@@ -1,17 +1,31 @@
+#include <assert.h>
+#include <ext/alloc_traits.h>
+#include <math.h>
+#include <iomanip>
+#include <memory>
+#include <vector>
+#include "CLHEP/Geometry/BasicVector3D.h"
+#include "CLHEP/Geometry/Point3D.h"
+#include "CLHEP/Geometry/Transform3D.icc"
+#include "CLHEP/Geometry/Vector3D.h"
+#include "CLHEP/Vector/Rotation.icc"
+#include "CLHEP/Vector/RotationInterfaces.icc"
+#include "CLHEP/Vector/ThreeVector.icc"
+#include "DataFormats/GeometryVector/interface/GlobalPoint.h"
+#include "DetectorDescription/Core/interface/DDFilteredView.h"
+#include "DetectorDescription/Core/interface/DDValue.h"
+#include "DetectorDescription/Core/interface/DDsvalues.h"
+#include "Geometry/CaloGeometry/interface/CaloCellGeometry.h"
 #include "Geometry/CaloGeometry/interface/TruncatedPyramid.h"
-
 #include "Geometry/EcalAlgo/interface/EcalEndcapGeometry.h"
-
 #include "Geometry/EcalTestBeam/test/ee/CaloGeometryLoaderTest.h"
 #include "Geometry/EcalTestBeam/test/ee/CaloGeometryLoaderTest.icc"
 
+class DetId;
+
+namespace HepGeom { class Transform3D; }
+
 template class CaloGeometryLoaderTest< EcalEndcapGeometry > ;
-
-#include "DetectorDescription/Core/interface/DDFilteredView.h"
-
-
-#include <iostream>
-#include <vector>
 
 using namespace std;
 

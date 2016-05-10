@@ -1,8 +1,6 @@
 #include "Geometry/CommonTopologies/interface/TrapezoidalStripTopology.h"
-
-#include <iostream>
-#include <cmath>
 #include <algorithm>
+#include <cmath>
 
 TrapezoidalStripTopology::TrapezoidalStripTopology(int ns, float p, 
 						   float l,

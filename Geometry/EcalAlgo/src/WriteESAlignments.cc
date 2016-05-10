@@ -1,14 +1,28 @@
 #include "Geometry/EcalAlgo/interface/WriteESAlignments.h"
-
+#include <assert.h>
+#include <exception>
+#include <iostream>
+#include <memory>
+#include "CLHEP/Vector/EulerAngles.h"
+#include "CLHEP/Vector/Rotation.h"
+#include "CLHEP/Vector/Rotation.icc"
+#include "CLHEP/Vector/ThreeVector.h"
+#include "CondCore/CondDB/interface/Exception.h"
+#include "CondCore/DBOutputService/interface/PoolDBOutputService.h"
+#include "CondFormats/Alignment/interface/Alignments.h"
+#include "CondFormats/AlignmentRecord/interface/ESAlignmentRcd.h"
+#include "DataFormats/DetId/interface/DetId.h"
+#include "DataFormats/EcalDetId/interface/ESDetId.h"
+#include "DataFormats/EcalDetId/interface/EcalSubdetector.h"
+#include "DataFormats/GeometryVector/interface/GlobalPoint.h"
 #include "FWCore/Framework/interface/ESHandle.h"
 #include "FWCore/Framework/interface/EventSetup.h"
 #include "FWCore/ServiceRegistry/interface/Service.h"
-#include "CondCore/DBOutputService/interface/PoolDBOutputService.h"
-
-#include "CondCore/CondDB/interface/Serialization.h"
-
-#include "Geometry/EcalAlgo/interface/EcalPreshowerGeometry.h"
+#include "FWCore/Utilities/interface/Exception.h"
+#include "Geometry/CaloGeometry/interface/CaloCellGeometry.h"
 #include "Geometry/CaloGeometry/interface/CaloGeometry.h"
+#include "Geometry/CaloGeometry/interface/CaloSubdetectorGeometry.h"
+#include "Geometry/EcalAlgo/interface/EcalPreshowerGeometry.h"
 #include "Geometry/Records/interface/CaloGeometryRecord.h"
 
 typedef WriteESAlignments WEA ;

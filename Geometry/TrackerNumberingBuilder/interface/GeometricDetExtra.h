@@ -1,22 +1,14 @@
 #ifndef Geometry_TrackerNumberingBuilder_GeometricDetExtra_H
 #define Geometry_TrackerNumberingBuilder_GeometricDetExtra_H
 
-//#include "CondFormats/GeometryObjects/interface/PGeometricDetExtra.h"
-#include "Geometry/TrackerNumberingBuilder/interface/GeometricDet.h"
-#include "DetectorDescription/Core/interface/DDExpandedView.h"
-/* #include "DetectorDescription/Base/interface/DDRotationMatrix.h" */
-/* #include "DetectorDescription/Base/interface/DDTranslation.h" */
-/* #include "DetectorDescription/Core/interface/DDSolidShapes.h" */
-/* #include "DataFormats/GeometrySurface/interface/Surface.h" */
-/* #include "DataFormats/GeometrySurface/interface/Bounds.h" */
-#include "DataFormats/DetId/interface/DetId.h"
-
+#include <string>
 #include <vector>
-#include "FWCore/ParameterSet/interface/types.h"
+#include "DataFormats/DetId/interface/DetId.h"
+#include "DetectorDescription/Core/interface/DDExpandedNode.h"
+#include "DetectorDescription/Core/interface/DDExpandedView.h"
 
-#include <ext/pool_allocator.h>
-// waiting for template-alias
-//#define PoolAlloc  __gnu_cxx::__pool_alloc
+class GeometricDet;
+
 /**
  * Composite class GeometricDetExtra. A composite can contain other composites, and so on;
  * You can understand what you are looking at via enum.

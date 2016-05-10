@@ -16,36 +16,37 @@ Implementation:
 //
 //
 
-
-// system include files
-#include <memory>
-
-// user include files
-#include "FWCore/Framework/interface/Frameworkfwd.h"
-#include "FWCore/Framework/interface/one/EDAnalyzer.h"
-
-#include "FWCore/Framework/interface/Event.h"
-#include "FWCore/Framework/interface/MakerMacros.h"
-
-#include "FWCore/ParameterSet/interface/ParameterSet.h"
-
-#include <memory>
-#include "FWCore/Framework/interface/MakerMacros.h"
-#include <DataFormats/MuonDetId/interface/RPCDetId.h>
-#include <Geometry/RPCGeometry/interface/RPCGeomServ.h>
-#include <Geometry/CommonDetUnit/interface/GeomDet.h>
-#include <Geometry/Records/interface/MuonGeometryRecord.h>
-#include <Geometry/CommonTopologies/interface/RectangularStripTopology.h>
-#include <Geometry/CommonTopologies/interface/TrapezoidalStripTopology.h>
-#include <FWCore/Framework/interface/ESHandle.h>
-#include <Geometry/CSCGeometry/interface/CSCGeometry.h>
-#include <Geometry/RPCGeometry/interface/RPCGeometry.h>
-#include <Geometry/CSCGeometry/interface/CSCChamber.h>
 #include <DataFormats/MuonDetId/interface/CSCDetId.h>
+#include <DataFormats/MuonDetId/interface/RPCDetId.h>
+#include <FWCore/Framework/interface/ESHandle.h>
+#include <Geometry/CSCGeometry/interface/CSCChamber.h>
+#include <Geometry/CSCGeometry/interface/CSCGeometry.h>
+#include <Geometry/CommonDetUnit/interface/GeomDet.h>
+#include <Geometry/RPCGeometry/interface/RPCGeomServ.h>
+#include <Geometry/RPCGeometry/interface/RPCGeometry.h>
+#include <Geometry/Records/interface/MuonGeometryRecord.h>
+#include <cmath>
+#include <iostream>
+#include <map>
+#include <memory>
+#include <set>
+#include <string>
+#include <vector>
+#include "DataFormats/GeometrySurface/interface/Plane.h"
+#include "DataFormats/GeometryVector/interface/GlobalPoint.h"
+#include "DataFormats/GeometryVector/interface/LocalPoint.h"
+#include "FWCore/Framework/interface/EventSetup.h"
+#include "FWCore/Framework/interface/MakerMacros.h"
+#include "FWCore/Framework/interface/one/EDAnalyzer.h"
+#include "FWCore/Framework/src/WorkerMaker.h"
+#include "FWCore/ParameterSet/interface/ParameterSetDescriptionFiller.h"
+#include "Geometry/CommonDetUnit/interface/TrackingGeometry.h"
+#include "Geometry/RPCGeometry/interface/RPCChamber.h"
+#include "Geometry/RPCGeometry/interface/RPCRoll.h"
 
-//
-// class decleration
-//
+namespace edm { class Event; }
+namespace edm { class ParameterSet; }
+
 class CSCStationIndex{
     public:
         CSCStationIndex():_region(0),_station(0),_ring(0),_chamber(0){}

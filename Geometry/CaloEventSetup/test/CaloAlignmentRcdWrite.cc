@@ -1,21 +1,28 @@
+#include <exception>
+#include <iostream>
+#include <memory>
 #include <string>
-
-#include "FWCore/ParameterSet/interface/ParameterSet.h"
-#include "FWCore/ServiceRegistry/interface/Service.h"
-#include "FWCore/Framework/interface/EventSetup.h"
-#include "FWCore/Framework/interface/one/EDAnalyzer.h"
-#include "FWCore/Framework/interface/MakerMacros.h"
-#include "Utilities/General/interface/ClassName.h"
-
-#include "FWCore/Framework/interface/ESHandle.h"
+#include <typeinfo>
+#include <vector>
+#include "CondCore/CondDB/interface/Exception.h"
 #include "CondCore/DBOutputService/interface/PoolDBOutputService.h"
-
 #include "CondFormats/Alignment/interface/Alignments.h"
-#include "CondFormats/Alignment/interface/AlignTransform.h"
-
 #include "CondFormats/AlignmentRecord/interface/EBAlignmentRcd.h"
 #include "CondFormats/AlignmentRecord/interface/EEAlignmentRcd.h"
 #include "CondFormats/AlignmentRecord/interface/ESAlignmentRcd.h"
+#include "FWCore/Framework/interface/ESHandle.h"
+#include "FWCore/Framework/interface/MakerMacros.h"
+#include "FWCore/Framework/interface/one/EDAnalyzer.h"
+#include "FWCore/Framework/src/WorkerMaker.h"
+#include "FWCore/ParameterSet/interface/ParameterSetDescriptionFiller.h"
+#include "FWCore/ServiceRegistry/interface/Service.h"
+#include "FWCore/Utilities/interface/Exception.h"
+#include "Rtypeinfo.h"
+#include "Utilities/General/interface/ClassName.h"
+
+namespace edm { class Event; }
+namespace edm { class EventSetup; }
+namespace edm { class ParameterSet; }
 
 class CaloAlignmentRcdWrite : public edm::one::EDAnalyzer<>
 {

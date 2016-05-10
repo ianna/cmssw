@@ -1,8 +1,16 @@
-#include "DataFormats/GeometrySurface/interface/BoundPlane.h"
+#include <memory>
+#include "DataFormats/GeometryCommonDetAlgo/interface/MeasurementError.h"
+#include "DataFormats/GeometryCommonDetAlgo/interface/MeasurementPoint.h"
 #include "DataFormats/GeometrySurface/interface/Bounds.h"
-
+#include "DataFormats/GeometrySurface/interface/LocalError.h"
+#include "DataFormats/GeometrySurface/interface/Plane.h"
+#include "DataFormats/GeometryVector/interface/LocalPoint.h"
+#include "Geometry/CommonTopologies/interface/StripTopology.h"
+#include "Geometry/CommonTopologies/interface/SurfaceDeformation.h"
+#include "Geometry/CommonTopologies/interface/Topology.h"
 #include "Geometry/TrackerGeometryBuilder/interface/ProxyStripTopology.h"
-#include "Geometry/TrackerGeometryBuilder/interface/StripGeomDetType.h"
+
+class StripGeomDetType;
 
 ////////////////////////////////////////////////////////////////////////////////
 ProxyStripTopology::ProxyStripTopology(StripGeomDetType const * type, BoundPlane * bp)

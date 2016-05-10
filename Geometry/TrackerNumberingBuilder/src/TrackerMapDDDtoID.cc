@@ -1,10 +1,10 @@
 #include "Geometry/TrackerNumberingBuilder/interface/TrackerMapDDDtoID.h"
-#include "DetectorDescription/Core/interface/DDExpandedView.h"
-#include "DetectorDescription/Core/interface/DDFilteredView.h"
-#include "DataFormats/DetId/interface/DetId.h"
-#include "CLHEP/Units/GlobalSystemOfUnits.h"
-#include "FWCore/MessageLogger/interface/MessageLogger.h"
-#include<algorithm>
+#include <cstdint>                                         // for uint32_t
+#include <string>                                          // for allocator
+#include <utility>                                         // for pair
+#include "DataFormats/DetId/interface/DetId.h"             // for DetId
+#include "FWCore/MessageLogger/interface/ErrorObj.icc"     // for operator<<
+#include "FWCore/MessageLogger/interface/MessageLogger.h"  // for LogInfo
 
 TrackerMapDDDtoID::TrackerMapDDDtoID(const GeometricDet* iDet) 
 {

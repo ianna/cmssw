@@ -1,7 +1,9 @@
 #include "Geometry/GEMGeometry/interface/GEMEtaPartition.h"
+#include "Geometry/CommonTopologies/interface/StripTopology.h"
 #include "Geometry/GEMGeometry/interface/GEMEtaPartitionSpecs.h"
-#include "Geometry/CommonTopologies/interface/TrapezoidalStripTopology.h"
 
+class GeomDetType;
+class Topology;
 
 GEMEtaPartition::GEMEtaPartition(GEMDetId id, BoundPlane::BoundPlanePointer bp, GEMEtaPartitionSpecs* rrs) :
   GeomDetUnit(bp), id_(id),specs_(rrs)

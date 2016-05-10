@@ -3,8 +3,14 @@
  *  \author M. Maggi - INFN Bari
  */
 
-#include "Geometry/GEMGeometry/interface/GEMGeometry.h"
-#include "Geometry/CommonDetUnit/interface/GeomDetUnit.h"
+#include <unordered_map>
+#include <utility>
+#include "Geometry/GEMGeometry/interface/GEMChamber.h"
+#include "Geometry/GEMGeometry/interface/GEMEtaPartition.h"
+#include "Geometry/GEMGeometry/interface/GEMRegion.h"
+#include "Geometry/GEMGeometry/interface/GEMRing.h"
+#include "Geometry/GEMGeometry/interface/GEMStation.h"
+#include "Geometry/GEMGeometry/interface/GEMSuperChamber.h"
 
 GEMGeometry::GEMGeometry(){}
 

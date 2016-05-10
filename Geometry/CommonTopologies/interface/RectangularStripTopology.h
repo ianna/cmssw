@@ -6,6 +6,11 @@
  *  measured coordinate.
  */
 
+#include <algorithm>
+#include "DataFormats/GeometryCommonDetAlgo/interface/MeasurementError.h"
+#include "DataFormats/GeometryCommonDetAlgo/interface/MeasurementPoint.h"
+#include "DataFormats/GeometrySurface/interface/LocalError.h"
+#include "DataFormats/GeometryVector/interface/LocalPoint.h"
 #include "Geometry/CommonTopologies/interface/StripTopology.h"
 
 class RectangularStripTopology final : public StripTopology {

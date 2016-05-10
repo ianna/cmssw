@@ -1,13 +1,12 @@
 #ifndef Geometry_TrackerNumberingBuilder_DDDCmsTrackerContruction_H
 # define Geometry_TrackerNumberingBuilder_DDDCmsTrackerContruction_H
 
-#include "Geometry/TrackerNumberingBuilder/interface/CmsTrackerStringToEnum.h"
-#include "FWCore/ParameterSet/interface/types.h"
 #include <string>
 #include <vector>
+#include "Geometry/TrackerNumberingBuilder/interface/CmsTrackerStringToEnum.h"
 
-class GeometricDet;
 class DDCompactView;
+class GeometricDet;
 
 /**
  * High level class to build a tracker. It will only build subdets,

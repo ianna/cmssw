@@ -10,41 +10,37 @@
  Implementation:
      <Notes on implementation>
 */
-//
 
-
-
-// system include files
+#include <TBox.h>
+#include <TCanvas.h>
+#include <TROOT.h>
+#include <TStyle.h>
+#include <TVirtualPad.h>
+#include <assert.h>
+#include <iostream>
 #include <memory>
-
-// user include files
-#include "FWCore/Framework/interface/one/EDAnalyzer.h"
-
-#include "FWCore/Framework/interface/EventSetup.h"
-#include "FWCore/Framework/interface/ESHandle.h"
-#include "FWCore/Framework/interface/MakerMacros.h"
-
-
-#include "Geometry/Records/interface/CaloGeometryRecord.h"
-#include "Geometry/CaloGeometry/interface/CaloGeometry.h"
-#include "Geometry/CaloTopology/interface/EcalTrigTowerConstituentsMap.h"
-
+#include <string>
+#include <vector>
+#include "DataFormats/DetId/interface/DetId.h"
 #include "DataFormats/EcalDetId/interface/EBDetId.h"
 #include "DataFormats/EcalDetId/interface/EEDetId.h"
+#include "DataFormats/EcalDetId/interface/EcalSubdetector.h"
 #include "DataFormats/EcalDetId/interface/EcalTrigTowerDetId.h"
+#include "FWCore/Framework/interface/ESHandle.h"
+#include "FWCore/Framework/interface/EventSetup.h"
+#include "FWCore/Framework/interface/MakerMacros.h"
+#include "FWCore/Framework/interface/one/EDAnalyzer.h"
+#include "FWCore/Framework/src/WorkerMaker.h"
+#include "FWCore/ParameterSet/interface/ParameterSetDescriptionFiller.h"
+#include "Geometry/CaloGeometry/interface/CaloGeometry.h"
+#include "Geometry/CaloTopology/interface/EcalTrigTowerConstituentsMap.h"
+#include "Geometry/Records/interface/CaloGeometryRecord.h"
+#include "Geometry/Records/interface/IdealGeometryRecord.h"
+#include "TAxis.h"
+#include "TH2.h"
 
-#include <TCanvas.h>
-#include <TVirtualPad.h>
-#include <TStyle.h>
-#include <TROOT.h>
-#include <TH2F.h>
-#include <TBox.h>
-
-#include <iostream>
-
-//
-// class decleration
-//
+namespace edm { class Event; }
+namespace edm { class ParameterSet; }
 
 class dumpEcalTrigTowerMapping : public edm::one::EDAnalyzer<> {
 public:

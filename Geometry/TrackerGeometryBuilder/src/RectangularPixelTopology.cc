@@ -1,4 +1,6 @@
 #include "Geometry/TrackerGeometryBuilder/interface/RectangularPixelTopology.h"
+#include <algorithm>
+#include <iterator>
 
   /**
    * Topology for rectangular pixel detector with BIG pixels.

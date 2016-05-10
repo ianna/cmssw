@@ -1,15 +1,14 @@
 ///  \author    : Gero Flucke
 ///  date       : October 2010
 
+#include <string>
+#include <vector>
 #include "FWCore/Utilities/interface/Exception.h"
-
-#include "Geometry/CommonTopologies/interface/SurfaceDeformationFactory.h"
 #include "Geometry/CommonTopologies/interface/BowedSurfaceDeformation.h"
+#include "Geometry/CommonTopologies/interface/SurfaceDeformationFactory.h"
 #include "Geometry/CommonTopologies/interface/TwoBowedSurfacesDeformation.h"
 
-// included by header:
-// #include <vector>
-// #include <string>
+class SurfaceDeformation;
 
 SurfaceDeformationFactory::Type
 SurfaceDeformationFactory::surfaceDeformationType(const std::string &typeString)

@@ -1,6 +1,8 @@
 #ifndef Geometry_CommonTopologies_PixelTopology_H
 #define Geometry_CommonTopologies_PixelTopology_H
 
+#include <utility>
+#include "DataFormats/GeometryVector/interface/LocalPoint.h"
 #include "Geometry/CommonTopologies/interface/Topology.h"
 
 /**   

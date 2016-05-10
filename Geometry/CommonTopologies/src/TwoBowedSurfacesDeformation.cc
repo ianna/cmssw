@@ -2,12 +2,10 @@
 ///  date       : October 2010
 
 #include "Geometry/CommonTopologies/interface/TwoBowedSurfacesDeformation.h"
-#include "Geometry/CommonTopologies/interface/SurfaceDeformationFactory.h"
-
+#include <algorithm>
+#include "FWCore/MessageLogger/interface/ErrorObj.icc"
 #include "FWCore/MessageLogger/interface/MessageLogger.h"
-
-// already included via header:
-// #include <vector>
+#include "Geometry/CommonTopologies/interface/SurfaceDeformationFactory.h"
 
 //------------------------------------------------------------------------------
 TwoBowedSurfacesDeformation::TwoBowedSurfacesDeformation(const std::vector<double> &pars)

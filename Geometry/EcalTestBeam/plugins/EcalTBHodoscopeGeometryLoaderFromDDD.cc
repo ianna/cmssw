@@ -1,20 +1,36 @@
 #include "Geometry/EcalTestBeam/plugins/EcalTBHodoscopeGeometryLoaderFromDDD.h"
-
-#include "Geometry/EcalTestBeam/interface/EcalTBHodoscopeGeometry.h"
-#include "DataFormats/EcalDetId/interface/EBDetId.h"
-
-#include "DetectorDescription/Core/interface/DDFilteredView.h"
-#include "DetectorDescription/Core/interface/DDFilter.h"
-#include "DetectorDescription/Core/interface/DDLogicalPart.h"
-#include "DetectorDescription/Core/interface/DDSolid.h"
-#include "DetectorDescription/Core/interface/DDTransform.h"
-#include "DetectorDescription/Core/interface/DDExpandedView.h"
-#include "DetectorDescription/Core/interface/DDName.h"
-
-typedef CaloCellGeometry::CCGFloat CCGFloat ;
-
+#include <assert.h>
 #include <iostream>
 #include <vector>
+#include "CLHEP/Geometry/Point3D.h"
+#include "CLHEP/Geometry/Transform3D.h"
+#include "CLHEP/Geometry/Transform3D.icc"
+#include "CLHEP/Vector/Rotation.h"
+#include "CLHEP/Vector/Rotation.icc"
+#include "CLHEP/Vector/ThreeVector.h"
+#include "CLHEP/Vector/ThreeVector.icc"
+#include "DataFormats/DetId/interface/DetId.h"
+#include "DataFormats/EcalDetId/interface/EBDetId.h"
+#include "DataFormats/GeometryVector/interface/GlobalPoint.h"
+#include "DetectorDescription/Base/interface/DDRotationMatrix.h"
+#include "DetectorDescription/Base/interface/DDTranslation.h"
+#include "DetectorDescription/Core/interface/DDExpandedNode.h"
+#include "DetectorDescription/Core/interface/DDFilter.h"
+#include "DetectorDescription/Core/interface/DDFilteredView.h"
+#include "DetectorDescription/Core/interface/DDLogicalPart.h"
+#include "DetectorDescription/Core/interface/DDName.h"
+#include "DetectorDescription/Core/interface/DDSolid.h"
+#include "DetectorDescription/Core/interface/DDSolidShapes.h"
+#include "DetectorDescription/Core/interface/DDValue.h"
+#include "FWCore/MessageLogger/interface/ErrorObj.icc"
+#include "FWCore/MessageLogger/interface/MessageLogger.h"
+#include "FWCore/Utilities/interface/Exception.h"
+#include "Geometry/CaloGeometry/interface/CaloCellGeometry.h"
+#include "Geometry/CaloGeometry/interface/CaloSubdetectorGeometry.h"
+#include "Geometry/EcalCommonData/interface/EcalBaseNumber.h"
+#include "Geometry/EcalTestBeam/interface/EcalTBHodoscopeGeometry.h"
+
+typedef CaloCellGeometry::CCGFloat CCGFloat ;
 
 std::auto_ptr<CaloSubdetectorGeometry> 
 EcalTBHodoscopeGeometryLoaderFromDDD::load( const DDCompactView* cpv ) 

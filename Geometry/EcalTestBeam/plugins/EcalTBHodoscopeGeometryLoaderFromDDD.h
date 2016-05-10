@@ -1,9 +1,6 @@
 #ifndef GEOMETRY_ECALTBHODOSCOPEGEOMETRYLOADERFROMDDD_H
 #define GEOMETRY_ECALTBHODOSCOPEGEOMETRYLOADERFROMDDD_H 1
 
-#include "Geometry/EcalTestBeam/interface/EcalHodoscopeNumberingScheme.h"
-
-
 /** \class EcalTBHodoscopeGeometryLoaderFromDDD
  *
  *
@@ -11,14 +8,14 @@
  * \author P. Meridiani - INFN Roma 1
 */
 
-class DDCompactView;
-class DDFilteredView;
-class DDFilter;
-class CaloSubdetectorGeometry;
-class EcalTBHodoscopeGeometry;
-
 #include <memory>
 #include <string>
+#include "Geometry/EcalTestBeam/interface/EcalHodoscopeNumberingScheme.h"
+
+class CaloSubdetectorGeometry;
+class DDCompactView;
+class DDFilter;
+class DDFilteredView;
 
 class EcalTBHodoscopeGeometryLoaderFromDDD
 {

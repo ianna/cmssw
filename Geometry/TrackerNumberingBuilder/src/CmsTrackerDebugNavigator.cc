@@ -1,9 +1,15 @@
 #include "Geometry/TrackerNumberingBuilder/interface/CmsTrackerDebugNavigator.h"
+#include <cstdint>
+#include <ostream>
+#include <string>
+#include "DataFormats/DetId/interface/DetId.h"
+#include "DetectorDescription/Base/interface/DDTranslation.h"
+#include "DetectorDescription/Core/interface/DDName.h"
+#include "FWCore/MessageLogger/interface/ErrorObj.icc"
+#include "FWCore/MessageLogger/interface/MessageLogger.h"
 #include "Geometry/TrackerNumberingBuilder/interface/GeometricDet.h"
 #include "Geometry/TrackerNumberingBuilder/interface/GeometricDetExtra.h"
-#include "FWCore/MessageLogger/interface/MessageLogger.h"
-
-#include "FWCore/MessageLogger/interface/MessageLogger.h"
+#include "Math/GenVector/DisplacementVector3D.h"
 
 CmsTrackerDebugNavigator::CmsTrackerDebugNavigator ( const std::vector<GeometricDetExtra>& gdes ) {
   std::vector<GeometricDetExtra>::const_iterator gdeiEnd(gdes.end());

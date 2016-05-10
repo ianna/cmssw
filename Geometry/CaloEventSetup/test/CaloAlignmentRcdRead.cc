@@ -1,17 +1,24 @@
+#include <memory>
 #include <string>
+#include <typeinfo>
 #include <vector>
-
-#include "FWCore/Framework/interface/EventSetup.h"
-#include "FWCore/Framework/interface/one/EDAnalyzer.h"
-#include "FWCore/Framework/interface/MakerMacros.h"
-#include "FWCore/Framework/interface/ESHandle.h"
-#include "FWCore/MessageLogger/interface/MessageLogger.h"
-#include "Utilities/General/interface/ClassName.h"
-#include "CondFormats/Alignment/interface/Alignments.h"
 #include "CondFormats/Alignment/interface/AlignTransform.h"
+#include "CondFormats/Alignment/interface/Alignments.h"
 #include "CondFormats/AlignmentRecord/interface/EBAlignmentRcd.h"
 #include "CondFormats/AlignmentRecord/interface/EEAlignmentRcd.h"
 #include "CondFormats/AlignmentRecord/interface/ESAlignmentRcd.h"
+#include "FWCore/Framework/interface/ESHandle.h"
+#include "FWCore/Framework/interface/MakerMacros.h"
+#include "FWCore/Framework/interface/one/EDAnalyzer.h"
+#include "FWCore/Framework/src/WorkerMaker.h"
+#include "FWCore/MessageLogger/interface/MessageLogger.h"
+#include "FWCore/ParameterSet/interface/ParameterSetDescriptionFiller.h"
+#include "Rtypeinfo.h"
+#include "Utilities/General/interface/ClassName.h"
+
+namespace edm { class Event; }
+namespace edm { class EventSetup; }
+namespace edm { class ParameterSet; }
 
 class CaloAlignmentRcdRead : public edm::one::EDAnalyzer<>
 {

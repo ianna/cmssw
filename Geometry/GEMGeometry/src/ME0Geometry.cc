@@ -4,7 +4,10 @@
  */
 
 #include "Geometry/GEMGeometry/interface/ME0Geometry.h"
-#include "Geometry/CommonDetUnit/interface/GeomDetUnit.h"
+#include <unordered_map>
+#include <utility>
+#include "Geometry/GEMGeometry/interface/ME0Chamber.h"
+#include "Geometry/GEMGeometry/interface/ME0EtaPartition.h"
 
 ME0Geometry::ME0Geometry(){}
 

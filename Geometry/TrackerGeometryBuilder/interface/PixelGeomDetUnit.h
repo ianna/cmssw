@@ -1,13 +1,17 @@
 #ifndef Geometry_TrackerGeometryBuilder_PixelGeomDetUnit_H
 #define Geometry_TrackerGeometryBuilder_PixelGeomDetUnit_H
 
-#include "Geometry/CommonDetUnit/interface/TrackerGeomDet.h"
+#include <memory>
 #include "DataFormats/DetId/interface/DetId.h"
+#include "DataFormats/GeometrySurface/interface/Plane.h"
+#include "Geometry/CommonDetUnit/interface/TrackerGeomDet.h"
 #include "Geometry/TrackerGeometryBuilder/interface/ProxyPixelTopology.h"
 
+class GeomDetType;
 class PixelGeomDetType;
 class PixelTopology;
 class SurfaceDeformation;
+class Topology;
 /**
  * The base PixelGeomDetUnit. Specialized in SiPixelGeomDetUnit.
  */

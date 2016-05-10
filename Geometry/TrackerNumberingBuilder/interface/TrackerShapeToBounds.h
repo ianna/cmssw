@@ -1,10 +1,11 @@
 #ifndef Geometry_TrackerNumberingBuilder_TrackerShapeToBounds_H
 #define Geometry_TrackerNumberingBuilder_TrackerShapeToBounds_H
 
-#include "DataFormats/GeometrySurface/interface/Bounds.h"
-#include "DetectorDescription/Core/interface/DDSolidShapes.h"
 #include <vector>
-#include <algorithm>
+#include "DetectorDescription/Core/interface/DDSolidShapes.h"
+
+class Bounds;
+
 /**
  * Converts DDSolid volumes to Bounds
  */

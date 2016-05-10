@@ -1,9 +1,11 @@
 #ifndef Geometry_TrackerNumberingBuilder_CmsTrackerLadderBuilder_H
 #define Geometry_TrackerNumberingBuilder_CmsTrackerLadderBuilder_H
 
-#include "Geometry/TrackerNumberingBuilder/plugins/CmsTrackerLevelBuilder.h"
-#include "FWCore/ParameterSet/interface/types.h"
 #include <string>
+#include "Geometry/TrackerNumberingBuilder/plugins/CmsTrackerLevelBuilder.h"
+
+class DDFilteredView;
+class GeometricDet;
 
 /**
  * Class which builds Pixel Ladders

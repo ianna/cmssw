@@ -18,20 +18,14 @@
 #ifndef Geometry_CaloEventSetup_EcalTrigTowerConstituentsMapBuilder
 #define Geometry_CaloEventSetup_EcalTrigTowerConstituentsMapBuilder
 
-// system include files
 #include <memory>
-
-// user include files
+#include <string>
 #include "FWCore/Framework/interface/ESProducer.h"
-
-#include "FWCore/Framework/interface/ESHandle.h"
-#include "FWCore/ParameterSet/interface/ParameterSet.h"
-#include "Geometry/Records/interface/IdealGeometryRecord.h"
 #include "Geometry/CaloTopology/interface/EcalTrigTowerConstituentsMap.h"
 
-//
-// class decleration
-//
+class IdealGeometryRecord;
+
+namespace edm { class ParameterSet; }
 
 class EcalTrigTowerConstituentsMapBuilder : public edm::ESProducer {
    public:

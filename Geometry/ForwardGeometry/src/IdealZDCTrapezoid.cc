@@ -1,5 +1,13 @@
 #include "Geometry/ForwardGeometry/interface/IdealZDCTrapezoid.h"
-#include <math.h>
+#include <assert.h>
+#include <ext/alloc_traits.h>
+#include <math.h>                                                   // for tan
+#include <ostream>
+#include "CLHEP/Geometry/BasicVector3D.h"
+#include "CLHEP/Geometry/Point3D.h"
+#include "CLHEP/Geometry/Transform3D.h"
+#include "DataFormats/GeometryVector/interface/PV3DBase.h"
+#include "DataFormats/GeometryVector/interface/sseBasic3DVector.h"
 
 typedef CaloCellGeometry::CCGFloat CCGFloat ;
 typedef CaloCellGeometry::Pt3D     Pt3D     ;

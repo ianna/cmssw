@@ -1,9 +1,10 @@
 #include "Geometry/TrackerNumberingBuilder/plugins/CmsTrackerLevelBuilder.h"
+#include <ostream>
 #include "DetectorDescription/Core/interface/DDFilteredView.h"
+#include "DetectorDescription/Core/interface/DDName.h"
+#include "FWCore/MessageLogger/interface/MessageLogger.h"
 #include "Geometry/TrackerNumberingBuilder/interface/GeometricDet.h"
 #include "Geometry/TrackerNumberingBuilder/plugins/ExtractStringFromDDD.h"
-#include "FWCore/MessageLogger/interface/MessageLogger.h"
-
 
 void CmsTrackerLevelBuilder::build (
 				    DDFilteredView& fv, 

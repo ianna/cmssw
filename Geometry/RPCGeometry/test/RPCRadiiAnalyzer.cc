@@ -3,28 +3,31 @@
  *  \author M. Maggi - INFN Bari
  */
 
-#include <memory>
-#include <fstream>
-#include <FWCore/Framework/interface/Frameworkfwd.h>
-
-#include <FWCore/Framework/interface/one/EDAnalyzer.h>
-#include <FWCore/Framework/interface/Event.h>
-#include <FWCore/Framework/interface/EventSetup.h>
 #include <FWCore/Framework/interface/ESHandle.h>
-#include <FWCore/ParameterSet/interface/ParameterSet.h>
-
-#include "Geometry/RPCGeometry/interface/RPCGeometry.h"
-#include "Geometry/RPCGeometry/interface/RPCRollSpecs.h"
-#include "Geometry/RPCGeometry/interface/RPCGeomServ.h"
+#include <FWCore/Framework/interface/EventSetup.h>
+#include <FWCore/Framework/interface/MakerMacros.h>
+#include <FWCore/Framework/interface/one/EDAnalyzer.h>
 #include <Geometry/Records/interface/MuonGeometryRecord.h>
-#include <Geometry/CommonTopologies/interface/RectangularStripTopology.h>
-#include <Geometry/CommonTopologies/interface/TrapezoidalStripTopology.h>
-
+#include <iostream>
+#include <memory>
 #include <string>
-#include <cmath>
 #include <vector>
-#include <iomanip>
-#include <set>
+#include "DataFormats/GeometryVector/interface/GlobalPoint.h"
+#include "DataFormats/GeometryVector/interface/LocalPoint.h"
+#include "DataFormats/GeometryVector/interface/Phi.h"
+#include "DataFormats/MuonDetId/interface/RPCDetId.h"
+#include "FWCore/Framework/src/WorkerMaker.h"
+#include "FWCore/ParameterSet/interface/ParameterSetDescriptionFiller.h"
+#include "Geometry/CommonDetUnit/interface/GeomDet.h"
+#include "Geometry/CommonDetUnit/interface/TrackingGeometry.h"
+#include "Geometry/RPCGeometry/interface/RPCChamber.h"
+#include "Geometry/RPCGeometry/interface/RPCGeomServ.h"
+#include "Geometry/RPCGeometry/interface/RPCGeometry.h"
+#include "Geometry/RPCGeometry/interface/RPCRoll.h"
+#include "Geometry/RPCGeometry/interface/RPCRollSpecs.h"
+
+namespace edm { class Event; }
+namespace edm { class ParameterSet; }
 
 using namespace std;
 

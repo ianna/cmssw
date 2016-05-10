@@ -8,18 +8,18 @@
  *  \author M. Maggi - INFN Bari
  */
 
-#include "DataFormats/DetId/interface/DetId.h"
-#include "Geometry/CommonDetUnit/interface/TrackingGeometry.h"
-#include "Geometry/GEMGeometry/interface/GEMEtaPartition.h"
-#include "Geometry/GEMGeometry/interface/GEMChamber.h"
-#include "Geometry/GEMGeometry/interface/GEMSuperChamber.h"
-#include "Geometry/GEMGeometry/interface/GEMRing.h"
-#include "Geometry/GEMGeometry/interface/GEMStation.h"
-#include "Geometry/GEMGeometry/interface/GEMRegion.h"
 #include <vector>
-#include <map>
+#include "DataFormats/DetId/interface/DetId.h"
+#include "DataFormats/MuonDetId/interface/GEMDetId.h"
+#include "Geometry/CommonDetUnit/interface/GeomDet.h"
+#include "Geometry/CommonDetUnit/interface/TrackingGeometry.h"
 
-class GeomDetType;
+class GEMChamber;
+class GEMEtaPartition;
+class GEMRegion;
+class GEMRing;
+class GEMStation;
+class GEMSuperChamber;
 
 class GEMGeometry : public TrackingGeometry {
 

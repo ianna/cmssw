@@ -1,18 +1,20 @@
 #include "Geometry/TrackerNumberingBuilder/interface/GeometricDet.h"
-#include "Geometry/TrackerNumberingBuilder/interface/TrackerShapeToBounds.h"
-#include "DetectorDescription/Core/interface/DDFilteredView.h"
-#include "DetectorDescription/Core/interface/DDSolid.h"
-#include "DetectorDescription/Core/interface/DDMaterial.h"
-#include "DetectorDescription/Core/interface/DDExpandedNode.h"
-#include "CondFormats/GeometryObjects/interface/PGeometricDet.h"
-
-#include "CLHEP/Units/GlobalSystemOfUnits.h"
-
-#include <boost/bind.hpp>
-
-#include <cfloat>
-#include <vector>
+#include <stdlib.h>
+#include <algorithm>
+#include <iterator>
 #include <string>
+#include <vector>
+#include "CLHEP/Units/GlobalSystemOfUnits.h"
+#include "CLHEP/Units/SystemOfUnits.h"
+#include "CondFormats/GeometryObjects/interface/PGeometricDet.h"
+#include "DataFormats/GeometrySurface/interface/Bounds.h"
+#include "DetectorDescription/Core/interface/DDFilteredView.h"
+#include "DetectorDescription/Core/interface/DDLogicalPart.h"
+#include "DetectorDescription/Core/interface/DDSolid.h"
+#include "DetectorDescription/Core/interface/DDValue.h"
+#include "DetectorDescription/Core/interface/DDsvalues.h"
+#include "FWCore/Utilities/interface/Exception.h"
+#include "Geometry/TrackerNumberingBuilder/interface/TrackerShapeToBounds.h"
 
 namespace {
 

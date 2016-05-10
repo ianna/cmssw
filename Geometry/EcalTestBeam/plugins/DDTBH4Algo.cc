@@ -3,17 +3,24 @@
 // Description: Position inside the mother according to (eta,phi) 
 ///////////////////////////////////////////////////////////////////////////////
 
+#include "Geometry/EcalTestBeam/plugins/DDTBH4Algo.h"
 #include <cmath>
-#include <algorithm>
-
-#include "FWCore/MessageLogger/interface/MessageLogger.h"
+#include <iostream>
+#include <utility>
+#include "CLHEP/Units/GlobalSystemOfUnits.h"
+#include "CLHEP/Units/SystemOfUnits.h"
+#include "CLHEP/Vector/Rotation.icc"
+#include "CLHEP/Vector/RotationZ.h"
+#include "CLHEP/Vector/RotationZ.icc"
+#include "DetectorDescription/Base/interface/DDRotationMatrix.h"
+#include "DetectorDescription/Base/interface/DDTranslation.h"
 #include "DetectorDescription/Base/interface/DDutils.h"
+#include "DetectorDescription/Core/interface/DDCompactView.h"
+#include "DetectorDescription/Core/interface/DDCurrentNamespace.h"
 #include "DetectorDescription/Core/interface/DDLogicalPart.h"
 #include "DetectorDescription/Core/interface/DDSolid.h"
-#include "DetectorDescription/Core/interface/DDCurrentNamespace.h"
 #include "DetectorDescription/Core/interface/DDSplit.h"
-#include "Geometry/EcalTestBeam/plugins/DDTBH4Algo.h"
-#include "CLHEP/Units/GlobalSystemOfUnits.h"
+#include "FWCore/MessageLogger/interface/MessageLogger.h"
 
 DDTBH4Algo::DDTBH4Algo() :
    m_idNameSpace (""), 

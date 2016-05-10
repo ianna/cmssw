@@ -16,24 +16,37 @@
 //
 //
 
-
-// user include files
 #include "Geometry/CaloEventSetup/plugins/CaloGeometryBuilder.h"
+#include "DataFormats/DetId/interface/DetId.h"
+#include "DataFormats/EcalDetId/interface/EcalSubdetector.h"
+#include "DataFormats/HcalDetId/interface/HcalCastorDetId.h"
 #include "DataFormats/HcalDetId/interface/HcalSubdetector.h"
 #include "DataFormats/HcalDetId/interface/HcalZDCDetId.h"
-#include "DataFormats/HcalDetId/interface/HcalCastorDetId.h"
-#include "DataFormats/EcalDetId/interface/EcalSubdetector.h"
+#include "FWCore/MessageLogger/interface/ErrorObj.icc"
+#include "FWCore/MessageLogger/interface/MessageLogger.h"
+#include "FWCore/ParameterSet/interface/ParameterSet.h"
+#include "FWCore/Utilities/interface/Exception.h"
+#include "Geometry/CaloGeometry/interface/CaloGeometry.h"
 #include "Geometry/EcalAlgo/interface/EcalBarrelGeometry.h"
 #include "Geometry/EcalAlgo/interface/EcalEndcapGeometry.h"
 #include "Geometry/EcalAlgo/interface/EcalPreshowerGeometry.h"
-#include "Geometry/HcalTowerAlgo/interface/HcalGeometry.h"
-#include "Geometry/HcalTowerAlgo/interface/CaloTowerGeometry.h"
 #include "Geometry/ForwardGeometry/interface/CastorGeometry.h"
 #include "Geometry/ForwardGeometry/interface/ZdcGeometry.h"
-#include "FWCore/MessageLogger/interface/MessageLogger.h"
-//
-// member functions
-//
+#include "Geometry/HcalTowerAlgo/interface/CaloTowerGeometry.h"
+#include "Geometry/HcalTowerAlgo/interface/HcalGeometry.h"
+#include "Geometry/Records/interface/CaloGeometryRecord.h"
+#include "Geometry/Records/interface/CaloTowerGeometryRecord.h"
+#include "Geometry/Records/interface/CastorGeometryRecord.h"
+#include "Geometry/Records/interface/EcalBarrelGeometryRecord.h"
+#include "Geometry/Records/interface/EcalEndcapGeometryRecord.h"
+#include "Geometry/Records/interface/EcalPreshowerGeometryRecord.h"
+#include "Geometry/Records/interface/HcalGeometryRecord.h"
+#include "Geometry/Records/interface/ZDCGeometryRecord.h"
+
+class CaloSubdetectorGeometry;
+
+namespace edm { class ParameterSet; }
+
 CaloGeometryBuilder::CaloGeometryBuilder( const edm::ParameterSet& iConfig )
 {
    //the following line is needed to tell the framework what

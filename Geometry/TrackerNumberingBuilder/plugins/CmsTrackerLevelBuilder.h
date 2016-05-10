@@ -1,11 +1,17 @@
 #ifndef Geometry_TrackerNumberingBuilder_CmsTrackerLevelBuilder_H
 #define Geometry_TrackerNumberingBuilder_CmsTrackerLevelBuilder_H 
 
-#include "Geometry/TrackerNumberingBuilder/plugins/CmsTrackerAbstractConstruction.h"
+#include <math.h>
+#include <functional>
+#include <string>
+#include <vector>
+#include "DetectorDescription/Base/interface/DDTranslation.h"
 #include "Geometry/TrackerNumberingBuilder/interface/CmsTrackerStringToEnum.h"
 #include "Geometry/TrackerNumberingBuilder/interface/GeometricDet.h"
-#include "FWCore/ParameterSet/interface/types.h"
-#include <string>
+#include "Geometry/TrackerNumberingBuilder/plugins/CmsTrackerAbstractConstruction.h"
+
+class DDFilteredView;
+
 /**
  * Abstract Class to construct a Level in the hierarchy
  */

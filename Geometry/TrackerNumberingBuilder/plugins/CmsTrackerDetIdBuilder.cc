@@ -1,14 +1,12 @@
 #include "Geometry/TrackerNumberingBuilder/plugins/CmsTrackerDetIdBuilder.h"
-#include "Geometry/TrackerNumberingBuilder/interface/GeometricDet.h"
-#include "FWCore/Utilities/interface/Exception.h"
-#include "DataFormats/DetId/interface/DetId.h"
-#include "FWCore/MessageLogger/interface/MessageLogger.h"
-
-#include <iostream>
-#include <fstream>
-#include <sstream>
-#include <string>
 #include <bitset>
+#include <cmath>
+#include <string>
+#include "DataFormats/DetId/interface/DetId.h"
+#include "DetectorDescription/Base/interface/DDTranslation.h"
+#include "FWCore/MessageLogger/interface/ErrorObj.icc"
+#include "FWCore/MessageLogger/interface/MessageLogger.h"
+#include "Geometry/TrackerNumberingBuilder/interface/GeometricDet.h"
 
 CmsTrackerDetIdBuilder::CmsTrackerDetIdBuilder( std::vector<int> detidShifts )
   : m_detidshifts()

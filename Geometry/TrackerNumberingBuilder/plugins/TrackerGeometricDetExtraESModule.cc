@@ -1,23 +1,28 @@
 #include "Geometry/TrackerNumberingBuilder/plugins/TrackerGeometricDetExtraESModule.h"
-#include "Geometry/TrackerNumberingBuilder/plugins/DDDCmsTrackerContruction.h"
-#include "CondFormats/GeometryObjects/interface/PGeometricDet.h"
+#include <cstdint>
+#include <map>
+#include <memory>
+#include <string>
 #include "CondFormats/GeometryObjects/interface/PGeometricDetExtra.h"
-#include "Geometry/Records/interface/IdealGeometryRecord.h"
-#include "Geometry/Records/interface/PGeometricDetExtraRcd.h"
-#include "DetectorDescription/Core/interface/DDCompactView.h"
-#include "DetectorDescription/Core/interface/DDSolid.h"
+#include "DataFormats/DetId/interface/DetId.h"
+#include "DetectorDescription/Core/interface/DDExpandedNode.h"
+#include "DetectorDescription/Core/interface/DDLogicalPart.h"
 #include "DetectorDescription/Core/interface/DDMaterial.h"
-#include "ExtractStringFromDDD.h"
-#include "CondDBCmsTrackerConstruction.h"
-
-#include "FWCore/Framework/interface/EventSetup.h"
+#include "DetectorDescription/Core/interface/DDName.h"
+#include "DetectorDescription/Core/interface/DDSolid.h"
 #include "FWCore/Framework/interface/ESHandle.h"
 #include "FWCore/Framework/interface/ESTransientHandle.h"
 #include "FWCore/Framework/interface/ModuleFactory.h"
-#include "FWCore/Framework/interface/ESProducer.h"
+#include "FWCore/MessageLogger/interface/MessageLogger.h"
+#include "FWCore/ParameterSet/interface/ParameterSet.h"
+#include "FWCore/ParameterSet/interface/ParameterSetDescriptionFiller.h"
+#include "FWCore/Utilities/interface/Exception.h"
+#include "Geometry/Records/interface/IdealGeometryRecord.h"
+#include "Geometry/Records/interface/PGeometricDetExtraRcd.h"
+#include "Geometry/TrackerNumberingBuilder/interface/GeometricDet.h"
+#include "Geometry/TrackerNumberingBuilder/interface/GeometricDetExtra.h"
 
-
-#include <memory>
+class DDCompactView;
 
 using namespace edm;
 

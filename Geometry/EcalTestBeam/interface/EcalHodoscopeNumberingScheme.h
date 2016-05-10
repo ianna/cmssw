@@ -5,7 +5,10 @@
 #ifndef EcalHodoscopeNumberingScheme_h
 #define EcalHodoscopeNumberingScheme_h
 
+#include <stdint.h>
 #include "Geometry/EcalCommonData/interface/EcalNumberingScheme.h"
+
+class EcalBaseNumber;
 
 class EcalHodoscopeNumberingScheme : public EcalNumberingScheme {
 

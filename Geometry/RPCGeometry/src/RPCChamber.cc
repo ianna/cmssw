@@ -4,17 +4,8 @@
  *  Mail:     <raffaello.trentadue@ba.infn.it>
  */
 
-/* This Class Header */
 #include "Geometry/RPCGeometry/interface/RPCChamber.h"
-
-/* Collaborating Class Header */
 #include "Geometry/RPCGeometry/interface/RPCRoll.h"
-
-
-/* C++ Headers */
-#include <iostream>
-
-/* ====================================================================== */
 
 /* Constructor */ 
 RPCChamber::RPCChamber(RPCDetId id, 

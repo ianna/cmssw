@@ -1,37 +1,61 @@
-#include "FWCore/Framework/interface/one/EDAnalyzer.h"
-
-#include "FWCore/Framework/interface/EventSetup.h"
-#include "FWCore/Framework/interface/ESHandle.h"
-#include "FWCore/Framework/interface/MakerMacros.h"
-
+#include <assert.h>
+#include <ext/alloc_traits.h>
+#include <math.h>
+#include <stdlib.h>
+#include <algorithm>
+#include <iomanip>
+#include <iostream>
+#include <iterator>
+#include <memory>
+#include <set>
+#include <string>
+#include <vector>
+#include "CLHEP/Units/GlobalSystemOfUnits.h"
+#include "CLHEP/Units/SystemOfUnits.h"
+#include "CommonTools/UtilAlgos/interface/TFileService.h"
+#include "DataFormats/CaloTowers/interface/CaloTowerDetId.h"
+#include "DataFormats/DetId/interface/DetId.h"
+#include "DataFormats/EcalDetId/interface/EBDetId.h"
+#include "DataFormats/EcalDetId/interface/EEDetId.h"
+#include "DataFormats/EcalDetId/interface/ESDetId.h"
+#include "DataFormats/EcalDetId/interface/EcalSubdetector.h"
+#include "DataFormats/GeometryVector/interface/GlobalPoint.h"
+#include "DataFormats/GeometryVector/interface/GlobalVector.h"
+#include "DataFormats/GeometryVector/interface/PV3DBase.h"
+#include "DataFormats/GeometryVector/interface/Phi.h"
+#include "DataFormats/GeometryVector/interface/Point3DBase.h"
+#include "DataFormats/GeometryVector/interface/sseBasic3DVector.h"
 #include "DataFormats/HcalDetId/interface/HcalCastorDetId.h"
-#include "DataFormats/HcalDetId/interface/HcalZDCDetId.h"
 #include "DataFormats/HcalDetId/interface/HcalDetId.h"
-
+#include "DataFormats/HcalDetId/interface/HcalSubdetector.h"
+#include "DataFormats/HcalDetId/interface/HcalZDCDetId.h"
+#include "DataFormats/Math/interface/deltaR.h"
+#include "FWCore/Framework/interface/ESHandle.h"
+#include "FWCore/Framework/interface/EventSetup.h"
+#include "FWCore/Framework/interface/MakerMacros.h"
+#include "FWCore/Framework/interface/one/EDAnalyzer.h"
+#include "FWCore/Framework/src/WorkerMaker.h"
+#include "FWCore/ParameterSet/interface/ParameterSetDescriptionFiller.h"
+#include "FWCore/ServiceRegistry/interface/Service.h"
+#include "Geometry/CaloGeometry/interface/CaloCellGeometry.h"
+#include "Geometry/CaloGeometry/interface/CaloGenericDetId.h"
+#include "Geometry/CaloGeometry/interface/CaloGeometry.h"
+#include "Geometry/CaloGeometry/interface/CaloSubdetectorGeometry.h"
+#include "Geometry/CaloGeometry/interface/TruncatedPyramid.h"
+#include "Geometry/CaloTopology/interface/HcalTopology.h"
 #include "Geometry/EcalAlgo/interface/EcalBarrelGeometry.h"
 #include "Geometry/EcalAlgo/interface/EcalEndcapGeometry.h"
-#include "Geometry/CaloGeometry/interface/CaloSubdetectorGeometry.h"
-#include "Geometry/CaloGeometry/interface/CaloGeometry.h"
-#include "Geometry/CaloGeometry/interface/CaloCellGeometry.h"
-#include "Geometry/CaloGeometry/interface/TruncatedPyramid.h"
 #include "Geometry/EcalAlgo/interface/EcalPreshowerGeometry.h"
-#include "Geometry/Records/interface/CaloGeometryRecord.h"
-#include "Geometry/CaloGeometry/interface/CaloGenericDetId.h"
-#include "Geometry/CaloTopology/interface/HcalTopology.h"
-#include "Geometry/CaloTopology/interface/CaloSubdetectorTopology.h"
-
 #include "Geometry/HcalTowerAlgo/interface/HcalGeometry.h"
-
-#include "FWCore/ServiceRegistry/interface/Service.h"
-#include "CommonTools/UtilAlgos/interface/TFileService.h"
-
-#include <fstream>
-#include <iomanip>
-#include <iterator>
-#include "CLHEP/Units/GlobalSystemOfUnits.h"  
+#include "Geometry/Records/interface/CaloGeometryRecord.h"
+#include "Geometry/Records/interface/HcalRecNumberingRecord.h"
+#include "Rtypes.h"
 #include "TH1.h"
-#include "TH1D.h"
 #include "TProfile.h"
+
+namespace edm { class Event; }
+namespace edm { class ParameterSet; }
+namespace edm { namespace one { struct SharedResources; } }
 
 class CaloGeometryAnalyzer : public edm::one::EDAnalyzer<edm::one::SharedResources> {
   enum CenterOrCorner { kCenter , kCorner } ;

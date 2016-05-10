@@ -6,8 +6,11 @@
  *  measured coordinate.
  */
 
+#include "DataFormats/GeometryCommonDetAlgo/interface/MeasurementError.h"
+#include "DataFormats/GeometryCommonDetAlgo/interface/MeasurementPoint.h"
+#include "DataFormats/GeometrySurface/interface/LocalError.h"
+#include "DataFormats/GeometryVector/interface/LocalPoint.h"
 #include "Geometry/CommonTopologies/interface/StripTopology.h"
-
 
 /** Specialization of StripTopology for detectors of symmetric trapezoidal
  *  shape. The local Y coordinate is parallel to the central strip,

@@ -1,8 +1,11 @@
 #ifndef Geometry_TrackerGeometryBuilder_StackGeomDet_H
 #define Geometry_TrackerGeometryBuilder_StackGeomDet_H
 
-#include "Geometry/CommonDetUnit/interface/TrackerGeomDet.h"
+#include <vector>
 #include "DataFormats/DetId/interface/DetId.h"
+#include "DataFormats/GeometrySurface/interface/Plane.h"
+#include "Geometry/CommonDetUnit/interface/GeomDet.h"
+#include "Geometry/CommonDetUnit/interface/TrackerGeomDet.h"
 
 class StackGeomDet : public TrackerGeomDet{
 public:

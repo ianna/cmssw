@@ -1,5 +1,5 @@
 #include "Geometry/EcalTestBeam/interface/EcalTBHodoscopeGeometry.h"
-
+#include <ext/alloc_traits.h>
 #include "SimDataFormats/EcalTestBeam/interface/HodoscopeDetId.h"
 
 typedef CaloCellGeometry::CCGFloat CCGFloat ;

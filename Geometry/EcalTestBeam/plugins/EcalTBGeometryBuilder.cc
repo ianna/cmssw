@@ -16,16 +16,17 @@
 //
 //
 
-
-// user include files
 #include "Geometry/EcalTestBeam/plugins/EcalTBGeometryBuilder.h"
+#include "DataFormats/DetId/interface/DetId.h"
 #include "DataFormats/EcalDetId/interface/EcalSubdetector.h"
+#include "FWCore/Framework/interface/ESHandle.h"
 #include "FWCore/MessageLogger/interface/MessageLogger.h"
+#include "Geometry/Records/interface/IdealGeometryRecord.h"
 
+class CaloSubdetectorGeometry;
 
-//
-// constructors and destructor
-//
+namespace edm { class ParameterSet; }
+
 EcalTBGeometryBuilder::EcalTBGeometryBuilder(const edm::ParameterSet& iConfig)
 {
    //the following line is needed to tell the framework what

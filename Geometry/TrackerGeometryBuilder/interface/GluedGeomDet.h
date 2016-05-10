@@ -1,8 +1,11 @@
 #ifndef Geometry_TrackerGeometryBuilder_GluedGeomDet_H
 #define Geometry_TrackerGeometryBuilder_GluedGeomDet_H
 
-#include "Geometry/CommonDetUnit/interface/TrackerGeomDet.h"
+#include <vector>
 #include "DataFormats/DetId/interface/DetId.h"
+#include "DataFormats/GeometrySurface/interface/Plane.h"
+#include "Geometry/CommonDetUnit/interface/GeomDet.h"
+#include "Geometry/CommonDetUnit/interface/TrackerGeomDet.h"
 
 class GluedGeomDet final : public TrackerGeomDet {
 public:

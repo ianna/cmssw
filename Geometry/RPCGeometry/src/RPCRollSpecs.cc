@@ -1,7 +1,10 @@
 #include "Geometry/RPCGeometry/interface/RPCRollSpecs.h"
+#include "Geometry/CommonDetUnit/interface/GeomDetEnumerators.h"
 #include "Geometry/CommonTopologies/interface/RectangularStripTopology.h"
+#include "Geometry/CommonTopologies/interface/StripTopology.h"
 #include "Geometry/CommonTopologies/interface/TrapezoidalStripTopology.h"
 
+class Topology;
 
 using namespace GeomDetEnumerators;
 

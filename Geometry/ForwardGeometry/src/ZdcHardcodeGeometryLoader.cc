@@ -1,9 +1,16 @@
-#include "Geometry/CaloGeometry/interface/CaloCellGeometry.h"
-#include "Geometry/ForwardGeometry/interface/ZdcHardcodeGeometryLoader.h"
-#include "Geometry/ForwardGeometry/interface/IdealZDCTrapezoid.h"
-#include "Geometry/ForwardGeometry/interface/ZdcGeometry.h"
+#include <assert.h>
+#include <math.h>
+#include <vector>
+#include "DataFormats/DetId/interface/DetId.h"
+#include "DataFormats/GeometryVector/interface/GlobalPoint.h"
+#include "DataFormats/HcalDetId/interface/HcalZDCDetId.h"
+#include "FWCore/MessageLogger/interface/ErrorObj.icc"
 #include "FWCore/MessageLogger/interface/MessageLogger.h"
-#include <algorithm>
+#include "Geometry/CaloGeometry/interface/CaloCellGeometry.h"
+#include "Geometry/CaloGeometry/interface/CaloSubdetectorGeometry.h"
+#include "Geometry/ForwardGeometry/interface/ZdcGeometry.h"
+#include "Geometry/ForwardGeometry/interface/ZdcHardcodeGeometryLoader.h"
+#include "Geometry/ForwardGeometry/interface/ZdcTopology.h"
 
 typedef CaloCellGeometry::CCGFloat CCGFloat ;
 

@@ -1,28 +1,25 @@
-#include "FWCore/Framework/interface/one/EDAnalyzer.h"
-#include "FWCore/Framework/interface/EventSetup.h"
-#include "FWCore/Framework/interface/ESHandle.h"
-#include "FWCore/Framework/interface/MakerMacros.h"
-#include "Geometry/EcalAlgo/interface/EcalBarrelGeometry.h"
-#include "Geometry/EcalAlgo/interface/EcalEndcapGeometry.h"
-#include "Geometry/CaloGeometry/interface/CaloSubdetectorGeometry.h"
-#include "Geometry/CaloGeometry/interface/CaloGeometry.h"
-#include "Geometry/CaloGeometry/interface/CaloCellGeometry.h"
-#include "Geometry/CaloGeometry/interface/TruncatedPyramid.h"
-#include "Geometry/EcalAlgo/interface/EcalPreshowerGeometry.h"
-#include "Geometry/Records/interface/CaloGeometryRecord.h"
-#include "Geometry/CaloGeometry/interface/CaloGenericDetId.h"
-#include "FWCore/ServiceRegistry/interface/Service.h"
+#include <memory>
+#include <string>
+#include <vector>
 #include "CommonTools/UtilAlgos/interface/TFileService.h"
-
-#include <fstream>
-#include <iomanip>
-#include <iterator>
-#include "CLHEP/Units/GlobalSystemOfUnits.h"  
+#include "DataFormats/DetId/interface/DetId.h"
+#include "DataFormats/EcalDetId/interface/EcalSubdetector.h"
+#include "FWCore/Framework/interface/ESHandle.h"
+#include "FWCore/Framework/interface/EventSetup.h"
+#include "FWCore/Framework/interface/MakerMacros.h"
+#include "FWCore/Framework/interface/one/EDAnalyzer.h"
+#include "FWCore/Framework/src/WorkerMaker.h"
+#include "FWCore/ParameterSet/interface/ParameterSetDescriptionFiller.h"
+#include "FWCore/ServiceRegistry/interface/Service.h"
+#include "Geometry/CaloGeometry/interface/CaloGeometry.h"
+#include "Geometry/Records/interface/CaloGeometryRecord.h"
+#include "Rtypes.h"
 #include "TH1.h"
-#include "TH1D.h"
 #include "TProfile.h"
 
-using namespace CLHEP;
+namespace edm { class Event; }
+namespace edm { class ParameterSet; }
+namespace edm { namespace one { struct SharedResources; } }
 
 class SurveyToTransforms : public edm::one::EDAnalyzer<edm::one::SharedResources> {
 public:

@@ -1,10 +1,11 @@
 #ifndef Geometry_TrackerNumberingBuilder_CmsTrackerDetIdBuilder_H
 # define Geometry_TrackerNumberingBuilder_CmsTrackerDetIdBuilder_H
 
-# include "FWCore/ParameterSet/interface/types.h"
-# include <ostream>
-#include <vector>
+#include <stdint.h>
 #include <array>
+#include <map>
+#include <string>
+#include <vector>
 
 class GeometricDet;
 
