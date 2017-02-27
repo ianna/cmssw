@@ -1,5 +1,4 @@
-/** \file
- *
+/** 
  *  \author M. Maggi - INFN Bari
  */
 

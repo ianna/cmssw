@@ -31,9 +31,14 @@ const GEMGeometry* GEMBaseValidation::initGeometry(edm::EventSetup const & iSetu
     return nullptr;
   }
   nregion  = GEMGeometry_->regions().size();
-  nstation = GEMGeometry_->regions()[0]->stations().size() ;
-  nstationForLabel = GEMGeometry_->regions()[0]->stations().size() ;
-  npart    = GEMGeometry_->regions()[0]->stations()[0]->superChambers()[0]->chambers()[0]->etaPartitions().size();
+  std::cout << "GEMGeometry_->regions().size() " << nregion << "\n";
+  std::cout << "GEMGeometry_->superChambers().size() " << GEMGeometry_->superChambers().size() << "\n";
+  std::cout << "GEMGeometry_->chambers().size() " << GEMGeometry_->chambers().size() << "\n";
+  std::cout << "GEMGeometry_->etaPartitions().size() " << GEMGeometry_->etaPartitions().size() << "\n";
+  
+  nstation = GEMGeometry_->regions().front()->stations().size() ;
+  nstationForLabel = GEMGeometry_->regions().front()->stations().size() ;
+  npart    = GEMGeometry_->regions().front()->stations().front()->superChambers().front()->chambers().front()->etaPartitions().size();
 
   return GEMGeometry_;
 }
