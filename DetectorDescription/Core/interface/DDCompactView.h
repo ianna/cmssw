@@ -161,8 +161,8 @@ public:
   void lockdown();
   
  private:
-  std::unique_ptr<DDCompactViewImpl> rep_;
-  std::unique_ptr<DDPosData> worldpos_ ;
+  DDCompactViewImpl* rep_;
+  DDPosData* worldpos_ ;
   
     // 2010-01-27 memory patch
     // for copying and protecting DD Store's after parsing is complete.

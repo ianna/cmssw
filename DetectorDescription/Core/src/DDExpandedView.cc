@@ -31,33 +31,32 @@ DDExpandedView::DDExpandedView( const DDCompactView & cpv )
   const DDPosData * pd((*walker_).current().second);
   if (!pd)
     pd = worldpos_;
-  DDExpandedNode expn((*walker_).current().first,
-                      pd,
-		      trans_,
-		      rot_,
-		      0);
   
   // starting point for position calculations, == root of expanded view
-  history_.push_back(expn);		      		      
+  history_.emplace_back(new DDExpandedNode((*walker_).current().first,
+					   pd,
+					   trans_,
+					   rot_,
+					   0));	      
 }
 
 DDExpandedView::~DDExpandedView() { }  
 
 const DDLogicalPart & DDExpandedView::logicalPart() const 
 { 
-  return history_.back().logp_;
+  return history_.back()->logp_;
 }
 
 
 const DDTranslation & DDExpandedView::translation() const 
 { 
-  return history_.back().trans_; 
+  return history_.back()->trans_; 
 }
 
 
 const DDRotationMatrix & DDExpandedView::rotation() const 
 { 
-  return history_.back().rot_; 
+  return history_.back()->rot_; 
 }
 
 
@@ -75,7 +74,7 @@ int DDExpandedView::depth() const
 
 int DDExpandedView::copyno() const 
 { 
-  return history_.back().copyno();
+  return history_.back()->copyno();
 }
 
 /** 
@@ -91,32 +90,32 @@ bool DDExpandedView::nextSibling()
   } 
   else {
     if ((*walker_).nextSibling()) {
-      DDExpandedNode & expn(history_.back()); // back of history_ is always current node
+      DDExpandedNode* expn = history_.back(); // back of history_ is always current node
       DDCompactView::walker_type::value_type curr = (*walker_).current();
-      DDPosData const * posdOld = expn.posd_;
-      expn.logp_=curr.first;
-      expn.posd_=curr.second;
+      std::shared_ptr<DDPosData> const posdOld = expn->posd_;
+      expn->logp_=curr.first;
+      expn->posd_=std::make_shared<DDPosData>(*curr.second);
       
       DDGeoHistory::size_type hsize = history_.size();
       
       
       if (hsize>1) {
-	const DDExpandedNode & expnBefore(history_[hsize-2]);
+	DDExpandedNode* expnBefore = history_[hsize-2];
 	
 	// T = T1 + INV[R1] * T2
-	expn.trans_  = expnBefore.trans_ + (expnBefore.rot_ * expn.posd_->trans_);
+	expn->trans_  = expnBefore->trans_ + (expnBefore->rot_ * expn->posd_->trans_);
      
 	// R = R1*INV[R2]	
 	// VI in principle we can do this
-	if ( !(expn.posd_->rot()==posdOld->rot()) ) {
-	  expn.rot_ = expnBefore.rot_ * expn.posd_->rot();//.inverse();
+	if ( !(expn->posd_->rot()==posdOld->rot()) ) {
+	  expn->rot_ = expnBefore->rot_ * expn->posd_->rot();//.inverse();
 	}
       }
       else {
-	expn.trans_ = expn.posd_->trans_;
-	expn.rot_ = expn.posd_->rot();//.inverse();
+	expn->trans_ = expn->posd_->trans_;
+	expn->rot_ = expn->posd_->rot();//.inverse();
       }   
-      ++expn.siblingno_;
+      ++expn->siblingno_;
       result = true; 
     }
   }
@@ -141,22 +140,24 @@ bool DDExpandedView::firstChild()
   }
   if (depthNotReached) {
     if ((*walker_).firstChild()) {
-      DDExpandedNode & expnBefore(history_.back());
+      DDExpandedNode* expnBefore = history_.back();
+
       DDCompactView::walker_type::value_type curr = (*walker_).current();
  
       DDPosData * newPosd = curr.second;
+      assert(newPosd);
+      assert(curr.second);
     
           // T = ... (see nextSiblinig())
-      DDTranslation newTrans = expnBefore.trans_ + expnBefore.rot_ * newPosd->trans_;
+      DDTranslation newTrans = expnBefore->trans_ + expnBefore->rot_ * newPosd->trans_;
     
       // R = ... (see nextSibling())
-      DDRotationMatrix newRot =  expnBefore.rot_ *  newPosd->rot();//.inverse();
+      DDRotationMatrix newRot =  expnBefore->rot_ *  newPosd->rot();//.inverse();
     
       // create a new Expanded node and push it to the history ...
-      DDExpandedNode expn(curr.first, curr.second,
-                          newTrans, newRot, 0);
-    
-      history_.push_back(expn);			
+      history_.emplace_back(new DDExpandedNode(curr.first,
+					       curr.second,
+					       newTrans, newRot, 0));			
       result = true;                     
     } // if firstChild 
   } // if depthNotReached
@@ -238,7 +239,7 @@ void dump(const DDGeoHistory & history)
    edm::LogInfo("DDExpandedView")  << "--GeoHistory-Dump--[" << std::endl;
    int i=0;
    for( const auto& it : history ) {
-     edm::LogInfo("DDExpandedView")  << " " << i << it.logicalPart() << std::endl;
+     edm::LogInfo("DDExpandedView")  << " " << i << it->logicalPart() << std::endl;
      ++i;	  
    }
    edm::LogInfo("DDExpandedView")  << "]---------" << std::endl;
@@ -371,7 +372,7 @@ bool DDExpandedView::goToHistory(const DDGeoHistory & pos)
       break;
     }  
     int i=0;
-    for (; i<pos[j].siblingno(); ++i) {
+    for (; i<pos[j]->siblingno(); ++i) {
       if (! nextSibling()) {
 	result = false;
       }	
@@ -406,7 +407,7 @@ bool DDExpandedView::descend(const DDGeoHistory & sc)
 	     else continue at (A)
 	   else return false
   */	   
-  const DDExpandedNode & curNode = history_.back();
+  DDExpandedNode* curNode = history_.back();
   
   if (sc.size()) {
     if (curNode==sc[cur]) {
@@ -481,7 +482,7 @@ DDExpandedView::nav_type DDExpandedView::navPos() const
   nav_type pos(j);  
   
   for (;i<j;++i)
-    pos[i] = history_[i].siblingno();
+    pos[i] = history_[i]->siblingno();
     
   return pos;   
 }
@@ -493,7 +494,7 @@ DDExpandedView::nav_type DDExpandedView::copyNumbers() const
   nav_type result(sz);
   
   for (; it < sz; ++it) {
-    result[it] = history_[it].copyno();
+    result[it] = history_[it]->copyno();
   }
   return result;
 }

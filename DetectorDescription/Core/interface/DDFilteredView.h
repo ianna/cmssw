@@ -13,7 +13,6 @@
 
 class DDCompactView;
 class DDLogicalPart;
-class DDScope;
 
 class DDFilteredView
 {

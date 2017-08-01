@@ -8,15 +8,15 @@
 #include "DetectorDescription/Core/interface/DDPosData.h"
 
 DDExpandedNode::DDExpandedNode(const DDLogicalPart & lp, 
-                               const DDPosData * pd, 
+                               const DDPosData* pd, 
 	                       const DDTranslation & t, 
 	                       const DDRotationMatrix & r,
 			       int siblingno)
- : logp_(lp), posd_(pd), trans_(t), rot_(r), siblingno_(siblingno)
-{ }
+  : logp_(lp), posd_(std::make_shared<DDPosData>(*pd)), trans_(t), rot_(r), siblingno_(siblingno)
+{}
 
 DDExpandedNode::~DDExpandedNode()
-{ }   
+{}   
 
 bool DDExpandedNode::operator==(const DDExpandedNode & n) const {
   return ( (logp_==n.logp_) && 

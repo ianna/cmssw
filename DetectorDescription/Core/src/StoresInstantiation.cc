@@ -34,3 +34,37 @@ template class DDI::Singleton<DDI::Store<DDName, DDI::Division*, DDI::Division*>
 template class DDI::Singleton<std::map<std::pair<std::string, std::string>, int> >;
 template class DDI::Singleton<std::map<std::string, std::vector<DDName> > >;
 template class DDI::Singleton<std::vector<std::map<std::pair<std::string, std::string>, int>::const_iterator >  >;
+namespace DDI {
+
+  template<>
+  Store<DDName,DDRotationMatrix* >::prep_type 
+  Store<DDName,DDRotationMatrix* >::create(const name_type & n)
+  {
+    prep_type tmp = 0;
+    auto result = reg_.insert(std::make_pair(n,tmp));
+    if (result.second) {
+      if (readOnly_) throw cms::Exception("DetectorDescriptionStore")<<" Store has been locked.  Illegal attempt to add " << n << " to a global store."; 
+      // ELSE     
+      result.first->second = new Rep_type(n, new DDRotationMatrix);
+    }
+    return result.first->second;    
+  }
+  
+  template<>
+  Store<DDName,DDRotationMatrix* >::prep_type 
+  Store<DDName,DDRotationMatrix* >::create(const name_type & n, 
+							   pimpl_type p)
+  {			
+    if (readOnly_) throw cms::Exception("DetectorDescriptionStore")<<" Store has been locked.  Illegal attempt to add " << n << " to a global store."; 
+    // ELSE     
+    prep_type tmp = 0;
+    auto result = reg_.insert(std::make_pair(n,tmp));
+    if (!result.second) {
+      result.first->second->second = p;
+    }
+    else {
+      result.first->second = new Rep_type(n,p);
+    }
+    return result.first->second;
+  }
+}

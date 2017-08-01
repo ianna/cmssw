@@ -78,7 +78,7 @@ bool DDCompareEqual::nextAnylogp()
 {
   size_t hi = hIndex_;
   while (hi < hMax_) {
-    if (sLp_==hist_[hi].logicalPart()) {
+    if (sLp_==hist_[hi]->logicalPart()) {
       hIndex_ = hi+1;
       return true;
     }
@@ -93,8 +93,8 @@ bool DDCompareEqual::nextAnyposp()
 {
   bool result(false);
   while (hIndex_ < hMax_) {
-    if (sLp_ == hist_[hIndex_].logicalPart() && 
-        sCopyno_ == hist_[hIndex_].copyno() ) 
+    if (sLp_ == hist_[hIndex_]->logicalPart() && 
+        sCopyno_ == hist_[hIndex_]->copyno() ) 
      { result=true;
        ++hIndex_; 
        break; 
@@ -109,7 +109,7 @@ bool DDCompareEqual::nextChildlogp()
 {
   bool result(false);
   if (hIndex_ < hMax_) {
-    if (sLp_ == hist_[hIndex_].logicalPart()) {
+    if (sLp_ == hist_[hIndex_]->logicalPart()) {
       ++hIndex_;
       result=true;
     }
@@ -122,8 +122,8 @@ bool DDCompareEqual::nextChildposp()
 {
   bool result(false);
   if (hIndex_ < hMax_) {
-    if (sLp_ == hist_[hIndex_].logicalPart() &&
-        sCopyno_ == hist_[hIndex_].copyno() ) {
+    if (sLp_ == hist_[hIndex_]->logicalPart() &&
+        sCopyno_ == hist_[hIndex_]->copyno() ) {
       ++hIndex_;
       result=true;
     }

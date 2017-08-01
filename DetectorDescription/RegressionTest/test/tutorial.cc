@@ -73,11 +73,11 @@ DDTranslation calc(const DDGeoHistory & aHist)
   vr.push_back(r);
   
   if (h.size()>1) {
-    vt.push_back(h[1].posdata()->translation());
+    vt.push_back(h[1]->posdata()->translation());
     unsigned int i = 1;
     for (; i <= sz-2; ++i) {
-      vr.push_back( vr.back() * *(h[i].posdata()->rot_.rotation()) );
-      vt.push_back(h[i+1].posdata()->translation());
+      vr.push_back( vr.back() * *(h[i]->posdata()->rot_.rotation()) );
+      vt.push_back(h[i+1]->posdata()->translation());
     }
   }
   
@@ -155,10 +155,10 @@ void dumpHistory(const DDGeoHistory & h, bool short_dump=false)
 {
   DDGeoHistory::size_type i=0;
   for (; i<h.size(); ++i) {
-    std::cout << h[i].logicalPart().name() << "[" << h[i].copyno() << "]-";
+    std::cout << h[i]->logicalPart().name() << "[" << h[i]->copyno() << "]-";
     if (!short_dump) { 
-      DDAxisAngle ra(h[i].absRotation());
-      std::cout  << h[i].absTranslation() 
+      DDAxisAngle ra(h[i]->absRotation());
+      std::cout  << h[i]->absTranslation() 
 		 << ra.Axis() << ra.Angle()/deg;
     }	  
   }

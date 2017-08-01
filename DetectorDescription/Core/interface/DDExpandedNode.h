@@ -19,7 +19,7 @@ class DDExpandedNode
 
 public:
   DDExpandedNode(const DDLogicalPart & lp, 
-                 const DDPosData * pd, 
+                 const DDPosData* pd, 
 	         const DDTranslation & t, 
 	         const DDRotationMatrix & r,
 		 int siblingno);
@@ -47,11 +47,11 @@ public:
   int siblingno() const { return siblingno_; }  
   
   
-  const DDPosData * posdata() const { return posd_; }
+  const std::shared_ptr<DDPosData> posdata() const { return posd_; }
    
 private:
   DDLogicalPart logp_; // logicalpart to provide access to solid & material information
-  const DDPosData * posd_;
+  std::shared_ptr<DDPosData> posd_;
   DDTranslation trans_;  // absolute translation
   DDRotationMatrix rot_; // absolute rotation
   int siblingno_; // internal sibling-numbering from 0 to max-sibling
@@ -103,7 +103,7 @@ struct DDExpandedNodeLess
 
 
 //! Geometrical 'path' of the current node up to the root-node
-typedef std::vector<DDExpandedNode> DDGeoHistory; 
+using DDGeoHistory = std::vector<DDExpandedNode*>; 
 
 std::ostream & operator<<(std::ostream &, const DDExpandedNode &);
 std::ostream & operator<<(std::ostream &, const DDGeoHistory &);

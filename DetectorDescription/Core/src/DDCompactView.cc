@@ -73,7 +73,7 @@ const DDLogicalPart & DDCompactView::root() const
   
 const DDPosData* DDCompactView::worldPosition() const
 {
-  return worldpos_.get();
+  return worldpos_;
 }
 
 DDCompactView::walker_type DDCompactView::walker() const
