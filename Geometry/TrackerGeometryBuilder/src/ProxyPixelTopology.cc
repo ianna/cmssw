@@ -5,7 +5,7 @@
 #include "Geometry/TrackerGeometryBuilder/interface/PixelGeomDetType.h"
 
 ////////////////////////////////////////////////////////////////////////////////
-ProxyPixelTopology::ProxyPixelTopology( std::shared_ptr< PixelGeomDetType > type, BoundPlane * bp)
+ProxyPixelTopology::ProxyPixelTopology( std::shared_ptr< const PixelGeomDetType > type, BoundPlane * bp)
   :theType(type), theLength(bp->bounds().length()), theWidth(bp->bounds().width())
 {
   

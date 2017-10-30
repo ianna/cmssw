@@ -88,7 +88,7 @@ ME0Geometry* ME0GeometryBuilderFromCondDB::build(const RecoIdealGeometry& rgeo)
     
     BoundPlane* bp = new BoundPlane(pos, rot, bounds);
     ReferenceCountingPointer<BoundPlane> surf(bp);
-    geometry->add(std::make_shared< ME0EtaPartition >( me0id, surf, e_p_specs ));
+    geometry->add(std::make_shared< const ME0EtaPartition >( me0id, surf, e_p_specs ));
   }
   return geometry;
 }

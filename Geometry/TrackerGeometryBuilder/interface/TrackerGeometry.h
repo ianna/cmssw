@@ -17,8 +17,8 @@ class TrackerGeometry final : public TrackingGeometry {
 
   friend class TrackerGeomBuilderFromGeometricDet;
 
-  void addType( std::shared_ptr< GeomDetType > p );
-  void addDetUnit( std::shared_ptr< GeomDet > p);
+  void addType( std::shared_ptr< const GeomDetType > p );
+  void addDetUnit( std::shared_ptr< const GeomDet > p);
   void addDetUnitId(DetId p);
   void addDet( std::shared_ptr< GeomDet > p);
   void addDetId(DetId p);
@@ -61,8 +61,8 @@ public:
   const DetContainer&      dets()             const override {return theDets;}
   const DetIdContainer&    detUnitIds()       const override {return theDetUnitIds;}
   const DetIdContainer&    detIds()           const override { return theDetIds;}
-  const std::shared_ptr< GeomDet >    idToDetUnit(DetId) const override;
-  const std::shared_ptr< GeomDet >    idToDet(DetId)     const override;
+  const std::shared_ptr< const GeomDet >    idToDetUnit(DetId) const override;
+  const std::shared_ptr< const GeomDet >    idToDet(DetId)     const override;
 
   const GeomDetEnumerators::SubDetector geomDetSubDetector(int subdet) const;
   unsigned int numberOfLayers(int subdet) const;

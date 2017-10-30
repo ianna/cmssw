@@ -22,13 +22,13 @@ bool GEMRegion::operator==(const GEMRegion& re) const {
   return region_ == re.region();
 }
 
-void GEMRegion::add( std::shared_ptr< GEMStation > st ) {
+void GEMRegion::add( std::shared_ptr< const GEMStation > st ) {
   stations_.emplace_back(st);
 }
   
-std::vector< std::shared_ptr< GeomDet >>
+std::vector< std::shared_ptr< const GeomDet >>
 GEMRegion::components() const {
-  std::vector< std::shared_ptr< GeomDet > > result;
+  std::vector< std::shared_ptr< const GeomDet > > result;
   for (auto st : stations_) {
     auto newSch(st->components());
     result.insert(result.end(), newSch.begin(), newSch.end());
@@ -36,29 +36,29 @@ GEMRegion::components() const {
   return result;
 }
 
-const std::shared_ptr< GeomDet >
+const std::shared_ptr< const GeomDet >
 GEMRegion::component( DetId id ) const {
   auto detId(GEMDetId(id.rawId()));
   return station(detId.station())->component(id);
 }
 
-const std::shared_ptr< GEMSuperChamber >
+const std::shared_ptr< const GEMSuperChamber >
 GEMRegion::superChamber( GEMDetId id ) const {
   if (id.region()!=region_ ) return nullptr; // not in this region
   return station(id.station())->ring(id.ring())->superChamber(id);
 }
 
-std::vector< std::shared_ptr< GEMSuperChamber >>
+std::vector< std::shared_ptr< const GEMSuperChamber >>
 GEMRegion::superChambers() const {
-  std::vector< std::shared_ptr< GEMSuperChamber > > result;
+  std::vector< std::shared_ptr< const GEMSuperChamber > > result;
   for (auto st : stations_) {
-    std::vector< std::shared_ptr< GEMSuperChamber > > newSch(st->superChambers());
+    std::vector< std::shared_ptr< const GEMSuperChamber > > newSch(st->superChambers());
     result.insert(result.end(), newSch.begin(), newSch.end());
   }
   return result;
 }
 
-const  std::shared_ptr< GEMStation >
+const std::shared_ptr< const GEMStation >
 GEMRegion::station(int st) const {
   for (auto stat : stations_) {
     if (st == stat->station()) {
@@ -68,7 +68,7 @@ GEMRegion::station(int st) const {
   return nullptr;
 }
 
-const std::vector< std::shared_ptr< GEMStation >>&
+const std::vector< std::shared_ptr< const GEMStation >>&
 GEMRegion::stations() const {
   return stations_;
 }

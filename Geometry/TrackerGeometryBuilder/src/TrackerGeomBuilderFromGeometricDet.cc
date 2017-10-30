@@ -178,12 +178,12 @@ void TrackerGeomBuilderFromGeometricDet::buildPixel(std::vector<const GeometricD
 				       BIG_PIX_PER_ROC_Y,
 				       i->pixROCx(), i->pixROCy());
       
-      thePixelDetTypeMap[detName] = std::make_shared< PixelGeomDetType >(t,detName,det);
+      thePixelDetTypeMap[detName] = std::make_shared< const PixelGeomDetType >(t,detName,det);
       tracker->addType(thePixelDetTypeMap[detName]);
     }
 
     PlaneBuilderFromGeometricDet::ResultType plane = buildPlaneWithMaterial(i);
-    auto temp =  std::make_shared< PixelGeomDetUnit >(&(*plane),thePixelDetTypeMap[detName],i->geographicalID());
+    auto temp =  std::make_shared< const PixelGeomDetUnit >(&(*plane),thePixelDetTypeMap[detName],i->geographicalID());
 
     tracker->addDetUnit(temp);
     tracker->addDetUnitId(i->geographicalID());
@@ -212,15 +212,15 @@ void TrackerGeomBuilderFromGeometricDet::buildSilicon(std::vector<const Geometri
 	   StripTopologyBuilder().build(&*bounds,
 				       i->siliconAPVNum(),
 				       part);
-       theStripDetTypeMap[detName] = std::make_shared< StripGeomDetType >( t,detName,det,
-									   i->stereo());
+       theStripDetTypeMap[detName] = std::make_shared< const StripGeomDetType >( t,detName,det,
+										 i->stereo());
       tracker->addType(theStripDetTypeMap[detName]);
     }
      
     double scale  = (theTopo->partnerDetId(i->geographicalID())) ? 0.5 : 1.0 ;	
 
     PlaneBuilderFromGeometricDet::ResultType plane = buildPlaneWithMaterial(i,scale);  
-    auto temp = std::make_shared< StripGeomDetUnit >(&(*plane), theStripDetTypeMap[detName],i->geographicalID());
+    auto temp = std::make_shared< const StripGeomDetUnit >(&(*plane), theStripDetTypeMap[detName],i->geographicalID());
     
     tracker->addDetUnit(temp);
     tracker->addDetUnitId(i->geographicalID());
@@ -260,9 +260,9 @@ void TrackerGeomBuilderFromGeometricDet::buildGeomDet(TrackerGeometry* tracker){
 					        <<"There is a problem on Tracker geometry configuration\n";
       }
 
-      std::shared_ptr< GeomDet > dus = gdu[i];
-      std::shared_ptr< GeomDet > dum = gdu[partner_pos];
-      std::vector< std::shared_ptr< GeomDetUnit >> composed(2);
+      std::shared_ptr< const GeomDet > dus = gdu[i];
+      std::shared_ptr< const GeomDet > dum = gdu[partner_pos];
+      std::vector< std::shared_ptr< const GeomDet >> composed(2);
       composed[0]=dum;
       composed[1]=dus;
       DetId composedDetId;

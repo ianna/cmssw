@@ -23,7 +23,7 @@ class RPCRoll : public GeomDet {
   const GeomDetType& type() const override; 
  
   /// Return the chamber this roll belongs to 
-  const std::shared_ptr< RPCChamber > chamber() const;
+  const std::shared_ptr< const RPCChamber > chamber() const;
   
   int nstrips() const;
 
@@ -39,11 +39,11 @@ class RPCRoll : public GeomDet {
   bool isIRPC() const {return (((this->id()).region()!=0) && (((this->id()).station()==3)||((this->id()).station()==4))&&((this->id()).ring()==1));}
 
  private:
-  void setChamber( std::shared_ptr< RPCChamber > ch);
+  void setChamber( std::shared_ptr< const RPCChamber > ch);
 
   RPCDetId _id;
   RPCRollSpecs* _rrs;
-  std::shared_ptr< RPCChamber > theCh;
+  std::shared_ptr< const RPCChamber > theCh;
 };
 
 #endif

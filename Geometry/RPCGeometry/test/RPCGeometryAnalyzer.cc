@@ -107,9 +107,9 @@ RPCGeometryAnalyzer::analyze( const edm::Event& /*iEvent*/, const edm::EventSetu
 
    for(auto it : pDD->dets()){
 
-     if( std::static_pointer_cast< RPCChamber >( it ) != nullptr ){
+     if( std::static_pointer_cast< const RPCChamber >( it ) != nullptr ){
        ++iRPCCHcount;
-       auto ch = std::static_pointer_cast< RPCChamber >( it ); 
+       auto ch = std::static_pointer_cast< const RPCChamber >( it ); 
 
        
        RPCDetId detId=ch->id();

@@ -79,8 +79,8 @@ RPCGEO2::analyze(const edm::Event& /*iEvent*/, const edm::EventSetup& iSetup)
    iSetup.get<MuonGeometryRecord>().get(rpcGeo);
 
    for( auto it : rpcGeo->dets()) {
-     if( std::static_pointer_cast< RPCChamber >( it ) != nullptr ){
-       auto ch = std::static_pointer_cast< RPCChamber >( it ); 
+     if( std::static_pointer_cast< const RPCChamber >( it ) != nullptr ){
+       auto ch = std::static_pointer_cast< const RPCChamber >( it ); 
        for( auto r : ch->rolls()) {
 	 RPCDetId rpcId = r->id();
 	 RPCGeomServ rpcsrv(rpcId);

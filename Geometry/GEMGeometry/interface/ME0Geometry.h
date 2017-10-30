@@ -34,39 +34,39 @@ class ME0Geometry : public TrackingGeometry {
   const DetIdContainer& detIds() const override;
 
   // Return the pointer to the GeomDetUnit corresponding to a given DetId
-  const std::shared_ptr< GeomDet > idToDetUnit(DetId) const override;
+  const std::shared_ptr< const GeomDet > idToDetUnit(DetId) const override;
 
   // Return the pointer to the GeomDet corresponding to a given DetId
-  const std::shared_ptr< GeomDet > idToDet(DetId) const override;
+  const std::shared_ptr< const GeomDet > idToDet(DetId) const override;
 
   //---- Extension of the interface
 
   /// Return a etaPartition given its id
-  const std::shared_ptr< ME0EtaPartition > etaPartition( ME0DetId id ) const;
+  const std::shared_ptr< const ME0EtaPartition > etaPartition( ME0DetId id ) const;
 
   /// Return a layer given its id
-  const std::shared_ptr< ME0Layer > layer( ME0DetId id ) const;
+  const std::shared_ptr< const ME0Layer > layer( ME0DetId id ) const;
 
   /// Return a chamber given its id
-  const std::shared_ptr< ME0Chamber > chamber( ME0DetId id ) const;
+  const std::shared_ptr< const ME0Chamber > chamber( ME0DetId id ) const;
 
   /// Return a vector of all ME0 eta partitions
-  const std::vector< std::shared_ptr< ME0EtaPartition >>& etaPartitions() const;
+  const std::vector< std::shared_ptr< const ME0EtaPartition >>& etaPartitions() const;
 
   /// Return a vector of all ME0 layers
-  const std::vector< std::shared_ptr< ME0Layer >>& layers() const;
+  const std::vector< std::shared_ptr< const ME0Layer >>& layers() const;
 
   /// Return a vector of all ME0 chambers
-  const std::vector< std::shared_ptr< ME0Chamber >>& chambers() const;
+  const std::vector< std::shared_ptr< const ME0Chamber >>& chambers() const;
 
   /// Add a ME0 etaPartition  to the Geometry
-  void add( std::shared_ptr< ME0EtaPartition > etaPartition );
+  void add( std::shared_ptr< const ME0EtaPartition > etaPartition );
 
   /// Add a ME0 layer  to the Geometry
-  void add( std::shared_ptr< ME0Layer > layer);
+  void add( std::shared_ptr< const ME0Layer > layer);
 
   /// Add a ME0 Chamber  to the Geometry
-  void add( std::shared_ptr< ME0Chamber > chamber);
+  void add( std::shared_ptr< const ME0Chamber > chamber);
 
  private:
   DetContainer theEtaPartitions;
@@ -78,9 +78,9 @@ class ME0Geometry : public TrackingGeometry {
   // Map for efficient lookup by DetId 
   mapIdToDet theMap;
 
-  std::vector< std::shared_ptr< ME0EtaPartition >> allEtaPartitions; // Are not owned by this class; are owned by their layer.
-  std::vector< std::shared_ptr< ME0Layer >> allLayers;               // Are not owned by this class; are owned by their chamber.
-  std::vector< std::shared_ptr< ME0Chamber >> allChambers;           // Are owned by this class.
+  std::vector< std::shared_ptr< const ME0EtaPartition >> allEtaPartitions; // Are not owned by this class; are owned by their layer.
+  std::vector< std::shared_ptr< const ME0Layer >> allLayers;               // Are not owned by this class; are owned by their chamber.
+  std::vector< std::shared_ptr< const ME0Chamber >> allChambers;           // Are owned by this class.
 
 };
 

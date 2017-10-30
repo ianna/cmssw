@@ -59,7 +59,7 @@ void GlobalTrackingGeometryTest::analyzeCSC(const GlobalTrackingGeometry* geo, c
     const DetId detId(detUnit->geographicalId());
         
     // Check idToDetUnit
-    const std::shared_ptr< GeomDet > gdu(geo->idToDetUnit(detId));
+    const std::shared_ptr< const GeomDet > gdu(geo->idToDetUnit(detId));
     assert(gdu == detUnit);
   }
   std::cout << "CSC detUnit: GlobalTrackingGeometry succesfully tested." << std::endl;
@@ -69,7 +69,7 @@ void GlobalTrackingGeometryTest::analyzeCSC(const GlobalTrackingGeometry* geo, c
     const DetId detId(det->geographicalId());
         
     // Check idToDet
-    const std::shared_ptr< GeomDet > gd(geo->idToDet(detId));
+    const std::shared_ptr< const GeomDet > gd(geo->idToDet(detId));
     assert(gd == det);
   }
   std::cout << "CSC det: GlobalTrackingGeometry succesfully tested." << std::endl;
@@ -82,7 +82,7 @@ void GlobalTrackingGeometryTest::analyzeDT(const GlobalTrackingGeometry* geo, co
     const DetId detId(detUnit->geographicalId());
         
     // Check idToDetUnit
-    const std::shared_ptr< GeomDet > gdu(geo->idToDetUnit(detId));
+    const std::shared_ptr< const GeomDet > gdu(geo->idToDetUnit(detId));
     assert(gdu == detUnit);
   }
   std::cout << "DT detUnit: GlobalTrackingGeometry succesfully tested." << std::endl;
@@ -92,7 +92,7 @@ void GlobalTrackingGeometryTest::analyzeDT(const GlobalTrackingGeometry* geo, co
     const DetId detId(det->geographicalId());
         
     // Check idToDet
-    const std::shared_ptr< GeomDet > gd(geo->idToDet(detId));
+    const std::shared_ptr< const GeomDet > gd(geo->idToDet(detId));
     assert(gd == det);
   }
   std::cout << "DT det: GlobalTrackingGeometry succesfully tested." << std::endl;
@@ -105,7 +105,7 @@ void GlobalTrackingGeometryTest::analyzeRPC(const GlobalTrackingGeometry* geo, c
     const DetId detId(detUnit->geographicalId());
         
     // Check idToDetUnit
-    const std::shared_ptr< GeomDet > gdu(geo->idToDetUnit(detId));
+    const std::shared_ptr< const GeomDet > gdu(geo->idToDetUnit(detId));
     assert(gdu == detUnit);
   }
   std::cout << "RPC detUnit: GlobalTrackingGeometry succesfully tested." << std::endl;
@@ -115,7 +115,7 @@ void GlobalTrackingGeometryTest::analyzeRPC(const GlobalTrackingGeometry* geo, c
     const DetId detId(det->geographicalId());
         
     // Check idToDet
-    const std::shared_ptr< GeomDet > gd(geo->idToDet(detId));
+    const std::shared_ptr< const GeomDet > gd(geo->idToDet(detId));
     assert(gd == det);
   }
   std::cout << "RPC det: GlobalTrackingGeometry succesfully tested." << std::endl;
@@ -128,7 +128,7 @@ void GlobalTrackingGeometryTest::analyzeGEM(const GlobalTrackingGeometry* geo, c
     const DetId detId(detUnit->geographicalId());
         
     // Check idToDetUnit
-    const std::shared_ptr< GeomDet > gdu(geo->idToDetUnit(detId));
+    const std::shared_ptr< const GeomDet > gdu(geo->idToDetUnit(detId));
     assert(gdu == detUnit);
   }
   std::cout << "GEM detUnit: GlobalTrackingGeometry succesfully tested." << std::endl;
@@ -138,7 +138,7 @@ void GlobalTrackingGeometryTest::analyzeGEM(const GlobalTrackingGeometry* geo, c
     const DetId detId(det->geographicalId());
         
     // Check idToDet
-    const std::shared_ptr< GeomDet > gd(geo->idToDet(detId));
+    const std::shared_ptr< const GeomDet > gd(geo->idToDet(detId));
     assert(gd == det);
   }
   std::cout << "GEM det: GlobalTrackingGeometry succesfully tested." << std::endl;
@@ -151,7 +151,7 @@ void GlobalTrackingGeometryTest::analyzeTracker(const GlobalTrackingGeometry* ge
     const DetId detId(detUnit->geographicalId());
         
     // Check idToDetUnit
-    const std::shared_ptr< GeomDet > gdu(geo->idToDetUnit(detId));
+    const std::shared_ptr< const GeomDet > gdu(geo->idToDetUnit(detId));
     assert(gdu == detUnit);
   }
   std::cout << "Tracker detUnit: GlobalTrackingGeometry succesfully tested." << std::endl;
@@ -161,7 +161,7 @@ void GlobalTrackingGeometryTest::analyzeTracker(const GlobalTrackingGeometry* ge
     const DetId detId(det->geographicalId());
         
     // Check idToDet
-    const std::shared_ptr< GeomDet > gd(geo->idToDet(detId));
+    const std::shared_ptr< const GeomDet > gd(geo->idToDet(detId));
     assert(gd == det);
   }
   std::cout << "Tracker det: GlobalTrackingGeometry succesfully tested." << std::endl;

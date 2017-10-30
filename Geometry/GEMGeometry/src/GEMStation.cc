@@ -25,13 +25,13 @@ bool GEMStation::operator==(const GEMStation& st) const {
   return (region_ == st.region() && station_ == st.station());
 }
 
-void GEMStation::add( std::shared_ptr< GEMRing > ring ) {
+void GEMStation::add( std::shared_ptr< const GEMRing > ring ) {
   rings_.emplace_back(ring);
 }
 
-std::vector< std::shared_ptr< GeomDet >>
+std::vector< std::shared_ptr< const GeomDet >>
 GEMStation::components() const {
-  std::vector< std::shared_ptr< GeomDet > > result;
+  std::vector< std::shared_ptr< const GeomDet > > result;
   for (auto ri : rings_) {
     auto newSch(ri->components());
     result.insert(result.end(), newSch.begin(), newSch.end());
@@ -39,29 +39,29 @@ GEMStation::components() const {
   return result;
 }
 
-const std::shared_ptr< GeomDet >
+const std::shared_ptr< const GeomDet >
 GEMStation::component( DetId id ) const {
   auto detId(GEMDetId(id.rawId()));
   return ring(detId.ring())->component(id);
 }
 
-const std::shared_ptr< GEMSuperChamber >
+const std::shared_ptr< const GEMSuperChamber >
 GEMStation::superChamber( GEMDetId id ) const {
   if (id.region()!=region_ || id.station()!=station_ ) return nullptr; // not in this station
   return ring(id.ring())->superChamber(id.chamber());
 }
 
-std::vector< std::shared_ptr< GEMSuperChamber >>
+std::vector< std::shared_ptr< const GEMSuperChamber >>
 GEMStation::superChambers() const {
-  std::vector< std::shared_ptr< GEMSuperChamber > > result;
+  std::vector< std::shared_ptr< const GEMSuperChamber > > result;
   for (auto ri : rings_ ){
-    std::vector< std::shared_ptr< GEMSuperChamber > > newSch( ri->superChambers());
+    std::vector< std::shared_ptr< const GEMSuperChamber > > newSch( ri->superChambers());
     result.insert(result.end(), newSch.begin(), newSch.end());
   }
   return result;
 }
 
-const std::shared_ptr< GEMRing >
+const std::shared_ptr< const GEMRing >
 GEMStation::ring(int ring) const {
   for (auto ri : rings_) {
     if (ring == ri->ring()) {
@@ -71,7 +71,7 @@ GEMStation::ring(int ring) const {
   return nullptr;
 }
 
-const std::vector< std::shared_ptr< GEMRing >>&
+const std::vector< std::shared_ptr< const GEMRing >>&
 GEMStation::rings() const {
   return rings_;
 }
@@ -80,12 +80,9 @@ int GEMStation::nRings() const {
   return rings_.size();
 }
 
-void GEMStation::setName(std::string name) {
-  name_ = std::move(name);
-}
-
 const std::string GEMStation::getName() const {
-  return name_;
+  std::string sign( region_==-1 ? "-" : "");
+  return std::string("GE" + sign + std::to_string(station_) + "/1");
 }
 
 int GEMStation::region() const {

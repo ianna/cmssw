@@ -46,67 +46,67 @@ class GEMGeometry : public TrackingGeometry {
   const DetIdContainer& detIds() const override;
 
   // Return the pointer to the GeomDet corresponding to a given DetId
-  const std::shared_ptr< GeomDet > idToDetUnit( DetId ) const override;
+  const std::shared_ptr< const GeomDet > idToDetUnit( DetId ) const override;
 
   // Return the pointer to the GeomDet corresponding to a given DetId
-  const std::shared_ptr< GeomDet > idToDet( DetId ) const override;
+  const std::shared_ptr< const GeomDet > idToDet( DetId ) const override;
 
 
   //---- Extension of the interface
 
   /// Return a vector of all GEM regions
-  const std::vector< std::shared_ptr< GEMRegion >>& regions() const;
+  const std::vector< std::shared_ptr< const GEMRegion >>& regions() const;
 
   /// Return a vector of all GEM stations
-  const std::vector< std::shared_ptr< GEMStation >>& stations() const;
+  const std::vector< std::shared_ptr< const GEMStation >>& stations() const;
 
   /// Return a vector of all GEM rings
-  const std::vector< std::shared_ptr< GEMRing >>& rings() const;
+  const std::vector< std::shared_ptr< const GEMRing >>& rings() const;
 
   /// Return a vector of all GEM super chambers
-  const std::vector< std::shared_ptr< GEMSuperChamber >>& superChambers() const;
+  const std::vector< std::shared_ptr< const GEMSuperChamber >>& superChambers() const;
 
   /// Return a vector of all GEM chambers
-  const std::vector< std::shared_ptr< GEMChamber >>& chambers() const;
+  const std::vector< std::shared_ptr< const GEMChamber >>& chambers() const;
 
   /// Return a vector of all GEM eta partitions
-  const std::vector< std::shared_ptr< GEMEtaPartition >>& etaPartitions() const;
+  const std::vector< std::shared_ptr< const GEMEtaPartition >>& etaPartitions() const;
 
   // Return a GEMRegion 
-  const std::shared_ptr< GEMRegion > region(int region) const;
+  const std::shared_ptr< const GEMRegion > region(int region) const;
 
   // Return a GEMStation
-  const std::shared_ptr< GEMStation > station( int region, int station ) const;
+  const std::shared_ptr< const GEMStation > station( int region, int station ) const;
 
   /// Return a GEMRing
-  const std::shared_ptr< GEMRing > ring( int region, int station, int ring ) const;
+  const std::shared_ptr< const GEMRing > ring( int region, int station, int ring ) const;
 
   // Return a GEMSuperChamber given its id
-  const std::shared_ptr< GEMSuperChamber > superChamber( GEMDetId id ) const;
+  const std::shared_ptr< const GEMSuperChamber > superChamber( GEMDetId id ) const;
 
   // Return a GEMChamber given its id
-  const std::shared_ptr< GEMChamber > chamber( GEMDetId id ) const;
+  const std::shared_ptr< const GEMChamber > chamber( GEMDetId id ) const;
 
   /// Return a GEMEtaPartition given its id
-  const std::shared_ptr< GEMEtaPartition > etaPartition( GEMDetId id ) const;
+  const std::shared_ptr< const GEMEtaPartition > etaPartition( GEMDetId id ) const;
 
   /// Add a GEMRegion to the Geometry
-  void add( std::shared_ptr< GEMRegion > region);
+  void add( std::shared_ptr< const GEMRegion > region);
 
   /// Add a GEMStation to the Geometry
-  void add( std::shared_ptr< GEMStation > station);
+  void add( std::shared_ptr< const GEMStation > station);
 
   /// Add a GEMRing to the Geometry
-  void add( std::shared_ptr< GEMRing > ring);
+  void add( std::shared_ptr< const GEMRing > ring);
 
   /// Add a GEMSuperChamber to the Geometry
-  void add( std::shared_ptr< GEMSuperChamber > sch);
+  void add( std::shared_ptr< const GEMSuperChamber > sch);
  
   /// Add a GEMChamber to the Geometry
-  void add( std::shared_ptr< GEMChamber > ch);
+  void add( std::shared_ptr< const GEMChamber > ch);
 
   /// Add a GEMEtaPartition  to the Geometry
-  void add( std::shared_ptr< GEMEtaPartition > etaPartition);
+  void add( std::shared_ptr< const GEMEtaPartition > etaPartition);
 
  private:
   DetContainer theEtaPartitions;
@@ -118,12 +118,12 @@ class GEMGeometry : public TrackingGeometry {
   // Map for efficient lookup by DetId 
   mapIdToDet theMap;
 
-  std::vector< std::shared_ptr< GEMEtaPartition >> allEtaPartitions;
-  std::vector< std::shared_ptr< GEMChamber >> allChambers;
-  std::vector< std::shared_ptr< GEMSuperChamber >> allSuperChambers;
-  std::vector< std::shared_ptr< GEMRing >> allRings;
-  std::vector< std::shared_ptr< GEMStation >> allStations;
-  std::vector< std::shared_ptr< GEMRegion >> allRegions;
+  std::vector< std::shared_ptr< const GEMEtaPartition >> allEtaPartitions;
+  std::vector< std::shared_ptr< const GEMChamber >> allChambers;
+  std::vector< std::shared_ptr< const GEMSuperChamber >> allSuperChambers;
+  std::vector< std::shared_ptr< const GEMRing >> allRings;
+  std::vector< std::shared_ptr< const GEMStation >> allStations;
+  std::vector< std::shared_ptr< const GEMRegion >> allRegions;
 };
 
 #endif

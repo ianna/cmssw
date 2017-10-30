@@ -32,31 +32,28 @@ class GEMStation
   bool operator==(const GEMStation& st) const;
 
   /// Add ring to the station which takes ownership
-  void add( std::shared_ptr< GEMRing > ring );
+  void add( std::shared_ptr< const GEMRing > ring );
   
   /// Return the super chambers in the station
-  std::vector< std::shared_ptr< GeomDet >> components() const;
+  std::vector< std::shared_ptr< const GeomDet >> components() const;
 
   /// Return the sub-component (super chamber) with a given id in this station
-  const std::shared_ptr< GeomDet > component(DetId id) const;
+  const std::shared_ptr< const GeomDet > component(DetId id) const;
 
   /// Return the chamber corresponding to the given id 
-  const std::shared_ptr< GEMSuperChamber > superChamber(GEMDetId id) const;
+  const std::shared_ptr< const GEMSuperChamber > superChamber(GEMDetId id) const;
 
   /// Return the super chambers in the region
-  std::vector< std::shared_ptr< GEMSuperChamber >> superChambers() const;
+  std::vector< std::shared_ptr< const GEMSuperChamber >> superChambers() const;
 
   /// Get a ring
-  const std::shared_ptr< GEMRing > ring(int ring) const;
+  const std::shared_ptr< const GEMRing > ring(int ring) const;
   
   /// Return the rings in the station
-  const std::vector< std::shared_ptr< GEMRing >>& rings() const;
+  const std::vector< std::shared_ptr< const GEMRing >>& rings() const;
 
   /// Return numbers of rings for this station
   int nRings() const;
-
-  /// Set the station name
-  void setName(std::string name); 
 
   /// Set the station name
   const std::string getName() const; 
@@ -73,8 +70,6 @@ class GEMStation
   int station_;
 
   // vector of rings for a station
-  std::vector< std::shared_ptr< GEMRing >> rings_;
-  std::string name_;
-
+  std::vector< std::shared_ptr< const GEMRing >> rings_;
 };
 #endif

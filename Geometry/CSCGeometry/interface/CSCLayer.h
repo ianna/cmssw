@@ -18,15 +18,15 @@
 #include <DataFormats/GeometryVector/interface/GlobalPoint.h>
 #include <DataFormats/GeometrySurface/interface/BoundPlane.h>
 
-//#include <boost/shared_ptr.hpp>
-//typedef boost::shared_ptr<CSCChamber> Pointer2Chamber;
 
-class CSCLayer : public GeomDetUnit {
+class CSCLayer : public GeomDet {
 
 public:
 
-  CSCLayer( const BoundPlane::BoundPlanePointer& sp, CSCDetId id, std::shared_ptr< CSCChamber > ch, std::shared_ptr< CSCLayerGeometry > geo ) : 
-  GeomDetUnit( sp ), theId( id ), theChamber( ch ), theGeometry( geo ) {
+  CSCLayer( const BoundPlane::BoundPlanePointer& sp, CSCDetId id,
+	    std::shared_ptr< const CSCChamber > ch,
+	    std::shared_ptr< const CSCLayerGeometry > geo ) : 
+  GeomDet( sp ), theId( id ), theChamber( ch ), theGeometry( geo ) {
     setDetId(id);
 }
 
@@ -44,12 +44,12 @@ public:
   /**
    * Access to object handling layer geomerty
    */
-  const std::shared_ptr< CSCLayerGeometry > geometry() const { return theGeometry; }
+  const std::shared_ptr< const CSCLayerGeometry > geometry() const { return theGeometry; }
 
   /**
    * Access to parent chamber
    */
-  const std::shared_ptr< CSCChamber > chamber() const { return theChamber; }
+  const std::shared_ptr< const CSCChamber > chamber() const { return theChamber; }
   
   /**
    * Global point at center of the given strip,
@@ -67,14 +67,14 @@ private:
 
   CSCDetId theId;
 
-  std::shared_ptr< CSCChamber > theChamber;
+  std::shared_ptr< const CSCChamber > theChamber;
   // Pointer2Chamber theChamber; // use a smart pointer instead
 
   // Local geometry is handled by the LayerGeometry
   // but only the Layer itself knows how to transform to the 
   // global frame so global calculations are handled by the
   // Layer not the LayerGeometry.
-  std::shared_ptr< CSCLayerGeometry > theGeometry; // must have topology()
+  std::shared_ptr< const CSCLayerGeometry > theGeometry; // must have topology()
 };
 
 #endif // Geometry_CSCGeometry_CSCLayer_H

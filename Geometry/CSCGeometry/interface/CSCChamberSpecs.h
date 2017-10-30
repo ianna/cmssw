@@ -67,9 +67,9 @@ public:
   const Topology& topology() const override;
 
   /// Accessors for LayerGeometry's
-  std::shared_ptr< CSCLayerGeometry > oddLayerGeometry( int iendcap ) const 
+  std::shared_ptr< const CSCLayerGeometry > oddLayerGeometry( int iendcap ) const 
    { return (iendcap==1? poszOddLayerGeometry:negzOddLayerGeometry);}
-  std::shared_ptr< CSCLayerGeometry > evenLayerGeometry( int iendcap ) const 
+  std::shared_ptr< const CSCLayerGeometry > evenLayerGeometry( int iendcap ) const 
    { return (iendcap==1? poszEvenLayerGeometry:negzEvenLayerGeometry);}
 
    /**
@@ -212,10 +212,10 @@ public:
   }
 
   // A ChamberSpecs has 4 associated LayerGeometry's
-  std::shared_ptr< CSCLayerGeometry > poszOddLayerGeometry;
-  std::shared_ptr< CSCLayerGeometry > poszEvenLayerGeometry;
-  std::shared_ptr< CSCLayerGeometry > negzOddLayerGeometry;
-  std::shared_ptr< CSCLayerGeometry > negzEvenLayerGeometry;
+  std::shared_ptr< const CSCLayerGeometry > poszOddLayerGeometry;
+  std::shared_ptr< const CSCLayerGeometry > poszEvenLayerGeometry;
+  std::shared_ptr< const CSCLayerGeometry > negzOddLayerGeometry;
+  std::shared_ptr< const CSCLayerGeometry > negzEvenLayerGeometry;
 
   //  theChamberType is a unique integer 1-10 for a station, ring pair.
 

@@ -37,21 +37,21 @@ class DTGeometryBuilderFromDDD {
 
   private:
     /// create the chamber
-    std::shared_ptr< DTChamber > buildChamber(DDFilteredView& fv, 
-					      const std::string& type, 
-					      const MuonDDDConstants& muonConstants) const;
-
-    /// create the SL
-    std::shared_ptr< DTSuperLayer > buildSuperLayer(DDFilteredView& fv,
-						    std::shared_ptr< DTChamber > chamber,
+    std::shared_ptr< const DTChamber > buildChamber(DDFilteredView& fv, 
 						    const std::string& type, 
 						    const MuonDDDConstants& muonConstants) const;
 
+    /// create the SL
+    std::shared_ptr< const DTSuperLayer > buildSuperLayer(DDFilteredView& fv,
+							  std::shared_ptr< const DTChamber > chamber,
+							  const std::string& type, 
+							  const MuonDDDConstants& muonConstants) const;
+
     /// create the layer
-    std::shared_ptr< DTLayer > buildLayer(DDFilteredView& fv,
-					  std::shared_ptr< DTSuperLayer > sl,
-					  const std::string& type, 
-					  const MuonDDDConstants& muonConstants) const;
+    std::shared_ptr< const DTLayer > buildLayer(DDFilteredView& fv,
+						std::shared_ptr< const DTSuperLayer > sl,
+						const std::string& type, 
+						const MuonDDDConstants& muonConstants) const;
 
     /// get parameter also for boolean solid.
     std::vector<double> extractParameters(DDFilteredView& fv) const ;

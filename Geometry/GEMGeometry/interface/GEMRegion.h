@@ -32,25 +32,25 @@ class GEMRegion
   bool operator==(const GEMRegion& reg) const;
 
   /// Add station to the region which takes ownership
-  void add( std::shared_ptr< GEMStation > st);
+  void add( std::shared_ptr< const GEMStation > st);
   
   /// Return the super chambers in the region
-  std::vector< std::shared_ptr< GeomDet >> components() const;
+  std::vector< std::shared_ptr< const GeomDet >> components() const;
 
   /// Return the sub-component (super chamber) with a given id in this region
-  const std::shared_ptr< GeomDet > component(DetId id) const;
+  const std::shared_ptr< const GeomDet > component(DetId id) const;
 
   /// Return the super chamber corresponding to the given id 
-  const std::shared_ptr< GEMSuperChamber > superChamber(GEMDetId id) const;
+  const std::shared_ptr< const GEMSuperChamber > superChamber(GEMDetId id) const;
   
   /// Return the super chambers in the region
-  std::vector< std::shared_ptr< GEMSuperChamber >> superChambers() const;
+  std::vector< std::shared_ptr< const GEMSuperChamber >> superChambers() const;
 
   /// Return a station 
-  const std::shared_ptr< GEMStation > station(int st) const;
+  const std::shared_ptr< const GEMStation > station(int st) const;
 
   /// Return all stations
-  const std::vector< std::shared_ptr< GEMStation >>& stations() const;
+  const std::vector< std::shared_ptr< const GEMStation >>& stations() const;
 
   /// Return numbers of stations
   int nStations() const;
@@ -62,7 +62,7 @@ class GEMRegion
 
   int region_;
   // vector of stations for a region
-  std::vector< std::shared_ptr< GEMStation >> stations_;
+  std::vector< std::shared_ptr< const GEMStation >> stations_;
 
 };
 #endif

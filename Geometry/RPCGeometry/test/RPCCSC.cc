@@ -111,8 +111,8 @@ RPCCSC::analyze(const edm::Event& /*iEvent*/, const edm::EventSetup& iSetup)
   const CSCGeometry* cscGeometry = (const CSCGeometry*)&*pCSCGeom;
 
   for( auto it : rpcGeometry->dets()) {
-    if( std::static_pointer_cast< RPCChamber >( it ) != nullptr ){
-      for( auto r : std::static_pointer_cast< RPCChamber >( it )->rolls() ){
+    if( std::static_pointer_cast< const RPCChamber >( it ) != nullptr ){
+      for( auto r : std::static_pointer_cast< const RPCChamber >( it )->rolls() ){
 	RPCDetId rpcId = r->id();
 	int region=rpcId.region();
 	//booking all histograms
@@ -145,8 +145,8 @@ RPCCSC::analyze(const edm::Event& /*iEvent*/, const edm::EventSetup& iSetup)
     }
   }
   for( auto it : rpcGeometry->dets() ) {
-    if( std::static_pointer_cast< RPCChamber >( it ) != nullptr ){
-      auto ch = std::static_pointer_cast<  RPCChamber >( it );
+    if( std::static_pointer_cast< const RPCChamber >( it ) != nullptr ){
+      auto ch = std::static_pointer_cast<  const RPCChamber >( it );
       for( auto r : ch->rolls()) {
 	RPCDetId rpcId = r->id();
 	int region = rpcId.region();                                        

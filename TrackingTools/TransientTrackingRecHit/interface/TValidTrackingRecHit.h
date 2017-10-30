@@ -12,7 +12,7 @@
 class TValidTrackingRecHit : public TransientTrackingRecHit {
 public:
   
-  TValidTrackingRecHit(const GeomDet & geom) : 
+ TValidTrackingRecHit(std::shared_ptr<const GeomDet> geom) : 
   TrackingRecHit(geom) {}
 
 

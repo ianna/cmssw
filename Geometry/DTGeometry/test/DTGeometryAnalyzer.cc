@@ -75,7 +75,7 @@ void DTGeometryAnalyzer::analyze( const edm::Event& iEvent,
     int id = detId(); // or detId.rawId()
     auto gdet_=pDD->idToDet(detId);
     auto gdet=pDD->idToDetUnit(detId);
-    auto lay=std::static_pointer_cast< DTLayer >(gdet);
+    auto lay=std::static_pointer_cast< const DTLayer >(gdet);
     cout << "GeomDetUnit is of type " << detId.det() << " and raw id = " << id << endl;
     assert(det==gdet);
     assert(gdet_==gdet);

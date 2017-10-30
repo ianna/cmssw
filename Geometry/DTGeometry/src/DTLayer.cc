@@ -21,7 +21,7 @@ DTLayer::DTLayer(const DTLayerId& id,
                  ReferenceCountingPointer<BoundPlane>& plane,
                  const DTTopology& topo,
                  const DTLayerType& type,
-                 std::shared_ptr< DTSuperLayer > sl) :
+                 std::shared_ptr< const DTSuperLayer > sl) :
   GeomDet(*&plane), theId(id) , theTopo(topo), theType(type) , theSL(sl){
   setDetId(id);
 }
@@ -51,17 +51,17 @@ bool DTLayer::operator==(const DTLayer& l) const {
   return id()==l.id();
 }
 
-const std::shared_ptr< DTSuperLayer >
+const std::shared_ptr< const DTSuperLayer >
 DTLayer::superLayer() const {
   return theSL;
 }
 
-const std::shared_ptr< DTChamber >
+const std::shared_ptr< const DTChamber >
 DTLayer::chamber() const {
   return (theSL) ? theSL->chamber() : nullptr;
 }
 
-std::vector< std::shared_ptr< GeomDet >>
+std::vector< std::shared_ptr< const GeomDet >>
 DTLayer::components() const {
-  return std::vector< std::shared_ptr< GeomDet >>();
+  return std::vector< std::shared_ptr< const GeomDet >>();
 }

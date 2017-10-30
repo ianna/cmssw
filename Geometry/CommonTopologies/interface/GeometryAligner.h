@@ -80,7 +80,7 @@ void GeometryAligner::applyAlignments( C* geometry,
   std::vector<AlignTransformErrorExtended>::const_iterator 
 	iAlignError = alignmentErrors->m_alignError.begin();
   //copy  geometry->theMap to a real map to order it....
-  std::map<unsigned int, std::shared_ptr< GeomDet >> theMap;
+  std::map<unsigned int, std::shared_ptr< const GeomDet >> theMap;
   std::copy(geometry->theMap.begin(), geometry->theMap.end(), std::inserter(theMap,theMap.begin()));
   unsigned int nAPE = 0;
   for ( auto iPair = theMap.begin(); 
@@ -132,7 +132,7 @@ void GeometryAligner::attachSurfaceDeformations( C* geometry,
 			    << "Starting to attach surface deformations.";
 
   //copy geometry->theMapUnit to a real map to order it....
-  std::map<unsigned int, std::shared_ptr< GeomDet >> theMap;
+  std::map<unsigned int, std::shared_ptr< const GeomDet >> theMap;
   std::copy(geometry->theMapUnit.begin(), geometry->theMapUnit.end(), std::inserter(theMap, theMap.begin()));
   
   unsigned int nSurfDef = 0;

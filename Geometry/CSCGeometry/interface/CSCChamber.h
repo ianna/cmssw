@@ -23,7 +23,7 @@ class CSCChamber : public GeomDet {
 
 public:
 
-  CSCChamber( const BoundPlane::BoundPlanePointer& bp, CSCDetId id, std::shared_ptr< CSCChamberSpecs > specs ) :
+  CSCChamber( const BoundPlane::BoundPlanePointer& bp, CSCDetId id, std::shared_ptr< const CSCChamberSpecs > specs ) :
   GeomDet( bp ),  theChamberSpecs( specs ), 
     theComponents(6, nullptr) {
     setDetId(id);
@@ -39,34 +39,34 @@ public:
   // Which subdetector
   SubDetector subDetector() const override {return GeomDetEnumerators::CSC;}
 
-  const std::shared_ptr< CSCChamberSpecs > specs() const { return theChamberSpecs; }
+  const std::shared_ptr< const CSCChamberSpecs > specs() const { return theChamberSpecs; }
 
   /// Return the layers in this chamber
-  std::vector< std::shared_ptr< GeomDet >> components() const override;
+  std::vector< std::shared_ptr< const GeomDet >> components() const override;
 
   /// Return the layer with a given id in this chamber
-  const std::shared_ptr< GeomDet > component(DetId id) const override;
+  const std::shared_ptr< const GeomDet > component(DetId id) const override;
 
 
   // Extension of the interface
 
   /// Add a layer
-  void addComponent( int n, std::shared_ptr< CSCLayer > gd );
+  void addComponent( int n, std::shared_ptr< const CSCLayer > gd );
 
   /// Return all layers
-  const std::vector< std::shared_ptr< CSCLayer >>& layers() const { return theComponents; }
+  const std::vector< std::shared_ptr< const CSCLayer >>& layers() const { return theComponents; }
 
   /// Return the layer corresponding to the given id 
-  const std::shared_ptr< CSCLayer > layer(CSCDetId id) const;
+  const std::shared_ptr< const CSCLayer > layer(CSCDetId id) const;
   
   /// Return the given layer.
   /// Layers are numbered 1-6.
-  const std::shared_ptr< CSCLayer > layer(int ilay) const;
+  const std::shared_ptr< const CSCLayer > layer(int ilay) const;
 
 private:
 
-  std::shared_ptr< CSCChamberSpecs > theChamberSpecs;
-  std::vector< std::shared_ptr< CSCLayer >> theComponents; // the 6 CSCLayers comprising a CSCChamber; are owned by this class
+  std::shared_ptr< const CSCChamberSpecs > theChamberSpecs;
+  std::vector< std::shared_ptr< const CSCLayer >> theComponents; // the 6 CSCLayers comprising a CSCChamber; are owned by this class
 };
 
 #endif // Geometry_CSCGeometry_CSCChamber_H

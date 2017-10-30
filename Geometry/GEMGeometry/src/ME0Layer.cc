@@ -18,21 +18,21 @@ bool ME0Layer::operator==(const ME0Layer& ch) const {
   return this->id()==ch.id();
 }
 
-void ME0Layer::add( const std::shared_ptr< ME0EtaPartition >  rl ) {
+void ME0Layer::add( const std::shared_ptr< const ME0EtaPartition >  rl ) {
   etaPartitions_.emplace_back( rl );
 }
 
-std::vector< std::shared_ptr< GeomDet >>
+std::vector< std::shared_ptr< const GeomDet >>
 ME0Layer::components() const {
-  return std::vector< std::shared_ptr< GeomDet >>( etaPartitions_.begin(), etaPartitions_.end());
+  return std::vector< std::shared_ptr< const GeomDet >>( etaPartitions_.begin(), etaPartitions_.end());
 }
 
-const std::shared_ptr< GeomDet >
+const std::shared_ptr< const GeomDet >
 ME0Layer::component( DetId id ) const {
   return etaPartition( ME0DetId( id.rawId()));
 }
 
-const std::vector< std::shared_ptr< ME0EtaPartition >>&
+const std::vector< std::shared_ptr< const ME0EtaPartition >>&
 ME0Layer::etaPartitions() const {
   return etaPartitions_;
 }
@@ -41,13 +41,13 @@ int ME0Layer::nEtaPartitions() const {
   return etaPartitions_.size();
 }
 
-const std::shared_ptr< ME0EtaPartition >
+const std::shared_ptr< const ME0EtaPartition >
 ME0Layer::etaPartition( ME0DetId id ) const {
   if (id.layerId()!=detId_) return nullptr; // not in this eta partition!
   return etaPartition(id.roll());
 }
 
-const std::shared_ptr< ME0EtaPartition >
+const std::shared_ptr< const ME0EtaPartition >
 ME0Layer::etaPartition( int isl ) const {
   for (auto roll : etaPartitions_){
     if (roll->id().roll()==isl) 

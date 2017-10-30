@@ -45,8 +45,8 @@ DTGeometryBuilderFromCondDB::build( const std::shared_ptr<DTGeometry>& theGeomet
   //  cout << "size " << detids.size() << endl;
 
   size_t idt = 0;
-  std::shared_ptr< DTChamber > chamber(nullptr);
-  std::shared_ptr< DTSuperLayer > sl(nullptr);
+  std::shared_ptr< const DTChamber > chamber(nullptr);
+  std::shared_ptr< const DTSuperLayer > sl(nullptr);
   while(idt < detids.size()) {
     //copy(par.begin(), par.end(), ostream_iterator<double>(std::cout," "));
     if (int(*(rig.shapeStart(idt)))==0){ // a Chamber
@@ -77,7 +77,7 @@ DTGeometryBuilderFromCondDB::build( const std::shared_ptr<DTGeometry>& theGeomet
   if (chamber) theGeometry->add(chamber); // add the last chamber
 }
 
-std::shared_ptr< DTChamber >
+std::shared_ptr< const DTChamber >
 DTGeometryBuilderFromCondDB::buildChamber(const DetId& id,
 					  const RecoIdealGeometry& rig,
 					  size_t idt ) const {
@@ -93,11 +93,11 @@ DTGeometryBuilderFromCondDB::buildChamber(const DetId& id,
   // thickness is long local Z
   RCPPlane surf(plane(rig.tranStart(idt), rig.rotStart(idt), new RectangularPlaneBounds(width, length, thickness) ));
 
-  return std::make_shared< DTChamber >(detId, surf);
+  return std::make_shared< const DTChamber >(detId, surf);
 }
 
-std::shared_ptr< DTSuperLayer >
-DTGeometryBuilderFromCondDB::buildSuperLayer( std::shared_ptr< DTChamber > chamber,
+std::shared_ptr< const DTSuperLayer >
+DTGeometryBuilderFromCondDB::buildSuperLayer( std::shared_ptr< const DTChamber > chamber,
 					      const DetId& id,
 					      const RecoIdealGeometry& rig,
 					      size_t idt) const {
@@ -111,7 +111,7 @@ DTGeometryBuilderFromCondDB::buildSuperLayer( std::shared_ptr< DTChamber > chamb
   // Ok this is the slayer position...
   RCPPlane surf(plane(rig.tranStart(idt), rig.rotStart(idt), new RectangularPlaneBounds(width, length, thickness) ));
 
-  auto slayer = std::make_shared< DTSuperLayer >(slId, surf, chamber);
+  auto slayer = std::make_shared< const DTSuperLayer >(slId, surf, chamber);
 
   // cout << "adding slayer " << slayer->id() << " to chamber "<<  chamber->id() << endl;
   assert(chamber);
@@ -119,8 +119,8 @@ DTGeometryBuilderFromCondDB::buildSuperLayer( std::shared_ptr< DTChamber > chamb
   return slayer;
 }
 
-std::shared_ptr< DTLayer >
-DTGeometryBuilderFromCondDB::buildLayer( std::shared_ptr< DTSuperLayer > sl,
+std::shared_ptr< const DTLayer >
+DTGeometryBuilderFromCondDB::buildLayer( std::shared_ptr< const DTSuperLayer > sl,
 					 const DetId& id,
 					 const RecoIdealGeometry& rig,
 					 size_t idt) const {
@@ -143,7 +143,7 @@ DTGeometryBuilderFromCondDB::buildLayer( std::shared_ptr< DTSuperLayer > sl,
 
   DTLayerType layerType;
 
-  auto layer = std::make_shared< DTLayer >(layId, surf, topology, layerType, sl);
+  auto layer = std::make_shared< const DTLayer >(layId, surf, topology, layerType, sl);
   // cout << "adding layer " << layer->id() << " to sl "<<  sl->id() << endl;
 
   assert(sl);

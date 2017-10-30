@@ -29,75 +29,75 @@ const ME0Geometry::DetIdContainer& ME0Geometry::detIds() const{
   return theDetIds;
 }
 
-const std::shared_ptr< GeomDet >
+const std::shared_ptr< const GeomDet >
 ME0Geometry::idToDetUnit( DetId id ) const {
   return idToDet( id );
 }
 
-const std::shared_ptr< GeomDet >
+const std::shared_ptr< const GeomDet >
 ME0Geometry::idToDet( DetId id ) const {
   mapIdToDet::const_iterator i = theMap.find( id );
   return (i != theMap.end()) ?
     i->second : nullptr ;
 }
 
-const std::vector< std::shared_ptr< ME0Chamber >>&
+const std::vector< std::shared_ptr< const ME0Chamber >>&
 ME0Geometry::chambers() const {
   return allChambers;
 }
 
-const std::vector< std::shared_ptr< ME0Layer >>&
+const std::vector< std::shared_ptr< const ME0Layer >>&
 ME0Geometry::layers() const {
   return allLayers;
 }
 
-const std::vector< std::shared_ptr< ME0EtaPartition >>&
+const std::vector< std::shared_ptr< const ME0EtaPartition >>&
 ME0Geometry::etaPartitions() const {
   return allEtaPartitions;
 }
 
-const std::shared_ptr< ME0EtaPartition >
+const std::shared_ptr< const ME0EtaPartition >
 ME0Geometry::etaPartition( ME0DetId id ) const{
-  return std::static_pointer_cast< ME0EtaPartition >( idToDetUnit( id ));
+  return std::static_pointer_cast< const ME0EtaPartition >( idToDetUnit( id ));
 }
 
-const std::shared_ptr< ME0Layer >
+const std::shared_ptr< const ME0Layer >
 ME0Geometry::layer( ME0DetId id ) const {
-  return std::static_pointer_cast< ME0Layer >( idToDetUnit( id.layerId()));
+  return std::static_pointer_cast< const ME0Layer >( idToDetUnit( id.layerId()));
 }
 
-const std::shared_ptr< ME0Chamber >
+const std::shared_ptr< const ME0Chamber >
 ME0Geometry::chamber( ME0DetId id ) const {
-  return std::static_pointer_cast< ME0Chamber >( idToDetUnit( id.chamberId()));
+  return std::static_pointer_cast< const ME0Chamber >( idToDetUnit( id.chamberId()));
 }
 
 void
-ME0Geometry::add( std::shared_ptr< ME0EtaPartition > etaPartition ) {
+ME0Geometry::add( std::shared_ptr< const ME0EtaPartition > etaPartition ) {
   allEtaPartitions.emplace_back(etaPartition);
   theEtaPartitions.emplace_back(etaPartition);
   theEtaPartitionIds.emplace_back(etaPartition->geographicalId());
   theDets.emplace_back(etaPartition);
   theDetIds.emplace_back(etaPartition->geographicalId());
   theEtaPartitionTypes.emplace_back(&etaPartition->type());
-  theMap.insert( std::pair< DetId, std::shared_ptr< ME0EtaPartition > >
+  theMap.insert( std::pair< DetId, std::shared_ptr< const ME0EtaPartition > >
 		 (etaPartition->geographicalId(),etaPartition));
 }
 
 void
-ME0Geometry::add( std::shared_ptr< ME0Layer > layer ) {
+ME0Geometry::add( std::shared_ptr< const ME0Layer > layer ) {
   allLayers.emplace_back(layer);
   theDets.emplace_back(layer);
   theDetIds.emplace_back(layer->geographicalId());
   theEtaPartitionTypes.emplace_back(&layer->type());
-  theMap.insert( std::pair< DetId, std::shared_ptr< GeomDet > >
+  theMap.insert( std::pair< DetId, std::shared_ptr< const GeomDet > >
 		 (layer->geographicalId(),layer));
 }
 
 void
-ME0Geometry::add( std::shared_ptr< ME0Chamber > chamber ) {
+ME0Geometry::add( std::shared_ptr< const ME0Chamber > chamber ) {
   allChambers.emplace_back(chamber);
   theDets.emplace_back(chamber);
   theDetIds.emplace_back(chamber->geographicalId());
-  theMap.insert( std::pair< DetId, std::shared_ptr< GeomDet > >
+  theMap.insert( std::pair< DetId, std::shared_ptr< const GeomDet > >
 		 (chamber->geographicalId(),chamber));
 }

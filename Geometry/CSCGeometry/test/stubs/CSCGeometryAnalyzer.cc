@@ -83,7 +83,7 @@ void
 
      // Do we really have a CSC layer?
 
-     auto layer = std::static_pointer_cast< CSCLayer >( it );
+     auto layer = std::static_pointer_cast< const CSCLayer >( it );
      
       if( layer ) {
         ++icount;

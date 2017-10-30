@@ -33,8 +33,8 @@ private:
   PlaneBuilderFromGeometricDet::ResultType
   buildPlaneWithMaterial(const GeometricDet* gd,double scaleFactor=1.) const;
 
-  std::map<std::string, std::shared_ptr< PixelGeomDetType >> thePixelDetTypeMap;
-  std::map<std::string, std::shared_ptr< StripGeomDetType >> theStripDetTypeMap;
+  std::map<std::string, std::shared_ptr< const PixelGeomDetType >> thePixelDetTypeMap;
+  std::map<std::string, std::shared_ptr< const StripGeomDetType >> theStripDetTypeMap;
   const TrackerTopology* theTopo;
 };
 

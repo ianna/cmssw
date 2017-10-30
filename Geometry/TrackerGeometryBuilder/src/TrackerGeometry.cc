@@ -110,11 +110,11 @@ void TrackerGeometry::finalize() {
     theTECDets.shrink_to_fit(); // not owned: they're also in 'theDets'
 }
 
-void TrackerGeometry::addType( std::shared_ptr< GeomDetType > p ) {
+void TrackerGeometry::addType( std::shared_ptr< const GeomDetType > p ) {
   theDetTypes.emplace_back(p);  // add to vector
 }
 
-void TrackerGeometry::addDetUnit( std::shared_ptr< GeomDet > p ) {
+void TrackerGeometry::addDetUnit( std::shared_ptr< const GeomDet > p ) {
   // set index
   p->setIndex(theDetUnits.size());
   theDetUnits.emplace_back(p);  // add to vector
@@ -196,7 +196,7 @@ TrackerGeometry::detsTEC() const
   return theTECDets;
 }
 
-const std::shared_ptr< GeomDet >
+const std::shared_ptr< const GeomDet >
 TrackerGeometry::idToDetUnit(DetId s)const
 {
   mapIdToDetUnit::const_iterator p=theMapUnit.find(s.rawId());
@@ -208,7 +208,7 @@ TrackerGeometry::idToDetUnit(DetId s)const
   }
 }
 
-const std::shared_ptr< GeomDet >
+const std::shared_ptr< const GeomDet >
 TrackerGeometry::idToDet(DetId s)const
 {
   mapIdToDet::const_iterator p=theMap.find(s.rawId());

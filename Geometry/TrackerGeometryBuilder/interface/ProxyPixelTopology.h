@@ -28,7 +28,7 @@ class Plane;
 class ProxyPixelTopology final : public PixelTopology {
 public:
 
-  ProxyPixelTopology( std::shared_ptr< PixelGeomDetType > type, Plane * bp );
+  ProxyPixelTopology( std::shared_ptr< const PixelGeomDetType > type, Plane * bp );
 
   LocalPoint localPosition( const MeasurementPoint& ) const override;
   /// conversion taking also the predicted track state 
@@ -116,7 +116,7 @@ private:
   SurfaceDeformation::Local2DVector
     positionCorrection(const Topology::LocalTrackPred &trk) const;
   
-  std::shared_ptr< PixelGeomDetType > theType;  
+  std::shared_ptr< const PixelGeomDetType > theType;  
   float theLength, theWidth;
   std::unique_ptr<const SurfaceDeformation> theSurfaceDeformation;
 };

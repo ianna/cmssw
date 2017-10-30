@@ -1,7 +1,3 @@
-/** \file
- *
- */
-
 #include <Geometry/CSCGeometry/interface/CSCChamber.h>
 #include <Geometry/CSCGeometry/interface/CSCLayer.h>
 
@@ -10,17 +6,17 @@
 CSCChamber::~CSCChamber(){
 }
 
-std::vector< std::shared_ptr< GeomDet > > 
+std::vector< std::shared_ptr< const GeomDet > > 
 CSCChamber::components() const {
-  return std::vector < std::shared_ptr< GeomDet > >( theComponents.begin(), theComponents.end());
+  return std::vector < std::shared_ptr< const GeomDet > >( theComponents.begin(), theComponents.end());
 }
 
-const std::shared_ptr< GeomDet >
+const std::shared_ptr< const GeomDet >
 CSCChamber::component(DetId id) const {
   return layer(CSCDetId(id.rawId()));
 }
 
-void CSCChamber::addComponent( int n, std::shared_ptr< CSCLayer > gd ) { 
+void CSCChamber::addComponent( int n, std::shared_ptr< const CSCLayer > gd ) { 
 	
   if ((n>0) && (n<7)) 
     theComponents[n-1] = gd; 
@@ -28,13 +24,13 @@ void CSCChamber::addComponent( int n, std::shared_ptr< CSCLayer > gd ) {
     edm::LogError("CSC") << "Each chamber has only SIX layers.";
 }
 
-const std::shared_ptr< CSCLayer >
+const std::shared_ptr< const CSCLayer >
 CSCChamber::layer(CSCDetId iid) const {
   if (iid.chamberId()!=id()) return nullptr; // not in this chamber
   return layer(iid.layer());
 }
   
-const std::shared_ptr< CSCLayer >
+const std::shared_ptr< const CSCLayer >
 CSCChamber::layer(int ilay) const{
   	
   if ((ilay>0) && (ilay<7)) 

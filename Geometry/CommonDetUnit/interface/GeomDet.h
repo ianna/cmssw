@@ -84,11 +84,11 @@ class GeomDet {
   virtual bool isLeaf() const { return components().empty();}
 
   /// Returns direct components, if any
-  virtual std::vector< std::shared_ptr< GeomDet >> components() const { return std::vector< std::shared_ptr< GeomDet >>(); }
+  virtual std::vector< std::shared_ptr< const GeomDet >> components() const { return std::vector< std::shared_ptr< const GeomDet >>(); }
 
   /// Returns a component GeomDet given its DetId, if existing
   // FIXME: must become pure virtual
-  virtual const std::shared_ptr< GeomDet > component( DetId /*id*/) const {return nullptr;}
+  virtual const std::shared_ptr< const GeomDet > component( DetId /*id*/) const {return nullptr;}
 
   /// Return pointer to alignment errors. 
   AlignmentPositionError const* alignmentPositionError() const { return theAlignmentPositionError;}

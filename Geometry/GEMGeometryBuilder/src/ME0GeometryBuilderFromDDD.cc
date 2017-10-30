@@ -129,7 +129,7 @@ ME0Geometry* ME0GeometryBuilderFromDDD::buildGeometry(DDFilteredView& fview, con
 
     // Set EtaPartition of RollDetId equal to 1
     ME0DetId rollDetId2(rollDetId.region(),rollDetId.layer(),rollDetId.station(),1);
-    auto mep = std::make_shared< ME0EtaPartition > ( rollDetId2, surf, e_p_specs );
+    std::shared_ptr< const ME0EtaPartition > mep = std::make_shared< const ME0EtaPartition > ( rollDetId2, surf, e_p_specs );
 
     // For Nick ... build also the layer
     ME0DetId layerDetId(rollDetId.layerId());
@@ -169,7 +169,7 @@ ME0Geometry* ME0GeometryBuilderFromDDD::buildGeometry(DDFilteredView& fview, con
       BoundPlane* bp = const_cast<BoundPlane*>(&bps);
       ReferenceCountingPointer<BoundPlane> surf(bp);
       
-      auto ch = std::make_shared< ME0Chamber >( chamberId, surf ); 
+      auto ch = std::make_shared< const ME0Chamber >( chamberId, surf ); 
       LogDebug("ME0GeometryBuilderFromDDD")  << "Creating chamber " << chamberId << " with " << vDetId.size() << " eta partitions";
       
       for(auto id : vDetId){

@@ -91,8 +91,8 @@ RPCSectorAnalyzer::analyze( const edm::Event& /*iEvent*/, const edm::EventSetup&
 
 //      //----------------------- RPCCHAMBER TEST -------------------------------------------------------
 
-    if( std::static_pointer_cast< RPCChamber >( it ) != nullptr ){
-      auto ch = std::static_pointer_cast< RPCChamber >( it ); 
+    if( std::static_pointer_cast< const RPCChamber >( it ) != nullptr ){
+      auto ch = std::static_pointer_cast< const RPCChamber >( it ); 
       
       for(auto & roll : ch->rolls()){
 	

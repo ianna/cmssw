@@ -94,14 +94,14 @@ TrackerDigiGeometryAnalyzer::analyze( const edm::Event& iEvent, const edm::Event
    PRINT("TrackerDigiGeometryAnalyzer")<<" I have "<<pDD->detTypes().size() <<" types"<<'\n';
 
    for(auto const & it : pDD->detUnits()){
-     if(std::static_pointer_cast< PixelGeomDetUnit >((it))!=nullptr){
-	const BoundPlane& p = (std::static_pointer_cast< PixelGeomDetUnit >((it)))->specificSurface();
+     if(std::static_pointer_cast< const PixelGeomDetUnit >((it))!=nullptr){
+	const BoundPlane& p = (std::static_pointer_cast< const PixelGeomDetUnit >((it)))->specificSurface();
 	PRINT("TrackerDigiGeometryAnalyzer") << it->geographicalId()
               <<" RadLeng Pixel "<<p.mediumProperties().radLen()<<' ' <<" Xi Pixel "<<p.mediumProperties().xi()<<'\n';
        } 
 
-       if(std::static_pointer_cast< StripGeomDetUnit >((it))!=nullptr){
-	const BoundPlane& s = (std::static_pointer_cast< StripGeomDetUnit >((it)))->specificSurface();
+       if(std::static_pointer_cast< const StripGeomDetUnit >((it))!=nullptr){
+	const BoundPlane& s = (std::static_pointer_cast< const StripGeomDetUnit >((it)))->specificSurface();
 	PRINT("TrackerDigiGeometryAnalyzer")<< it->geographicalId()
              << " RadLeng Strip "<<s.mediumProperties().radLen() <<" Xi Strip "<<s.mediumProperties().xi()<<'\n';
        }

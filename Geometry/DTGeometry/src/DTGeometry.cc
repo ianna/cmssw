@@ -19,19 +19,19 @@ const DTGeometry::DetTypeContainer&  DTGeometry::detTypes() const {
   return theDetTypes;
 }
 
-void DTGeometry::add( std::shared_ptr< DTChamber > ch ) {
+void DTGeometry::add( std::shared_ptr< const DTChamber > ch ) {
   theDets.emplace_back(ch);
   theChambers.emplace_back(ch);
   theMap.insert(DTDetMap::value_type(ch->geographicalId(),ch));
 }
 
-void DTGeometry::add( std::shared_ptr< DTSuperLayer > sl ) {
+void DTGeometry::add( std::shared_ptr< const DTSuperLayer > sl ) {
   theDets.emplace_back(sl);
   theSuperLayers.emplace_back(sl);
   theMap.insert(DTDetMap::value_type(sl->geographicalId(),sl));
 }
 
-void DTGeometry::add( std::shared_ptr< DTLayer > l ) {
+void DTGeometry::add( std::shared_ptr< const DTLayer > l ) {
   theDetUnits.emplace_back(l);
   theDets.emplace_back(l);
   theLayers.emplace_back(l); 
@@ -56,12 +56,12 @@ const DTGeometry::DetIdContainer& DTGeometry::detIds() const {
   return theDetIds;
 }
 
-const std::shared_ptr< GeomDet >
+const std::shared_ptr< const GeomDet >
 DTGeometry::idToDetUnit( DetId id ) const {
   return std::static_pointer_cast< GeomDet >(idToDet(id));
 }
 
-const std::shared_ptr< GeomDet >
+const std::shared_ptr< const GeomDet >
 DTGeometry::idToDet(DetId id) const {
   // Strip away wire#, if any!
   DTLayerId lId(id.rawId());
@@ -70,32 +70,32 @@ DTGeometry::idToDet(DetId id) const {
     i->second : nullptr ;
 }
 
-const std::vector< std::shared_ptr< DTChamber >>&
+const std::vector< std::shared_ptr< const DTChamber >>&
 DTGeometry::chambers() const {
   return theChambers;
 }
 
-const std::vector< std::shared_ptr< DTSuperLayer >>&
+const std::vector< std::shared_ptr< const DTSuperLayer >>&
 DTGeometry::superLayers() const {
   return theSuperLayers;
 }
 
-const std::vector< std::shared_ptr< DTLayer >>&
+const std::vector< std::shared_ptr< const DTLayer >>&
 DTGeometry::layers() const {
   return theLayers;
 }
 
-const std::shared_ptr< DTChamber >
+const std::shared_ptr< const DTChamber >
 DTGeometry::chamber( const DTChamberId& id ) const {
-  return std::static_pointer_cast< DTChamber >( idToDet( id ));
+  return std::static_pointer_cast< const DTChamber >( idToDet( id ));
 }
 
-const std::shared_ptr< DTSuperLayer >
+const std::shared_ptr< const DTSuperLayer >
 DTGeometry::superLayer( const DTSuperLayerId& id ) const {
-  return std::static_pointer_cast< DTSuperLayer >( idToDet( id ));
+  return std::static_pointer_cast< const DTSuperLayer >( idToDet( id ));
 }
 
-const std::shared_ptr< DTLayer >
+const std::shared_ptr< const DTLayer >
 DTGeometry::layer(const DTLayerId& id) const {
-  return std::static_pointer_cast< DTLayer >( idToDet( id ));
+  return std::static_pointer_cast< const DTLayer >( idToDet( id ));
 }

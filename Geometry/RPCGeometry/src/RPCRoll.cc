@@ -38,7 +38,7 @@ RPCRoll::type() const
   return (*_rrs);
 }
 
-const std::shared_ptr< RPCChamber >
+const std::shared_ptr< const RPCChamber >
 RPCRoll::chamber() const {
   return theCh;
 }
@@ -109,7 +109,7 @@ RPCRoll::specificTopology() const
 }
 
 void
-RPCRoll::setChamber( std::shared_ptr< RPCChamber > ch)
+RPCRoll::setChamber( std::shared_ptr< const RPCChamber > ch)
 {
   theCh = ch; 
 }

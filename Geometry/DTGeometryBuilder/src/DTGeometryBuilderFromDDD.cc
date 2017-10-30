@@ -99,7 +99,7 @@ void DTGeometryBuilderFromDDD::buildGeometry( const std::shared_ptr<DTGeometry>&
   } // chambers
 }
 
-std::shared_ptr< DTChamber >
+std::shared_ptr< const DTChamber >
 DTGeometryBuilderFromDDD::buildChamber(DDFilteredView& fv,
 				       const string& type, const MuonDDDConstants& muonConstants) const {
   MuonDDDNumbering mdddnum (muonConstants);
@@ -122,12 +122,12 @@ DTGeometryBuilderFromDDD::buildChamber(DDFilteredView& fv,
 
   RCPPlane surf(plane(fv, new RectangularPlaneBounds(width, length, thickness) ));
 
-  return std::make_shared< DTChamber>(detId, surf);
+  return std::make_shared< const DTChamber>(detId, surf);
 }
 
-std::shared_ptr< DTSuperLayer >
+std::shared_ptr< const DTSuperLayer >
 DTGeometryBuilderFromDDD::buildSuperLayer(DDFilteredView& fv,
-					  std::shared_ptr< DTChamber > chamber,
+					  std::shared_ptr< const DTChamber > chamber,
 					  const std::string& type, 
 					  const MuonDDDConstants& muonConstants) const {
 
@@ -146,7 +146,7 @@ DTGeometryBuilderFromDDD::buildSuperLayer(DDFilteredView& fv,
   // Ok this is the slayer position...
   RCPPlane surf(plane(fv, new RectangularPlaneBounds(width, length, thickness) ));
 
-  auto slayer = std::make_shared< DTSuperLayer >(slId, surf, chamber);
+  auto slayer = std::make_shared< const DTSuperLayer >(slId, surf, chamber);
 
   // add to the chamber
   chamber->add(slayer);
@@ -154,9 +154,9 @@ DTGeometryBuilderFromDDD::buildSuperLayer(DDFilteredView& fv,
 }
 
 
-std::shared_ptr< DTLayer >
+std::shared_ptr< const DTLayer >
 DTGeometryBuilderFromDDD::buildLayer(DDFilteredView& fv,
-				     std::shared_ptr< DTSuperLayer > sl,
+				     std::shared_ptr< const DTSuperLayer > sl,
 				     const std::string& type,
 				     const MuonDDDConstants& muonConstants) const {
 
@@ -188,7 +188,7 @@ DTGeometryBuilderFromDDD::buildLayer(DDFilteredView& fv,
 
   DTLayerType layerType;
 
-  auto layer = std::make_shared< DTLayer >(layId, surf, topology, layerType, sl);
+  auto layer = std::make_shared< const DTLayer >(layId, surf, topology, layerType, sl);
 
   sl->add(layer);
   return layer;

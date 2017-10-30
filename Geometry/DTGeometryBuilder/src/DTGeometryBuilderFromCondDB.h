@@ -47,19 +47,19 @@ class DTGeometryBuilderFromCondDB{
 		const RecoIdealGeometry& rig);
 
   private:
-    std::shared_ptr< DTChamber > buildChamber(const DetId& id,
-					      const RecoIdealGeometry& rig,
-					      size_t idt) const ;
+    std::shared_ptr< const DTChamber > buildChamber(const DetId& id,
+						    const RecoIdealGeometry& rig,
+						    size_t idt) const ;
 
-    std::shared_ptr< DTSuperLayer > buildSuperLayer( std::shared_ptr< DTChamber > chamber,
-						     const DetId& id,
-						     const RecoIdealGeometry& rig,
-						     size_t idt) const ;
+    std::shared_ptr< const DTSuperLayer > buildSuperLayer( std::shared_ptr< conat DTChamber > chamber,
+							   const DetId& id,
+							   const RecoIdealGeometry& rig,
+							   size_t idt) const ;
 
-    std::shared_ptr< DTLayer > buildLayer( std::shared_ptr< DTSuperLayer > sl,
-					   const DetId& id,
-					   const RecoIdealGeometry& rig,
-					   size_t idt) const ;
+    std::shared_ptr< const DTLayer > buildLayer( std::shared_ptr< const DTSuperLayer > sl,
+						 const DetId& id,
+						 const RecoIdealGeometry& rig,
+						 size_t idt) const ;
 
     typedef ReferenceCountingPointer<Plane> RCPPlane;
 
