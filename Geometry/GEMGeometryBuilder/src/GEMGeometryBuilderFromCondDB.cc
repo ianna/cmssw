@@ -37,7 +37,7 @@ GEMGeometryBuilderFromCondDB::build(const std::shared_ptr<GEMGeometry>& theGeome
 				    const RecoIdealGeometry& rgeo )
 {
   const std::vector<DetId>& detids( rgeo.detIds());
-  std::vector< std::shared_ptr< const GEMSuperChamber >> superChambers;
+  std::vector< std::shared_ptr< GEMSuperChamber >> superChambers;
 
   std::string name;
   std::vector<double>::const_iterator tranStart;
@@ -91,7 +91,7 @@ GEMGeometryBuilderFromCondDB::build(const std::shared_ptr<GEMGeometry>& theGeome
   
     BoundPlane* bp = new BoundPlane( pos, rot, bounds );
     ReferenceCountingPointer<BoundPlane> surf( bp );
-    auto gep = std::make_shared< const GEMEtaPartition >( gemid, surf, epSpecs );
+    auto gep = std::make_shared< GEMEtaPartition >( gemid, surf, epSpecs );
     LogDebug("GEMGeometryBuilder") << "GEM Eta Partition created with id = " << gemid
 				   << " and added to the GEMGeometry" << std::endl;
     theGeometry->add(gep);
@@ -122,14 +122,14 @@ GEMGeometryBuilderFromCondDB::build(const std::shared_ptr<GEMGeometry>& theGeome
     // Create the superchamber
     if( chid.layer() == 1 ) {
       GEMDetId schid( chid.region(), chid.ring(), chid.station(), 0, chid.chamber(), 0 );
-      auto sch = std::make_shared< const GEMSuperChamber >( schid, surf );
+      auto sch = std::make_shared< GEMSuperChamber >( schid, surf );
       LogDebug("GEMGeometryBuilder") << "GEM SuperChamber created with id = " << schid
 				     << " and added to the GEMGeometry" << std::endl;
       superChambers.emplace_back( sch );
     }
     
     // Create the chamber 
-    auto ch = std::make_shared< const GEMChamber >( chid, surf ); 
+    auto ch = std::make_shared< GEMChamber >( chid, surf ); 
     LogDebug("GEMGeometryBuilder") << "GEM Chamber created with id = " << chid
 				   << " = " << chid.rawId() << " and added to the GEMGeometry" << std::endl;
     LogDebug("GEMGeometryBuilder") << "GEM Chamber has following eta partitions associated: " << std::endl;

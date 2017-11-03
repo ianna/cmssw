@@ -65,10 +65,10 @@ class RPCGeometry : public TrackingGeometry {
   const std::shared_ptr< const RPCRoll > roll(RPCDetId id) const;
 
   /// Add a RPC roll to the Geometry
-  void add( std::shared_ptr< const RPCRoll > roll);
+  void add( std::shared_ptr< RPCRoll > roll);
 
   /// Add a RPC roll to the Geometry
-  void add( std::shared_ptr< const RPCChamber > ch);
+  void add( std::shared_ptr< RPCChamber > ch);
 
  private:
   DetContainer theRolls;

@@ -18,9 +18,9 @@ class TrackerGeometry final : public TrackingGeometry {
   friend class TrackerGeomBuilderFromGeometricDet;
 
   void addType( std::shared_ptr< const GeomDetType > p );
-  void addDetUnit( std::shared_ptr< const GeomDet > p);
+  void addDetUnit( std::shared_ptr< GeomDet > p);
   void addDetUnitId(DetId p);
-  void addDet( std::shared_ptr< GeomDet > p);
+  void addDet( std::shared_ptr< GeomDet > const p);
   void addDetId(DetId p);
   void finalize();
 

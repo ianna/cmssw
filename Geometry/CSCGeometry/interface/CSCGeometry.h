@@ -23,7 +23,7 @@ class CSCWireGroupPackage;
 
 class CSCGeometry : public TrackingGeometry {
 
-  typedef std::map<DetId, std::shared_ptr< const GeomDet >> CSCDetMap;
+  typedef std::map<DetId, std::shared_ptr< GeomDet >> CSCDetMap;
   // The buffer for specs need not really be a map. Could do it with a vector!
   typedef std::map<int, std::shared_ptr< const CSCChamberSpecs >, std::less<int> > CSCSpecsContainer;
 
@@ -87,7 +87,7 @@ class CSCGeometry : public TrackingGeometry {
    * Return the CSCChamberSpecs* for given chamber type
    * if it exists, or 0 if it has not been created.
    */
-  const std::shared_ptr< const CSCChamberSpecs > findSpecs( int iChamberType );
+  const std::shared_ptr< const CSCChamberSpecs > findSpecs( int iChamberType ) const;
 
   /**
    * Build CSCChamberSpecs for given chamber type.
@@ -136,10 +136,10 @@ class CSCGeometry : public TrackingGeometry {
  private:
 
   /// Add a chamber with given DetId.
-  void addChamber( std::shared_ptr< const CSCChamber > ch);
+  void addChamber( std::shared_ptr< CSCChamber > ch);
   
   /// Add a DetUnit
-  void addLayer( std::shared_ptr< const CSCLayer > l);
+  void addLayer( std::shared_ptr< CSCLayer > l);
 
   /// Add a DetType
   void addDetType( std::shared_ptr< const GeomDetType > type);
@@ -148,7 +148,7 @@ class CSCGeometry : public TrackingGeometry {
   void addDetId(DetId id);
 
   /// Add a GeomDet; not to be called by the builder.
-  void addDet( std::shared_ptr< const GeomDet > det);
+  void addDet( std::shared_ptr< GeomDet > det);
 
   // The chambers are owned by the geometry (which in turn own layers)
   ChamberContainer  theChambers; 

@@ -183,7 +183,7 @@ void TrackerGeomBuilderFromGeometricDet::buildPixel(std::vector<const GeometricD
     }
 
     PlaneBuilderFromGeometricDet::ResultType plane = buildPlaneWithMaterial(i);
-    auto temp =  std::make_shared< const PixelGeomDetUnit >(&(*plane),thePixelDetTypeMap[detName],i->geographicalID());
+    auto temp =  std::make_shared< PixelGeomDetUnit >(&(*plane),thePixelDetTypeMap[detName],i->geographicalID());
 
     tracker->addDetUnit(temp);
     tracker->addDetUnitId(i->geographicalID());
@@ -220,7 +220,7 @@ void TrackerGeomBuilderFromGeometricDet::buildSilicon(std::vector<const Geometri
     double scale  = (theTopo->partnerDetId(i->geographicalID())) ? 0.5 : 1.0 ;	
 
     PlaneBuilderFromGeometricDet::ResultType plane = buildPlaneWithMaterial(i,scale);  
-    auto temp = std::make_shared< const StripGeomDetUnit >(&(*plane), theStripDetTypeMap[detName],i->geographicalID());
+    auto temp = std::make_shared< StripGeomDetUnit >(&(*plane), theStripDetTypeMap[detName],i->geographicalID());
     
     tracker->addDetUnit(temp);
     tracker->addDetUnitId(i->geographicalID());

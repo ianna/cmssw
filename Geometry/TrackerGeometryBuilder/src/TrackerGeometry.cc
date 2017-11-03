@@ -114,7 +114,7 @@ void TrackerGeometry::addType( std::shared_ptr< const GeomDetType > p ) {
   theDetTypes.emplace_back(p);  // add to vector
 }
 
-void TrackerGeometry::addDetUnit( std::shared_ptr< const GeomDet > p ) {
+void TrackerGeometry::addDetUnit( std::shared_ptr< GeomDet > p ) {
   // set index
   p->setIndex(theDetUnits.size());
   theDetUnits.emplace_back(p);  // add to vector
@@ -125,7 +125,7 @@ void TrackerGeometry::addDetUnitId(DetId p){
   theDetUnitIds.emplace_back(p);
 }
 
-void TrackerGeometry::addDet( std::shared_ptr< GeomDet > p ) {
+void TrackerGeometry::addDet( std::shared_ptr< GeomDet > const p ) {
   // set index
   p->setGdetIndex(theDets.size());
   theDets.emplace_back(p);  // add to vector

@@ -24,7 +24,7 @@ class GeomDetType;
 
 class DTGeometry : public TrackingGeometry {
 
-  typedef std::map<DetId, std::shared_ptr< const GeomDet >> DTDetMap;
+  typedef std::map<DetId, std::shared_ptr< GeomDet >> DTDetMap;
 
   public:
     /// Default constructor
@@ -88,13 +88,13 @@ class DTGeometry : public TrackingGeometry {
 
 
     /// Add a DTChamber to Geometry
-    void add( std::shared_ptr< const DTChamber > ch );
+    void add( std::shared_ptr< DTChamber > ch );
 
     /// Add a DTSuperLayer to Geometry
-    void add( std::shared_ptr< const DTSuperLayer > sl );
+    void add( std::shared_ptr< DTSuperLayer > sl );
 
     /// Add a DTLayer to Geometry
-    void add( std::shared_ptr< const DTLayer > l );
+    void add( std::shared_ptr< DTLayer > l );
 
 
     // The chambers are owned by the geometry (and in turn own superlayers

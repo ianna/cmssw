@@ -48,6 +48,8 @@ GEMGeometryBuilderFromDDD::build( const std::shared_ptr<GEMGeometry>& theGeometr
 
   bool doSuper = fv.firstChild();
   LogDebug("GEMGeometryBuilderFromDDD") << "doSuperChamber = " << doSuper;
+  std::vector< std::shared_ptr< GEMSuperChamber >> superChambers;
+
   // loop over superchambers
   while (doSuper){
 
@@ -65,7 +67,8 @@ GEMGeometryBuilderFromDDD::build( const std::shared_ptr<GEMGeometry>& theGeometr
     // making superchamber out of the first chamber layer including the gap between chambers
     if (detIdCh.layer() == 1){// only make superChambers when doing layer 1
       auto gemSuperChamber = buildSuperChamber(fv, detIdCh);
-      theGeometry->add(gemSuperChamber);
+      superChambers.emplace_back( gemSuperChamber );
+      // FIXME: theGeometry->add(gemSuperChamber);
     }
     auto gemChamber = buildChamber(fv, detIdCh);
     
@@ -99,17 +102,17 @@ GEMGeometryBuilderFromDDD::build( const std::shared_ptr<GEMGeometry>& theGeometr
     doSuper = fv.nextSibling();
   }
   
-  auto& superChambers(theGeometry->superChambers());
+  // FIXME: auto& superChambers(theGeometry->superChambers());
   // construct the regions, stations and rings. 
   for (int re = -1; re <= 1; re = re+2) {
-    auto region = std::make_shared< const GEMRegion >(re);
+    auto region = std::make_shared< GEMRegion >(re);
     for (int st=1; st<=GEMDetId::maxStationId; ++st) {
-      auto station = std::make_shared< const GEMStation >(re, st);
+      auto station = std::make_shared< GEMStation >(re, st);
       // std::string sign( re==-1 ? "-" : "");
       // std::string name("GE" + sign + std::to_string(st) + "/1");
       // station->setName(name);
       for (int ri=1; ri<=1; ++ri) {
-	auto ring = std::make_shared< const GEMRing>(re, st, ri);
+	auto ring = std::make_shared< GEMRing>(re, st, ri);
 	for( auto superChamber : superChambers ) {
 	  const GEMDetId detId(superChamber->id());
 	  if (detId.region() != re || detId.station() != st || detId.ring() != ri) continue;
@@ -118,6 +121,8 @@ GEMGeometryBuilderFromDDD::build( const std::shared_ptr<GEMGeometry>& theGeometr
 	  superChamber->add( theGeometry->chamber(GEMDetId(detId.region(),detId.ring(),detId.station(),2,detId.chamber(),0)));
 	  
 	  ring->add(superChamber);
+	  theGeometry->add(superChamber);
+	  
 	  LogDebug("GEMGeometryBuilderFromDDD") << "Adding super chamber " << detId << " to ring: " 
 						<< "re " << re << " st " << st << " ri " << ri << std::endl;
  	}
@@ -134,7 +139,7 @@ GEMGeometryBuilderFromDDD::build( const std::shared_ptr<GEMGeometry>& theGeometr
   }  
 }
 
-std::shared_ptr< const GEMSuperChamber >
+std::shared_ptr< GEMSuperChamber >
 GEMGeometryBuilderFromDDD::buildSuperChamber( DDFilteredView& fv,
 					      GEMDetId detId ) const
 {
@@ -159,10 +164,10 @@ GEMGeometryBuilderFromDDD::buildSuperChamber( DDFilteredView& fv,
   
   LogDebug("GEMGeometryBuilderFromDDD") << "size "<< dx1 << " " << dx2 << " " << dy << " " << dz <<std::endl;
   
-  return std::make_shared< const GEMSuperChamber>(detId.superChamberId(), surf);
+  return std::make_shared< GEMSuperChamber>(detId.superChamberId(), surf);
 }
 
-std::shared_ptr< const GEMChamber >
+std::shared_ptr< GEMChamber >
 GEMGeometryBuilderFromDDD::buildChamber( DDFilteredView& fv,
 					 GEMDetId detId ) const
 {
@@ -185,10 +190,10 @@ GEMGeometryBuilderFromDDD::buildChamber( DDFilteredView& fv,
   
   LogDebug("GEMGeometryBuilderFromDDD") << "size "<< dx1 << " " << dx2 << " " << dy << " " << dz << std::endl;
   
-  return std::make_shared< const GEMChamber >(detId.chamberId(), surf);
+  return std::make_shared< GEMChamber >(detId.chamberId(), surf);
 }
 
-std::shared_ptr< const GEMEtaPartition >
+std::shared_ptr< GEMEtaPartition >
 GEMGeometryBuilderFromDDD::buildEtaPartition( DDFilteredView& fv,
 					      GEMDetId detId ) const
 {
@@ -232,7 +237,7 @@ GEMGeometryBuilderFromDDD::buildEtaPartition( DDFilteredView& fv,
   GEMEtaPartitionSpecs* e_p_specs = new GEMEtaPartitionSpecs(GeomDetEnumerators::GEM, name, pars);
   
   LogDebug("GEMGeometryBuilderFromDDD") << "size "<< be << " " << te << " " << ap << " " << ti <<std::endl;
-  return std::make_shared< const GEMEtaPartition >(detId, surf, e_p_specs);
+  return std::make_shared< GEMEtaPartition >(detId, surf, e_p_specs);
 }
 
 GEMGeometryBuilderFromDDD::RCPBoundPlane 

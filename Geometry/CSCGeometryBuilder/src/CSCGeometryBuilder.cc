@@ -16,7 +16,7 @@ CSCGeometryBuilder::CSCGeometryBuilder() : myName("CSCGeometryBuilder"){}
 CSCGeometryBuilder::~CSCGeometryBuilder(){}
 
 
-void CSCGeometryBuilder::build( const std::shared_ptr<const CSCGeometry>& theGeometry
+void CSCGeometryBuilder::build( const std::shared_ptr<CSCGeometry>& theGeometry
 				, const RecoIdealGeometry& rig
 				, const CSCRecoDigiParameters& cscpars ) {
 
@@ -117,7 +117,7 @@ void CSCGeometryBuilder::build( const std::shared_ptr<const CSCGeometry>& theGeo
 }
 
 void CSCGeometryBuilder::buildChamber (  
-				       const std::shared_ptr<const CSCGeometry>& theGeometry // the geometry container
+				       const std::shared_ptr<CSCGeometry>& theGeometry // the geometry container
 				       , CSCDetId chamberId                         // the DetId for this chamber
 				       , const std::vector<float>& fpar           // volume parameters hB, hT. hD, hH	
 				       , const std::vector<float>& fupar          // user parameters 
@@ -267,7 +267,7 @@ void CSCGeometryBuilder::buildChamber (
       CSCDetId layerId = CSCDetId( jend, jstat, jring, jch, j );
 
       // extra-careful check that we haven't already built this layer
-      auto cLayer = std::static_pointer_cast< CSCLayer > (theGeometry->idToDet( layerId ) );
+      auto cLayer = std::static_pointer_cast< const CSCLayer > (theGeometry->idToDet( layerId ) );
 
       if ( cLayer == nullptr ) {
 

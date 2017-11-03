@@ -17,6 +17,7 @@
 #include "DataFormats/GeometrySurface/interface/LocalError.h"
 #include "Geometry/CommonDetUnit/interface/GeomDetEnumerators.h"
 
+#include <memory>
 #include <vector>
 
 class AlignmentPositionError;
@@ -108,7 +109,7 @@ class GeomDet {
   /// Return pointer to surface deformation. 
   /// Defaults to "null" if not reimplemented in the derived classes.
   virtual const SurfaceDeformation* surfaceDeformation() const { return nullptr; }
-
+  
  protected:
 
   void setDetId( DetId id ) {

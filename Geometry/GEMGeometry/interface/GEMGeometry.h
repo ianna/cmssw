@@ -91,22 +91,22 @@ class GEMGeometry : public TrackingGeometry {
   const std::shared_ptr< const GEMEtaPartition > etaPartition( GEMDetId id ) const;
 
   /// Add a GEMRegion to the Geometry
-  void add( std::shared_ptr< const GEMRegion > region);
+  void add( std::shared_ptr< GEMRegion > region);
 
   /// Add a GEMStation to the Geometry
-  void add( std::shared_ptr< const GEMStation > station);
+  void add( std::shared_ptr< GEMStation > station);
 
   /// Add a GEMRing to the Geometry
-  void add( std::shared_ptr< const GEMRing > ring);
+  void add( std::shared_ptr< GEMRing > ring);
 
   /// Add a GEMSuperChamber to the Geometry
-  void add( std::shared_ptr< const GEMSuperChamber > sch);
+  void add( std::shared_ptr< GEMSuperChamber > sch);
  
   /// Add a GEMChamber to the Geometry
-  void add( std::shared_ptr< const GEMChamber > ch);
+  void add( std::shared_ptr< GEMChamber > ch);
 
   /// Add a GEMEtaPartition  to the Geometry
-  void add( std::shared_ptr< const GEMEtaPartition > etaPartition);
+  void add( std::shared_ptr< GEMEtaPartition > etaPartition);
 
  private:
   DetContainer theEtaPartitions;

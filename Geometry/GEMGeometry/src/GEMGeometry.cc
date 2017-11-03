@@ -119,46 +119,46 @@ GEMGeometry::etaPartition( GEMDetId id ) const {
 }
 
 void
-GEMGeometry::add( std::shared_ptr< const GEMRegion > region ) {
+GEMGeometry::add( std::shared_ptr< GEMRegion > region ) {
   allRegions.emplace_back( region );
 }
 
 void
-GEMGeometry::add( std::shared_ptr< const GEMStation > station ) {
+GEMGeometry::add( std::shared_ptr< GEMStation > station ) {
   allStations.emplace_back( station );
 }
 
 void
-GEMGeometry::add( std::shared_ptr< const GEMRing > ring ) {
+GEMGeometry::add( std::shared_ptr< GEMRing > ring ) {
   allRings.emplace_back(ring);
 }
 
 void
-GEMGeometry::add( std::shared_ptr< const GEMSuperChamber > superChamber ) {
+GEMGeometry::add( std::shared_ptr< GEMSuperChamber > superChamber ) {
   allSuperChambers.emplace_back(superChamber);
   theDets.emplace_back(superChamber);
   theDetIds.emplace_back(superChamber->geographicalId());
-  theMap.insert(std::pair<DetId, std::shared_ptr< const GeomDet > >
+  theMap.insert(std::pair<DetId, std::shared_ptr< GeomDet > >
   		(superChamber->geographicalId(),superChamber));
 }
 
 void
-GEMGeometry::add( std::shared_ptr< const GEMEtaPartition > etaPartition ) {
+GEMGeometry::add( std::shared_ptr< GEMEtaPartition > etaPartition ) {
   theDets.emplace_back(etaPartition);
   allEtaPartitions.emplace_back(etaPartition);
   theEtaPartitions.emplace_back(etaPartition);
   theEtaPartitionIds.emplace_back(etaPartition->geographicalId());
   theDetIds.emplace_back(etaPartition->geographicalId());
   theEtaPartitionTypes.emplace_back(&etaPartition->type());
-  theMap.insert(std::pair<DetId, std::shared_ptr< const GeomDet > >
+  theMap.insert(std::pair<DetId, std::shared_ptr< GeomDet > >
 		(etaPartition->geographicalId(),etaPartition));
 }
 
 void
-GEMGeometry::add( std::shared_ptr< const GEMChamber > chamber ) {
+GEMGeometry::add( std::shared_ptr< GEMChamber > chamber ) {
   allChambers.emplace_back(chamber);
   theDets.emplace_back(chamber);
   theDetIds.emplace_back(chamber->geographicalId());
-  theMap.insert(std::pair<DetId, std::shared_ptr< const GeomDet > >
+  theMap.insert(std::pair<DetId, std::shared_ptr< GeomDet > >
 		(chamber->geographicalId(),chamber));
 }

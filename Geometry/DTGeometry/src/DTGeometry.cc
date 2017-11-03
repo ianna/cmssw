@@ -19,19 +19,19 @@ const DTGeometry::DetTypeContainer&  DTGeometry::detTypes() const {
   return theDetTypes;
 }
 
-void DTGeometry::add( std::shared_ptr< const DTChamber > ch ) {
+void DTGeometry::add( std::shared_ptr< DTChamber > ch ) {
   theDets.emplace_back(ch);
   theChambers.emplace_back(ch);
   theMap.insert(DTDetMap::value_type(ch->geographicalId(),ch));
 }
 
-void DTGeometry::add( std::shared_ptr< const DTSuperLayer > sl ) {
+void DTGeometry::add( std::shared_ptr< DTSuperLayer > sl ) {
   theDets.emplace_back(sl);
   theSuperLayers.emplace_back(sl);
   theMap.insert(DTDetMap::value_type(sl->geographicalId(),sl));
 }
 
-void DTGeometry::add( std::shared_ptr< const DTLayer > l ) {
+void DTGeometry::add( std::shared_ptr< DTLayer > l ) {
   theDetUnits.emplace_back(l);
   theDets.emplace_back(l);
   theLayers.emplace_back(l); 
@@ -58,7 +58,7 @@ const DTGeometry::DetIdContainer& DTGeometry::detIds() const {
 
 const std::shared_ptr< const GeomDet >
 DTGeometry::idToDetUnit( DetId id ) const {
-  return std::static_pointer_cast< GeomDet >(idToDet(id));
+  return std::static_pointer_cast< const GeomDet >(idToDet(id));
 }
 
 const std::shared_ptr< const GeomDet >

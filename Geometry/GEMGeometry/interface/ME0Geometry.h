@@ -60,13 +60,13 @@ class ME0Geometry : public TrackingGeometry {
   const std::vector< std::shared_ptr< const ME0Chamber >>& chambers() const;
 
   /// Add a ME0 etaPartition  to the Geometry
-  void add( std::shared_ptr< const ME0EtaPartition > etaPartition );
+  void add( std::shared_ptr< ME0EtaPartition > etaPartition );
 
   /// Add a ME0 layer  to the Geometry
-  void add( std::shared_ptr< const ME0Layer > layer);
+  void add( std::shared_ptr< ME0Layer > layer);
 
   /// Add a ME0 Chamber  to the Geometry
-  void add( std::shared_ptr< const ME0Chamber > chamber);
+  void add( std::shared_ptr< ME0Chamber > chamber);
 
  private:
   DetContainer theEtaPartitions;

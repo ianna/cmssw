@@ -70,22 +70,22 @@ RPCGeometry::roll(RPCDetId id) const{
 }
 
 void
-RPCGeometry::add( std::shared_ptr< const RPCRoll > roll ) {
+RPCGeometry::add( std::shared_ptr< RPCRoll > roll ) {
   theDets.emplace_back(roll);
   allRolls.emplace_back(roll);
   theRolls.emplace_back(roll);
   theRollIds.emplace_back(roll->geographicalId());
   theDetIds.emplace_back(roll->geographicalId());
   theRollTypes.emplace_back(&roll->type());
-  theMap.insert(std::pair<DetId, std::shared_ptr< const GeomDet > >
+  theMap.insert(std::pair<DetId, std::shared_ptr< GeomDet > >
 		(roll->geographicalId(),roll));
 }
 
 void
-RPCGeometry::add( std::shared_ptr< const RPCChamber > chamber ) {
+RPCGeometry::add( std::shared_ptr< RPCChamber > chamber ) {
   allChambers.emplace_back(chamber);
   theDets.emplace_back(chamber);
   theDetIds.emplace_back(chamber->geographicalId());
-  theMap.insert(std::pair<DetId, std::shared_ptr< const GeomDet > >
+  theMap.insert(std::pair<DetId, std::shared_ptr< GeomDet > >
 		(chamber->geographicalId(),chamber));
 }
