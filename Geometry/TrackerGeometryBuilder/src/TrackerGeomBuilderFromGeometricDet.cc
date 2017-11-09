@@ -222,7 +222,7 @@ void TrackerGeomBuilderFromGeometricDet::buildSilicon(std::vector<const Geometri
     PlaneBuilderFromGeometricDet::ResultType plane = buildPlaneWithMaterial(i,scale);  
     auto temp = std::make_shared< StripGeomDetUnit >(&(*plane), theStripDetTypeMap[detName],i->geographicalID());
     
-    tracker->addDetUnit(temp);
+    tracker->addDetUnit(std::move(temp));
     tracker->addDetUnitId(i->geographicalID());
   }  
   tracker->setEndsetDU(GeomDetEnumerators::subDetGeom[det]);
@@ -260,9 +260,9 @@ void TrackerGeomBuilderFromGeometricDet::buildGeomDet(TrackerGeometry* tracker){
 					        <<"There is a problem on Tracker geometry configuration\n";
       }
 
-      std::shared_ptr< const GeomDet > dus = gdu[i];
-      std::shared_ptr< const GeomDet > dum = gdu[partner_pos];
-      std::vector< std::shared_ptr< const GeomDet >> composed(2);
+      const GeomDet* dus = gdu[i].get();
+      const GeomDet* dum = gdu[partner_pos].get();
+      std::vector< const GeomDet* > composed(2);
       composed[0]=dum;
       composed[1]=dus;
       DetId composedDetId;
@@ -282,10 +282,8 @@ void TrackerGeomBuilderFromGeometricDet::buildGeomDet(TrackerGeometry* tracker){
         auto stackDet = std::make_shared< StackGeomDet >(&(*plane),dum,dus,composedDetId);
         tracker->addDet(stackDet);
         tracker->addDetId(composedDetId);
-      } 
-
+      }
     }
-
   }
 }
 

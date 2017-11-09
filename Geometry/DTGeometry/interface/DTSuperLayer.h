@@ -29,7 +29,7 @@ class DTSuperLayer : public GeomDet {
 /* Constructor */ 
     DTSuperLayer(const DTSuperLayerId& id,
                  ReferenceCountingPointer<BoundPlane>& plane,
-		 std::shared_ptr< const DTChamber > ch=nullptr);
+		 const DTChamber* ch=nullptr);
 
 /* Destructor */ 
     ~DTSuperLayer() override ;
@@ -45,33 +45,33 @@ class DTSuperLayer : public GeomDet {
     bool operator==(const DTSuperLayer& sl) const ;
 
     /// Return the layers in the SL
-    std::vector< std::shared_ptr< const GeomDet >> components() const override;
+    std::vector< const GeomDet* > components() const override;
 
     /// Return the layer with a given id in this SL
-    const std::shared_ptr< const GeomDet > component(DetId id) const override;
+    const GeomDet* component(DetId id) const override;
 
     /// Return the layers in the SL
-    const std::vector< std::shared_ptr< const DTLayer >>& layers() const;
+    const std::vector< const DTLayer* >& layers() const;
 
     /// Add layer to the SL which owns it
-    void add( std::shared_ptr< const DTLayer > l);
+    void add( const DTLayer*  l);
 
     /// Return the chamber this SL belongs to (0 if any, eg if a SL is
     /// built on his own)
-    const std::shared_ptr< const DTChamber > chamber() const;
+    const DTChamber* chamber() const;
 
     /// Return the layer corresponding to the given id 
-    const std::shared_ptr< const DTLayer > layer(const DTLayerId& id) const;
+    const DTLayer* layer(const DTLayerId& id) const;
   
     /// Return the given layer.
     /// Layers are numbered 1-4.
-    const std::shared_ptr< const DTLayer > layer(int ilay) const;
+    const DTLayer* layer(int ilay) const;
 
   private:
     DTSuperLayerId theId;
     // The SL owns its Layer
-    std::vector< std::shared_ptr< const DTLayer >> theLayers;
-    std::shared_ptr< const DTChamber > theCh;
+    std::vector< const DTLayer* > theLayers;
+    const DTChamber* theCh;
 };
 #endif // DTSUPERLAYER_H
 

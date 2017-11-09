@@ -179,11 +179,11 @@ void
 ProduceAgingObject::createDtAgingMap(const edm::ESHandle<DTGeometry> & dtGeom)
 {
 
-  const std::vector<const DTChamber*> chambers = dtGeom->chambers();
+  auto& chambers = dtGeom->chambers();
 
   std::cout << "[ProduceAgingObject] List of aged DT chambers (ChamberID, efficiency)" 
 	    << std::endl;
-  for ( const DTChamber *ch : chambers)
+  for ( auto& ch : chambers)
    {
 
      DTChamberId chId = ch->id();
@@ -233,7 +233,7 @@ ProduceAgingObject::createCscAgingMap(const edm::ESHandle<CSCGeometry> & cscGeom
   std::cout << "[ProduceAgingObject] List of aged CSC chambers (ChamberID, efficiency, type)" 
 	    << std::endl;
 
-  for ( const auto *ch : chambers) {
+  for ( const auto& ch : chambers) {
     
     CSCDetId chId = ch->id();
     

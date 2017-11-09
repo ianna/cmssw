@@ -162,7 +162,7 @@ const std::vector<LocalPoint> SiPixelQuality::getBadRocPositions(const uint32_t 
 	      //       edm::ESHandle<TrackerGeometry> geom;
 	      //     es.get<TrackerDigiGeometryRecord>().get( geom );
 	      //    const TrackerGeometry& theTracker(*geom);
-              const PixelGeomDetUnit * theGeomDet = dynamic_cast<const PixelGeomDetUnit*> (theTracker.idToDet(detid) );
+              auto theGeomDet = std::static_pointer_cast<const PixelGeomDetUnit> (theTracker.idToDet(detid) );
 
 	      PixelTopology const * topology = &(theGeomDet->specificTopology());
 

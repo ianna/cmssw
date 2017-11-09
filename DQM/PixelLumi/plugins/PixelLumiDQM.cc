@@ -235,8 +235,8 @@ PixelLumiDQM::analyze(const edm::Event& iEvent,
             if ((clus->size() >= fMinPixelsPerCluster) &&
                 (clus->charge() >= fMinClusterCharge)) {
         
-              PixelGeomDetUnit const* theGeomDet =
-                dynamic_cast<PixelGeomDetUnit const*>(trackerGeo->idToDet(detId));
+              auto theGeomDet =
+                std::static_pointer_cast<const PixelGeomDetUnit>(trackerGeo->idToDet(detId));
               PixelTopology const* topol = &(theGeomDet->specificTopology());
               double x = clus->x();
               double y = clus->y();

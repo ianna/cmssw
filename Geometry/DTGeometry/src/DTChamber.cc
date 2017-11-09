@@ -36,15 +36,15 @@ bool DTChamber::operator==(const DTChamber& ch) const {
   return id()==ch.id();
 }
 
-void DTChamber::add( std::shared_ptr< const DTSuperLayer > sl ) {
+void DTChamber::add( const DTSuperLayer* sl ) {
   theSLs.emplace_back(sl);
 }
 
-std::vector< std::shared_ptr< const GeomDet >> DTChamber::components() const {
-  return  std::vector< std::shared_ptr< const GeomDet > >(theSLs.begin(), theSLs.end());
+std::vector< const GeomDet* > DTChamber::components() const {
+  return  std::vector< const GeomDet* >(theSLs.begin(), theSLs.end());
 }
 
-const std::shared_ptr< const GeomDet >
+const GeomDet*
 DTChamber::component(DetId id) const {
   DTLayerId lId(id.rawId());
   if (lId.layer()==0) { // is a SL id
@@ -54,18 +54,18 @@ DTChamber::component(DetId id) const {
   }
 }
 
-const std::vector< std::shared_ptr< const DTSuperLayer >>&
+const std::vector< const DTSuperLayer* >&
 DTChamber::superLayers() const {
   return theSLs;
 }
 
-const std::shared_ptr< const DTSuperLayer >
+const DTSuperLayer*
 DTChamber::superLayer(const DTSuperLayerId& id) const{
   if (id.chamberId()!=theId) return nullptr; // not in this SL!
   return superLayer(id.superLayer());
 }
 
-const std::shared_ptr< const DTSuperLayer >
+const DTSuperLayer*
 DTChamber::superLayer(int isl) const {
   for (auto theSL : theSLs) {
     if (theSL->id().superLayer()==isl) return theSL;
@@ -73,7 +73,7 @@ DTChamber::superLayer(int isl) const {
   return nullptr;
 }
 
-const std::shared_ptr< const DTLayer >
+const DTLayer*
 DTChamber::layer(const DTLayerId& id) const {
   return (superLayer(id.superlayer()))->layer(id.layer());
 }

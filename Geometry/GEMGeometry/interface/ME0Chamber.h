@@ -25,38 +25,38 @@ public:
   bool operator==(const ME0Chamber& ch) const;
 
   /// Add Layer to the chamber which takes ownership
-  void add( std::shared_ptr< const ME0Layer > layer );
+  void add( const ME0Layer* layer );
 
   /// Return the rolls in the chamber
-  std::vector< std::shared_ptr< const GeomDet >> components() const override;
+  std::vector< const GeomDet* > components() const override;
 
   /// Return the sub-component (roll) with a given id in this chamber
-  const std::shared_ptr< const GeomDet > component(DetId id) const override;
+  const GeomDet* component(DetId id) const override;
 
   /// Return the layer corresponding to the given id 
-  const std::shared_ptr< const ME0Layer > layer(ME0DetId id) const;
+  const ME0Layer* layer(ME0DetId id) const;
 
-  const std::shared_ptr< const ME0Layer > layer(int isl) const;
+  const ME0Layer* layer(int isl) const;
   
   /// Return the layers
-  const std::vector< std::shared_ptr< const ME0Layer >>& layers() const;
+  const std::vector< const ME0Layer* >& layers() const;
 
   /// Retunr numbers of layers
   int nLayers() const;
 
   /// To support the old ME0 Geometry (with 1 eta partition)
   /// Add EtaPartition to the chamber which takes ownership 
-  void add( std::shared_ptr< const ME0EtaPartition > roll);
+  void add( const ME0EtaPartition* roll );
 
   /// To support the old ME0 Geometry (with 1 eta partition)
   /// Return the eta partition corresponding to the given id
-  const std::shared_ptr< const ME0EtaPartition > etaPartition(ME0DetId id) const;
+  const ME0EtaPartition* etaPartition(ME0DetId id) const;
 
-  const std::shared_ptr< const ME0EtaPartition > etaPartition(int isl) const;
+  const ME0EtaPartition* etaPartition(int isl) const;
 
   /// To support the old ME0 Geometry (with 1 eta partition)
   /// Return the eta partitions
-  const std::vector< std::shared_ptr< const ME0EtaPartition >>& etaPartitions() const;
+  const std::vector< const ME0EtaPartition* >& etaPartitions() const;
 
   /// To support the old ME0 Geometry (with 1 eta partition)
   /// Retunr numbers of eta partitions
@@ -71,8 +71,8 @@ private:
   ME0DetId detId_;
 
   // vector of layers for a chamber
-  std::vector< std::shared_ptr< const ME0Layer >> layers_;
+  std::vector< const ME0Layer* > layers_;
   // vector of eta partitions for a chamber
-  std::vector< std::shared_ptr< const ME0EtaPartition >> etaPartitions_;
+  std::vector< const ME0EtaPartition* > etaPartitions_;
 };
 #endif

@@ -25,13 +25,13 @@ bool GEMStation::operator==(const GEMStation& st) const {
   return (region_ == st.region() && station_ == st.station());
 }
 
-void GEMStation::add( std::shared_ptr< const GEMRing > ring ) {
+void GEMStation::add( const GEMRing* ring ) {
   rings_.emplace_back(ring);
 }
 
-std::vector< std::shared_ptr< const GeomDet >>
+std::vector< const GeomDet* >
 GEMStation::components() const {
-  std::vector< std::shared_ptr< const GeomDet > > result;
+  std::vector< const GeomDet* > result;
   for (auto ri : rings_) {
     auto newSch(ri->components());
     result.insert(result.end(), newSch.begin(), newSch.end());
@@ -39,29 +39,29 @@ GEMStation::components() const {
   return result;
 }
 
-const std::shared_ptr< const GeomDet >
+const GeomDet*
 GEMStation::component( DetId id ) const {
   auto detId(GEMDetId(id.rawId()));
   return ring(detId.ring())->component(id);
 }
 
-const std::shared_ptr< const GEMSuperChamber >
+const GEMSuperChamber*
 GEMStation::superChamber( GEMDetId id ) const {
   if (id.region()!=region_ || id.station()!=station_ ) return nullptr; // not in this station
   return ring(id.ring())->superChamber(id.chamber());
 }
 
-std::vector< std::shared_ptr< const GEMSuperChamber >>
+std::vector< const GEMSuperChamber* >
 GEMStation::superChambers() const {
-  std::vector< std::shared_ptr< const GEMSuperChamber > > result;
+  std::vector< const GEMSuperChamber* > result;
   for (auto ri : rings_ ){
-    std::vector< std::shared_ptr< const GEMSuperChamber > > newSch( ri->superChambers());
+    std::vector< const GEMSuperChamber* > newSch( ri->superChambers());
     result.insert(result.end(), newSch.begin(), newSch.end());
   }
   return result;
 }
 
-const std::shared_ptr< const GEMRing >
+const GEMRing*
 GEMStation::ring(int ring) const {
   for (auto ri : rings_) {
     if (ring == ri->ring()) {
@@ -71,7 +71,7 @@ GEMStation::ring(int ring) const {
   return nullptr;
 }
 
-const std::vector< std::shared_ptr< const GEMRing >>&
+const std::vector< const GEMRing* >&
 GEMStation::rings() const {
   return rings_;
 }

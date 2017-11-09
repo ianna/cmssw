@@ -234,7 +234,7 @@ GEMGeometryBuilderFromDDD::buildEtaPartition( DDFilteredView& fv,
   bool isOdd = detId.chamber()%2;
   RCPBoundPlane surf(boundPlane(fv, new TrapezoidalPlaneBounds(be, te, ap, ti), isOdd ));
   std::string name = fv.logicalPart().name().name();
-  GEMEtaPartitionSpecs* e_p_specs = new GEMEtaPartitionSpecs(GeomDetEnumerators::GEM, name, pars);
+  auto e_p_specs = std::make_unique<const GEMEtaPartitionSpecs>(GeomDetEnumerators::GEM, name, pars);
   
   LogDebug("GEMGeometryBuilderFromDDD") << "size "<< be << " " << te << " " << ap << " " << ti <<std::endl;
   return std::make_shared< GEMEtaPartition >(detId, surf, e_p_specs);

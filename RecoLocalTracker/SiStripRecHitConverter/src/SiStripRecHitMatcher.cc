@@ -109,8 +109,8 @@ SiStripRecHitMatcher::match( const SiStripRecHit2D *monoRH,
 			     LocalVector trackdirection) const {
   // stripdet = mono
   // partnerstripdet = stereo
-  const GeomDetUnit* stripdet = gluedDet->monoDet();
-  const GeomDetUnit* partnerstripdet = gluedDet->stereoDet();
+  auto stripdet = gluedDet->monoDet();
+  auto partnerstripdet = gluedDet->stereoDet();
   const StripTopology& topol=(const StripTopology&)stripdet->topology();
 
   // position of the initial and final point of the strip (RPHI cluster) in local strip coordinates

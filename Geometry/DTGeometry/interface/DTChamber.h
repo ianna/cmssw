@@ -40,33 +40,32 @@ class DTChamber : public GeomDet {
     bool operator==(const DTChamber& ch) const;
 
     /// Add SL to the chamber which takes ownership
-    void add( std::shared_ptr< const DTSuperLayer > sl);
+    void add( const DTSuperLayer*  sl);
 
     /// Return the superlayers in the chamber
-    std::vector< std::shared_ptr< const GeomDet >> components() const override;
+    std::vector< const GeomDet* > components() const override;
 
     /// Return the sub-component (SL or layer) with a given id in this chamber
-    const std::shared_ptr< const GeomDet > component(DetId id) const override;
+    const GeomDet* component(DetId id) const override;
 
     /// Return the superlayers in the chamber
-    const std::vector< std::shared_ptr< const DTSuperLayer >>& superLayers() const;
+    const std::vector< const DTSuperLayer* >& superLayers() const;
 
     /// Return the superlayer corresponding to the given id 
-    const std::shared_ptr< const DTSuperLayer > superLayer(const DTSuperLayerId& id) const;
+    const DTSuperLayer* superLayer(const DTSuperLayerId& id) const;
   
     /// Return the given superlayer.
     /// Superlayers are numbered 1 (phi), 2 (Z), 3 (phi)
-    const std::shared_ptr< const DTSuperLayer > superLayer(int isl) const;
+    const DTSuperLayer* superLayer(int isl) const;
 
     /// Return the layer corresponding to the given id 
-    const std::shared_ptr< const DTLayer > layer(const DTLayerId& id) const;
+    const DTLayer* layer(const DTLayerId& id) const;
 
   private:
 
     DTChamberId theId;
 
     // The chamber owns its SL
-    std::vector< std::shared_ptr< const DTSuperLayer >> theSLs;
-
+    std::vector< const DTSuperLayer* > theSLs;
 };
 #endif

@@ -34,21 +34,21 @@ public:
   bool operator==(const GEMChamber& ch) const;
 
   /// Add EtaPartition to the chamber
-  void add( std::shared_ptr< const GEMEtaPartition > roll );
+  void add( const GEMEtaPartition* roll );
 
   /// Return the rolls in the chamber
-  std::vector< std::shared_ptr< const GeomDet >> components() const override;
+  std::vector< const GeomDet* > components() const override;
 
   /// Return the sub-component (roll) with a given id in this chamber
-  const std::shared_ptr< const GeomDet > component( DetId id ) const override;
+  const GeomDet* component( DetId id ) const override;
 
   /// Return the eta partition corresponding to the given id 
-  const std::shared_ptr< const GEMEtaPartition > etaPartition( GEMDetId id ) const;
+  const GEMEtaPartition* etaPartition( GEMDetId id ) const;
 
-  const std::shared_ptr< const GEMEtaPartition > etaPartition( int isl ) const;
+  const GEMEtaPartition* etaPartition( int isl ) const;
   
   /// Return the eta partitions
-  const std::vector< std::shared_ptr< const GEMEtaPartition >>& etaPartitions() const;
+  const std::vector< const GEMEtaPartition* >& etaPartitions() const;
 
   /// Retunr numbers of eta partitions
   int nEtaPartitions() const;
@@ -58,7 +58,7 @@ private:
   GEMDetId detId_;
 
   // vector of eta partitions for a chamber
-  std::vector< std::shared_ptr< const GEMEtaPartition >> etaPartitions_;
-
+  std::vector< const GEMEtaPartition* > etaPartitions_;
 };
+
 #endif

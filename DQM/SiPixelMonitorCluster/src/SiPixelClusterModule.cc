@@ -511,7 +511,7 @@ int SiPixelClusterModule::fill(const edmNew::DetSetVector<SiPixelCluster>& input
       int minPixelCol = di->minPixelCol(); // min y index
       int maxPixelCol = di->maxPixelCol(); // max y index
 
-      const PixelGeomDetUnit* theGeomDet = dynamic_cast<const PixelGeomDetUnit*> ( tracker->idToDet(DetId(id_)) );
+      auto theGeomDet = std::static_pointer_cast<const PixelGeomDetUnit> ( tracker->idToDet(DetId(id_)) );
 
       const PixelTopology * topol = &(theGeomDet->specificTopology());
       LocalPoint clustlp = topol->localPosition( MeasurementPoint(x, y) );

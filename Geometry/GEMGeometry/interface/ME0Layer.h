@@ -24,21 +24,21 @@ public:
   bool operator==(const ME0Layer& ch) const;
 
   /// Add EtaPartition to the layer which takes ownership
-  void add( const std::shared_ptr< const ME0EtaPartition > roll);
+  void add( const ME0EtaPartition* roll);
 
   /// Return the rolls in the layer
-  std::vector< std::shared_ptr< const GeomDet >> components() const override;
+  std::vector< const GeomDet* > components() const override;
 
   /// Return the sub-component (roll) with a given id in this layer
-  const std::shared_ptr< const GeomDet > component(DetId id) const override;
+  const GeomDet* component(DetId id) const override;
 
   /// Return the eta partition corresponding to the given id 
-  const std::shared_ptr< const ME0EtaPartition > etaPartition(ME0DetId id) const;
+  const ME0EtaPartition* etaPartition(ME0DetId id) const;
 
-  const std::shared_ptr< const ME0EtaPartition > etaPartition(int isl) const;
+  const ME0EtaPartition* etaPartition(int isl) const;
   
   /// Return the eta partitions
-  const std::vector< std::shared_ptr< const ME0EtaPartition >>& etaPartitions() const;
+  const std::vector< const ME0EtaPartition* >& etaPartitions() const;
 
   /// Retunr numbers of eta partitions
   int nEtaPartitions() const;
@@ -48,7 +48,7 @@ private:
   ME0DetId detId_;
 
   // vector of eta partitions for a layer
-  std::vector< std::shared_ptr< const ME0EtaPartition >> etaPartitions_;
+  std::vector< const ME0EtaPartition* > etaPartitions_;
 
 };
 #endif

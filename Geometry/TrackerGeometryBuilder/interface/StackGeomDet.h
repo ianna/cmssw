@@ -7,22 +7,22 @@
 class StackGeomDet : public TrackerGeomDet {
 public:
 
-  StackGeomDet( BoundPlane* sp, std::shared_ptr< const GeomDet > lowerDet,  std::shared_ptr< const GeomDet > upperDet, const DetId stackDetId);
+  StackGeomDet( BoundPlane* sp, const GeomDet* lowerDet,  const GeomDet* upperDet, const DetId stackDetId);
   
   ~StackGeomDet() override;
 
   bool isLeaf() const override { return false;}
-  std::vector< std::shared_ptr< const GeomDet >> components() const override;
+  std::vector< const GeomDet* > components() const override;
 
   // Which subdetector
   SubDetector subDetector() const override { return theLowerDet->subDetector(); };
 
-  std::shared_ptr< const GeomDet > lowerDet() const { return theLowerDet; };
-  std::shared_ptr< const GeomDet > upperDet() const { return theUpperDet; };
+  const GeomDet* lowerDet() const { return theLowerDet; };
+  const GeomDet* upperDet() const { return theUpperDet; };
 
 private:
-  std::shared_ptr< const GeomDet > theLowerDet;
-  std::shared_ptr< const GeomDet > theUpperDet;  
+  const GeomDet* theLowerDet;
+  const GeomDet* theUpperDet;  
 };
 
 #endif

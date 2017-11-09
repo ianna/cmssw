@@ -13,10 +13,10 @@ class GEMEtaPartition : public GeomDet
 {
 public:
   
-  GEMEtaPartition(GEMDetId id, const BoundPlane::BoundPlanePointer& bp, GEMEtaPartitionSpecs* rrs);
+  GEMEtaPartition( const GEMDetId id, const BoundPlane::BoundPlanePointer& bp, std::unique_ptr< const GEMEtaPartitionSpecs > rrs );
   ~GEMEtaPartition() override;
 
-  const GEMEtaPartitionSpecs* specs() const { return specs_; }
+  const GEMEtaPartitionSpecs* specs() const { return &*specs_; }
   GEMDetId id() const { return id_; }
 
   const Topology& topology() const override;
@@ -84,8 +84,8 @@ public:
 
 private:
 
-  GEMDetId id_;
-  GEMEtaPartitionSpecs* specs_;
+  const GEMDetId id_;
+  const std::unique_ptr< const GEMEtaPartitionSpecs > specs_;
 };
 
 #endif

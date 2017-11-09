@@ -6,17 +6,17 @@
 CSCChamber::~CSCChamber(){
 }
 
-std::vector< std::shared_ptr< const GeomDet > > 
+std::vector< const GeomDet* > 
 CSCChamber::components() const {
-  return std::vector < std::shared_ptr< const GeomDet > >( theComponents.begin(), theComponents.end());
+  return std::vector < const GeomDet* >( theComponents.begin(), theComponents.end());
 }
 
-const std::shared_ptr< const GeomDet >
+const GeomDet*
 CSCChamber::component(DetId id) const {
   return layer(CSCDetId(id.rawId()));
 }
 
-void CSCChamber::addComponent( int n, std::shared_ptr< const CSCLayer > gd ) { 
+void CSCChamber::addComponent( int n, const CSCLayer* gd ) { 
 	
   if ((n>0) && (n<7)) 
     theComponents[n-1] = gd; 
@@ -24,13 +24,13 @@ void CSCChamber::addComponent( int n, std::shared_ptr< const CSCLayer > gd ) {
     edm::LogError("CSC") << "Each chamber has only SIX layers.";
 }
 
-const std::shared_ptr< const CSCLayer >
+const CSCLayer*
 CSCChamber::layer(CSCDetId iid) const {
   if (iid.chamberId()!=id()) return nullptr; // not in this chamber
   return layer(iid.layer());
 }
   
-const std::shared_ptr< const CSCLayer >
+const CSCLayer*
 CSCChamber::layer(int ilay) const{
   	
   if ((ilay>0) && (ilay<7)) 

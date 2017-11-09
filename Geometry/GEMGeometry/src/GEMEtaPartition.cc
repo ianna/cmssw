@@ -3,15 +3,14 @@
 #include "Geometry/CommonTopologies/interface/TrapezoidalStripTopology.h"
 
 
-GEMEtaPartition::GEMEtaPartition(GEMDetId id, const BoundPlane::BoundPlanePointer& bp, GEMEtaPartitionSpecs* rrs) :
-  GeomDet(bp), id_(id),specs_(rrs)
+GEMEtaPartition::GEMEtaPartition( const GEMDetId id, const BoundPlane::BoundPlanePointer& bp, std::unique_ptr< const GEMEtaPartitionSpecs > rrs )
+  : GeomDet(bp), id_(id), specs_(std::move(rrs))
 {
   setDetId(id);
 }
 
 GEMEtaPartition::~GEMEtaPartition()
 {
-  delete specs_; //Assume the roll owns it specs (specs are not shared)
 }
 
 const Topology&

@@ -297,11 +297,11 @@ void SiPixelClusterSource::buildStructure(const edm::EventSetup& iSetup){
   
   for(TrackerGeometry::DetContainer::const_iterator it = pDD->dets().begin(); it != pDD->dets().end(); it++){
     
-    if(dynamic_cast<PixelGeomDetUnit const *>((*it))!=nullptr){
+    if(std::static_pointer_cast<const PixelGeomDetUnit>((*it))!=nullptr){
 
       DetId detId = (*it)->geographicalId();
-      const GeomDetUnit      * geoUnit = pDD->idToDetUnit( detId );
-      const PixelGeomDetUnit * pixDet  = dynamic_cast<const PixelGeomDetUnit*>(geoUnit);
+      auto geoUnit = pDD->idToDetUnit( detId );
+      auto pixDet  = std::static_pointer_cast<const PixelGeomDetUnit>(geoUnit);
       int nrows = (pixDet->specificTopology()).nrows();
       int ncols = (pixDet->specificTopology()).ncolumns();
 
@@ -482,8 +482,8 @@ void SiPixelClusterSource::getrococcupancye(DetId detId, const edmNew::DetSetVec
     edmNew::DetSet<SiPixelCluster>::const_iterator  pxclust;
     for (pxclust = ipxsearch->begin(); pxclust != ipxsearch->end(); pxclust++) {
       
-      const GeomDetUnit      * geoUnit = pDD->idToDetUnit( detId );
-      const PixelGeomDetUnit * pixDet  = dynamic_cast<const PixelGeomDetUnit*>(geoUnit);    
+      auto geoUnit = pDD->idToDetUnit( detId );
+      auto pixDet  = std::static_pointer_cast<const PixelGeomDetUnit>(geoUnit);    
       const PixelTopology * topol = &(pixDet->specificTopology());
       LocalPoint clustlp = topol->localPosition( MeasurementPoint(pxclust->x(),pxclust->y()) );
       GlobalPoint clustgp = geoUnit->surface().toGlobal( clustlp );    

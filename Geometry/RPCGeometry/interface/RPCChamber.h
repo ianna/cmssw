@@ -33,21 +33,21 @@ public:
   bool operator==(const RPCChamber& ch) const;
 
   /// Add Roll to the chamber which takes ownership
-  void add( std::shared_ptr< const RPCRoll > rl);
+  void add( const RPCRoll* rl);
 
   /// Return the rolls in the chamber
-  std::vector< std::shared_ptr< const GeomDet >> components() const override;
+  std::vector< const GeomDet* > components() const override;
 
   /// Return the sub-component (roll) with a given id in this chamber
-  const std::shared_ptr< const GeomDet > component(DetId id) const override;
+  const GeomDet* component(DetId id) const override;
 
   /// Return the Roll corresponding to the given id 
-  const std::shared_ptr< const RPCRoll > roll(RPCDetId id) const;
+  const RPCRoll* roll(RPCDetId id) const;
 
-  const std::shared_ptr< const RPCRoll > roll(int isl) const;
+  const RPCRoll* roll(int isl) const;
   
   /// Return the Rolls
-  const std::vector< std::shared_ptr< const RPCRoll >>& rolls() const;
+  const std::vector< const RPCRoll* >& rolls() const;
 
   /// Retunr numbers of rolls
   int nrolls() const;
@@ -57,7 +57,7 @@ private:
   RPCDetId theId;
 
   // The chamber owns its Rolls
-  std::vector< std::shared_ptr< const RPCRoll >> theRolls;
+  std::vector< const RPCRoll* > theRolls;
 
 };
 #endif

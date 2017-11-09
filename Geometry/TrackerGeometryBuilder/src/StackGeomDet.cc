@@ -1,7 +1,7 @@
 #include "Geometry/TrackerGeometryBuilder/interface/StackGeomDet.h"
 
-StackGeomDet::StackGeomDet( BoundPlane* sp, std::shared_ptr< const GeomDet > lowerDet,
-			    std::shared_ptr< const GeomDet > upperDet, const DetId stackDetId) : 
+StackGeomDet::StackGeomDet( BoundPlane* sp, const GeomDet* lowerDet,
+			    const GeomDet* upperDet, const DetId stackDetId) : 
   TrackerGeomDet(sp),theLowerDet(lowerDet),theUpperDet(upperDet){
   setDetId(stackDetId);
 }
@@ -9,6 +9,6 @@ StackGeomDet::StackGeomDet( BoundPlane* sp, std::shared_ptr< const GeomDet > low
 StackGeomDet::~StackGeomDet()
 {}
 
-std::vector< std::shared_ptr< const GeomDet >> StackGeomDet::components() const {
-  return std::vector< std::shared_ptr< const GeomDet >>{theLowerDet,theUpperDet};
+std::vector< const GeomDet* > StackGeomDet::components() const {
+  return std::vector< const GeomDet* >{theLowerDet,theUpperDet};
 }

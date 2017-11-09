@@ -30,21 +30,21 @@ RPCChamber::operator==(const RPCChamber& ch) const {
 }
 
 void 
-RPCChamber::add( std::shared_ptr< const RPCRoll > rl ) {
+RPCChamber::add( const RPCRoll* rl ) {
   theRolls.emplace_back(rl);
 }
 
-std::vector< std::shared_ptr< const GeomDet >> 
+std::vector< const GeomDet* > 
 RPCChamber::components() const {
-  return  std::vector< std::shared_ptr< const GeomDet > >( theRolls.begin(), theRolls.end());
+  return  std::vector< const GeomDet* >( theRolls.begin(), theRolls.end());
 }
 
-const std::shared_ptr< const GeomDet > 
+const GeomDet*
 RPCChamber::component(DetId id) const {
   return roll(RPCDetId(id.rawId()));
 }
 
-const std::vector< std::shared_ptr< const RPCRoll >>& 
+const std::vector< const RPCRoll* >& 
 RPCChamber::rolls() const 
 {
   return theRolls;
@@ -56,14 +56,14 @@ RPCChamber::nrolls() const
   return theRolls.size();
 }
 
-const std::shared_ptr< const RPCRoll >
+const RPCRoll*
 RPCChamber::roll(RPCDetId id) const
 {
   if (id.chamberId()!=theId) return nullptr; // not in this Roll!
   return roll(id.roll());
 }
 
-const std::shared_ptr< const RPCRoll > 
+const RPCRoll*
 RPCChamber::roll(int isl) const 
 {
   for (auto theRoll : theRolls) {

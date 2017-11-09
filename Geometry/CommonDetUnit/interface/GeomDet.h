@@ -85,18 +85,18 @@ class GeomDet {
   virtual bool isLeaf() const { return components().empty();}
 
   /// Returns direct components, if any
-  virtual std::vector< std::shared_ptr< const GeomDet >> components() const { return std::vector< std::shared_ptr< const GeomDet >>(); }
+  virtual std::vector< const GeomDet* > components() const { return std::vector< const GeomDet* >(); }
 
   /// Returns a component GeomDet given its DetId, if existing
   // FIXME: must become pure virtual
-  virtual const std::shared_ptr< const GeomDet > component( DetId /*id*/) const {return nullptr;}
+  virtual const GeomDet* component( DetId /*id*/) const { return nullptr; }
 
   /// Return pointer to alignment errors. 
-  AlignmentPositionError const* alignmentPositionError() const { return theAlignmentPositionError;}
+  AlignmentPositionError const* alignmentPositionError() const { return theAlignmentPositionError; }
 
   // specific unit index in a given subdetector (such as Tracker)
-  int index() const { return m_index;}
-  void setIndex(int i) { m_index=i;}
+  int index() const { return m_index; }
+  void setIndex( int i ) { m_index = i; }
 
   // specific geomDet index in a given subdetector (such as Tracker)
   int gdetIndex() const { return m_gdetIndex;}
