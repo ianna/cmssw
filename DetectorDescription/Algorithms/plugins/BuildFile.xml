@@ -1,0 +1,6 @@
+<library name="DetectorDescriptionDD4HepPlugins" file="*.cc" >
+ <use   name="dd4hep"/>
+ <use   name="rootgeom"/>
+ <use name="DetectorDescription/DDCMS"/>
+ <flags   DD4HEP_PLUGIN="1"/>
+</library>
