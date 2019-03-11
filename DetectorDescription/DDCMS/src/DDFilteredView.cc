@@ -11,57 +11,136 @@
 using namespace cms;
 using namespace std;
 
-DDFilteredView::DDFilteredView(const DDDetector* det)
+DDFilteredView::DDFilteredView(const DDDetector* det, const Volume volume)
   : registry_(&det->specpars()) {
-  dd4hep::DetElement world = det->description()->world();
-  parents_.emplace_back(DDExpandedNode(world.volume(), DDTranslation(), DDRotationMatrix(), 1, 0));
-  topVolume_ = world.volume();
-  TGeoIterator next(topVolume_);
-  next.SetType(0); // 0: DFS; 1: BFS
+  it_.emplace_back(TGeoIterator(volume));
 }
 
-const DDVolume&
+const PlacedVolume
 DDFilteredView::volume() const {
-  return parents_.back().volume;
+  return PlacedVolume(node_);
 }
 
-const DDTranslation&
-DDFilteredView::translation() const {
-  return parents_.back().trans;
+const Double_t*
+DDFilteredView::trans() const {
+  return it_.back().GetCurrentMatrix()->GetTranslation();
 }
 
-const DDRotationMatrix&
-DDFilteredView::rotation() const {
-  return parents_.back().rot;
+const Double_t*
+DDFilteredView::rot() const {
+  return it_.back().GetCurrentMatrix()->GetRotationMatrix();
 }
 
 void
 DDFilteredView::mergedSpecifics(DDSpecParRefs const& refs) {
   for(const auto& i : refs) {
     auto tops = vPathsTo(*i, 1);
-    //    auto tops = vPathsTo(*i.second, 1);
+    auto level2 = tails(vPathsTo(*i, 2));
+    auto level3 = tails(vPathsTo(*i, 3));
+    auto level4 = tails(vPathsTo(*i, 4));
     topNodes_.insert(end(topNodes_), begin(tops), end(tops));
+    nextNodes_.insert(end(nextNodes_), begin(level2), end(level2));
+    afterNextNodes_.insert(end(afterNextNodes_), begin(level3), end(level3));
+    nextAfterNextNodes_.insert(end(nextAfterNextNodes_), begin(level4), end(level4));
   }
+  auto last = unique(begin(topNodes_), end(topNodes_));
+  topNodes_.erase(last, end(topNodes_));
+  last = unique(begin(nextNodes_), end(nextNodes_));
+  nextNodes_.erase(last, end(nextNodes_));
+  last = unique(begin(afterNextNodes_), end(afterNextNodes_));
+  afterNextNodes_.erase(last, end(afterNextNodes_));
+  last = unique(begin(nextAfterNextNodes_), end(nextAfterNextNodes_));
+  nextAfterNextNodes_.erase(last, end(nextAfterNextNodes_));
 }
 
 bool
 DDFilteredView::firstChild() {
+  it_.back().SetType(0);
+  TGeoNode *node = nullptr;
+  while((node = it_.back().Next())) {
+    if(accepted(topNodes_, noNamespace(node->GetVolume()->GetName()))) {
+      TString path;
+      it_.back().GetPath(path);
+      addPath(path, node);
+
+      return true;
+    }
+  }
+  return false;
+}
+
+bool
+DDFilteredView::firstSibling() {
+  next(0);
+  it_.emplace_back(TGeoIterator(it_.back()));
+  it_.back().SetType(1);
+  do {
+    if(accepted(nextNodes_, noNamespace(node_->GetVolume()->GetName()))) {
+      addNode(node_);
+      return true;
+    }
+  } while((node_ = it_.back().Next()));
+
   return false;
 }
 
 bool
 DDFilteredView::nextSibling() {
+  it_.back().SetType(1);
+  unCheckNode();
+  do {
+    if(accepted(nextNodes_, noNamespace(node_->GetVolume()->GetName()))) {
+      addNode(node_);
+      return true;
+    }
+  } while((node_ = it_.back().Next()));
+
   return false;
 }
 
 bool
-DDFilteredView::next() {
+DDFilteredView::subSibling() {
+  it_.back().SetType(1);
+  TGeoNode *node = nullptr;
+  while((node = it_.back().Next())) {
+    if(accepted(afterNextNodes_, noNamespace(node->GetVolume()->GetName()))) {
+      addNode(node);
+      return true;
+    }
+  }
   return false;
 }
 
-const DDGeoHistory&
-DDFilteredView::geoHistory() const {
-  return parents_;
+bool
+DDFilteredView::parent() {
+  up();
+  it_.back().SetType(0);
+  it_.back().Skip();
+  
+  return true;
+}
+
+bool
+DDFilteredView::next(int type) {
+  it_.back().SetType(type);
+  TGeoNode *node = nullptr;
+  if((node = it_.back().Next())) {
+    node_ = node;
+    return true;
+  }
+  else
+    return false;
+}
+
+void
+DDFilteredView::down() {
+  it_.emplace_back(TGeoIterator(it_.back()));
+  next(0);
+}
+
+void
+DDFilteredView::up() {
+  it_.pop_back();
 }
 
 bool
@@ -92,22 +171,9 @@ DDFilteredView::accepted(string_view name, string_view node) const {
 
 bool
 DDFilteredView::accepted(vector<string_view> const& names, string_view node) const {
-  for(auto const& i : names) {
-    if(accepted(i, node)) {
-      return true;
-    }
-  }
-  return false;
-}
-
-bool
-DDFilteredView::acceptedM(vector<string_view>& names, string_view node) const {
-  auto itr = find_if(names.begin(), names.end(), [ & ]( const auto& i){ return accepted(i, node); });
-  if(itr != names.end() && (!isRegex(*itr))) {
-    names.erase(itr);
-    return true;
-  }
-  return false;
+  return (find_if(begin(names), end(names),
+		  [&](const auto& n) -> bool { return accepted(n, node); })
+	  != end(names));
 }
 
 string_view
@@ -179,7 +245,7 @@ DDFilteredView::contains(string_view input, string_view needle) const {
 }
 
 bool
-DDFilteredView::checkPath(string_view path, TGeoNode *node) {
+DDFilteredView::addPath(string_view path, TGeoNode* const node) {
   assert(registry_);
   node_ = node;
   nodes.tags.clear();
@@ -210,7 +276,7 @@ DDFilteredView::checkPath(string_view path, TGeoNode *node) {
 }
 
 bool
-DDFilteredView::checkNode(TGeoNode *node) {
+DDFilteredView::addNode(TGeoNode* const node) {
   assert(registry_);
   node_ = node;
   bool result(false);

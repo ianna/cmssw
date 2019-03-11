@@ -186,6 +186,7 @@ DTLayer* DTGeometryBuilderFromDDD::buildLayer(DDFilteredView& fv,
     WCounter++;
     doWire = fv.nextSibling(); // next wire
   }
+  cout << "First Wire " << par[1] << " copy no " << firstWire << ", out of " << WCounter << "\n";
   //int lastWire=fv.copyno();
   DTTopology topology(firstWire, WCounter, wireLength);
 
