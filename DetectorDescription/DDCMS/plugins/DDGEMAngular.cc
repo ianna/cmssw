@@ -24,6 +24,10 @@ static long  algorithm(dd4hep::Detector& /* description */,
   int n              = args.value<int>("n");
   int startCopyNo    = args.value<int>("startCopyNo");
   int incrCopyNo     = args.value<int>("incrCopyNo");
+  std::string childName   = args.value<std::string>("ChildName");
+  if( strchr( childName.c_str(), NAMESPACE_SEP ) == nullptr )
+    childName = ns.name() + childName;
+
 #ifdef EDM_ML_DEBUG
   edm::LogVerbatim("MuonGeom") 
     << "DDGEMAngular: Parameters for positioning-- " << n 
@@ -35,7 +39,7 @@ static long  algorithm(dd4hep::Detector& /* description */,
 #endif
 
   dd4hep::Volume parent = ns.volume(args.parentName());
-  dd4hep::Volume child  = ns.volume(args.value<std::string>("ChildName"));
+  dd4hep::Volume child  = ns.volume(childName);
 #ifdef EDM_ML_DEBUG
   edm::LogVerbatim("MuonGeom") 
     << "DDGEMAngular: Parent " << parent.name() << "\tChild " << child.name()
@@ -75,5 +79,5 @@ static long  algorithm(dd4hep::Detector& /* description */,
 }
 
 // first argument is the type from the xml file
-DECLARE_DDCMS_DETELEMENT(DDCMS_Muon_DDGEMAngular,algorithm)
+DECLARE_DDCMS_DETELEMENT(DDCMS_muon_DDGEMAngular,algorithm)
 
