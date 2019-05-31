@@ -11,6 +11,7 @@
 #include "Geometry/Records/interface/GeometryFileRcd.h"
 #include "Geometry/Records/interface/DDSpecParRegistryRcd.h"
 #include "SimG4Core/DD4hepGeometry/interface/DD4hep_DDDWorld.h"
+#include "SimG4Core/Geometry/interface/SensitiveDetectorCatalog.h"
 #include "DDG4/Geant4Converter.h"
 #include "DD4hep/Detector.h"
 #include "DD4hep/Handle.h"
@@ -55,16 +56,21 @@ public:
   void endJob() override {}
 
 private:
-  void update();
+  void updateProductionCuts();
+  void sensitiveDetectorCatalog();
   void initialize(const dd4hep::sim::Geant4GeometryMaps::VolumeMap&);
   G4ProductionCuts* getProductionCuts(G4Region* region);
   
   const ESInputTag tag_;
   const DDSpecParRegistry* specPars_;
   G4MTRunManagerKernel* kernel_;
-  DDSpecParRefs specs_;
-  vector<pair<G4LogicalVolume*, const DDSpecPar*>> vec_;
+  DDSpecParRefs regionSpecs_;
+  DDSpecParRefs sensDetSpecs_;
+  SensitiveDetectorCatalog catalog_;
+  vector<pair<G4LogicalVolume*, const DDSpecPar*>> regionVec_;
+  vector<pair<G4LogicalVolume*, const DDSpecPar*>> sensDetVec_;
   string_view keywordRegion_;
+  string_view keywordSensDet_;
   unique_ptr<DDDWorld> world_;
   int verbosity_;
   bool protonCut_;
@@ -74,6 +80,7 @@ DD4hepTestDDDWorld::DD4hepTestDDDWorld(const ParameterSet& iConfig)
   : tag_(iConfig.getParameter<ESInputTag>("DDDetector"))
 {
   keywordRegion_ = "CMSCutsRegion";
+  keywordSensDet_= "SensitiveDetector";
   protonCut_ = iConfig.getUntrackedParameter<bool>("CutsOnProton", true);
   verbosity_ = iConfig.getUntrackedParameter<int>("Verbosity", 1);
   kernel_ = new G4MTRunManagerKernel();
@@ -109,16 +116,18 @@ DD4hepTestDDDWorld::analyze(const Event&, const EventSetup& iEventSetup)
   dd4hep::sim::Geant4GeometryMaps::VolumeMap lvMap;
   world_.reset(new DDDWorld(ddd.product(), lvMap));
   initialize(lvMap);
-  update();
+  updateProductionCuts();
+  sensitiveDetectorCatalog();
   LogVerbatim("Geometry") << "Done.";
 }
 
 void DD4hepTestDDDWorld::initialize(const dd4hep::sim::Geant4GeometryMaps::VolumeMap& vmap) {
-  specPars_->filter(specs_, keywordRegion_);
+  specPars_->filter(regionSpecs_, keywordRegion_);
+  specPars_->filter(sensDetSpecs_, keywordSensDet_);
 
   LogVerbatim("Geometry").log([&](auto& log) {
     for(auto const& it : vmap) {
-      for(auto const& fit : specs_) {
+      for(auto const& fit : regionSpecs_) {
         for(auto const& sit : fit->spars) {
 	  log << sit.first << " =  " << sit.second[0] << "\n";
 	}
@@ -126,8 +135,27 @@ void DD4hepTestDDDWorld::initialize(const dd4hep::sim::Geant4GeometryMaps::Volum
 	  log << cms::dd::realTopName(pit) << "\n";
 	  log << "   compare equal to " << noNamespace(it.first.name()) << " ... ";
 	  if(cms::dd::compareEqual(noNamespace(it.first.name()), cms::dd::realTopName(pit))) {
-	    vec_.emplace_back(std::make_pair<G4LogicalVolume*, const cms::DDSpecPar*>(&*it.second, &*fit));
-	    log << "   are equal!\n";
+	    regionVec_.emplace_back(std::make_pair<G4LogicalVolume*, const cms::DDSpecPar*>(&*it.second, &*fit));
+	    log << "   yep!\n";
+	  } else
+	    log << "   nope.\n";	
+        }
+      }
+    }
+  });
+
+  LogVerbatim("Geometry").log([&](auto& log) {
+    for(auto const& it : vmap) {
+      for(auto const& sdit : sensDetSpecs_) {
+        for(auto const& sit : sdit->spars) {
+	  log << sit.first << " =  " << sit.second[0] << "\n";
+	}
+	for(auto const& pit : sdit->paths) {
+	  log << "SD: " << cms::dd::realTopName(pit) << "\n";
+	  log << "   (is sensitive?) compare equal to " << noNamespace(it.first.name()) << " ... ";
+	  if(cms::dd::compareEqual(noNamespace(it.first.name()), cms::dd::realTopName(pit))) {
+	    sensDetVec_.emplace_back(std::make_pair<G4LogicalVolume*, const cms::DDSpecPar*>(&*it.second, &*sdit));
+	    log << "   is a sensitive detector!\n";
 	  } else
 	    log << "   nope.\n";	
         }
@@ -136,10 +164,10 @@ void DD4hepTestDDDWorld::initialize(const dd4hep::sim::Geant4GeometryMaps::Volum
   });
   
   // sort all root volumes - to get the same sequence at every run of the application.
-  sort(begin(vec_), end(vec_), &sortByName);
+  sort(begin(regionVec_), end(regionVec_), &sortByName);
   
   // Now generate all the regions
-  for(auto const& it : vec_) {
+  for(auto const& it : regionVec_) {
     auto regName = it.second->strValue(keywordRegion_.data());
     G4Region* region = G4RegionStore::GetInstance()->FindOrCreateRegion({regName.data(), regName.size()});
     region->AddRootLogicalVolume(it.first);
@@ -148,10 +176,24 @@ void DD4hepTestDDDWorld::initialize(const dd4hep::sim::Geant4GeometryMaps::Volum
   }
 }
 
-void DD4hepTestDDDWorld::update() {
+void DD4hepTestDDDWorld::updateProductionCuts() {
   LogVerbatim("Geometry").log([&](auto& log) {
     log << "DD4hepTestDDDWorld::update()\n";
-    for(const auto& t: vec_) {
+    for(const auto& t: regionVec_) {
+      log << t.first->GetName() << ":\n";
+      for(const auto& kl : t.second->spars) {
+        log << kl.first << " = "; 
+        for(const auto& kil : kl.second) {
+	  log << kil << ", ";
+        }
+      }
+      log << "\n";
+    }
+    log << "DD4hepTestDDDWorld::update() done!\n";
+  });
+  LogVerbatim("Geometry").log([&](auto& log) {
+    log << "DD4hepTestDDDWorld::update() sensitive detectors\n";
+    for(const auto& t: sensDetVec_) {
       log << t.first->GetName() << ":\n";
       for(const auto& kl : t.second->spars) {
         log << kl.first << " = "; 
@@ -164,7 +206,7 @@ void DD4hepTestDDDWorld::update() {
     log << "DD4hepTestDDDWorld::update() done!\n";
   });
   // Loop over all DDLP and provide the cuts for each region
-  for(auto const& it : vec_) {
+  for(auto const& it : regionVec_) {
     auto regName = it.second->strValue(keywordRegion_.data());
     G4Region* region = G4RegionStore::GetInstance()->FindOrCreateRegion({regName.data(), regName.size()});
 
@@ -201,6 +243,17 @@ void DD4hepTestDDDWorld::update() {
 			      << " (" << positroncut << ")\n    Gamma    : "
 			      << gammacutStr << " (" << gammacut << ")\n";
     }
+  }
+}
+
+void DD4hepTestDDDWorld::sensitiveDetectorCatalog() {
+  for(auto it : sensDetVec_) {
+    auto sClassName = it.second->strValue("SensitiveDetector");
+    auto sROUName = it.second->strValue("ReadOutName");
+    auto fff = it.first->GetName();
+    LogVerbatim("Geometry") << " DDG4SensitiveConverter: Sensitive " << fff << " Class Name " << sClassName
+			    << " ROU Name " << sROUName;
+    catalog_.insert({sClassName.data(), sClassName.size()}, {sROUName.data(), sROUName.size()}, fff);
   }
 }
 

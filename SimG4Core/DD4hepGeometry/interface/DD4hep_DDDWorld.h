@@ -12,7 +12,7 @@ namespace cms {
 class DDDWorld {
 
  public:
-  DDDWorld(const cms::DDDetector*, dd4hep::sim::Geant4GeometryMaps::VolumeMap&);
+  DDDWorld(const cms::DDDetector*, dd4hep::sim::Geant4GeometryMaps::VolumeMap&, SensitiveDetectorCatalog&, bool check = false);
   ~DDDWorld();
   static void workerSetAsWorld(G4VPhysicalVolume* pv);
   const G4VPhysicalVolume* getWorldVolume() const { return m_world; }
