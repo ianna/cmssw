@@ -8,7 +8,7 @@
  *  \author N. Amapane - INFN Torino
  */
 
-#include "eLayer.h"
+#include "MagneticField/GeomBuilder/src/eLayer.h"
 
 class MagESector;
 

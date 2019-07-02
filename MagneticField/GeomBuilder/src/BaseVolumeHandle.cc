@@ -11,12 +11,15 @@
 #include "DataFormats/GeometrySurface/interface/Cone.h"
 #include "DataFormats/GeometryVector/interface/CoordinateSets.h"
 
+#include "CLHEP/Units/GlobalSystemOfUnits.h"
+
 #include "MagneticField/Layers/interface/MagVerbosity.h"
 
 #include <string>
 #include <iterator>
 #include <iomanip>
 #include <iostream>
+#include <boost/lexical_cast.hpp>
 
 using namespace SurfaceOrientation;
 using namespace std;
