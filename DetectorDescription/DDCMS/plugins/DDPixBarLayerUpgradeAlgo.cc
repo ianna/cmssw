@@ -13,7 +13,7 @@ static long algorithm(dd4hep::Detector&,
   cms::DDNamespace ns(ctxt, e, true);
   cms::DDAlgoArguments args(ctxt, e);
   std::string parentName = args.parentName();
-
+  
   std::string genMat = args.value<std::string>("GeneralMaterial");
   int number = args.value<int>("Ladders");
   double layerDz = args.value<double>("LayerDz");
@@ -21,7 +21,7 @@ static long algorithm(dd4hep::Detector&,
   double coolThick = args.value<double>("CoolThick");
   double coolRadius = args.value<double>("CoolRadius");
   double coolDist = args.value<double>("CoolDist");
-  double cool1Offset = args.value<double>("Cool1Ofsset");
+  double cool1Offset = args.value<double>("Cool1Offset");
   double cool2Offset =  args.value<double>("Cool2Offset");
   std::string coolMat = args.value<std::string>("CoolMaterial");
   std::string tubeMat = args.value<std::string>("CoolTubeMaterial");
@@ -39,7 +39,7 @@ static long algorithm(dd4hep::Detector&,
   double ladderOffset = args.value<double>("LadderOffset");
   int outerFirst = args.value<int>("OuterFirst");
 
-  dd4hep::Volume mother = ns.volume(args.parentName());
+  //  dd4hep::Volume mother = ns.volume(args.parentName());
 
   LogDebug("PixelGeom") << "DDPixBarLayerUpgradeAlgo debug: Parent " << parentName 
                         << " NameSpace " << ns.objName(parentName)
@@ -56,7 +56,7 @@ static long algorithm(dd4hep::Detector&,
   LogDebug("PixelGeom") << "DDPixBarLayerUpgradeAlgo debug: Full Ladder "
                         << ladder << " width/thickness "
                         << ladderWidth << ", " << ladderThick;
-
+  
   double dphi = 2_pi / (double)number;
   double x2 = coolDist * sin(0.5 * dphi);
   double rtmi = coolDist * cos(0.5 * dphi) - (coolRadius + ladderThick) + rInnerFineTune;
@@ -264,11 +264,11 @@ static long algorithm(dd4hep::Detector&,
   }
 
   int nCopy = 1;
-  mother.placeVolume(layer, nCopy, dd4hep::Transform3D(dd4hep::Rotation3D(),
-                                                       dd4hep::Position(0., 0., 0.)));
-
+  // mother.placeVolume(layer, nCopy, dd4hep::Transform3D(dd4hep::Rotation3D(),
+  //                                                      dd4hep::Position(0., 0., 0.)));
+  
   return cms::s_executed;
 
 }
 
-DECLARE_DDCMS_DETELEMENT(DDCMS_tracker_DDPixBarLayerUpgrade, algorithm);
+DECLARE_DDCMS_DETELEMENT(DDCMS_track_DDPixBarLayerUpgradeAlgo, algorithm);
