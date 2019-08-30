@@ -1,5 +1,5 @@
-#ifndef MagneticField_GeomBuilder_DD4hepMagGeoBuilder_h
-#define MagneticField_GeomBuilder_DD4hepMagGeoBuilder_h
+#ifndef MagneticField_GeomBuilder_DD4hep_MagGeoBuilder_h
+#define MagneticField_GeomBuilder_DD4hep_MagGeoBuilder_h
 
 /** \class MagGeoBuilder
  *  Parse the XML magnetic geometry, build individual volumes and match their
