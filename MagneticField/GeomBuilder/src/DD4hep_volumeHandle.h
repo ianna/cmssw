@@ -13,7 +13,6 @@
 #include "BaseVolumeHandle.h"
 
 #include "DataFormats/GeometrySurface/interface/Surface.h"
-#include "DetectorDescription/DDCMS/interface/DDShapes.h"
 #include "MagneticField/VolumeGeometry/interface/VolumeSide.h"
 
 namespace cms {
@@ -31,7 +30,7 @@ namespace cms {
     volumeHandle operator=(const volumeHandle& v) = delete;
 
     // Shape at initialization
-    DDSolidShape shape() const override { return (theShape); }
+    BaseVolumeHandle::SolidShape shape() const override { return (theShape); }
 
     /// The surfaces and they orientation, as required to build a MagVolume.
     std::vector<VolumeSide> sides() const override;
@@ -52,7 +51,7 @@ namespace cms {
     void buildTruncTubs();
 
     // Shape at initialization
-    const DDSolidShape theShape;
+    const BaseVolumeHandle::SolidShape theShape;
     const DDFilteredView& solid;
     // "solid" name is for backwards compatibility. Can be changed to "fview" after DD4hep migration.
   };

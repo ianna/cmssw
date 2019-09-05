@@ -1,5 +1,3 @@
-// #include "Utilities/Configuration/interface/Architecture.h"
-
 /*
  *  See header file for a description of this class.
  *
@@ -32,8 +30,38 @@ using namespace cms;
 using namespace cms::dd;
 using namespace edm;
 
+namespace {
+  const std::array<const cms::dd::NameValuePair<BaseVolumeHandle::SolidShape>, 22> LegacySolidShapeMap{
+    {{BaseVolumeHandle::SolidShape::dd_not_init, "Solid not initialized"},
+     {BaseVolumeHandle::SolidShape::ddbox, "Box"},
+     {BaseVolumeHandle::SolidShape::ddtubs, "Tube"},
+     {BaseVolumeHandle::SolidShape::ddtrap, "Trapezoid"},
+     {BaseVolumeHandle::SolidShape::ddcons, "Cone"},
+     {BaseVolumeHandle::SolidShape::ddpolycone_rz, "Polycone"},
+     {BaseVolumeHandle::SolidShape::ddpolycone_rz, "Polycone_rz"},
+     {BaseVolumeHandle::SolidShape::ddpolycone_rrz, "Polycone_rrz"},
+     {BaseVolumeHandle::SolidShape::ddpolyhedra_rz, "Polyhedra"},
+     {BaseVolumeHandle::SolidShape::ddpolyhedra_rz, "Polyhedra_rz"},
+     {BaseVolumeHandle::SolidShape::ddpolyhedra_rz, "Polyhedra_rrz"},
+     {BaseVolumeHandle::SolidShape::ddtorus, "Torus"},
+     {BaseVolumeHandle::SolidShape::ddunion, "Union"},
+     {BaseVolumeHandle::SolidShape::ddsubtraction, "Subtraction"},
+     {BaseVolumeHandle::SolidShape::ddintersection, "Intersection"},
+     {BaseVolumeHandle::SolidShape::ddshapeless, "ShapelessSolid"},
+     {BaseVolumeHandle::SolidShape::ddpseudotrap, "PseudoTrap"},
+     {BaseVolumeHandle::SolidShape::ddtrunctubs, "TruncatedTube"},
+     {BaseVolumeHandle::SolidShape::ddsphere, "Sphere"},
+     {BaseVolumeHandle::SolidShape::ddellipticaltube, "EllipticalTube"},
+     {BaseVolumeHandle::SolidShape::ddcuttubs, "CutTube"},
+     {BaseVolumeHandle::SolidShape::ddextrudedpolygon, "ExtrudedPolygon"}}};
+  
+  BaseVolumeHandle::SolidShape legacyShape(const std::string& name) {
+    return cms::dd::value(LegacySolidShapeMap, name);
+  }
+}
+
 volumeHandle::volumeHandle(const DDFilteredView &fv, bool expand2Pi, bool debugVal)
-    : BaseVolumeHandle(expand2Pi, debugVal), theShape(getCurrentShape(fv)), solid(fv) {
+  : BaseVolumeHandle(expand2Pi, debugVal), theShape(legacyShape(cms::dd::name(cms::DDSolidShapeMap, fv.shape()))), solid(fv) {
   name = fv.name();
   copyno = fv.copyNum();
   const auto *const transArray = fv.trans();
@@ -49,19 +77,19 @@ volumeHandle::volumeHandle(const DDFilteredView &fv, bool expand2Pi, bool debugV
   }
   referencePlane(fv);
   switch (theShape) {
-    case DDSolidShape::ddbox:
+    case BaseVolumeHandle::SolidShape::ddbox:
       buildBox();
       break;
-    case DDSolidShape::ddtrap:
+    case BaseVolumeHandle::SolidShape::ddtrap:
       buildTrap();
       break;
-    case DDSolidShape::ddcons:
+    case BaseVolumeHandle::SolidShape::ddcons:
       buildCons();
       break;
-    case DDSolidShape::ddtubs:
+    case BaseVolumeHandle::SolidShape::ddtubs:
       buildTubs();
       break;
-    case DDSolidShape::ddtrunctubs:
+    case BaseVolumeHandle::SolidShape::ddtrunctubs:
       buildTruncTubs();
       break;
     default:
@@ -180,7 +208,7 @@ std::vector<VolumeSide> volumeHandle::sides() const {
       continue;
 
     // FIXME: Skip null inner degenerate cylindrical surface
-    if (theShape == DDSolidShape::ddtubs && i == SurfaceOrientation::inner && theRMin < 0.001)
+    if (theShape == BaseVolumeHandle::SolidShape::ddtubs && i == SurfaceOrientation::inner && theRMin < 0.001)
       continue;
 
     RCPS s = surfaces[i].get();

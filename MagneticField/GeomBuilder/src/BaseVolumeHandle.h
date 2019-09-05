@@ -25,6 +25,7 @@ namespace magneticfield {
     typedef Surface::LocalPoint LocalPoint;
     typedef Surface::LocalVector LocalVector;
     typedef SurfaceOrientation::GlobalFace Sides;
+    using SolidShape = DDSolidShape;
 
     BaseVolumeHandle(bool expand2Pi = false, bool debugVal = false);
 
@@ -111,7 +112,7 @@ namespace magneticfield {
     int masterSector;
 
     /// Shape of the solid
-    virtual DDSolidShape shape() const = 0;
+    virtual SolidShape shape() const = 0;
 
   protected:
     typedef ReferenceCountingPointer<Surface> RCPS;

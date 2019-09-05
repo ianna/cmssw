@@ -73,9 +73,9 @@ void MagGeoBuilder::summary(handles& volumes) const {
   set<const void*> ptrs;
 
   for (auto i : volumes) {
-    DDSolidShape theShape = i->shape();
-    if (theShape == DDSolidShape::ddbox || theShape == DDSolidShape::ddcons || theShape == DDSolidShape::ddtrap ||
-        theShape == DDSolidShape::ddtubs) {
+    BaseVolumeHandle::SolidShape theShape = i->shape();
+    if (theShape == BaseVolumeHandle::SolidShape::ddbox || theShape == BaseVolumeHandle::SolidShape::ddcons || theShape == BaseVolumeHandle::SolidShape::ddtrap ||
+        theShape == BaseVolumeHandle::SolidShape::ddtubs) {
       for (int side = 0; side < 6; ++side) {
         int references = i->references(side);
         if (i->isPlaneMatched(side)) {
