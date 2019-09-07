@@ -302,8 +302,12 @@ const std::vector<double> DDFilteredView::parameters() const {
   return currVol.solid().dimensions();
 }
 
-const DDSolidShape DDFilteredView::shape() const {
+const cms::DDSolidShape DDFilteredView::shape() const {
   return cms::dd::value(cms::DDSolidShapeMap, node_->GetVolume()->GetShape()->GetTitle());
+}
+    
+LegacySolidShape DDFilteredView::legacyShape(const cms::DDSolidShape shape) const {
+  return cms::dd::value(cms::LegacySolidShapeMap, shape);
 }
 
 template <>

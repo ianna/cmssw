@@ -30,38 +30,8 @@ using namespace cms;
 using namespace cms::dd;
 using namespace edm;
 
-namespace {
-  const std::array<const cms::dd::NameValuePair<BaseVolumeHandle::SolidShape>, 22> LegacySolidShapeMap{
-    {{BaseVolumeHandle::SolidShape::dd_not_init, "Solid not initialized"},
-     {BaseVolumeHandle::SolidShape::ddbox, "Box"},
-     {BaseVolumeHandle::SolidShape::ddtubs, "Tube"},
-     {BaseVolumeHandle::SolidShape::ddtrap, "Trapezoid"},
-     {BaseVolumeHandle::SolidShape::ddcons, "Cone"},
-     {BaseVolumeHandle::SolidShape::ddpolycone_rz, "Polycone"},
-     {BaseVolumeHandle::SolidShape::ddpolycone_rz, "Polycone_rz"},
-     {BaseVolumeHandle::SolidShape::ddpolycone_rrz, "Polycone_rrz"},
-     {BaseVolumeHandle::SolidShape::ddpolyhedra_rz, "Polyhedra"},
-     {BaseVolumeHandle::SolidShape::ddpolyhedra_rz, "Polyhedra_rz"},
-     {BaseVolumeHandle::SolidShape::ddpolyhedra_rz, "Polyhedra_rrz"},
-     {BaseVolumeHandle::SolidShape::ddtorus, "Torus"},
-     {BaseVolumeHandle::SolidShape::ddunion, "Union"},
-     {BaseVolumeHandle::SolidShape::ddsubtraction, "Subtraction"},
-     {BaseVolumeHandle::SolidShape::ddintersection, "Intersection"},
-     {BaseVolumeHandle::SolidShape::ddshapeless, "ShapelessSolid"},
-     {BaseVolumeHandle::SolidShape::ddpseudotrap, "PseudoTrap"},
-     {BaseVolumeHandle::SolidShape::ddtrunctubs, "TruncatedTube"},
-     {BaseVolumeHandle::SolidShape::ddsphere, "Sphere"},
-     {BaseVolumeHandle::SolidShape::ddellipticaltube, "EllipticalTube"},
-     {BaseVolumeHandle::SolidShape::ddcuttubs, "CutTube"},
-     {BaseVolumeHandle::SolidShape::ddextrudedpolygon, "ExtrudedPolygon"}}};
-  
-  BaseVolumeHandle::SolidShape legacyShape(const std::string& name) {
-    return cms::dd::value(LegacySolidShapeMap, name);
-  }
-}
-
 volumeHandle::volumeHandle(const DDFilteredView &fv, bool expand2Pi, bool debugVal)
-  : BaseVolumeHandle(expand2Pi, debugVal), theShape(legacyShape(cms::dd::name(cms::DDSolidShapeMap, fv.shape()))), solid(fv) {
+  : BaseVolumeHandle(expand2Pi, debugVal), theShape(fv.legacyShape(fv.shape())), solid(fv) {
   name = fv.name();
   copyno = fv.copyNum();
   const auto *const transArray = fv.trans();
